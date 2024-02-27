@@ -1,4 +1,4 @@
-## Notes:
+## Notes
 
 - This project use Yarn
 

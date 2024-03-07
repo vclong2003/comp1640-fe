@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.Btntop {
+  color: #1c1c1c;
+  background-color: #f2ba1d;
+}
+.Btntopgray {
+  background: #e0dcdc;
+  color: #ffffff;
+}

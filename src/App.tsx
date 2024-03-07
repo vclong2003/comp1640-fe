@@ -3,11 +3,11 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import "./assets/css/global.css";
+import StudentPage from "./pages/student/StudentPage";
 
 function App() {
-  return <div className="App">test</div>;
+  return <StudentPage />;
 }
 
 export default App;
-
-// test dev

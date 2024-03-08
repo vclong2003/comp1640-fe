@@ -29,7 +29,7 @@ margin-top: var(--s-5);
 `;
 
 export const EmailInput = styled.input`
-width: 70%;
+  width: 70%;
   height: 28px;
   padding: var(--s-5);
   font-size: 18px;
@@ -37,6 +37,7 @@ width: 70%;
   border-radius: 5px;
   &:hover {
     background-color: #dedede;
+  }
 `;
 
 export const TextPass = styled.div`

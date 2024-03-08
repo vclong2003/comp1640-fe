@@ -3,6 +3,7 @@ import LeftTemplate from "./LeftTemplate/LeftTemplate";
 import ForGot from "../../assets/images/Forgot.png";
 import * as S from "./ForgotPass.styled";
 
+
 const ForgotPass = () => {
   return (
     <S.Container>

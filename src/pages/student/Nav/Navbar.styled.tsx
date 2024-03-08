@@ -68,6 +68,7 @@ export const TextAccount = styled.div`
   cursor: pointer;
   padding: 5px;
   display: flex;
+  margin-right: 60px;
   gap: 4px;
   &:hover {
     color: var(--blue);

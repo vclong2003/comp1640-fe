@@ -27,11 +27,13 @@ export const FirstLeft = styled.div`
 
 export const SecondLeft = styled.div`
   font-size: 18px;
-  margin-bottom: var(--s-6);
 `;
 
 export const ThirdLeft = styled.div`
   font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 `;
 
 export const Middle = styled.div`
@@ -43,7 +45,7 @@ export const Middle = styled.div`
 
 export const MiddleFirst = styled.div`
   font-size: 36px;
-  margin-bottom: var(--s-1);
+  margin-bottom: var(--s-5);
 `;
 
 export const MiddleSecond = styled.div`
@@ -62,16 +64,46 @@ export const Right = styled.div`
   align-items: center;
 `;
 
-export const RightFirst = styled.div``;
+export const RightFirst = styled.div`
+  font-size: 36px;
+  margin-bottom: var(--s-5);
+`;
 
-export const RightSecond = styled.div``;
+export const RightSecond = styled.div`
+  font-size: 18px;
+  margin-bottom: var(--s-6);
+`;
 
-export const RightThird = styled.div``;
+export const RightThird = styled.div`
+  font-size: 18px;
+`;
 
-export const ContainerMiddle = styled.div``;
+export const ContainerMiddle = styled.div`
+  padding: var(--s-3) var(--s-12);
+`;
 
-export const Line = styled.div``;
+export const Line = styled.div`
+  border: 1px solid white;
+  width: 100%;
+`;
 
-export const ContainerBottom = styled.div``;
+export const ContainerBottom = styled.div`
+  padding: var(--s-3) var(--s-12);
+`;
 
-export const TextBottom = styled.div``;
+export const TextBottom = styled.div`
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+`;
+
+export const text = styled.div`
+  font-size: 20px;
+`;
+
+export const icon = styled.div`
+  margin-top: 2px;
+  font-size: 20px;
+`;

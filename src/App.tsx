@@ -4,10 +4,10 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./assets/css/global.css";
-import StudentPage from "./pages/student/StudentPage";
+import Lginform from "./pages/login/lginform";
 
 function App() {
-  return <StudentPage />;
+  return <Lginform />;
 }
 
 export default App;

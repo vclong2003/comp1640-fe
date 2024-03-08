@@ -4,7 +4,6 @@ import Other03 from "../../assets/images/Other03.png";
 import Login from "./Login/Login";
 import RegisterForm from "./Register/RegisterForm";
 import * as S from "./lginform.styled";
-import "./login.css";
 
 const Lginform = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -15,16 +14,10 @@ const Lginform = () => {
       </S.ContainerLeft>
       <S.ContainerRight>
         <S.RightTop>
-          <S.Btntop
-            active={isLogin}
-            onClick={() => setIsLogin(true)}
-          >
+          <S.Btntop active={isLogin} onClick={() => setIsLogin(true)}>
             Login
           </S.Btntop>
-          <S.Btntop
-            active={!isLogin}
-            onClick={() => setIsLogin(false)}
-          >
+          <S.Btntop active={!isLogin} onClick={() => setIsLogin(false)}>
             Register
           </S.Btntop>
         </S.RightTop>

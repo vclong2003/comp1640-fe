@@ -4,10 +4,10 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./assets/css/global.css";
-import Lginform from "./pages/login/lginform";
+import ForgotPass from "./pages/forgotpassword/ForgotPass";
 
 function App() {
-  return <Lginform />;
+  return <ForgotPass />;
 }
 
 export default App;

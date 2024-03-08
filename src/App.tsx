@@ -4,10 +4,10 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./assets/css/global.css";
-import ForgotPass from "./pages/forgotpassword/ForgotPass";
+import ResetPassword from "./pages/resetpassword/ResetPassword";
 
 function App() {
-  return <ForgotPass />;
+  return <ResetPassword/>;
 }
 
 export default App;

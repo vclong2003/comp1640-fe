@@ -26,20 +26,21 @@ export const Description = styled.div`
 export const Center = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 60px;
+  gap: var(--s-6);
 `;
 
 export const CenterLeft = styled.div`
+  flex: 6;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  row-gap: var(--s-4);
 `;
 
 export const CenterRight = styled.div`
+  flex: 6;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  row-gap: var(--s-4);
 `;
 
 export const Input = styled.input`
@@ -48,6 +49,7 @@ export const Input = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   box-shadow: var(--shadow-xl);
+  width: 100%;
   &:hover {
     background-color: #dedede;
   }

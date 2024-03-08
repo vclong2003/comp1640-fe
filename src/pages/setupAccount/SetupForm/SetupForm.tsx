@@ -11,7 +11,7 @@ const SetupForm = () => {
       <S.Center>
         <S.CenterLeft>
           <S.Input placeholder="First Name *"></S.Input>
-          <S.Input placeholder="Enter Email *"></S.Input>
+
           <S.Input placeholder="Faculty *"></S.Input>
           <S.Input4>
             <input type="checkbox" />
@@ -27,7 +27,7 @@ const SetupForm = () => {
         </S.CenterLeft>
         <S.CenterRight>
           <S.Input placeholder="Last Name *"></S.Input>
-          <S.Input placeholder="Confirm Email *"></S.Input>
+
           <S.Input placeholder="Phone Number *"></S.Input>
           <S.Input4>
             <input type="date" />

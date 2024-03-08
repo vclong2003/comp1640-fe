@@ -86,6 +86,9 @@ export const CheckTerm = styled.div`
   margin-top: var(--s-8);
   font-size: 20px;
   color: var(--blue);
+  input {
+    cursor: pointer;
+  }
 `;
 
 export const Register = styled.div`

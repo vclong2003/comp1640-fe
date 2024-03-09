@@ -4,10 +4,10 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./assets/css/global.css";
-import SetupAccount from "./pages/setupAccount/SetupAccount";
+import SuccessConfirm from "./pages/successconfirm/SuccessConfirm";
 
 function App() {
-  return <SetupAccount/>;
+  return <SuccessConfirm />;
 }
 
 export default App;

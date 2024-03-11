@@ -1,8 +1,8 @@
 import React from "react";
-import * as S from "./Login.styled";
+import * as S from "./LoginForm.styled";
 import Group from "../../../assets/images/Group.png";
 
-const Login = () => {
+const LoginForm = () => {
   return (
     <S.ContainerRight>
       <S.RightForm>
@@ -37,4 +37,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

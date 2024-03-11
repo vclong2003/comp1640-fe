@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./LeftTemplate.styled";
-import Popup from "../../../components/Popup/Popup";
+import Popup from "../../../../components/Popup/Popup";
 
 const LeftTemplate = () => {
   const [showPopup, setShowPopup] = useState(false);

@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "./Nav/Navbar";
-import * as S from "./StudentPage.styled";
+import * as S from "./Student.styled";
 import Footer from "./Foot/Footer";
 
-const StudentPage = () => {
+const Student = () => {
   return (
     <S.Student>
       <S.Header>
@@ -16,4 +16,4 @@ const StudentPage = () => {
   );
 };
 
-export default StudentPage;
+export default Student;

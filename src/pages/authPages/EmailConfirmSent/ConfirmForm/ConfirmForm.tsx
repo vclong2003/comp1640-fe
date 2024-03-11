@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./ConfirmForm.styled";
 
-const ConformForm = () => {
+const ConfirmForm = () => {
   return (
     <S.Container>
       <S.Top>
@@ -17,4 +17,4 @@ const ConformForm = () => {
   );
 };
 
-export default ConformForm;
+export default ConfirmForm;

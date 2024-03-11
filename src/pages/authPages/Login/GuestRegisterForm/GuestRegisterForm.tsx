@@ -1,7 +1,7 @@
 import React from "react";
-import * as S from "./RegisterForm.styled";
+import * as S from "./GuestRegisterForm.styled";
 
-const RegisterForm = () => {
+const GuestRegisterForm = () => {
   return (
     <S.ContainerRight>
       <S.RightForm>
@@ -22,4 +22,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default GuestRegisterForm;

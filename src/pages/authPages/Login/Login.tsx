@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import Other03 from "../../assets/images/Other03.png";
-import Login from "./Login/Login";
-import RegisterForm from "./Register/RegisterForm";
-import * as S from "./lginform.styled";
+import * as S from "./Login.styled";
+import LoginForm from "./LoginForm/LoginForm";
+import GuestRegisterForm from "./GuestRegisterForm/GuestRegisterForm";
 
-const Lginform = () => {
+const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   return (
     <S.Container>
@@ -21,10 +21,12 @@ const Lginform = () => {
             Register
           </S.Btntop>
         </S.RightTop>
-        <S.RightForm>{isLogin ? <Login /> : <RegisterForm />}</S.RightForm>
+        <S.RightForm>
+          {isLogin ? <LoginForm /> : <GuestRegisterForm />}
+        </S.RightForm>
       </S.ContainerRight>
     </S.Container>
   );
 };
 
-export default Lginform;
+export default Login;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import * as S from "./FormReset.styled";
-import Popup from "../../../components/Popup/Popup";
+import * as S from "./PasswordForm.styled";
+import Popup from "../../../../components/Popup/Popup";
 
-const FormReset = () => {
+const PasswordForm = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   return (
@@ -33,4 +33,4 @@ const FormReset = () => {
   );
 };
 
-export default FormReset;
+export default PasswordForm;

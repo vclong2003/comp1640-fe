@@ -1,8 +1,8 @@
 import React from "react";
-import * as S from "./SuccessConfirm.styled";
+import * as S from "./EmailConfirmed.styled";
 import Success from "../../assets/images/Success.png";
 
-const SuccessConfirm = () => {
+const EmailConfirmed = () => {
   return (
     <S.Container>
       <S.Top>
@@ -19,4 +19,4 @@ const SuccessConfirm = () => {
   );
 };
 
-export default SuccessConfirm;
+export default EmailConfirmed;

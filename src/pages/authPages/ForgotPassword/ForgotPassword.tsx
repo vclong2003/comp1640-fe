@@ -1,10 +1,9 @@
 import React from "react";
 import LeftTemplate from "./LeftTemplate/LeftTemplate";
-import ForGot from "../../assets/images/Forgot.png";
-import * as S from "./ForgotPass.styled";
+import ForGot from "../../../assets/images/Forgot.png";
+import * as S from "./ForgotPassword.styled";
 
-
-const ForgotPass = () => {
+const ForgotPassword = () => {
   return (
     <S.Container>
       <S.Left>
@@ -17,4 +16,4 @@ const ForgotPass = () => {
   );
 };
 
-export default ForgotPass;
+export default ForgotPassword;

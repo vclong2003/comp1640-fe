@@ -4,10 +4,10 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./assets/css/global.css";
-import EmailConfirmSent from "./pages/authPages/EmailConfirmSent/EmailConfirmSent";
+import Student from "./pages/Student/Student";
 
 function App() {
-  return <EmailConfirmSent />;
+  return <Student />;
 }
 
 export default App;

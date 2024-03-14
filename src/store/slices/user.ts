@@ -44,9 +44,6 @@ const userState = createSlice({
       console.log(action.payload);
       state.user = action.payload;
     });
-    builder.addCase(getCurrentUser.rejected, (state, action) => {
-      console.log(action.error);
-    });
   },
 });
 

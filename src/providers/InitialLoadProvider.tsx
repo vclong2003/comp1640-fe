@@ -12,9 +12,7 @@ const InitialLoadProvider = ({ children }: IInitialLoadProviderProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    dispatch(getCurrentUser())
-      .unwrap()
-      .finally(() => setLoading(false));
+    dispatch(getCurrentUser()).finally(() => setLoading(false));
   }, []);
 
   return loading ? <Splash /> : children;

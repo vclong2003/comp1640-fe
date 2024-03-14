@@ -17,10 +17,12 @@ axiosInstance.interceptors.response.use(
     const isSecondRetry = originalRequest._retry; // Check if this is the cesond retry
 
     if (httpErrorStatusCode === 401 && !isSecondRetry) {
-      console.log("token expired, getting new one");
-      await getNewAccessToken();
+      try {
+        await getNewAccessToken();
+      } catch (error) {
+        return Promise.reject(error);
+      }
       originalRequest._retry = true; // Mark as had been retried
-      console.log("got new token, restarting");
       return axiosInstance(originalRequest);
     }
 

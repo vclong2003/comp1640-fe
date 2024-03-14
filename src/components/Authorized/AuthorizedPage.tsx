@@ -16,7 +16,7 @@ const AuthorizedPage = ({ allowedRoles, children }: IAuthorizedPageProps) => {
 
   if (!user) return <Navigate to="/login" />;
 
-  return allowedRoles.includes(user!.role) ? (
+  return !allowedRoles || allowedRoles.includes(user!.role) ? (
     children
   ) : (
     <Navigate to="/login" />

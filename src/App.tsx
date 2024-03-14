@@ -4,10 +4,15 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./assets/css/global.css";
-import Login from "./pages/authPages/Login/Login";
+import AppProvider from "./providers/AppProvider";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return <Login />;
+  return (
+    <AppProvider>
+      <AppRoutes />
+    </AppProvider>
+  );
 }
 
 export default App;

@@ -6,11 +6,11 @@ import SetupAccount from "../pages/authPages/SetupAccount/SetupAccount";
 
 export const authRoutes: IRoute[] = [
   {
-    path: "/login",
+    path: "login",
     component: <Login />,
   },
   {
-    path: "/setup-account/:token",
+    path: "setup-account/:token",
     component: <SetupAccount />,
   },
 ];

@@ -6,6 +6,7 @@ const API_ENDPOINTS = {
   // Auth
   GET_USER: "/auth",
   LOGIN: "/auth/login",
+  ACCESS_TOKEN: "/auth/access-token",
 };
 
 export { API_BASE_URL, API_ENDPOINTS };

@@ -13,24 +13,24 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    const httpErrorStatusCode = error.response.status;
-    const isSecondRetry = originalRequest._retry; // Check if this is the cesond retry
 
-    if (httpErrorStatusCode === 401 && !isSecondRetry) {
+    if (error.response.status === 401 && !originalRequest._retry) {
+      // Check if this is the cesond retry
       try {
         await getNewAccessToken();
       } catch (error) {
+        console.log("Get new access token failed!");
         return Promise.reject(error);
       }
       originalRequest._retry = true; // Mark as had been retried
       return axiosInstance(originalRequest);
     }
-
     return Promise.reject(error);
   },
 );
 
 const getNewAccessToken = async () => {
+  console.log("Getting new access token!");
   await axios.get(API_BASE_URL + API_ENDPOINTS.ACCESS_TOKEN, {
     withCredentials: true,
   });

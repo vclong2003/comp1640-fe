@@ -1,11 +1,11 @@
 import React from "react";
 
 import { IRoute } from "../interfaces";
-import { Student } from "../pages/Student/Student.styled";
+import Home from "../pages/Home/Home";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "/",
-    component: <Student />,
+    component: <Home />,
   },
 ];

@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./LoginForm.styled";
-import Group from "../../../assets/images/Group.png";
+import Group from "../../../../assets/images/Group.png";
 
 const LoginForm = () => {
   return (

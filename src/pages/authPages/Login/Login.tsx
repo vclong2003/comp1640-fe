@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Other03 from "../../assets/images/Other03.png";
+import Other03 from "../../../assets/images/Other03.png";
 import * as S from "./Login.styled";
 import LoginForm from "./LoginForm/LoginForm";
 import GuestRegisterForm from "./GuestRegisterForm/GuestRegisterForm";

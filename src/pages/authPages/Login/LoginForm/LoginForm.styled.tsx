@@ -1,27 +1,27 @@
 import styled from "styled-components";
 
 export const ContainerRight = styled.div`
-flex: 2;
+  flex: 2;
 `;
 
-export const RightForm = styled.div`
-display: flex;
+export const RightForm = styled.form`
+  display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
 `;
 
 export const Description = styled.div`
-font-size: 60px;
+  font-size: 60px;
   font-weight: bold;
 `;
 
 export const Description2 = styled.div`
-font-size: 20px;
+  font-size: 20px;
 `;
 
 export const TextEmail = styled.div`
-margin-top: var(--s-5);
+  margin-top: var(--s-5);
   font-size: 30px;
   font-family: Inter;
   font-weight: bold;
@@ -41,7 +41,7 @@ export const EmailInput = styled.input`
 `;
 
 export const TextPass = styled.div`
-margin-top: 20px;
+  margin-top: 20px;
   font-size: 30px;
   font-family: Inter;
   font-weight: bold;
@@ -49,7 +49,7 @@ margin-top: 20px;
 `;
 
 export const PassInput = styled.div`
-input {
+  input {
     padding: var(--s-5);
     height: 28px;
     width: 70%;
@@ -63,7 +63,7 @@ input {
 `;
 
 export const Forgot = styled.div`
-a {
+  a {
     text-decoration: none;
     color: #1c1c1c;
     &:hover {
@@ -73,7 +73,7 @@ a {
 `;
 
 export const CheckRemember = styled.div`
-margin-top: 10px;
+  margin-top: 10px;
   font-size: 20px;
   input {
     width: 20px;
@@ -83,14 +83,14 @@ margin-top: 10px;
 `;
 
 export const RightFoot = styled.div`
-margin-top: 80px;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   text-align: center;
 `;
 
 export const BtnContineu = styled.button`
-width: 500px;
+  width: 500px;
   height: 40px;
   border: none;
   font-size: 18px;
@@ -105,7 +105,7 @@ width: 500px;
 `;
 
 export const RightMiddle = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -115,7 +115,7 @@ display: flex;
 export const TextOr = styled.div``;
 
 export const BtnLginGG = styled.button`
-height: 40px;
+  height: 40px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;

@@ -11,5 +11,4 @@ export interface IUser {
 export interface IUserState {
   user: IUser | null;
   users: IUser[];
-  error: string;
 }

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 interface IAuthorizedPageProps {
-  allowedRoles: ERole[];
+  allowedRoles?: ERole[];
   children: React.ReactNode;
 }
 

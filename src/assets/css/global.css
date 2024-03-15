@@ -25,18 +25,14 @@
 
 :root {
   /* Colors ------------------------ */
-  --orange: #ea7c29;
-  --red: #ef4444;
-  --green: #10b981;
-  --blue: #3b82f6;
+  --blue: #236192;
   --white: #ffffff;
   --black: #000000;
-  --black-opacity: #00000057;
-  --gray: #6b7280;
-  --gray-light: #e5e7eb;
-  --gray-light-1: #e6e7eb;
-  --gray-light-2: #d4d4d4;
-  --gray-dark: #374151;
+  --pink: #f4a7ba;
+  --yellow: #f2ba1d;
+  --green: #71984a;
+  --orange: #df6a2e;
+  --light-gray: #e0dcdc;
 
   /* Font sizes -------------------- */
   --fs-xs: 0.75rem;

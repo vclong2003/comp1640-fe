@@ -1,12 +1,23 @@
 import React from "react";
 import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
-import { ERole } from "../../enums/user.enums";
+import * as S from "./Home.styled";
+import FeaturedContribution from "./FeaturedContribution/FeaturedContribution";
+import SecondaryContribution from "./SecondaryContribution/SecondaryContribution";
 
 const Home = () => {
   // add auth page for testing
   return (
-    <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
-      Home
+    <AuthorizedPage>
+      <S.Container>
+        <S.Banner>
+          <S.FeaturedContainer>
+            <FeaturedContribution />
+          </S.FeaturedContainer>
+          <S.SecondaryContainer>
+            <SecondaryContribution />
+          </S.SecondaryContainer>
+        </S.Banner>
+      </S.Container>
     </AuthorizedPage>
   );
 };

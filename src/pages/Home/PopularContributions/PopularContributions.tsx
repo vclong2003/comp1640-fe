@@ -5,10 +5,19 @@ import PopularContributionItem from "./PopularContributionItem/PopularContributi
 const PopularContributions = () => {
   return (
     <S.Container>
-      <PopularContributionItem />
-      <PopularContributionItem />
-      <PopularContributionItem />
-      <PopularContributionItem />
+      <S.Header>
+        <S.Title>Popular Contributions</S.Title>
+        <S.MoveButtonsContainer>
+          <S.LeftButton>Left</S.LeftButton>
+          <S.RightButton>Right</S.RightButton>
+        </S.MoveButtonsContainer>
+      </S.Header>
+      <S.PopularContributionItemsContainer>
+        <PopularContributionItem />
+        <PopularContributionItem />
+        <PopularContributionItem />
+        <PopularContributionItem />
+      </S.PopularContributionItemsContainer>
     </S.Container>
   );
 };

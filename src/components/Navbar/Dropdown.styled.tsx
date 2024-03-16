@@ -7,6 +7,8 @@ export const dropdownProfile = styled.div`
   width: 190px;
   border: none;
   background-color: white;
+  z-index: 20;
+  
 `;
 
 export const dropUl = styled.ul`

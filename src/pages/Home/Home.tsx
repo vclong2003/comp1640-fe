@@ -4,6 +4,7 @@ import * as S from "./Home.styled";
 import FeaturedContribution from "./FeaturedContribution/FeaturedContribution";
 import SecondaryContribution from "./SecondaryContribution/SecondaryContribution";
 import PopularContributions from "./PopularContributions/PopularContributions";
+import PhotoContributions from "./PhotoContributions/PhotoContributions";
 
 const Home = () => {
   // add auth page for testing
@@ -18,8 +19,8 @@ const Home = () => {
             <SecondaryContribution />
           </S.SecondaryContainer>
         </S.Banner>
-
         <PopularContributions />
+        <PhotoContributions />
       </S.Container>
     </AuthorizedPage>
   );

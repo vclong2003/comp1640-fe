@@ -11,6 +11,9 @@ const SecondaryContribution = () => {
         This is a secondary contribution. It could be a blog post, a video, a
         podcast, or anything else that we want to highlight.
       </S.Description>
+      <S.Bottom>
+        <S.Text>EQUIPMENT | HOW TO </S.Text>
+      </S.Bottom>
     </S.Container>
   );
 };

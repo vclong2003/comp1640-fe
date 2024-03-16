@@ -5,6 +5,7 @@ export const Container = styled.div`
   border-radius: var(--br-xl);
   width: 25%;
   box-shadow: var(--shadow-lg);
+  overflow: scroll;
 `;
 
 export const Image = styled.img`

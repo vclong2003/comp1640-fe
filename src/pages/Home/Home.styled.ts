@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   min-height: 100vh;
-  padding: var(--s-8) 0;
+  padding: var(--s-8) var(--s-8);
 `;
 
 export const Banner = styled.div`

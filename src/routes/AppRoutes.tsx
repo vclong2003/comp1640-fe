@@ -6,7 +6,9 @@ import ManagementLayout from "../components/Layouts/ManagementLyout";
 import AuthLayout from "../components/Layouts/AuthLayout";
 import { defaultLayoutRoutes } from "./defaultLayoutRoutes";
 import { authRoutes } from "./authRoutes";
-
+import Admin from "../pages/Admin/Admin";
+import { AdminAccount } from "../pages/Admin/AdminAccount/Account";
+import AdminFaculty from "../pages/Admin/AdminFaculty/Faculty";
 export default function AppRoutes(): JSX.Element {
   return (
     <Routes>
@@ -21,6 +23,9 @@ export default function AppRoutes(): JSX.Element {
         ))}
       </Route>
       <Route path="/management" element={<ManagementLayout />}></Route>
+      <Route path="/admin" element={<Admin />}></Route>
+      <Route path="/admin/account" element={<AdminAccount />}></Route>
+      <Route path="/admin/faculty" element={<AdminFaculty />}></Route>
     </Routes>
   );
 }

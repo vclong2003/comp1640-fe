@@ -1,18 +1,45 @@
-import React, { FormEvent, useState } from "react";
+// import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
 import * as S from "./LoginForm.styled";
 import Group from "../../../../assets/images/Group.png";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../../store";
-import { login } from "../../../../store/slices/user";
+// import { useDispatch } from "react-redux";
+// import { AppDispatch } from "../../../../store";
+// import { login } from "../../../../store/slices/user";
 
 const LoginForm = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleSubmitLogin = (e: FormEvent) => {
+  const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(login({ email, password }));
+
+    try {
+      const response = await fetch("https://api.alhkq.live/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Đăng nhập không thành công");
+      }
+
+      const data = await response.json();
+
+      // Kiểm tra xem dữ liệu có tồn tại không trước khi sử dụng
+      if (!data || !data.token) {
+        throw new Error("Dữ liệu trả về không hợp lệ");
+      }
+
+      // Lưu token vào localStorage
+      localStorage.setItem("token", data.token);
+
+      // Thực hiện hành động sau khi đăng nhập thành công, ví dụ: chuyển hướng trang
+    } catch (error) {
+      console.error("Đã xảy ra lỗi:");
+    }
   };
 
   return (
@@ -25,6 +52,7 @@ const LoginForm = () => {
           placeholder="commitcomunity@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          id="email"
         ></S.EmailInput>
         <S.TextPass>Password</S.TextPass>
         <S.PassInput>
@@ -32,6 +60,7 @@ const LoginForm = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            id="password"
           />
         </S.PassInput>
         <S.Forgot>
@@ -41,7 +70,7 @@ const LoginForm = () => {
           <input type="checkbox" /> Remember Me.
         </S.CheckRemember>
         <S.RightFoot>
-          <S.BtnContineu type="submit">CONTINEU</S.BtnContineu>
+          <S.BtnContineu type="submit">LOGIN</S.BtnContineu>
         </S.RightFoot>
         <S.RightMiddle>
           <S.TextOr>

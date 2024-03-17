@@ -7,7 +7,7 @@ import {
   ModalContent,
   SaveAndClose,
   SearchAndSort,
-} from "./Faculty.styled";
+} from "../AdminFaculty/Faculty.styled";
 import axios from "axios";
 import {
   EvenRow,
@@ -61,7 +61,9 @@ const AdminFaculty = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://api.alhkq.live/faculty/all");
+        const response = await axios.get(
+          "https://api.alhkq.live/user/all?role=student",
+        );
         setFaculties(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -90,19 +92,19 @@ const AdminFaculty = () => {
 
   return (
     <AdminLayout>
-      <Headline>Faculty</Headline>
+      <Headline>Users</Headline>
       <SearchAndSort>
         <input type="text" placeholder="Search" />
         <button>Sort</button>
       </SearchAndSort>
       <ListAllFaculty>
-        <h3>List All Faculty</h3>
+        <h3>List All User</h3>
         <LargeButton color="#71984A" onClick={() => setShowModal(true)}>
-          New falcuty
+          New User
         </LargeButton>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
-            <h2> Add new Faculty</h2>
+            <h2> Add new User</h2>
             <p>Name Faculty</p>
             <input type="text" placeholder="Information technology" required />
             <p>Choose MC</p>

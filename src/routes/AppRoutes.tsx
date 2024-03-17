@@ -9,6 +9,9 @@ import { authRoutes } from "./authRoutes";
 import Admin from "../pages/Admin/Admin";
 import { AdminAccount } from "../pages/Admin/AdminAccount/Account";
 import AdminFaculty from "../pages/Admin/AdminFaculty/Faculty";
+import AdminEvent from "../pages/Admin/AdminEvent/Event";
+import AdminUser from "../pages/Admin/AdminUser/User";
+import AdminContribution from "../pages/Admin/AdminContribution/Contribution";
 export default function AppRoutes(): JSX.Element {
   return (
     <Routes>
@@ -26,6 +29,9 @@ export default function AppRoutes(): JSX.Element {
       <Route path="/admin" element={<Admin />}></Route>
       <Route path="/admin/account" element={<AdminAccount />}></Route>
       <Route path="/admin/faculty" element={<AdminFaculty />}></Route>
+      <Route path="/admin/event" element={<AdminEvent />}></Route>
+      <Route path="/admin/user" element={<AdminUser />}></Route>
+      <Route path="/admin/contribution" element={<AdminContribution />}></Route>
     </Routes>
   );
 }

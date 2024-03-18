@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./EventPage.styled";
 import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
 import LeftContainer from "./leftContainer/LeftContainer";
+import RightContainer from "./rightContainer/RightContainer";
 
 const EventPage = () => {
   return (
@@ -10,7 +11,9 @@ const EventPage = () => {
         <S.LeftContainer>
           <LeftContainer />
         </S.LeftContainer>
-        <S.RightContainer></S.RightContainer>
+        <S.RightContainer>
+          <RightContainer />
+        </S.RightContainer>
       </S.Container>
     </AuthorizedPage>
   );

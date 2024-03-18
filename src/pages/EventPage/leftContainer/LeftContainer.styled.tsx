@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: var(--s-8) var(--s-12);
+
   gap: var(--s-10);
 `;
 
@@ -38,7 +38,7 @@ export const ItemCheckbox = styled.div``;
 export const DateFilter = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: var(--s-4);
+  padding-bottom: var(--s-10);
   border-bottom: 2px solid var(--black);
   gap: var(--s-5);
   padding-top: var(--s-6);
@@ -61,12 +61,14 @@ export const DateTime = styled.div`
 export const StartDate = styled.div`
   input {
     font-size: 20px;
+    cursor: pointer;
   }
 `;
 
 export const EndDate = styled.div`
   input {
     font-size: 20px;
+    cursor: pointer;
   }
 `;
 
@@ -75,10 +77,33 @@ export const BtnDate = styled.button`
   padding: var(--s-5) 0;
   font-size: 20px;
   color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(46, 111, 194, 0.7);
+  }
 `;
 
-export const BottomFilter = styled.div``;
+export const BottomFilter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-10);
+  padding: var(--s-10) var(--s-6);
+  border-bottom: 2px solid var(--black);
+`;
 
-export const BtnOldest = styled.button``;
+export const BtnOldest = styled.button`
+  background-color: var(--blue);
+  padding: var(--s-4) var(--s-9);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(46, 111, 194, 0.7);
+  }
+`;
 
-export const Text = styled.div``;
+export const Text = styled.div`
+  font-size: 20px;
+`;

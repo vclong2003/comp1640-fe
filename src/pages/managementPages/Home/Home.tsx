@@ -1,16 +1,13 @@
 import React from "react";
-import { Headline, Button, ListOfActions } from "./Admin.styled";
-import HeaderComponent from "../../../components/AdminComponents/Header/Header";
+import { Headline, Button, ListOfActions } from "./Home.styled";
 import { Link } from "react-router-dom";
 import { MdAccountCircle, MdOutlineEventAvailable } from "react-icons/md";
 import { LuSchool } from "react-icons/lu";
 import { FaUsers, FaFile } from "react-icons/fa";
-const Admin = () => {
+const Home = () => {
   return (
     <>
-      <HeaderComponent></HeaderComponent>
       <Headline>Dashboard</Headline>
-
       <ListOfActions>
         <Link to="/admin/account">
           <Button color="#DF6A2E">
@@ -48,4 +45,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Home;

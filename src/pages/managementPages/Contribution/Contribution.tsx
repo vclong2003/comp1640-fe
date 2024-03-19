@@ -14,12 +14,12 @@ import {
   TableComponent,
   Td,
   Th,
-} from "../../../components/AdminComponents/Table/Table.styled";
-import { MediumButton } from "../../../components/AdminComponents/Button/MediumButton/MediumButton.styled";
+} from "../../../components/ManagementComponent/Table/Table.styled";
+import { MediumButton } from "../../../components/ManagementComponent/Button/MediumButton/MediumButton.styled";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { LargeButton } from "../../../components/AdminComponents/Button/LargeButton/LargeButton.styled";
-import Dropdown from "../../../components/AdminComponents/Dropdown/Dropdown";
+import { LargeButton } from "../../../components/ManagementComponent/Button/LargeButton/LargeButton.styled";
+import Dropdown from "../../../components/ManagementComponent/Dropdown/Dropdown";
 interface Contribution {
   _id: string;
   name: string;

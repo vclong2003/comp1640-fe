@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./ManagementLayout.styled";
 import { Outlet } from "react-router";
-import HeaderComponent from "../../AdminComponents/Header/Header";
-import { Menu } from "../../AdminComponents/Menu/Menu";
+import HeaderComponent from "../../ManagementComponent/Header/Header";
+import { Menu } from "../../ManagementComponent/Menu/Menu";
 
 export default function ManagementLayout(): JSX.Element {
   return (

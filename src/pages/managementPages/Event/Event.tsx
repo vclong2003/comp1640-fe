@@ -1,7 +1,7 @@
 import React from "react";
 
-const AdminEvent = () => {
+const Event = () => {
   return <h1>Admin Event</h1>;
 };
 
-export default AdminEvent;
+export default Event;

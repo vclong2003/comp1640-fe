@@ -53,7 +53,7 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
   );
 };
 
-const AdminFaculty = () => {
+const Faculty = () => {
   const [showModal, setShowModal] = useState(false);
   const [faculties, setFaculties] = useState<Faculty[]>([]);
 
@@ -161,4 +161,4 @@ const AdminFaculty = () => {
   );
 };
 
-export default AdminFaculty;
+export default Faculty;

@@ -57,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
   );
 };
 
-const AdminContibution = () => {
+const Contribution = () => {
   const [showModal, setShowModal] = useState(false);
   const [faculties, setFaculties] = useState<Contribution[]>([]);
 
@@ -175,4 +175,4 @@ const AdminContibution = () => {
   );
 };
 
-export default AdminContibution;
+export default Contribution;

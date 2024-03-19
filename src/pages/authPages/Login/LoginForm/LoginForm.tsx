@@ -12,7 +12,9 @@ const LoginForm = () => {
 
   const handleSubmitLogin = (e: FormEvent) => {
     e.preventDefault();
-    dispatch(login({ email, password }));
+    dispatch(login({ email, password })).then(() =>
+      console.log("login success"),
+    );
   };
 
   return (

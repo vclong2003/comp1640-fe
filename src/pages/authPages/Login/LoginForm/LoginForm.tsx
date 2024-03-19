@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../store";
 import { getCurrentUser, login } from "../../../../store/slices/user";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { API_BASE_URL } from "../../../../config/api.config";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -62,7 +63,11 @@ const LoginForm = () => {
           <S.TextOr>
             ------------------------OR------------------------
           </S.TextOr>
-          <S.BtnLginGG>
+          <S.BtnLginGG
+            onClick={() =>
+              (window.location.href = API_BASE_URL + "/auth/google")
+            }
+          >
             <img src={Group} alt="" />
             Login With Google
           </S.BtnLginGG>

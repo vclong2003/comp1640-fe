@@ -1,21 +1,32 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import * as S from "./LoginForm.styled";
 import Group from "../../../../assets/images/Group.png";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../../store";
-import { login } from "../../../../store/slices/user";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../../store";
+import { getCurrentUser, login } from "../../../../store/slices/user";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const { user } = useSelector((state: RootState) => state.userState);
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [searchParams] = useSearchParams();
 
   const handleSubmitLogin = (e: FormEvent) => {
     e.preventDefault();
-    dispatch(login({ email, password })).then(() =>
-      console.log("login success"),
-    );
+    dispatch(login({ email, password }))
+      .unwrap()
+      .then(() => dispatch(getCurrentUser()));
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate(searchParams.get("redirect") || "/");
+    }
+  }, [user, navigate, searchParams]);
 
   return (
     <S.ContainerRight>

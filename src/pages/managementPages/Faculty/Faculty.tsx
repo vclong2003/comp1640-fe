@@ -20,6 +20,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { LargeButton } from "../../../components/ManagementComponent/Button/LargeButton/LargeButton.styled";
 import Dropdown from "../../../components/ManagementComponent/Dropdown/Dropdown";
+import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
 interface Faculty {
   _id: string;
   name: string;
@@ -88,7 +89,7 @@ const Faculty = () => {
   }, []);
 
   return (
-    <>
+    <AuthorizedPage>
       <Headline>Faculty</Headline>
       <SearchAndSort>
         <input type="text" placeholder="Search" />
@@ -157,7 +158,7 @@ const Faculty = () => {
           </tbody>
         </TableComponent>
       </ListAllFaculty>
-    </>
+    </AuthorizedPage>
   );
 };
 

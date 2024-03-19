@@ -1,7 +1,8 @@
 import React from "react";
+import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
 
 const Event = () => {
-  return <h1>Admin Event</h1>;
+  return <AuthorizedPage>Event</AuthorizedPage>;
 };
 
 export default Event;

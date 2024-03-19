@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { LuSchool } from "react-icons/lu";
 import { FaUsers, FaFile } from "react-icons/fa";
+import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
 const Home = () => {
   return (
-    <>
+    <AuthorizedPage>
       <Headline>Dashboard</Headline>
       <ListOfActions>
         <Link to="/manage/user">
@@ -35,7 +36,7 @@ const Home = () => {
           </Button>
         </Link>
       </ListOfActions>
-    </>
+    </AuthorizedPage>
   );
 };
 

@@ -32,7 +32,7 @@ export const RightTop = styled.div`
 `;
 
 interface IBtntopProps {
-  active: boolean;
+  $active: boolean;
 }
 
 export const Btntop = styled.button<IBtntopProps>`
@@ -47,8 +47,8 @@ export const Btntop = styled.button<IBtntopProps>`
   &:hover {
     background-color: rgba(238, 206, 62, 0.5);
   }
-  background-color: ${(props) => (props.active ? "#f2ba1d" : "#e0dcdc")};
-  color: ${(props) => (props.active ? "#1c1c1c" : "#ffffff")};
+  background-color: ${(props) => (props.$active ? "#f2ba1d" : "#e0dcdc")};
+  color: ${(props) => (props.$active ? "#1c1c1c" : "#ffffff")};
 `;
 
 export const RightForm = styled.div`

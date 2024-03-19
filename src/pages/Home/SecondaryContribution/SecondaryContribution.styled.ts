@@ -24,3 +24,12 @@ export const Image = styled.img`
   height: auto;
   z-index: 0;
 `;
+
+export const Bottom = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: var(--s-4) 0;
+`;
+
+export const Text = styled.div``;

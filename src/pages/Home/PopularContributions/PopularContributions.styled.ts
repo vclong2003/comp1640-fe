@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   padding: 0 var(--s-6);
   flex-direction: column;
+  overflow: auto;
 `;
 
 export const Header = styled.div`
@@ -24,4 +25,5 @@ export const RightButton = styled.button``;
 export const PopularContributionItemsContainer = styled.div`
   display: flex;
   gap: var(--s-4);
+  overflow: auto;
 `;

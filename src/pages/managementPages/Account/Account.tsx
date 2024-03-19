@@ -1,5 +1,4 @@
 import React from "react";
-import { AdminLayout } from "../AdminLayout/AdminLayout";
 import {
   AdminAction,
   AdminProfile,
@@ -11,7 +10,7 @@ import { FaRegEdit } from "react-icons/fa";
 
 export const AdminAccount = () => {
   return (
-    <AdminLayout>
+    <>
       <Headline>Your Profile</Headline>
       <AdminProfile>
         <div>
@@ -31,6 +30,6 @@ export const AdminAccount = () => {
           </button>
         </AdminAction>
       </AdminProfile>
-    </AdminLayout>
+    </>
   );
 };

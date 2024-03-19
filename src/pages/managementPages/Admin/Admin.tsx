@@ -1,6 +1,6 @@
 import React from "react";
 import { Headline, Button, ListOfActions } from "./Admin.styled";
-import HeaderComponent from "../../components/AdminComponents/Header/Header";
+import HeaderComponent from "../../../components/AdminComponents/Header/Header";
 import { Link } from "react-router-dom";
 import { MdAccountCircle, MdOutlineEventAvailable } from "react-icons/md";
 import { LuSchool } from "react-icons/lu";

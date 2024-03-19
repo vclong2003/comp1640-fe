@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AdminLayout } from "../AdminLayout/AdminLayout";
 import {
   Headline,
   ListAllFaculty,
@@ -7,7 +6,7 @@ import {
   ModalContent,
   SaveAndClose,
   SearchAndSort,
-} from "../AdminFaculty/Faculty.styled";
+} from "./Faculty.styled";
 import axios from "axios";
 import {
   EvenRow,
@@ -15,23 +14,19 @@ import {
   TableComponent,
   Td,
   Th,
-} from "../../../components/AdminComponents/table/Table.styled";
+} from "../../../components/AdminComponents/Table/Table.styled";
 import { MediumButton } from "../../../components/AdminComponents/Button/MediumButton/MediumButton.styled";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { LargeButton } from "../../../components/AdminComponents/Button/LargeButton/LargeButton.styled";
 import Dropdown from "../../../components/AdminComponents/Dropdown/Dropdown";
-interface Contribution {
+interface Faculty {
   _id: string;
   name: string;
-  author: {
+  mc: {
     _id: string;
     name: string;
     email: string;
-  } | null;
-  event: {
-    _id: string;
-    name: string;
   } | null;
 }
 
@@ -58,16 +53,14 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
   );
 };
 
-const AdminContibution = () => {
+const AdminFaculty = () => {
   const [showModal, setShowModal] = useState(false);
-  const [faculties, setFaculties] = useState<Contribution[]>([]);
+  const [faculties, setFaculties] = useState<Faculty[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://api.alhkq.live/user/all?role=student",
-        );
+        const response = await axios.get("https://api.alhkq.live/faculty/all");
         setFaculties(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -83,7 +76,7 @@ const AdminContibution = () => {
     const fetchMCs = async () => {
       try {
         const response = await axios.get<MC[]>(
-          "https://api.alhkq.live/event/all",
+          "https://api.alhkq.live/user/all?role=mc",
         );
         setMcs(response.data);
       } catch (error) {
@@ -95,21 +88,21 @@ const AdminContibution = () => {
   }, []);
 
   return (
-    <AdminLayout>
-      <Headline>Contributions</Headline>
+    <>
+      <Headline>Faculty</Headline>
       <SearchAndSort>
         <input type="text" placeholder="Search" />
         <button>Sort</button>
       </SearchAndSort>
       <ListAllFaculty>
-        <h3>List All Contributions</h3>
+        <h3>List All Faculty</h3>
         <LargeButton color="#71984A" onClick={() => setShowModal(true)}>
-          Add new
+          New falcuty
         </LargeButton>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
-            <h2> Add new Contribution</h2>
-            <p>Name Contribution</p>
+            <h2> Add new Faculty</h2>
+            <p>Name Faculty</p>
             <input type="text" placeholder="Information technology" required />
             <p>Choose MC</p>
             <Dropdown options={mcs.map((mc) => mc.name)} />
@@ -118,24 +111,20 @@ const AdminContibution = () => {
         <TableComponent>
           <thead>
             <tr>
-              <Th>Title</Th>
-              <Th>Author</Th>
-              <Th>Event</Th>
+              <Th>Faculty Name</Th>
+              <Th>MC Name</Th>
+              <Th>MC Email</Th>
               <Th></Th>
               <Th></Th>
             </tr>
           </thead>
           <tbody>
-            {faculties.map((contribution, index) =>
+            {faculties.map((faculty, index) =>
               index % 2 === 0 ? (
                 <EvenRow key={index}>
-                  <Td>{contribution.name}</Td>
-                  <Td>
-                    {contribution.author ? contribution.author.name : "N/A"}
-                  </Td>
-                  <Td>
-                    {contribution.event ? contribution.event.name : "N/A"}
-                  </Td>
+                  <Td>{faculty.name}</Td>
+                  <Td>{faculty.mc ? faculty.mc.name : "N/A"}</Td>
+                  <Td>{faculty.mc ? faculty.mc.email : "N/A"}</Td>
                   <Td>
                     <MediumButton color="#F2BA1D">
                       <FaEdit /> Edit
@@ -149,13 +138,9 @@ const AdminContibution = () => {
                 </EvenRow>
               ) : (
                 <OddRow key={index}>
-                  <Td>{contribution.name}</Td>
-                  <Td>
-                    {contribution.author ? contribution.author.name : "N/A"}
-                  </Td>
-                  <Td>
-                    {contribution.event ? contribution.event.name : "N/A"}
-                  </Td>
+                  <Td>{faculty.name}</Td>
+                  <Td>{faculty.mc ? faculty.mc.name : "N/A"}</Td>
+                  <Td>{faculty.mc ? faculty.mc.email : "N/A"}</Td>
                   <Td>
                     <MediumButton color="#F2BA1D">
                       <FaEdit /> Edit
@@ -172,8 +157,8 @@ const AdminContibution = () => {
           </tbody>
         </TableComponent>
       </ListAllFaculty>
-    </AdminLayout>
+    </>
   );
 };
 
-export default AdminContibution;
+export default AdminFaculty;

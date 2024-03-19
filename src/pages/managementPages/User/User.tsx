@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AdminLayout } from "../AdminLayout/AdminLayout";
 import {
   Headline,
   ListAllFaculty,
@@ -7,7 +6,7 @@ import {
   ModalContent,
   SaveAndClose,
   SearchAndSort,
-} from "../AdminFaculty/Faculty.styled";
+} from "../Faculty/Faculty.styled";
 import axios from "axios";
 import {
   EvenRow,
@@ -15,7 +14,7 @@ import {
   TableComponent,
   Td,
   Th,
-} from "../../../components/AdminComponents/table/Table.styled";
+} from "../../../components/AdminComponents/Table/Table.styled";
 import { MediumButton } from "../../../components/AdminComponents/Button/MediumButton/MediumButton.styled";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -91,7 +90,7 @@ const AdminFaculty = () => {
   }, []);
 
   return (
-    <AdminLayout>
+    <>
       <Headline>Users</Headline>
       <SearchAndSort>
         <input type="text" placeholder="Search" />
@@ -160,7 +159,7 @@ const AdminFaculty = () => {
           </tbody>
         </TableComponent>
       </ListAllFaculty>
-    </AdminLayout>
+    </>
   );
 };
 

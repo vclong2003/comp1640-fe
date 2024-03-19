@@ -7,6 +7,7 @@ import GuestRegisterForm from "./GuestRegisterForm/GuestRegisterForm";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+
   return (
     <S.Container>
       <S.ContainerLeft>
@@ -14,10 +15,10 @@ const Login = () => {
       </S.ContainerLeft>
       <S.ContainerRight>
         <S.RightTop>
-          <S.Btntop active={isLogin} onClick={() => setIsLogin(true)}>
+          <S.Btntop $active={isLogin} onClick={() => setIsLogin(true)}>
             Login
           </S.Btntop>
-          <S.Btntop active={!isLogin} onClick={() => setIsLogin(false)}>
+          <S.Btntop $active={!isLogin} onClick={() => setIsLogin(false)}>
             Register
           </S.Btntop>
         </S.RightTop>

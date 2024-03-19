@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL, API_ENDPOINTS } from "../config/api.config";
+import { API_BASE_URL } from "../config/api.config";
 
 export const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -31,7 +31,7 @@ axiosInstance.interceptors.response.use(
 
 const getNewAccessToken = async () => {
   console.log("Getting new access token!");
-  await axios.get(API_BASE_URL + API_ENDPOINTS.ACCESS_TOKEN, {
+  await axios.get(API_BASE_URL + "/auth/access-token", {
     withCredentials: true,
   });
 };

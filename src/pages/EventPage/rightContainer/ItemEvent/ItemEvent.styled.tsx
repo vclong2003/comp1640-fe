@@ -14,6 +14,10 @@ export const ImageDocument = styled.div`
   border-radius: 50%;
   padding: var(--s-4);
   background-color: white;
+  img {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const TitleEvent = styled.div`

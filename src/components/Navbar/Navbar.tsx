@@ -1,12 +1,9 @@
 import React from "react";
 import * as S from "./Navbar.styled";
 import { FaSearch } from "react-icons/fa";
-import { MdAccountCircle } from "react-icons/md";
-import Dropdown from "./Dropdown";
-import { useState } from "react";
+import ProfileDropdown from "./ProfileDropdown/ProfileDropdown";
 
 const Navbar = () => {
-  const [openProfile, setOpenProfile] = useState(false);
   return (
     <S.Container>
       <S.ContainerTop>
@@ -23,12 +20,8 @@ const Navbar = () => {
             <FaSearch />
           </S.LogoSearch>
         </S.Search>
-        <S.TextAccount onClick={() => setOpenProfile((prev)=> !prev)}>
-          <MdAccountCircle />
-          Behzad
-        </S.TextAccount>
+        <ProfileDropdown />
       </S.ContainerTop>
-      {openProfile && <Dropdown />}
       <S.ContainerBottom>
         <S.Dash></S.Dash>
       </S.ContainerBottom>

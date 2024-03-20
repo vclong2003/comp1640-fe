@@ -17,8 +17,6 @@ const PopularContributions = () => {
         <PopularContributionItem />
         <PopularContributionItem />
         <PopularContributionItem />
-        <PopularContributionItem />
-        <PopularContributionItem />
       </S.PopularContributionItemsContainer>
     </S.Container>
   );

@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./ContributionsDetail.styled";
 import { SlOptionsVertical } from "react-icons/sl";
 import LeftComment from "./LeftComment/LeftComment";

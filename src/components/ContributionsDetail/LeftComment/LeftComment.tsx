@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./LeftComment.styled";
 import Avatar from "../../../assets/images/avt.png";
 

@@ -4,10 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-# RUN npm install -g serve
-# RUN npm install
-# RUN npm run build:prod
-
 RUN yarn global add serve && yarn install && yarn build:prod
 
 EXPOSE 4200

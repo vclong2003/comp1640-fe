@@ -2,17 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-`;
-
-export const Left = styled.div`
-  flex: 10;
- 
+  flex-direction: row;
+  gap: var(--s-4);
 `;
 
 export const Ava = styled.div`
   img {
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
   }
 `;
 
@@ -25,12 +22,9 @@ export const InfoComment = styled.div`
 export const Author = styled.div``;
 
 export const UserInfor = styled.div`
-  font-size: 20px;
+  font-size: 28px;
 `;
 
-export const DateComment = styled.div``;
-
-
-export const Right = styled.div`
-  flex: 2;
+export const DateComment = styled.div`
+  font-size: 20px;
 `;

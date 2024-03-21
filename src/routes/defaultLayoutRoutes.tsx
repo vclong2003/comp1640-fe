@@ -6,9 +6,10 @@ import EventPage from "../pages/EventPage/EventPage";
 import AddContributions from "../pages/Contributions/AddContributions/AddContributions";
 import EditProfile from "../pages/EditProfifle/EditProfile";
 
+
 export const defaultLayoutRoutes: IRoute[] = [
   {
-    path: "/",
+    path: "/home",
     component: <Home />,
   },
   {

@@ -28,17 +28,18 @@ export const Dash = styled.div`
 export const Logo = styled.div`
   color: #fc4308;
   font-weight: bold;
-  padding: 5px;
+  padding: 10px;
 `;
 
 export const ListUl = styled.ul`
   display: flex;
   gap: 40px;
-  padding: 5px;
+  padding: 10px;
 `;
 
 export const ListLi = styled.li`
   display: inline-block;
+  font-size: 25px;
   &:hover {
     color: var(--blue);
     cursor: pointer;
@@ -53,16 +54,20 @@ export const Search = styled.div`
 
 export const SearchBox = styled.input`
   border: none;
+  background-color: #dedede;
   width: 400px;
   border-radius: 15px;
-  padding: 5px;
+  padding: 10px;
+  font-size: 20px;
+
   &:hover {
-    background-color: #dedede;
+    background-color: white;
   }
 `;
 
 export const LogoSearch = styled.div`
-  padding: 5px;
+  padding: 10px;
+  font-size: 20px;
 `;
 
 export const TextAccount = styled.div`

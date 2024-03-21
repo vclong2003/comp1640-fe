@@ -1,4 +1,3 @@
-import React from "react";
 import { AdminMenu, Logo } from "./Menu.styled";
 import { Link } from "react-router-dom";
 import { MdOutlineEventAvailable } from "react-icons/md";

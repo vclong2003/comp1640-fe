@@ -1,5 +1,3 @@
-import React from "react";
-
 import { IRoute } from "../interfaces";
 import Login from "../pages/authPages/Login/Login";
 import SetupAccount from "../pages/authPages/SetupAccount/SetupAccount";

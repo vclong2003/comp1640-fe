@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./PhotoContributions.styled";
 import RightContributions from "./RightContributions/LeftContributions";
 import LeftContributions from "./LeftContributions/RightContributions";

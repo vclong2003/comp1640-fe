@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./PopularContributions.styled";
 import PopularContributionItem from "./PopularContributionItem/PopularContributionItem";
 

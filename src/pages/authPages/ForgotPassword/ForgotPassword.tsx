@@ -1,4 +1,3 @@
-import React from "react";
 import LeftTemplate from "./LeftTemplate/LeftTemplate";
 import ForGot from "../../../assets/images/Forgot.png";
 import * as S from "./ForgotPassword.styled";

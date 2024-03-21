@@ -1,4 +1,3 @@
-import React from "react";
 import { Headline, Button, ListOfActions } from "./Home.styled";
 import { Link } from "react-router-dom";
 import { MdOutlineEventAvailable } from "react-icons/md";

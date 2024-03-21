@@ -1,4 +1,3 @@
-import React from "react";
 import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
 import * as S from "./Home.styled";
 import FeaturedContribution from "./FeaturedContribution/FeaturedContribution";

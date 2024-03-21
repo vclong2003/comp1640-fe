@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./Navbar.styled";
 import { FaSearch } from "react-icons/fa";
 import ProfileDropdown from "./ProfileDropdown/ProfileDropdown";

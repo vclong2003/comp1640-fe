@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./TitlePage.styled";
 import Add from "../../../../assets/images/addcontributions.png";
 

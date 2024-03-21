@@ -1,8 +1,9 @@
-@import url('https://fonts.cdnfonts.com/css/times-new-roman');
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+
 /* Global styles -------------------- */
 * {
   box-sizing: border-box;
-  font-family: JetBrains Mono;
+  font-family: "SF Pro Display", sans-serif;
   border: none;
   outline: none;
   margin: 0;

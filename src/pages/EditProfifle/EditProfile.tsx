@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./EditProfile.styled";
 import MiddleForm from "./MiddleForm/MiddleForm";
 import BottomPage from "./BottomPage/BottomPage";

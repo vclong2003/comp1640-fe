@@ -1,4 +1,3 @@
-import React from "react";
 import TitlePage from "./TitlePage/TitlePage";
 import FormPage from "./FormPage/FormPage";
 import * as S from "./AddContributions.styled";

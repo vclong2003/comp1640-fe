@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn global add serve && yarn install && yarn build:prod
+RUN yarn global add serve && yarn install && yarn build
 
 EXPOSE 4200
-CMD ["serve", "-s", "-l", "4200", "./build"]
+CMD ["serve", "-s", "-l", "4200", "./dist"]

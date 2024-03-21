@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./Footer.styled";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -42,7 +41,9 @@ const Footer = () => {
       </S.ContainerMiddle>
       <S.ContainerBottom>
         <S.TextBottom>
-          <S.icon><FaRegCopyright /></S.icon>
+          <S.icon>
+            <FaRegCopyright />
+          </S.icon>
           <S.text>2020 Y101, All rights reserved.</S.text>
         </S.TextBottom>
       </S.ContainerBottom>

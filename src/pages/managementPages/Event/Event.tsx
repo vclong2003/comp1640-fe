@@ -1,4 +1,3 @@
-import React from "react";
 import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
 
 const Event = () => {

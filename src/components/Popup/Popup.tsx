@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./Popup.styled";
 
 interface IPopupProps extends JSX.IntrinsicAttributes {

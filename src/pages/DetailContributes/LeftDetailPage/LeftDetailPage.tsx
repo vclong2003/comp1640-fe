@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./LeftDetailPage.styled";
 import Detail from "../../../assets/images/detail.png";
 import LeftComment from "../../../components/ContributionsDetail/LeftComment/LeftComment";

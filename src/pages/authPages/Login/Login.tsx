@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import Other03 from "../../../assets/images/Other03.png";
 import * as S from "./Login.styled";

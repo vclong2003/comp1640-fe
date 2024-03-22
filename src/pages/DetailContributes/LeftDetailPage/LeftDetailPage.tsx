@@ -39,7 +39,7 @@ const LeftDetailPage = () => {
         </S.CmtItem>
         <S.AddCmt>
           <S.ImageAva src={Ava} />
-          <S.InputCmt></S.InputCmt>
+          <S.InputCmt placeholder="Add Comment"></S.InputCmt>
           <S.IconSent>
             <IoSend />
           </S.IconSent>

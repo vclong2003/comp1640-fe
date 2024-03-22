@@ -8,7 +8,7 @@ export const Container = styled.div`
 
 export const TopContainer = styled.div`
   display: flex;
-  gap: var(--s-5);
+  gap: var(--s-10);
 `;
 
 export const Left = styled.div`

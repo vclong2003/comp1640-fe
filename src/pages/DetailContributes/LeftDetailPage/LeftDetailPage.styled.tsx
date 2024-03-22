@@ -72,7 +72,7 @@ export const Title = styled.div`
   display: flex;
   flex-direction: row;
   gap: var(--s-6);
-  font-size: 30px;
+  font-size: var(--fs-2xl);
 `;
 
 export const Person = styled.div``;
@@ -100,7 +100,7 @@ export const ImageAva = styled.img`
 export const InputCmt = styled.input`
   flex: 1;
   width: 100%;
-  background-color: wheat;
+  border: 1px solid rgba(179, 180, 179, 1);
   padding: var(--s-2) var(--s-8);
   border-radius: var(--fs-md);
   font-size: 20px;

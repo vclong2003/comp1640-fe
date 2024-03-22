@@ -1,4 +1,3 @@
-import React from "react";
 import Dropdown, {
   EDropDownPosition,
 } from "../../../components/Dropdown/Dropdown";

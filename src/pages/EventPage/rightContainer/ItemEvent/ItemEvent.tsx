@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./ItemEvent.styled";
 import Event from "../../../../assets/images/Event.png";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./EmailConfirmed.styled";
 import Success from "../../assets/images/Success.png";
 

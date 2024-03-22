@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./SetupAccount.styled";
 import Setup from "../../../assets/images/Setup.png";
 import SetupForm from "./SetupForm/SetupForm";

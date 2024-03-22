@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import "../assets/css/global.css";
+import { useEffect } from "react";
 import { APP_TITLE } from "../config/app.config";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";

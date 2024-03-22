@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./EventPage.styled";
 import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
 import LeftContainer from "./leftContainer/LeftContainer";

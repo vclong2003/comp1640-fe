@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import { RootState } from "../../store";
 import { ERole } from "../../variables/user.variables";
 import { useSelector } from "react-redux";
@@ -9,7 +9,10 @@ interface IAuthorizedPageProps {
   children: React.ReactNode;
 }
 
-const AuthorizedPage = ({ allowedRoles, children }: IAuthorizedPageProps) => {
+const AuthorizedPage = ({
+  allowedRoles,
+  children,
+}: IAuthorizedPageProps): ReactNode => {
   const { user } = useSelector((state: RootState) => state.userState);
 
   const { pathname } = useLocation();

@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./ManagementLayout.styled";
 import { Outlet } from "react-router";
 import HeaderComponent from "../../ManagementComponent/Header/Header";

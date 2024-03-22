@@ -1,4 +1,4 @@
-import React from "react";
+import logo from "../../assets/images/Splash/logo.png";
 
 const Splash = () => {
   return (
@@ -11,7 +11,7 @@ const Splash = () => {
         justifyContent: "center",
       }}
     >
-      <img src={require("../../assets/images/Splash/logo.png")} alt="logo" />
+      <img src={logo} alt="logo" />
     </div>
   );
 };

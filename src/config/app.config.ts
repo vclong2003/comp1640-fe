@@ -1,1 +1,1 @@
-export const APP_TITLE = process.env.REACT_APP_NAME as string;
+export const APP_TITLE = import.meta.env.VITE_APP_NAME as string;

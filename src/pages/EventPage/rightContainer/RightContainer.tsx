@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./RightContainer.styled";
 import ItemEvent from "./ItemEvent/ItemEvent";
 

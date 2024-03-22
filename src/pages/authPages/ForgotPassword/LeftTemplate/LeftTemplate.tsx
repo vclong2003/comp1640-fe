@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import * as S from "./LeftTemplate.styled";
 import Popup from "../../../../components/Popup/Popup";
 

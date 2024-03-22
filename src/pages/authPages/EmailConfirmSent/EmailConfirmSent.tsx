@@ -1,4 +1,3 @@
-import React from "react";
 import Confirm from "../../../assets/images/Confirm.png";
 import * as S from "./EmailConfirmSent.styled";
 import ConfirmForm from "./ConfirmForm/ConfirmForm";

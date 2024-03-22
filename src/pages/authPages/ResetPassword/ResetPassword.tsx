@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./ResetPassword.styled";
 import Reset from "../../assets/images/Reset.png";
 import PasswordForm from "./PasswordForm/PasswordForm";

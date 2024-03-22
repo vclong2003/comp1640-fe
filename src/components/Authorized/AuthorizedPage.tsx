@@ -1,6 +1,6 @@
 import React from "react";
 import { RootState } from "../../store";
-import { ERole } from "../../enums/user.enums";
+import { ERole } from "../../variables/user.variables";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import { ERole } from "../enums/user.enums";
+import { ERole } from "../variables/user.variables";
 
 export interface IUser {
   _id: string;
@@ -11,4 +11,6 @@ export interface IUser {
 export interface IUserState {
   user: IUser | null;
   users: IUser[];
+  loading: boolean;
+  error: string | null;
 }

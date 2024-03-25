@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 385194944c35f703f8a451b1f469b81d21430bd6
 import * as S from "./LeftComment.styled";
 import Avatar from "../../../assets/images/avt.png";
 

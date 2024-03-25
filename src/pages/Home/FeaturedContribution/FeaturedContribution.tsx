@@ -1,4 +1,5 @@
 import * as S from "./FeaturedContribution.styled";
+import image from "../../../assets/images/detail.png";
 
 const FeaturedContribution = () => {
   return (
@@ -10,7 +11,7 @@ const FeaturedContribution = () => {
           podcast, or anything else that we want to highlight.
         </S.Description>
       </S.TextContainer>
-      <S.Image src="https://placehold.co/800x450" alt="placeholder" />
+      <S.Image src={image} alt="placeholder" />
     </S.Container>
   );
 };

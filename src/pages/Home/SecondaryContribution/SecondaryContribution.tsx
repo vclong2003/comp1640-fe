@@ -1,9 +1,10 @@
 import * as S from "./SecondaryContribution.styled";
+import image from "../../../assets/images/Secondary.png";
 
 const SecondaryContribution = () => {
   return (
     <S.Container>
-      <S.Image src="https://placehold.co/800x450" alt="placeholder" />
+      <S.Image src={image} alt="placeholder" />
       <S.Divider />
       <S.Title>Secondary Contribution</S.Title>
       <S.Description>

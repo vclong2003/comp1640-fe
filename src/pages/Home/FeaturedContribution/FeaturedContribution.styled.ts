@@ -10,6 +10,7 @@ export const TextContainer = styled.div`
   position: absolute;
   z-index: 1;
   bottom: 0;
+  color: white;
 `;
 
 export const Title = styled.h1`

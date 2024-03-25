@@ -1,9 +1,10 @@
 import * as S from "./LeftContribution.styled";
+import image from "../../../../assets/images/RightPopular.png";
 
 const RightContributions = () => {
   return (
     <S.Container>
-      <S.Image src="https://placehold.co/800x450" alt="placeholder" />
+      <S.Image src={image} alt="placeholder" />
       <S.Divider />
       <S.Title>Gulf Craft Majesty 155 and Majesty 110 </S.Title>
       <S.Description>

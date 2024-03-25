@@ -4,6 +4,7 @@ import EventPage from "../pages/EventPage/EventPage";
 import AddContributions from "../pages/Contributions/AddContributions/AddContributions";
 import EditProfile from "../pages/EditProfifle/EditProfile";
 import DetailContributes from "../pages/DetailContributes/DetailContributes";
+import EventDetail from "../pages/EventDetail/EventDetail";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
@@ -25,5 +26,9 @@ export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "/detailcontributes",
     component: <DetailContributes />,
+  },
+  {
+    path: "/eventdetail",
+    component: <EventDetail />,
   },
 ];

@@ -1,9 +1,10 @@
 import * as S from "./RightContribution.styled";
+import image from "../../../../assets/images/LeftPopular.png";
 
 const LeftContributions = () => {
   return (
     <S.Container>
-      <S.Image src="https://placehold.co/800x450" alt="placeholder" />
+      <S.Image src={image} alt="placeholder" />
       <S.Title>Clipper Race: How I won the round-the-world race</S.Title>
       <S.Description>
         The history of the most difficult race for the most unprepared.

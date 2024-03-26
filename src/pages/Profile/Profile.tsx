@@ -10,7 +10,7 @@ export default function Profile() {
         <S.FormContainer>
           <ProfileInfoForm />
         </S.FormContainer>
-        <S.AvatarContainer>Avatar</S.AvatarContainer>
+        <S.AvatarContainer>//Avatar</S.AvatarContainer>
       </S.Profile>
     </Container>
   );

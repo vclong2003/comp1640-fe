@@ -1,11 +1,6 @@
 import * as S from "./ProfileInfoForm.styled";
 import { Formik } from "formik";
-import {
-  Form,
-  FormGroup,
-  FormInput,
-  FormLabel,
-} from "../../../components/formComponents";
+import { Form, FormInput, FormLabel } from "../../../components/formComponents";
 import { EGender } from "../../../interfaces/user.interfaces";
 
 export default function ProfileInfoForm() {
@@ -13,21 +8,21 @@ export default function ProfileInfoForm() {
     <Formik>
       <Form>
         <S.HorizontalFormGroup>
-          <FormGroup>
+          <S.FormGroup>
             <FormLabel>Name</FormLabel>
             <FormInput type="text" name="name" />
-          </FormGroup>
-          <FormGroup>
+          </S.FormGroup>
+          <S.FormGroup>
             <FormLabel>Phone</FormLabel>
             <FormInput type="text" name="phone" />
-          </FormGroup>
+          </S.FormGroup>
         </S.HorizontalFormGroup>
         <S.HorizontalFormGroup>
-          <FormGroup>
+          <S.FormGroup>
             <FormLabel>DOB</FormLabel>
             <FormInput type="date" name="dob" />
-          </FormGroup>
-          <FormGroup>
+          </S.FormGroup>
+          <S.FormGroup>
             <FormLabel>Gender</FormLabel>
             <FormInput component="select" name="gender">
               {Object.values(EGender).map((item) => (
@@ -36,7 +31,7 @@ export default function ProfileInfoForm() {
                 </option>
               ))}
             </FormInput>
-          </FormGroup>
+          </S.FormGroup>
         </S.HorizontalFormGroup>
       </Form>
     </Formik>

@@ -13,12 +13,16 @@ export const Title = styled.div`
   text-align: center;
   font-size: var(--fs-3xl);
   font-weight: bold;
+  background-color: var(--ice-blue);
+  padding: var(--s-10) 0;
+  border-radius: var(--br-md);
+  margin-bottom: var(--s-8);
 `;
 
 export const FormContainer = styled.div`
-  flex: 8;
+  flex: 6;
 `;
 
 export const AvatarContainer = styled.div`
-  flex: 4;
+  flex: 6;
 `;

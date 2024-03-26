@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(
 
 const getNewAccessToken = async () => {
   console.log("Getting new access token!");
-  await axios.get(API_BASE_URL + "/auth/access-token", {
+  await axios.get(`${API_BASE_URL}/auth/access-token`, {
     withCredentials: true,
   });
 };

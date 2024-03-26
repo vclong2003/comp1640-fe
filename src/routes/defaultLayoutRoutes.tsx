@@ -2,16 +2,19 @@ import { IRoute } from "../interfaces/common.interfaces";
 import Home from "../pages/Home/Home";
 import EventPage from "../pages/EventPage/EventPage";
 import AddContributions from "../pages/Contributions/AddContributions/AddContributions";
-import EditProfile from "../pages/EditProfifle/EditProfile";
 import DetailContributes from "../pages/DetailContributes/DetailContributes";
 import EventDetail from "../pages/EventEdit/EventEdit";
-
-
+import AuthorizedPage from "../components/AuthorizedPage/AuthorizedPage";
+import Profile from "../pages/Profile/Profile";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "/home",
-    component: <Home />,
+    component: (
+      <AuthorizedPage>
+        <Home />
+      </AuthorizedPage>
+    ),
   },
   {
     path: "/event",
@@ -22,8 +25,12 @@ export const defaultLayoutRoutes: IRoute[] = [
     component: <AddContributions />,
   },
   {
-    path: "/editprofile",
-    component: <EditProfile />,
+    path: "/profile",
+    component: (
+      <AuthorizedPage>
+        <Profile />
+      </AuthorizedPage>
+    ),
   },
   {
     path: "/detailcontributes",
@@ -33,5 +40,4 @@ export const defaultLayoutRoutes: IRoute[] = [
     path: "/eventdetail",
     component: <EventDetail />,
   },
-
 ];

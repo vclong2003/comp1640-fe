@@ -1,14 +1,13 @@
-import AuthorizedPage from "../../components/AuthorizedPage/AuthorizedPage";
 import * as S from "./Home.styled";
 import FeaturedContribution from "./FeaturedContribution/FeaturedContribution";
 import SecondaryContribution from "./SecondaryContribution/SecondaryContribution";
 import PopularContributions from "./PopularContributions/PopularContributions";
 import PhotoContributions from "./PhotoContributions/PhotoContributions";
+import Container from "../../components/Container/Container";
 
 const Home = () => {
-  // add auth page for testing
   return (
-    <AuthorizedPage>
+    <Container>
       <S.Container>
         <S.Banner>
           <S.FeaturedContainer>
@@ -21,7 +20,7 @@ const Home = () => {
         <PopularContributions />
         <PhotoContributions />
       </S.Container>
-    </AuthorizedPage>
+    </Container>
   );
 };
 

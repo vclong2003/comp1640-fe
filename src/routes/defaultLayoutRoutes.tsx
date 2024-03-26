@@ -4,7 +4,8 @@ import EventPage from "../pages/EventPage/EventPage";
 import AddContributions from "../pages/Contributions/AddContributions/AddContributions";
 import EditProfile from "../pages/EditProfifle/EditProfile";
 import DetailContributes from "../pages/DetailContributes/DetailContributes";
-import EventDetail from "../pages/EventDetail/EventDetail";
+import EventDetail from "../pages/EventEdit/EventEdit";
+
 
 export const defaultLayoutRoutes: IRoute[] = [
   {

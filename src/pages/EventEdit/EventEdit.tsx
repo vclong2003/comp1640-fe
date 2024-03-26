@@ -1,4 +1,4 @@
-import * as S from "./EventDetail.styled";
+import * as S from "./EventEdit.styled";
 import HightLight from "./HightLight/HightLight";
 import ListEvent from "./ListEvent/ListEvent";
 

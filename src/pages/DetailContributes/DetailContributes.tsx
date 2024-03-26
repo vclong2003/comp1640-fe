@@ -1,4 +1,5 @@
 import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
+import BottomDetailPage from "./BottomDetailPage/BottomDetailPage";
 import * as S from "./DetailContributes.styled";
 import LeftDetailPage from "./LeftDetailPage/LeftDetailPage";
 import RightDetailPage from "./RightDetailPage/RightDetailPage";
@@ -15,7 +16,9 @@ const DetailContributes = () => {
             <RightDetailPage />
           </S.Right>
         </S.TopContainer>
-        <S.BottomContainer></S.BottomContainer>
+        <S.BottomContainer>
+          <BottomDetailPage />
+        </S.BottomContainer>
       </S.Container>
     </AuthorizedPage>
   );

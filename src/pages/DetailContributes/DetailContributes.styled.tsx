@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: var(--s-8) var(--s-10);
+  gap: var(--s-10);
 `;
 
 export const TopContainer = styled.div`
@@ -19,4 +20,7 @@ export const Right = styled.div`
   flex: 4;
 `;
 
-export const BottomContainer = styled.div``;
+export const BottomContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;

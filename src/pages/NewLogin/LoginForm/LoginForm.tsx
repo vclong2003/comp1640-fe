@@ -21,9 +21,9 @@ const LoginForm = () => {
       <S.Button>
         <S.BtnLogin>Continue</S.BtnLogin>
         <S.Divider>
-          <S.Line />
+          <S.Line></S.Line>
           OR
-          <S.Line />
+          <S.Line></S.Line>
         </S.Divider>
         <S.BtnLoginWithGoogle>Login With Google</S.BtnLoginWithGoogle>
       </S.Button>

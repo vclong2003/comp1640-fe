@@ -33,6 +33,9 @@ export const Input = styled.input`
   padding: var(--s-4) var(--s-3);
   font-size: var(--fs-xl);
   border: 1px solid;
+  &:hover {
+    background-color: #dedede;
+  }
 `;
 
 export const LinkRegis = styled.div`
@@ -43,16 +46,19 @@ export const Button = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--s-5);
-  padding: 0 var(--s-40);
+  align-items: center;
 `;
 
 export const BtnLogin = styled.button`
   background-color: #f2ba1d;
-  padding: var(--s-3) 0;
+  padding: var(--s-3) var(--s-40);
   font-size: var(--fs-xl);
   color: white;
   border-radius: var(--fs-xs);
   cursor: pointer;
+  &:hover {
+    background-color: rgba(238, 206, 62, 0.5);
+  }
 `;
 
 export const Divider = styled.div`
@@ -62,7 +68,8 @@ export const Divider = styled.div`
   justify-content: center;
   gap: var(--s-3);
   font-size: var(--fs-xl);
-  padding: 0 var(--s-10);
+  padding: 0 var(--s-20);
+  width: 100%;
 `;
 
 export const Line = styled.div`
@@ -71,10 +78,14 @@ export const Line = styled.div`
 `;
 
 export const BtnLoginWithGoogle = styled.button`
-  background-color: #898989;
-  padding: var(--s-3) 0;
+  background-color: var(--white);
+  padding: var(--s-3) var(--s-30);
+  border: 1px solid grey;
   font-size: var(--fs-xl);
-  color: white;
+  color: black;
   border-radius: var(--fs-xs);
   cursor: pointer;
+  &:hover {
+    background-color: #dedede;
+  }
 `;

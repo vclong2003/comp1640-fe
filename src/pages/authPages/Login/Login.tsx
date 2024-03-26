@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store";
 import { ILoginPayload } from "../../../interfaces/user.interfaces";
 import { login } from "../../../store/slices/userActions";
+import { Navigate, useSearchParams } from "react-router-dom";
 
 export default function Login() {
   const { user } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
+
+  const [searchParams] = useSearchParams();
 
   const onLogin = (values: ILoginPayload) => {
     dispatch(login(values));
@@ -16,6 +19,7 @@ export default function Login() {
 
   return (
     <S.Container>
+      {user && <Navigate to={searchParams.get("redirect") || "/"} />}
       <S.Background>
         <S.Image src={BackGround}></S.Image>
       </S.Background>

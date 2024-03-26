@@ -23,11 +23,11 @@ export default function Login() {
       <S.Background>
         <S.Image src={BackGround}></S.Image>
       </S.Background>
-      <S.FormLogin>
+      <S.RightContent>
         <S.Title>Hey, Welcome Back!</S.Title>
         <S.Description>We are very happy to see you back!</S.Description>
         <LoginForm onSubmit={onLogin} />
-      </S.FormLogin>
+      </S.RightContent>
     </S.Container>
   );
 }

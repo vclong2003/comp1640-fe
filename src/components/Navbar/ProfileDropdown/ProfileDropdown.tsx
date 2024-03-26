@@ -1,27 +1,18 @@
 import * as S from "./ProfileDropdown.styled";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../store";
 import { EDropDownPosition } from "../../Dropdown/dropdown.enums";
 import Dropdown from "../../Dropdown/Dropdown";
 import Avatar from "../../Avatar/Avatar";
-
-const profileItems = [
-  {
-    label: "My Contribution",
-    link: "/contribution",
-  },
-  {
-    label: "Edit Profile",
-    link: "/profile",
-  },
-  {
-    label: "Log out",
-    link: "/logout",
-  },
-];
+import { logout } from "../../../store/slices/userActions";
 
 export default function ProfileDropdown() {
   const { user } = useSelector((state: RootState) => state.userState);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const onLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <Dropdown
@@ -31,14 +22,17 @@ export default function ProfileDropdown() {
           <S.AvatarContainer>
             <Avatar imageUrl={user?.avatar_url} />
           </S.AvatarContainer>
-          <S.UserName>{user?.name}</S.UserName>
+          <S.UserInfoContainer>
+            <S.UserName>{user?.name}</S.UserName>
+            <S.UserRole>{user?.role}</S.UserRole>
+          </S.UserInfoContainer>
         </S.ProfileButton>
       }
     >
       <S.DropdownContent>
-        {profileItems.map((item) => (
-          <S.DropdownItem key={item.label}>{item.label}</S.DropdownItem>
-        ))}
+        <S.DropdownItem>Profile</S.DropdownItem>
+        <S.DropdownItem>My Contribution</S.DropdownItem>
+        <S.DropdownItem onClick={onLogout}>Logout</S.DropdownItem>
       </S.DropdownContent>
     </Dropdown>
   );

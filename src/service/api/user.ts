@@ -9,4 +9,8 @@ const getCurrentUser = async (): Promise<IUser> => {
   return await axiosInstance.get("/user/my-profile");
 };
 
-export default { login, getCurrentUser };
+const logout = async (): Promise<void> => {
+  return await axiosInstance.post("/auth/logout");
+};
+
+export default { login, getCurrentUser, logout };

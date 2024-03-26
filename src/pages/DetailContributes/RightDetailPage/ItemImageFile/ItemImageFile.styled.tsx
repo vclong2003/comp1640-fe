@@ -6,8 +6,8 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 160px;
-  height: 140px;
+  width: 180px;
+  height: 160px;
   z-index: 0;
 `;
 

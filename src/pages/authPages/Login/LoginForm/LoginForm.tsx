@@ -28,8 +28,7 @@ interface ILoginFormProps {
 export default function LoginForm({ onSubmit }: ILoginFormProps) {
   return (
     <S.Container>
-      <S.Title>Hey, Welcome Back!</S.Title>
-      <S.Description>We are very happy to see you back!</S.Description>
+      
       <S.FormContainer
         initialValues={initialValues}
         validationSchema={LoginSchema}

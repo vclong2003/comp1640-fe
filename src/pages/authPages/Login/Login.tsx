@@ -24,6 +24,8 @@ export default function Login() {
         <S.Image src={BackGround}></S.Image>
       </S.Background>
       <S.FormLogin>
+        <S.Title>Hey, Welcome Back!</S.Title>
+        <S.Description>We are very happy to see you back!</S.Description>
         <LoginForm onSubmit={onLogin} />
       </S.FormLogin>
     </S.Container>

@@ -62,7 +62,7 @@ export const DocumentImg = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--s-3);
+  gap: var(--s-12);
   row-gap: var(--s-6);
 `;
 

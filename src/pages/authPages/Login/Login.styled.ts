@@ -17,6 +17,17 @@ export const Image = styled.img`
 `;
 
 export const FormLogin = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
   flex: 9;
   padding: var(--s-30) 0;
+`;
+
+export const Title = styled.div`
+  font-size: var(--fs-6xl);
+`;
+
+export const Description = styled.div`
+  font-size: var(--fs-3xl);
 `;

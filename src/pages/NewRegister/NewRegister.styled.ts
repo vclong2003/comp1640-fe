@@ -9,7 +9,19 @@ export const Container = styled.div`
 export const Background = styled.img`
   width: auto;
   height: 100%;
-  display: unset;
 `;
 
-export const Form = styled.div``;
+export const Form = styled.div`
+  padding-top: var(--s-30);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+`;
+
+export const Title = styled.div`
+  font-size: var(--fs-6xl);
+`;
+
+export const Description = styled.div`
+  font-size: var(--fs-2xl);
+`;

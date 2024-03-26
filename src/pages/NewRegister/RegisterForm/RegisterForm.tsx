@@ -1,15 +1,16 @@
-// import * as S from "./RegisterForm.styled";
+import * as S from "./RegisterForm.styled";
 
-// const RegisterForm = () => {
-//   return (
-//     <S.Container>
-//       <S.ContainerForm>
-//         <S.Label>Email</S.Label>
-//         <S.Description>Fill your mail here</S.Description>
-//         <S.Input></S.Input>
-//       </S.ContainerForm>
-//     </S.Container>
-//   );
-// };
+const RegisterForm = () => {
+  return (
+    <S.Container>
+      <S.ContainerForm>
+        <>
+          <S.Input placeholder="Enter your Email"></S.Input>
+          <S.BtnContinue>Continue</S.BtnContinue>
+        </>
+      </S.ContainerForm>
+    </S.Container>
+  );
+};
 
-// export default RegisterForm;
+export default RegisterForm;

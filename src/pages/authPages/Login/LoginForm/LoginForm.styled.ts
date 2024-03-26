@@ -25,12 +25,9 @@ export const LinkRegis = styled.div`
   cursor: pointer;
 `;
 
-export const Button = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-5);
-  padding: 0 var(--s-40);
-`;
+ 
+
+
 
 export const Divider = styled.div`
   display: flex;

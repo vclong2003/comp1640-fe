@@ -10,22 +10,27 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.response.use(
-  (response) => response,
+  (response) => response.data,
   async (error) => {
     const originalRequest = error.config;
 
     if (error.response.status === 401 && !originalRequest._retry) {
-      // Check if this is the cesond retry
       try {
         await getNewAccessToken();
       } catch (error) {
         console.log("Get new access token failed!");
         return Promise.reject(error);
       }
-      originalRequest._retry = true; // Mark as had been retried
+      originalRequest._retry = true;
       return axiosInstance(originalRequest);
     }
-    return Promise.reject(error);
+
+    const message =
+      error?.response?.data?.message ||
+      error?.message ||
+      "Something went wrong!";
+
+    return Promise.reject(message);
   },
 );
 

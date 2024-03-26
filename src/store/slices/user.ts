@@ -17,8 +17,10 @@ const userState = createSlice({
       console.log(action.payload);
       state.user = action.payload;
     });
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
   },
 });
 
 export default userState;
-export { login, getCurrentUser };

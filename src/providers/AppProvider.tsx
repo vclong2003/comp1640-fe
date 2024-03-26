@@ -4,7 +4,7 @@ import { APP_TITLE } from "../config/app.config";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../store";
-import InitialLoadProvider from "./InitialLoadProvider";
+import UserProvider from "./UserProvider";
 
 interface IAppProviderProps {
   children: JSX.Element;
@@ -20,7 +20,7 @@ export default function AppProvider({
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <InitialLoadProvider>{children}</InitialLoadProvider>
+        <UserProvider>{children}</UserProvider>
       </Provider>
     </BrowserRouter>
   );

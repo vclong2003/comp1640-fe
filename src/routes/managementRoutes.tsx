@@ -1,4 +1,4 @@
-import { IRoute } from "../interfaces";
+import { IRoute } from "../interfaces/common.interfaces";
 import Home from "../pages/managementPages/Home/Home";
 import User from "../pages/managementPages/User/User";
 import Faculty from "../pages/managementPages/Faculty/Faculty";

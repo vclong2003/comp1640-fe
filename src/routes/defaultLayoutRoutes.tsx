@@ -1,4 +1,4 @@
-import { IRoute } from "../interfaces";
+import { IRoute } from "../interfaces/common.interfaces";
 import Home from "../pages/Home/Home";
 import EventPage from "../pages/EventPage/EventPage";
 import AddContributions from "../pages/Contributions/AddContributions/AddContributions";

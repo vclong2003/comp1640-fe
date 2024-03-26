@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { axiosInstance } from "../../lib/axios.lib";
 import { API_BASE_URL } from "../../config/api.config";
-import { ERole } from "../../enums/user.enums";
+import { ERole } from "../../variables/user.variables";
 import { buildQueryString } from "../../utils/string.utils";
 import { IUser } from "../../interfaces/user.interfaces";
 

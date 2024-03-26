@@ -1,7 +1,7 @@
 import TitlePage from "./TitlePage/TitlePage";
 import FormPage from "./FormPage/FormPage";
 import * as S from "./AddContributions.styled";
-import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 
 const AddContributions = () => {
   return (

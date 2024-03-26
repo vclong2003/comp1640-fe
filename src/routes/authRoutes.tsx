@@ -1,11 +1,11 @@
 import { IRoute } from "../interfaces/common.interfaces";
-import NewLogin from "../pages/NewLogin/NewLogin";
+import Login from "../pages/authPages/Login/Login";
 import SetupAccount from "../pages/authPages/SetupAccount/SetupAccount";
 
 export const authRoutes: IRoute[] = [
   {
     path: "login",
-    component: <NewLogin />,
+    component: <Login />,
   },
   {
     path: "setup-account/:token",

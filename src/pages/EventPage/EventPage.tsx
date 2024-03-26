@@ -1,5 +1,5 @@
 import * as S from "./EventPage.styled";
-import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../components/AuthorizedPage/AuthorizedPage";
 import LeftContainer from "./leftContainer/LeftContainer";
 import RightContainer from "./rightContainer/RightContainer";
 

@@ -1,5 +1,16 @@
-import { EGender, ERole } from "../variables/user.variables";
+export enum ERole {
+  Guest = "guest",
+  Student = "student",
+  MarketingManager = "mm",
+  MarketingCoordinator = "mc",
+  Admin = "admin",
+}
 
+export enum EGender {
+  Male = "male",
+  Female = "female",
+  Other = "other",
+}
 export interface IUser {
   _id: string;
   email: string;

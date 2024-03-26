@@ -4,12 +4,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
-export const Background = styled.div`
-  flex: 3;
-`;
+export const Background = styled.div``;
 
 export const Image = styled.img`
   width: auto;
@@ -17,6 +15,5 @@ export const Image = styled.img`
 `;
 
 export const FormLogin = styled.div`
-  flex: 9;
-  padding: var(--s-30) 0;
+  padding-top: var(--s-10);
 `;

@@ -1,32 +1,27 @@
-import { useState } from "react";
-import Other03 from "../../../assets/images/Other03.png";
 import * as S from "./Login.styled";
+import BackGround from "../../../assets/images/login-background.png";
 import LoginForm from "./LoginForm/LoginForm";
-import GuestRegisterForm from "./GuestRegisterForm/GuestRegisterForm";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../store";
+import { ILoginPayload } from "../../../interfaces/user.interfaces";
+import { login } from "../../../store/slices/userActions";
 
-const Login = () => {
-  const [isLogin, setIsLogin] = useState(true);
+export default function Login() {
+  const { user } = useSelector((state: RootState) => state.userState);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const onLogin = (values: ILoginPayload) => {
+    dispatch(login(values));
+  };
 
   return (
     <S.Container>
-      <S.ContainerLeft>
-        <img src={Other03} alt="" />
-      </S.ContainerLeft>
-      <S.ContainerRight>
-        <S.RightTop>
-          <S.Btntop $active={isLogin} onClick={() => setIsLogin(true)}>
-            Login
-          </S.Btntop>
-          <S.Btntop $active={!isLogin} onClick={() => setIsLogin(false)}>
-            Register
-          </S.Btntop>
-        </S.RightTop>
-        <S.RightForm>
-          {isLogin ? <LoginForm /> : <GuestRegisterForm />}
-        </S.RightForm>
-      </S.ContainerRight>
+      <S.Background>
+        <S.Image src={BackGround}></S.Image>
+      </S.Background>
+      <S.FormLogin>
+        <LoginForm onSubmit={onLogin} />
+      </S.FormLogin>
     </S.Container>
   );
-};
-
-export default Login;
+}

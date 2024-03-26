@@ -1,4 +1,4 @@
-import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../components/AuthorizedPage/AuthorizedPage";
 import * as S from "./Home.styled";
 import FeaturedContribution from "./FeaturedContribution/FeaturedContribution";
 import SecondaryContribution from "./SecondaryContribution/SecondaryContribution";

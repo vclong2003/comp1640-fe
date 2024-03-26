@@ -7,6 +7,7 @@ import DetailContributes from "../pages/DetailContributes/DetailContributes";
 import EventDetail from "../pages/EventEdit/EventEdit";
 
 
+
 export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "/home",
@@ -32,4 +33,5 @@ export const defaultLayoutRoutes: IRoute[] = [
     path: "/eventdetail",
     component: <EventDetail />,
   },
+
 ];

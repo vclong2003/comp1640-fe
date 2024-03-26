@@ -1,8 +1,14 @@
+import { useSelector } from "react-redux";
 import * as S from "./LandingPage.styled";
+import { RootState } from "../../store";
+import { Navigate } from "react-router";
 
-const LandingPage = () => {
+export default function LandingPage() {
+  const { user } = useSelector((state: RootState) => state.userState);
+
   return (
     <S.Container>
+      {user && <Navigate to="/home" />}
       <S.Title>Team name here</S.Title>
       <S.Button>
         <S.Register>
@@ -14,6 +20,4 @@ const LandingPage = () => {
       </S.Button>
     </S.Container>
   );
-};
-
-export default LandingPage;
+}

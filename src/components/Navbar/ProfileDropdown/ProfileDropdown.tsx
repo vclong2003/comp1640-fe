@@ -1,10 +1,9 @@
-import Dropdown, {
-  EDropDownPosition,
-} from "../../../components/Dropdown/Dropdown";
-import { MdAccountCircle } from "react-icons/md";
 import * as S from "./ProfileDropdown.styled";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import { EDropDownPosition } from "../../Dropdown/dropdown.enums";
+import Dropdown from "../../Dropdown/Dropdown";
+import Avatar from "../../Avatar/Avatar";
 
 const profileItems = [
   {
@@ -22,16 +21,17 @@ const profileItems = [
 ];
 
 export default function ProfileDropdown() {
-  const { name } =
-    useSelector((state: RootState) => state.userState.user) || {};
+  const { user } = useSelector((state: RootState) => state.userState);
 
   return (
     <Dropdown
-      position={EDropDownPosition.RIGHT}
+      position={EDropDownPosition.LEFT}
       toggleButton={
         <S.ProfileButton>
-          <MdAccountCircle />
-          <p>{name}</p>
+          <S.AvatarContainer>
+            <Avatar imageUrl={user?.avatar_url} />
+          </S.AvatarContainer>
+          <S.UserName>{user?.name}</S.UserName>
         </S.ProfileButton>
       }
     >

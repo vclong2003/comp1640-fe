@@ -19,7 +19,7 @@ export default function Login() {
 
   return (
     <S.Container>
-      {user && <Navigate to={searchParams.get("redirect") || "/"} />}
+      {user && <Navigate to={searchParams.get("redirect") || "/home"} />}
       <S.Background>
         <S.Image src={BackGround}></S.Image>
       </S.Background>

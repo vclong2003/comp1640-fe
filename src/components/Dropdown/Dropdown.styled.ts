@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { EDropDownPosition } from "./Dropdown";
+import { EDropDownPosition } from "./dropdown.enums";
 
 export const Dropdown = styled.div`
   position: relative;

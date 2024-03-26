@@ -1,4 +1,4 @@
-import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 
 const Event = () => {
   return <AuthorizedPage>Event</AuthorizedPage>;

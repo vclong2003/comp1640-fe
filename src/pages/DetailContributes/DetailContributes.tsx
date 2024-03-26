@@ -1,4 +1,4 @@
-import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../components/AuthorizedPage/AuthorizedPage";
 import BottomDetailPage from "./BottomDetailPage/BottomDetailPage";
 import * as S from "./DetailContributes.styled";
 import LeftDetailPage from "./LeftDetailPage/LeftDetailPage";

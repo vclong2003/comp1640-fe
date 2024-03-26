@@ -1,7 +1,7 @@
 import * as S from "./EditProfile.styled";
 import MiddleForm from "./MiddleForm/MiddleForm";
 import BottomPage from "./BottomPage/BottomPage";
-import AuthorizedPage from "../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../components/AuthorizedPage/AuthorizedPage";
 
 const EditProfile = () => {
   return (

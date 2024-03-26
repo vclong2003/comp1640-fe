@@ -14,7 +14,7 @@ import {
 
 import { LargeButton } from "../../../components/ManagementComponent/Button/LargeButton/LargeButton.styled";
 import Dropdown from "../../../components/ManagementComponent/Dropdown/Dropdown";
-import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 
 interface ModalProps {
   onClose: () => void;

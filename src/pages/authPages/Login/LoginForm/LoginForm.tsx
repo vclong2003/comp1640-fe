@@ -1,80 +1,64 @@
-import { FormEvent, useEffect, useState } from "react";
+import { ILoginPayload } from "../../../../interfaces/user.interfaces";
 import * as S from "./LoginForm.styled";
-import Group from "../../../../assets/images/Group.png";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../store";
-import { getCurrentUser, login } from "../../../../store/slices/user";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { API_BASE_URL } from "../../../../config/api.config";
+import * as Yup from "yup";
 
-const LoginForm = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
-  const { user } = useSelector((state: RootState) => state.userState);
+import {
+  Form,
+  FormButton,
+  FormError,
+  FormGroup,
+  FormInput,
+  FormLabel,
+} from "../../../../components/formComponents";
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [searchParams] = useSearchParams();
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email!").required("Required!"),
+  password: Yup.string().min(8, "Too short!").required("Required!"),
+});
 
-  const handleSubmitLogin = (e: FormEvent) => {
-    e.preventDefault();
-    dispatch(login({ email, password }))
-      .unwrap()
-      .then(() => dispatch(getCurrentUser()));
-  };
-
-  useEffect(() => {
-    if (user) {
-      navigate(searchParams.get("redirect") || "/");
-    }
-  }, [user, navigate, searchParams]);
-
-  return (
-    <S.ContainerRight>
-      <S.RightForm onSubmit={handleSubmitLogin}>
-        <S.Description>Hey, Welcome Back!</S.Description>
-        <S.Description2>We are very happy to see you back!</S.Description2>
-        <S.TextEmail>Email</S.TextEmail>
-        <S.EmailInput
-          placeholder="commitcomunity@gmail.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          id="email"
-        ></S.EmailInput>
-        <S.TextPass>Password</S.TextPass>
-        <S.PassInput>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            id="password"
-          />
-        </S.PassInput>
-        <S.Forgot>
-          <a href="/RegisterForm">Forgot Password?</a>
-        </S.Forgot>
-        <S.CheckRemember>
-          <input type="checkbox" /> Remember Me.
-        </S.CheckRemember>
-        <S.RightFoot>
-          <S.BtnContineu type="submit">LOGIN</S.BtnContineu>
-        </S.RightFoot>
-        <S.RightMiddle>
-          <S.TextOr>
-            ------------------------OR------------------------
-          </S.TextOr>
-          <S.BtnLginGG
-            onClick={() =>
-              (window.location.href = API_BASE_URL + "/auth/google")
-            }
-          >
-            <img src={Group} alt="" />
-            Login With Google
-          </S.BtnLginGG>
-        </S.RightMiddle>
-      </S.RightForm>
-    </S.ContainerRight>
-  );
+const initialValues: ILoginPayload = {
+  email: "",
+  password: "",
 };
 
-export default LoginForm;
+interface ILoginFormProps {
+  onSubmit: (values: ILoginPayload) => void;
+}
+
+export default function LoginForm({ onSubmit }: ILoginFormProps) {
+  return (
+    <S.Container>
+      <S.Title>Hey, Welcome Back!</S.Title>
+      <S.Description>We are very happy to see you back!</S.Description>
+      <S.FormContainer
+        initialValues={initialValues}
+        validationSchema={LoginSchema}
+        onSubmit={(values) => onSubmit(values as ILoginPayload)}
+      >
+        <Form>
+          <FormGroup>
+            <FormLabel>Email</FormLabel>
+            <FormInput
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+            />
+            <FormError name="email" />
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>Password</FormLabel>
+            <FormInput
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+            />
+            <FormError name="password" />
+          </FormGroup>
+          <FormButton type="submit">LOGIN</FormButton>
+          <S.BtnLoginWithGoogle>Login With Google</S.BtnLoginWithGoogle>
+        </Form>
+      </S.FormContainer>
+      <S.LinkRegis>Don't have an account? Register here!</S.LinkRegis>
+    </S.Container>
+  );
+}

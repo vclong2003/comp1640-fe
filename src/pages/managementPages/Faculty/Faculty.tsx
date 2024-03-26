@@ -20,7 +20,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { LargeButton } from "../../../components/ManagementComponent/Button/LargeButton/LargeButton.styled";
 import Dropdown from "../../../components/ManagementComponent/Dropdown/Dropdown";
-import AuthorizedPage from "../../../components/Authorized/AuthorizedPage";
+import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 interface Faculty {
   _id: string;
   name: string;

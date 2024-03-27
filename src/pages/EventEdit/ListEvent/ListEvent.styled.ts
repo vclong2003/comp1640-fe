@@ -56,4 +56,5 @@ export const Icon = styled.div`
 
 export const ListItem = styled.div`
   display: flex;
+  gap: var(--s-3);
 `;

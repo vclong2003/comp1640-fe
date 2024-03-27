@@ -1,7 +1,7 @@
 import * as S from "./ListEvent.styled";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
-import ItemEvent from "./ItemEvent/ItemEvent";
+import Item from "../../../components/Item/Item";
 
 const ListEvent = () => {
   const [isPublish, setIsPublish] = useState(true);
@@ -30,10 +30,10 @@ const ListEvent = () => {
         </S.Search>
       </S.Header>
       <S.ListItem>
-        <ItemEvent />
-        <ItemEvent />
-        <ItemEvent />
-        <ItemEvent />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
       </S.ListItem>
     </S.Container>
   );

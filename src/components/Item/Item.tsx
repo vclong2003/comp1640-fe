@@ -1,10 +1,10 @@
-import * as S from "./ItemEvent.styled";
-import sport from "../../../../assets/images/sport.png";
+import * as S from "./Item.styled";
+import image from "../../assets/images/food.png";
 
-const ItemEvent = () => {
+const PopularContributionItem = () => {
   return (
     <S.Container>
-      <S.Image src={sport} alt="placeholder" />
+      <S.Image src={image} alt="placeholder" />
       <S.Title>Contribution Title</S.Title>
       <S.Description>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
@@ -18,4 +18,4 @@ const ItemEvent = () => {
   );
 };
 
-export default ItemEvent;
+export default PopularContributionItem;

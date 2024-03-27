@@ -1,5 +1,5 @@
 import * as S from "./PopularContributions.styled";
-import PopularContributionItem from "./PopularContributionItem/PopularContributionItem";
+import Item from "../../../components/Item/Item";
 
 const PopularContributions = () => {
   return (
@@ -12,10 +12,10 @@ const PopularContributions = () => {
         </S.MoveButtonsContainer>
       </S.Header>
       <S.PopularContributionItemsContainer>
-        <PopularContributionItem />
-        <PopularContributionItem />
-        <PopularContributionItem />
-        <PopularContributionItem />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
       </S.PopularContributionItemsContainer>
     </S.Container>
   );

@@ -1,22 +1,21 @@
 import styled from "styled-components";
+import { FormButton } from "../../../components/formComponents";
 
 export const Container = styled.div`
   display: flex;
-  background-color: #236192;
-  min-height: 100vh;
-  padding: var(--s-28) 0;
+  flex-wrap: wrap;
 `;
 
-export const Left = styled.div`
-  flex: 8;
+export const Title = styled.div``;
+
+export const MiddleContainer = styled.div`
   display: flex;
-  justify-content: center;
 `;
 
-export const Right = styled.div`
-  flex: 4;
+export const Left = styled.div``;
 
-  img {
-    height: 100%;
-  }
-`;
+export const Description = styled.div``;
+
+export const Right = styled.div``;
+
+export const BtnBottom = styled(FormButton)``;

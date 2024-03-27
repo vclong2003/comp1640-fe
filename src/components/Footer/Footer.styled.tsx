@@ -99,11 +99,11 @@ export const TextBottom = styled.div`
   gap: 20px;
 `;
 
-export const text = styled.div`
+export const Text = styled.div`
   font-size: 20px;
 `;
 
-export const icon = styled.div`
+export const Icon = styled.div`
   margin-top: 2px;
   font-size: 20px;
 `;

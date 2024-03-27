@@ -1,8 +1,10 @@
-import { ILoginPayload, IUser } from "../../interfaces/user.interfaces";
-import { axiosInstance } from "../../lib/axios.lib";
+import { ILoginPayload, IUser } from "@interfaces/user.interfaces";
+import { axiosInstance } from "@lib/axios.lib";
 
 const login = async (payload: ILoginPayload): Promise<IUser> => {
-  return await axiosInstance.post("/auth/login", payload);
+  return await axiosInstance.post("/auth/login", payload, {
+    headers: { "X-Required-Auth": false },
+  });
 };
 
 const getCurrentUser = async (): Promise<IUser> => {

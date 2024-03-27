@@ -25,9 +25,10 @@ export const LinkRegis = styled.div`
   cursor: pointer;
 `;
 
- 
-
-
+export const Error = styled.p`
+  color: var(--red);
+  font-size: var(--fs-md);
+`;
 
 export const Divider = styled.div`
   display: flex;

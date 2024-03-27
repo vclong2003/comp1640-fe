@@ -4,9 +4,9 @@ import EventPage from "../pages/EventPage/EventPage";
 import EventDetail from "../pages/EventEdit/EventEdit";
 import AuthorizedPage from "../components/AuthorizedPage/AuthorizedPage";
 import Profile from "../pages/Profile/Profile";
-import ContributionsDetail from "../components/ContributionsDetail/ContributionsDetail";
 import { ERole } from "../interfaces/user.interfaces";
 import AddContribution from "../pages/AddContribution/AddContribution";
+import ContributionDetail from "../pages/ContributionDetail/ContributionDetail";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
@@ -33,7 +33,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     path: "contribution/:id",
     component: (
       <AuthorizedPage>
-        <ContributionsDetail />
+        <ContributionDetail />
       </AuthorizedPage>
     ),
   },

@@ -6,8 +6,12 @@ import { IoMdPerson } from "react-icons/io";
 import ContributionsDetail from "../../../components/ContributionsDetail/ContributionsDetail";
 import Ava from "../../../assets/images/avt.png";
 import { IoSend } from "react-icons/io5";
+import { useState } from "react";
+import ReactQuill from "react-quill";
 
 const LeftDetailPage = () => {
+  const [test, setTest] = useState("");
+
   return (
     <S.Container>
       <S.TopContainer>
@@ -17,7 +21,7 @@ const LeftDetailPage = () => {
             <S.TextStatus>Published</S.TextStatus>
           </S.Status>
         </S.Text>
-        wef
+
         <S.Icon>
           <FiEdit />
         </S.Icon>
@@ -29,7 +33,22 @@ const LeftDetailPage = () => {
         </S.Bottom>
       </S.TopContainer>
       <S.BottomContainer>
-        <div>okok</div>
+        <div>
+          <ReactQuill
+            value={test}
+            onChange={setTest}
+            placeholder="Test rich text editor"
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ["bold", "italic"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["link", "image"],
+                ["clean"],
+              ],
+            }}
+          />
+        </div>
         <S.Title>
           <S.Person>
             <IoMdPerson />

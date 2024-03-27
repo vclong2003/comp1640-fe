@@ -41,6 +41,14 @@ export interface IGuestRegisterPayload {
   facultyId: string;
 }
 
+export interface IVerifyRegisterTokenPayload {
+  token: string;
+}
+
+export interface IVerifyRegisterTokenResponse {
+  email: string;
+}
+
 export interface ISetupAccountPayload {
   token: string;
   password: string;

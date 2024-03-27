@@ -1,4 +1,5 @@
 import "../assets/css/global.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-quill/dist/quill.snow.css"; // Css for rich text editor
 
 import { useEffect } from "react";

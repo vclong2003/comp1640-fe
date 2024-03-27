@@ -1,5 +1,5 @@
-import { ERole } from "../../interfaces/user.interfaces";
-import { RootState } from "../../store";
+import { ERole } from "@interfaces/user.interfaces";
+import { RootState } from "@store/index";
 import { useSelector } from "react-redux";
 
 interface IAuthorizedComponent {

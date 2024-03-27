@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { RootState } from "../../store";
-import { ERole } from "../../variables/user.variables";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
+import { ERole } from "@interfaces/user.interfaces";
+import { RootState } from "@store/index";
 
 interface IAuthorizedPageProps {
   allowedRoles?: ERole[];

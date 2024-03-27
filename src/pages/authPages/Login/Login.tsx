@@ -1,12 +1,13 @@
 import * as S from "./Login.styled";
-import BackGround from "../../../assets/images/login-background.png";
+import BackGround from "@assets/images/login-background.png";
 import LoginForm from "./LoginForm/LoginForm";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store";
-import { ILoginPayload } from "../../../interfaces/user.interfaces";
-import { login } from "../../../store/slices/userActions";
 import { Navigate, useSearchParams } from "react-router-dom";
-import { API_BASE_URL } from "../../../config/api.config";
+import { useState } from "react";
+import { API_BASE_URL } from "@config/api.config";
+import { login } from "@store/user/userActions";
+import { ILoginPayload } from "@interfaces/user.interfaces";
+import { AppDispatch, RootState } from "@store/index";
 
 export default function Login() {
   const { user } = useSelector((state: RootState) => state.userState);
@@ -14,7 +15,13 @@ export default function Login() {
 
   const [searchParams] = useSearchParams();
 
-  const onLogin = (values: ILoginPayload) => dispatch(login(values));
+  const [error, setError] = useState("");
+  const onLogin = (values: ILoginPayload) => {
+    setError("");
+    dispatch(login(values))
+      .unwrap()
+      .catch((error) => setError(error.message));
+  };
 
   const onGoogleLogin = () => {
     window.location.href = `${API_BASE_URL}/auth/google`;
@@ -29,7 +36,11 @@ export default function Login() {
       <S.RightContent>
         <S.Title>Hey, Welcome Back!</S.Title>
         <S.Description>We are very happy to see you back!</S.Description>
-        <LoginForm onSubmit={onLogin} onGoogleLogin={onGoogleLogin} />
+        <LoginForm
+          error={error}
+          onSubmit={onLogin}
+          onGoogleLogin={onGoogleLogin}
+        />
       </S.RightContent>
     </S.Container>
   );

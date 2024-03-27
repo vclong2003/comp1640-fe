@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userState from "./slices/user";
+import userState from "./user/user";
+import facultyState from "./faculty/faculty";
 
 const store = configureStore({
   reducer: {
     [userState.name]: userState.reducer,
+    [facultyState.name]: facultyState.reducer,
   },
 });
 

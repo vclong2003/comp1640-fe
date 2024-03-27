@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { API_BASE_URL } from "@config/api.config";
-import { login } from "@store/slices/userActions";
+import { login } from "@store/user/userActions";
 import { ILoginPayload } from "@interfaces/user.interfaces";
 import { AppDispatch, RootState } from "@store/index";
 

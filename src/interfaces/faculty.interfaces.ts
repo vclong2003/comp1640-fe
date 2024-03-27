@@ -10,6 +10,11 @@ export interface IFaculty {
   };
 }
 
+export interface IFacultyState {
+  faculties: Omit<IFaculty, "description" | "banner_image_url">[];
+  faculty: IFaculty | null;
+}
+
 export interface ICreateFacultyPayload {
   name: string;
   description: string;

@@ -1,4 +1,3 @@
-import { ILoginPayload } from "../../../../interfaces/user.interfaces";
 import * as S from "./LoginForm.styled";
 import * as Yup from "yup";
 
@@ -10,6 +9,7 @@ import {
   FormInput,
   FormLabel,
 } from "../../../../components/formComponents";
+import { ILoginPayload } from "@interfaces/user.interfaces";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email!").required("Required!"),

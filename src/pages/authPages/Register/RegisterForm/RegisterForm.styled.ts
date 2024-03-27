@@ -1,9 +1,5 @@
 import styled from "styled-components";
-import {
-  FormButton,
-  FormInput,
-  FormLabel,
-} from "../../../components/formComponents";
+import { FormButton, FormInput } from "../../../../components/formComponents";
 import { Formik } from "formik";
 
 export const Container = styled.div`

@@ -1,8 +1,8 @@
-import * as S from "./NewRegister.styled";
-import image from "../../assets/images/login-background.png";
+import * as S from "./Register.styled";
+import image from "@assets/images/login-background.png";
 import RegisterForm from "./RegisterForm/RegisterForm";
 
-const NewRegister = () => {
+export default function Register() {
   return (
     <S.Container>
       <S.Background src={image}></S.Background>
@@ -13,6 +13,4 @@ const NewRegister = () => {
       </S.Form>
     </S.Container>
   );
-};
-
-export default NewRegister;
+}

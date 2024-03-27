@@ -17,7 +17,6 @@ const LeftDetailPage = () => {
             <S.TextStatus>Published</S.TextStatus>
           </S.Status>
         </S.Text>
-        wef
         <S.Icon>
           <FiEdit />
         </S.Icon>

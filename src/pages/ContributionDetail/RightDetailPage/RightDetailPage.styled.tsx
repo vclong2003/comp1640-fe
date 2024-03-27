@@ -62,14 +62,14 @@ export const DocumentImg = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--s-8);
-  row-gap: var(--s-6);
+  gap: var(--s-4);
+  row-gap: var(--s-4);
   padding: 0 var(--s-3);
 `;
 
 export const AddImg = styled.button`
-  width: 180px;
-  height: 160px;
+  width: 110px;
+  height: 110px;
   background-color: rgba(179, 180, 179, 1);
   border-radius: var(--fs-md);
   cursor: pointer;

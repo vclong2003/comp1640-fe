@@ -52,7 +52,7 @@ export const Bottom = styled.div`
 
 export const Description = styled.div`
   color: white;
-  font-size: 60px;
+  font-size: var(--fs-3xl);
   padding: var(--s-15) 0;
 `;
 

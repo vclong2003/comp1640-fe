@@ -1,6 +1,10 @@
+import { useState } from "react";
 import * as S from "./FormPage.styled";
+import ReactQuill from "react-quill";
 
 const FormPage = () => {
+  const [test, setTest] = useState("");
+
   return (
     <S.Container>
       <S.ItemInput>
@@ -12,11 +16,20 @@ const FormPage = () => {
       <S.ItemInput>
         <S.Text>Description</S.Text>
         <S.Input>
-          <textarea
-            name=""
-            id=""
-            placeholder="Enter event description"
-          ></textarea>
+          <ReactQuill
+            value={test}
+            onChange={setTest}
+            placeholder="Test rich text editor"
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ["bold", "italic"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["link", "image"],
+                ["clean"],
+              ],
+            }}
+          />
         </S.Input>
       </S.ItemInput>
       <S.ItemInput>

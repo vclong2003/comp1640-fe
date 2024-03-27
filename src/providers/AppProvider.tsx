@@ -1,4 +1,6 @@
 import "../assets/css/global.css";
+import "quill/dist/quill.core.css";
+
 import { useEffect } from "react";
 import { APP_TITLE } from "../config/app.config";
 import { BrowserRouter } from "react-router-dom";

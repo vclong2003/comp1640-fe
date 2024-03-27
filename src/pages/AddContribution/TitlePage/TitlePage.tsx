@@ -1,5 +1,5 @@
 import * as S from "./TitlePage.styled";
-import Add from "../../../../assets/images/addcontributions.png";
+import Add from "../../../assets/images/addcontributions.png";
 
 const TitlePage = () => {
   return (

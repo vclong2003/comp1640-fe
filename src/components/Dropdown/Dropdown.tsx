@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./Dropdown.styled";
-
-export enum EDropDownPosition {
-  LEFT = "left",
-  RIGHT = "right",
-}
+import { EDropDownPosition } from "./dropdown.enums";
 
 interface IDropdownProps {
   children: React.ReactNode;

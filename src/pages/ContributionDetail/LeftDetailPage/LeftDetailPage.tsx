@@ -17,6 +17,7 @@ const LeftDetailPage = () => {
             <S.TextStatus>Published</S.TextStatus>
           </S.Status>
         </S.Text>
+        wef
         <S.Icon>
           <FiEdit />
         </S.Icon>
@@ -28,6 +29,7 @@ const LeftDetailPage = () => {
         </S.Bottom>
       </S.TopContainer>
       <S.BottomContainer>
+        <div>okok</div>
         <S.Title>
           <S.Person>
             <IoMdPerson />

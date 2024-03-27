@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from "../../../store";
 import { ILoginPayload } from "../../../interfaces/user.interfaces";
 import { login } from "../../../store/slices/userActions";
 import { Navigate, useSearchParams } from "react-router-dom";
+import { API_BASE_URL } from "../../../config/api.config";
 
 export default function Login() {
   const { user } = useSelector((state: RootState) => state.userState);
@@ -13,20 +14,22 @@ export default function Login() {
 
   const [searchParams] = useSearchParams();
 
-  const onLogin = (values: ILoginPayload) => {
-    dispatch(login(values));
+  const onLogin = (values: ILoginPayload) => dispatch(login(values));
+
+  const onGoogleLogin = () => {
+    window.location.href = `${API_BASE_URL}/auth/google`;
   };
 
   return (
     <S.Container>
-      {user && <Navigate to={searchParams.get("redirect") || "/"} />}
+      {user && <Navigate to={searchParams.get("redirect") || "/home"} />}
       <S.Background>
         <S.Image src={BackGround}></S.Image>
       </S.Background>
       <S.RightContent>
         <S.Title>Hey, Welcome Back!</S.Title>
         <S.Description>We are very happy to see you back!</S.Description>
-        <LoginForm onSubmit={onLogin} />
+        <LoginForm onSubmit={onLogin} onGoogleLogin={onGoogleLogin} />
       </S.RightContent>
     </S.Container>
   );

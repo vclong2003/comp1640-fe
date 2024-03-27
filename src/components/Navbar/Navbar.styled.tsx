@@ -3,17 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: var(--s-6) var(--s-10);
+  gap: var(--s-2);
+  padding: var(--s-5) var(--s-10);
 `;
 
 export const ContainerTop = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
-  font-size: 20px;
-  font-family: JetBrains Mono !important;
 `;
 
 export const ContainerBottom = styled.div`
@@ -26,58 +25,22 @@ export const Dash = styled.div`
 `;
 
 export const Logo = styled.div`
-  color: #fc4308;
-  font-weight: bold;
-  padding: 10px;
+  color: var(--black);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-4xl);
+  font-style: italic;
 `;
 
 export const ListUl = styled.ul`
   display: flex;
-  gap: 40px;
-  padding: 10px;
+  gap: var(--s-6);
 `;
 
 export const ListLi = styled.li`
   display: inline-block;
-  font-size: 25px;
-  &:hover {
-    color: var(--blue);
-    cursor: pointer;
-  }
-`;
-
-export const Search = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-`;
-
-export const SearchBox = styled.input`
-  border: none;
-  background-color: #dedede;
-  width: 400px;
-  border-radius: 15px;
-  padding: 10px;
-  font-size: 20px;
-
-  &:hover {
-    background-color: white;
-  }
-`;
-
-export const LogoSearch = styled.div`
-  padding: 10px;
-  font-size: 20px;
-`;
-
-export const TextAccount = styled.div`
+  font-size: var(--fs-2xl);
   cursor: pointer;
-  padding: 5px;
-  display: flex;
-  margin-right: 60px;
-  gap: 4px;
   &:hover {
     color: var(--blue);
-    cursor: pointer;
   }
 `;

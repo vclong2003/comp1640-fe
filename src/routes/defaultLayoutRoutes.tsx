@@ -1,40 +1,52 @@
 import { IRoute } from "../interfaces/common.interfaces";
 import Home from "../pages/Home/Home";
 import EventPage from "../pages/EventPage/EventPage";
-import AddContributions from "../pages/Contributions/AddContributions/AddContributions";
-import EditProfile from "../pages/EditProfifle/EditProfile";
-import DetailContributes from "../pages/DetailContributes/DetailContributes";
 import EventDetail from "../pages/EventEdit/EventEdit";
-import SetupAccount from "../pages/authPages/SetupAccount/SetupAccount";
-
-
+import AuthorizedPage from "../components/AuthorizedPage/AuthorizedPage";
+import Profile from "../pages/Profile/Profile";
+import ContributionsDetail from "../components/ContributionsDetail/ContributionsDetail";
+import { ERole } from "../interfaces/user.interfaces";
+import AddContribution from "../pages/AddContribution/AddContribution";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "/home",
-    component: <Home />,
+    component: (
+      <AuthorizedPage>
+        <Home />
+      </AuthorizedPage>
+    ),
   },
   {
     path: "/event",
     component: <EventPage />,
   },
   {
-    path: "/addcontributions",
-    component: <AddContributions />,
+    path: "/profile",
+    component: (
+      <AuthorizedPage>
+        <Profile />
+      </AuthorizedPage>
+    ),
   },
   {
-    path: "/editprofile",
-    component: <EditProfile />,
+    path: "contribution/:id",
+    component: (
+      <AuthorizedPage>
+        <ContributionsDetail />
+      </AuthorizedPage>
+    ),
   },
   {
-    path: "/detailcontributes",
-    component: <DetailContributes />,
+    path: "add-contribution",
+    component: (
+      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
+        <AddContribution />
+      </AuthorizedPage>
+    ),
   },
   {
     path: "/eventdetail",
     component: <EventDetail />,
   },
- 
-
-
 ];

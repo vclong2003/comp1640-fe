@@ -1,5 +1,5 @@
 import "../assets/css/global.css";
-import "quill/dist/quill.core.css";
+import "react-quill/dist/quill.snow.css"; // Css for rich text editor
 
 import { useEffect } from "react";
 import { APP_TITLE } from "../config/app.config";

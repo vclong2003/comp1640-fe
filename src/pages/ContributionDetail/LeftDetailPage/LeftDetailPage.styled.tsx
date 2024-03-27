@@ -52,8 +52,9 @@ export const Bottom = styled.div`
 
 export const Description = styled.div`
   color: white;
-  font-size: var(--fs-3xl);
-  padding: var(--s-15) 0;
+  font-size: var(--fs-4xl);
+  padding: var(--s-10) 0;
+  font-weight: bold;
 `;
 
 export const Author = styled.div`
@@ -64,7 +65,7 @@ export const Author = styled.div`
 export const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: var(--s-10) var(--s-10);
+  padding: var(--s-10) 0;
   gap: var(--s-7);
 `;
 

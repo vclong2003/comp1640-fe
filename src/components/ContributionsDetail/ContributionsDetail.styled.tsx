@@ -6,7 +6,6 @@ export const Container = styled.div`
 
 export const Left = styled.div`
   flex: 10;
- 
 `;
 
 export const Ava = styled.div`
@@ -30,7 +29,8 @@ export const UserInfor = styled.div`
 
 export const DateComment = styled.div``;
 
-
 export const Right = styled.div`
   flex: 2;
+  display: flex;
+  justify-content: flex-end;
 `;

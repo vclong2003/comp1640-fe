@@ -5,6 +5,7 @@ import AddContributions from "../pages/Contributions/AddContributions/AddContrib
 import EditProfile from "../pages/EditProfifle/EditProfile";
 import DetailContributes from "../pages/DetailContributes/DetailContributes";
 import EventDetail from "../pages/EventEdit/EventEdit";
+import SetupAccount from "../pages/authPages/SetupAccount/SetupAccount";
 
 
 
@@ -33,5 +34,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     path: "/eventdetail",
     component: <EventDetail />,
   },
+ 
+
 
 ];

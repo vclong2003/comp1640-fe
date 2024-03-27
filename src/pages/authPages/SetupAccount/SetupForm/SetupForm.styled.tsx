@@ -1,21 +1,40 @@
 import styled from "styled-components";
+import { DEVICES } from "../../../../config/responsiveBreakpoints";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: var(--s-20) var(--s-30) var(--s-5) var(--s-1);
+  padding: var(--s-3) var(--s-3);
+  width: 100%;
+  @media ${DEVICES.DESKTOP_L} {
+    padding: var(--s-20) var(--s-30) var(--s-5) var(--s-1);
+  }
 `;
 
 export const Title = styled.div`
-  font-size: 50px;
+  font-size: var(--fs-4xl);
+  @media ${DEVICES.DESKTOP_L} {
+    font-size: var(--fs-6xl);
+  }
 `;
 
 export const Description = styled.div`
+  /* @media ${DEVICES.DESKTOP_L} {
+    a {
+      text-decoration: none;
+      color: #1c1c1c;
+      font-size: var(--fs-xl);
+      &:hover {
+        text-decoration: underline;
+        color: var(--blue);
+      }
+    }
+  } */
   a {
     text-decoration: none;
     color: #1c1c1c;
-    font-size: 20px;
+    font-size: var(--fs-xl);
     &:hover {
       text-decoration: underline;
       color: var(--blue);
@@ -25,8 +44,12 @@ export const Description = styled.div`
 
 export const Center = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: var(--s-6);
+  @media ${DEVICES.DESKTOP_L} {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 export const CenterLeft = styled.div`

@@ -7,13 +7,13 @@ import {
   FormLabel,
 } from "@components/formComponents";
 import * as S from "./RegisterForm.styled";
-import * as Yup from "yup";
 import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { useEffect } from "react";
 import { findFaculties } from "@store/faculty/facultyActions";
 import { IGuestRegisterPayload } from "@interfaces/user.interfaces";
+import { RegisterValidationSchema } from "@utils/auth.utils";
 
 interface IRegisterFormProps {
   onSubmit: (values: IGuestRegisterPayload) => void;
@@ -24,11 +24,6 @@ const initialValues: IGuestRegisterPayload = {
   email: "",
   facultyId: "",
 };
-
-const RegisterSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email!").required("Required!"),
-  facultyId: Yup.string().required("Required!"),
-});
 
 const RegisterForm = ({ onSubmit, error }: IRegisterFormProps) => {
   const { faculties } = useSelector((state: RootState) => state.facultyState);
@@ -43,7 +38,7 @@ const RegisterForm = ({ onSubmit, error }: IRegisterFormProps) => {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={RegisterSchema}
+        validationSchema={RegisterValidationSchema}
       >
         <Form>
           <FormGroup>

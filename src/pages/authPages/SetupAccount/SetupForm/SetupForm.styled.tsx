@@ -20,86 +20,7 @@ export const Title = styled.div`
 `;
 
 export const Description = styled.div`
-  /* @media ${DEVICES.DESKTOP_L} {
-    a {
-      text-decoration: none;
-      color: #1c1c1c;
-      font-size: var(--fs-xl);
-      &:hover {
-        text-decoration: underline;
-        color: var(--blue);
-      }
-    }
-  } */
-  a {
-    text-decoration: none;
-    color: #1c1c1c;
-    font-size: var(--fs-xl);
-    &:hover {
-      text-decoration: underline;
-      color: var(--blue);
-    }
-  }
-`;
-
-export const Center = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-6);
-  @media ${DEVICES.DESKTOP_L} {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-export const CenterLeft = styled.div`
-  flex: 6;
-  display: flex;
-  flex-direction: column;
-  row-gap: var(--s-4);
-`;
-
-export const CenterRight = styled.div`
-  flex: 6;
-  display: flex;
-  flex-direction: column;
-  row-gap: var(--s-4);
-`;
-
-export const Input = styled.input`
-  padding: var(--s-5) var(--s-5);
-  font-size: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  box-shadow: var(--shadow-xl);
-  width: 100%;
-  &:hover {
-    background-color: #dedede;
-  }
-`;
-
-export const Input4 = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  font-size: 20px;
-  input {
-    font-size: 20px;
-  }
-`;
-
-export const Input5 = styled.div`
-  input {
-    padding: var(--s-5) var(--s-5);
-    font-size: 18px;
-    width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    box-shadow: var(--shadow-xl);
-    &:hover {
-      background-color: #dedede;
-    }
-  }
+  font-size: var(--fs-lg);
 `;
 
 export const CheckTerm = styled.div`
@@ -129,4 +50,9 @@ export const BtnRegister = styled.button`
   &:hover {
     background-color: rgba(226, 190, 103, 0.5);
   }
+`;
+
+export const Error = styled.p`
+  color: var(--red);
+  font-size: var(--fs-md);
 `;

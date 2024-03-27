@@ -46,7 +46,8 @@ export interface ISetupAccountPayload {
   password: string;
   name: string;
   phone: string;
-  dob: Date;
+  dob: Date | string;
+  gender: EGender;
 }
 
 export interface IUpdateUserPayload {

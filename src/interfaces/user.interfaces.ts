@@ -36,6 +36,11 @@ export interface ILoginPayload {
   password: string;
 }
 
+export interface IGuestRegisterPayload {
+  email: string;
+  facultyId: string;
+}
+
 export interface ISetupAccountPayload {
   token: string;
   password: string;

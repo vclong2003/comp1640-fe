@@ -8,7 +8,7 @@ import {
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../../components/formComponents";
+} from "@components/formComponents";
 import { ILoginPayload } from "@interfaces/user.interfaces";
 
 const LoginSchema = Yup.object().shape({

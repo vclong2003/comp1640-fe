@@ -75,6 +75,6 @@ const SetupForm = ({ email, error, onSubmit }: ISetupFormProps) => {
       </Formik>
     </S.Container>
   );
-};
+};b
 
 export default SetupForm;

@@ -12,6 +12,7 @@ export default function UserProvider({ children }: IInitialLoadProviderProps) {
   const dispatch = useDispatch<AppDispatch>();
 
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     dispatch(getCurrentUser()).finally(() => setLoading(false));
   }, [dispatch]);

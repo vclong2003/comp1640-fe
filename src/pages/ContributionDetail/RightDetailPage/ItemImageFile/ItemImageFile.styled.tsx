@@ -9,6 +9,7 @@ export const Image = styled.img`
   width: 110px;
   height: 110px;
   z-index: 0;
+  border-radius: var(--br-md);
 `;
 
 export const IconDelete = styled.div`
@@ -16,7 +17,7 @@ export const IconDelete = styled.div`
   z-index: 1;
   color: white;
   right: 0;
-  padding: var(--s-2) var(--s-3);
-  font-size: var(--fs-xl);
+  padding: var(--s-1) var(--s-1);
+  font-size: var(--fs-md);
   cursor: pointer;
 `;

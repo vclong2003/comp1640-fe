@@ -12,10 +12,18 @@ const PopularContributions = () => {
         </S.MoveButtonsContainer>
       </S.Header>
       <S.PopularContributionItemsContainer>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        <S.Item>
+          <Item />
+        </S.Item>
+        <S.Item>
+          <Item />
+        </S.Item>
+        <S.Item>
+          <Item />
+        </S.Item>
+        <S.Item>
+          <Item />
+        </S.Item>
       </S.PopularContributionItemsContainer>
     </S.Container>
   );

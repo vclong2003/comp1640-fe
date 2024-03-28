@@ -4,10 +4,11 @@ import LeftComment from "../../../components/ContributionsDetail/LeftComment/Lef
 import { FiEdit } from "react-icons/fi";
 import { IoMdPerson } from "react-icons/io";
 import ContributionsDetail from "../../../components/ContributionsDetail/ContributionsDetail";
-import Ava from "../../../assets/images/avt.png";
 import { IoSend } from "react-icons/io5";
 import { useState } from "react";
 import ReactQuill from "react-quill";
+import Avatar from "@components/Avatar/Avatar";
+import { Formik } from "formik";
 
 const LeftDetailPage = () => {
   const [test, setTest] = useState("");
@@ -21,7 +22,6 @@ const LeftDetailPage = () => {
             <S.TextStatus>Published</S.TextStatus>
           </S.Status>
         </S.Text>
-
         <S.Icon>
           <FiEdit />
         </S.Icon>
@@ -55,12 +55,24 @@ const LeftDetailPage = () => {
           </S.Person>
           <S.TextCmt>Comments</S.TextCmt>
         </S.Title>
-        <S.CmtItem>
-          <ContributionsDetail />
-        </S.CmtItem>
+        <S.ContainerComment>
+          <S.CmtItem>
+            <ContributionsDetail />
+          </S.CmtItem>
+          <S.CmtItem>
+            <ContributionsDetail />
+          </S.CmtItem>
+          <S.CmtItem>
+            <ContributionsDetail />
+          </S.CmtItem>
+        </S.ContainerComment>
         <S.AddCmt>
-          <S.ImageAva src={Ava} />
-          <S.InputCmt placeholder="Add Comment"></S.InputCmt>
+          <S.ImageAva>
+            <Avatar isUpdateable={true} />
+          </S.ImageAva>
+          <Formik>
+            <S.InputCmt placeholder="Add Comment"></S.InputCmt>
+          </Formik>
           <S.IconSent>
             <IoSend />
           </S.IconSent>

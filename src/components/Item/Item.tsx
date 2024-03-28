@@ -1,9 +1,9 @@
 import * as S from "./Item.styled";
 import image from "../../assets/images/food.png";
 
-const PopularContributionItem = () => {
+export default function Item(props: JSX.IntrinsicAttributes): JSX.Element {
   return (
-    <S.Container>
+    <S.Container {...props}>
       <S.Image src={image} alt="placeholder" />
       <S.Title>Contribution Title</S.Title>
       <S.Description>
@@ -16,6 +16,4 @@ const PopularContributionItem = () => {
       </S.InteractionContainer>
     </S.Container>
   );
-};
-
-export default PopularContributionItem;
+}

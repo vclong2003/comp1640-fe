@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  
 `;
 
 export const Left = styled.div`
@@ -33,4 +34,5 @@ export const Right = styled.div`
   flex: 2;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;

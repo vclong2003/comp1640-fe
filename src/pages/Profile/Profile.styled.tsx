@@ -19,10 +19,15 @@ export const Title = styled.div`
   margin-bottom: var(--s-8);
 `;
 
-export const FormContainer = styled.div`
-  flex: 6;
+export const Left = styled.div`
+  flex: 7;
+`;
+export const AvatarContainer = styled.div`
+  width: 96px;
+  height: 96px;
+  margin: var(--s-1) auto;
 `;
 
-export const AvatarContainer = styled.div`
-  flex: 6;
+export const Right = styled.div`
+  flex: 5;
 `;

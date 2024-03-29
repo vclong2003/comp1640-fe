@@ -22,6 +22,7 @@ import Modal from "@mui/material/Modal";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import ViewIcon from "@mui/icons-material/Visibility";
 function createData(no: number, id: string, name: string, decription: string) {
   return { no, id, name, decription };
 }
@@ -48,6 +49,10 @@ const Faculty = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [openDetailModal, setOpenDetailModal] = React.useState(false);
+  const handleOpenDetailModal = () => setOpenDetailModal(true);
+  const handleCloseDetailModal = () => setOpenDetailModal(false);
   return (
     <AuthorizedPage>
       <Headline>Faculty</Headline>
@@ -126,6 +131,17 @@ const Faculty = () => {
                   <Button
                     variant="outlined"
                     size="small"
+                    color="info"
+                    startIcon={<ViewIcon />}
+                    sx={{ mr: 4 }}
+                    onClick={handleOpenDetailModal}
+                  >
+                    View
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    size="small"
                     color="warning"
                     startIcon={<EditIcon />}
                     sx={{ mr: 4 }}
@@ -149,7 +165,7 @@ const Faculty = () => {
 
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseDetailModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -190,6 +206,57 @@ const Faculty = () => {
           >
             Submit
           </Button>
+        </Box>
+      </Modal>
+
+      <Modal
+        open={openDetailModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Detail Faculty
+          </Typography>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
+            <TextField
+              id="outlined-basic"
+              label="ID"
+              variant="outlined"
+              sx={{ mr: 2 }}
+            />
+            <TextField id="outlined-basic" label="Name" variant="outlined" />
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
+            <TextField
+              id="outlined-basic"
+              label="Decription"
+              variant="outlined"
+            />
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<CloudUploadIcon />}
+              sx={{ width: 222.67, color: "gray", borderColor: "gray" }}
+            >
+              Upload Image
+            </Button>
+          </Box>
+
+          <Box sx={{ mt: 4, display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              variant="contained"
+              size="medium"
+              color="error"
+              sx={{ mr: 4 }}
+            >
+              Delete
+            </Button>
+            <Button variant="contained" size="medium" color="primary">
+              Edit
+            </Button>
+          </Box>
         </Box>
       </Modal>
     </AuthorizedPage>

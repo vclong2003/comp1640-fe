@@ -3,7 +3,7 @@ export interface IFaculty {
   name: string;
   description: string;
   banner_image_url: string;
-  mc: {
+  mc?: {
     _id: string;
     name: string;
     email: string;

@@ -3,12 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { CiSearch } from "react-icons/ci";
 import InputAdornment from "@mui/material/InputAdornment";
-import {
-  AddAndSort,
-  Form,
-  HeadlineAndDelete,
-  Headline,
-} from "./Faculty.styled";
+import { AddAndSort, Form, Headline } from "./Faculty.styled";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -16,22 +11,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+
 import Modal from "@mui/material/Modal";
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-function createData(no: number, id: string, name: string, decription: string) {
-  return { no, id, name, decription };
-}
-
-const rows = [
-  createData(1, "A123", "IT", "test decription"),
-  createData(2, "A123", "IT", "test decription"),
-  createData(3, "A123", "IT", "test decription"),
-  createData(4, "A123", "IT", "test decription"),
-];
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { findFaculties } from "@store/faculty/facultyActions";
+import FacultyRow from "./FacultyRow/FacultyRow";
 
 const style = {
   position: "absolute" as const,
@@ -45,6 +33,13 @@ const style = {
 };
 
 const Faculty = () => {
+  const { faculties } = useSelector((state: RootState) => state.facultyState);
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(findFaculties({}));
+  }, [dispatch]);
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -92,56 +87,20 @@ const Faculty = () => {
         </AddAndSort>
       </Form>
 
-      <HeadlineAndDelete>
-        <Headline>List of Faculties</Headline>
-        <Button variant="contained" size="medium" color="error">
-          Delete All
-        </Button>
-      </HeadlineAndDelete>
-
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>No</TableCell>
               <TableCell align="left">ID</TableCell>
-              <TableCell align="left">Name&nbsp;</TableCell>
-              <TableCell align="left">Decription&nbsp;</TableCell>
-              <TableCell align="left">Action&nbsp;</TableCell>
+              <TableCell align="left">Name</TableCell>
+              <TableCell align="left">MC Name</TableCell>
+              <TableCell align="left">MC Email</TableCell>
+              <TableCell align="left">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.no}
-                </TableCell>
-                <TableCell align="left">{row.id}</TableCell>
-                <TableCell align="left">{row.name}</TableCell>
-                <TableCell align="left">{row.decription}</TableCell>
-                <TableCell align="left">
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="warning"
-                    startIcon={<EditIcon />}
-                    sx={{ mr: 4 }}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="error"
-                    startIcon={<DeleteIcon />}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
+            {faculties.map((faculty) => (
+              <FacultyRow faculty={faculty} />
             ))}
           </TableBody>
         </Table>

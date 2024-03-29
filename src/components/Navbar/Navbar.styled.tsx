@@ -48,7 +48,7 @@ export const Logo = styled.div`
   }
 `;
 
-export const ListUl = styled.ul`
+export const NavList = styled.div`
   display: none;
   gap: var(--s-4);
   @media ${DEVICES.DESKTOP} {
@@ -58,7 +58,7 @@ export const ListUl = styled.ul`
   }
 `;
 
-export const ListLi = styled(NavLink)`
+export const NavItem = styled(NavLink)`
   flex-direction: column;
   align-items: flex-start;
   margin: var(--s-3) var(--s-8);
@@ -90,7 +90,7 @@ export const ResponsiveNavButton = styled(FormButton)`
   }
 `;
 
-export const VerticalNavList = styled(ListLi)`
+export const VerticalNavList = styled.div`
   flex-direction: column;
   align-items: flex-start;
   row-gap: var(--s-3);

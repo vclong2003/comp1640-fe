@@ -23,19 +23,19 @@ const Navbar = () => {
         </S.ResponsiveNavButton>
         <OffCanvas show={isOffcanavsVisible} onClose={closeOffCanvas}>
           <S.VerticalNavList>
-            <S.ListLi>Home</S.ListLi>
-            <S.ListLi>Events</S.ListLi>
-            <S.ListLi>Contact Us</S.ListLi>
-            <S.ListLi>About Us</S.ListLi>
+            <S.NavItem>Home</S.NavItem>
+            <S.NavItem>Events</S.NavItem>
+            <S.NavItem>Contact Us</S.NavItem>
+            <S.NavItem>About Us</S.NavItem>
           </S.VerticalNavList>
         </OffCanvas>
         <S.Logo>MagBook™</S.Logo>
-        <S.ListUl>
-          <S.ListLi>Home</S.ListLi>
-          <S.ListLi>Events</S.ListLi>
-          <S.ListLi>Contact Us</S.ListLi>
-          <S.ListLi>About Us</S.ListLi>
-        </S.ListUl>
+        <S.NavList>
+          <S.NavItem>Home</S.NavItem>
+          <S.NavItem>Events</S.NavItem>
+          <S.NavItem>Contact Us</S.NavItem>
+          <S.NavItem>About Us</S.NavItem>
+        </S.NavList>
         <S.Profile>
           <ProfileDropdown />
         </S.Profile>

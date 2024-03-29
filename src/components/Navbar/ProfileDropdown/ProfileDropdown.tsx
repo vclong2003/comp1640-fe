@@ -1,10 +1,10 @@
 import * as S from "./ProfileDropdown.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store";
+import { AppDispatch, RootState } from "@store/index";
 import { EDropDownPosition } from "../../Dropdown/dropdown.enums";
 import Dropdown from "../../Dropdown/Dropdown";
 import Avatar from "../../Avatar/Avatar";
-import { logout } from "../../../store/user/userActions";
+import { logout } from "@store/user/userActions";
 
 export default function ProfileDropdown() {
   const { user } = useSelector((state: RootState) => state.userState);

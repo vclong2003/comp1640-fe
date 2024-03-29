@@ -1,4 +1,4 @@
-import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
+import AuthorizedPage from "@components/AuthorizedPage/AuthorizedPage";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { CiSearch } from "react-icons/ci";

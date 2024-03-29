@@ -7,7 +7,7 @@ import { buildQueryString } from "@utils/string.utils";
 
 const findFaculties = async (
   payload: IFindFacultiesPayload,
-): Promise<Omit<IFaculty, "description" | "banner_image_url">[]> => {
+): Promise<IFaculty[]> => {
   const queryString = buildQueryString(payload as { [key: string]: unknown });
   return await axiosInstance.get(`/faculty${queryString}`);
 };

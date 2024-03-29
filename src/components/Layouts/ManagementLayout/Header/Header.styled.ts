@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
-  width: 100%
+  width: 100%;
   height: 80px;
-  border-bottom: 2px solid gray;
   display: flex;
   justify-content: space-between;
+  box-shadow: var(--shadow-md);
   div {
     margin: 20px;
   }

@@ -21,7 +21,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
 import React from "react";
 import Typography from "@mui/material/Typography";
-
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 function createData(no: number, id: string, name: string, decription: string) {
   return { no, id, name, decription };
 }
@@ -108,7 +108,6 @@ const Faculty = () => {
               <TableCell align="left">Name&nbsp;</TableCell>
               <TableCell align="left">Decription&nbsp;</TableCell>
               <TableCell align="left">Action&nbsp;</TableCell>
-              <TableCell align="left"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -129,11 +128,10 @@ const Faculty = () => {
                     size="small"
                     color="warning"
                     startIcon={<EditIcon />}
+                    sx={{ mr: 4 }}
                   >
                     Edit
                   </Button>
-                </TableCell>
-                <TableCell align="left">
                   <Button
                     variant="outlined"
                     size="small"
@@ -174,7 +172,14 @@ const Faculty = () => {
               label="Decription"
               variant="outlined"
             />
-            <TextField id="outlined-basic" label="Upload" variant="outlined" />
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<CloudUploadIcon />}
+              sx={{ width: 222.67, color: "gray", borderColor: "gray" }}
+            >
+              Upload Image
+            </Button>
           </Box>
 
           <Button

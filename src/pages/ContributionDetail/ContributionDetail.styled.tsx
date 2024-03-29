@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: var(--s-8) var(--s-10);
-  gap: var(--s-10);
+  padding-top: var(--s-3);
 `;
 
 export const TopContainer = styled.div`
   display: flex;
-  gap: var(--s-10);
+  gap: var(--s-5);
 `;
 
 export const Left = styled.div`

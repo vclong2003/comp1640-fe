@@ -22,10 +22,10 @@ export default function ProfileDropdown() {
           <S.AvatarContainer>
             <Avatar imageUrl={user?.avatar_url} />
           </S.AvatarContainer>
-          <S.UserInfoContainer>
+          {/* <S.UserInfoContainer>
             <S.UserName>{user?.name}</S.UserName>
             <S.UserRole>{user?.role}</S.UserRole>
-          </S.UserInfoContainer>
+          </S.UserInfoContainer> */}
         </S.ProfileButton>
       }
     >

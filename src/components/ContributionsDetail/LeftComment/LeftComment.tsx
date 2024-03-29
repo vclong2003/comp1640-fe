@@ -1,12 +1,11 @@
-
+import Avatar from "@components/Avatar/Avatar";
 import * as S from "./LeftComment.styled";
-import Avatar from "../../../assets/images/avt.png";
 
 const LeftComment = () => {
   return (
     <S.Container>
       <S.Ava>
-        <img src={Avatar} alt="" />
+      <Avatar isUpdateable={true} />
       </S.Ava>
       <S.InfoComment>
         <S.Author>

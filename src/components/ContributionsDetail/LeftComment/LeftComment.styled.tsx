@@ -7,10 +7,8 @@ export const Container = styled.div`
 `;
 
 export const Ava = styled.div`
-  img {
-    width: 36px;
-    height: 36px;
-  }
+  width: 36px;
+  height: 36px;
 `;
 
 export const InfoComment = styled.div`
@@ -22,9 +20,9 @@ export const InfoComment = styled.div`
 export const Author = styled.div``;
 
 export const UserInfor = styled.div`
-  font-size: var(--fs-md);
+  font-size: var(--fs-sm);
 `;
 
 export const DateComment = styled.div`
-  font-size: var(--fs-md);
+  font-size: var(--fs-sm);
 `;

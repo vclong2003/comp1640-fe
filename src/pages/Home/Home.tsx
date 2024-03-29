@@ -2,8 +2,8 @@ import * as S from "./Home.styled";
 import FeaturedContribution from "./FeaturedContribution/FeaturedContribution";
 import SecondaryContribution from "./SecondaryContribution/SecondaryContribution";
 import PopularContributions from "./PopularContributions/PopularContributions";
-import PhotoContributions from "./PhotoContributions/PhotoContributions";
 import Container from "@components/Container/Container";
+import ContributionList from "./ContributionList/ContributionList";
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
           </S.SecondaryContainer>
         </S.Banner>
         <PopularContributions />
-        <PhotoContributions />
+        <ContributionList />
       </S.Container>
     </Container>
   );

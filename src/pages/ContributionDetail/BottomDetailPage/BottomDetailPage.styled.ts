@@ -1,35 +1,26 @@
+import { FormButton } from "@components/formComponents";
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  gap: var(--s-7);
+  gap: var(--s-3);
 `;
 
-export const Cancel = styled.div``;
-
-export const ButtonCancel = styled.button`
+export const ButtonCancel = styled(FormButton)`
   padding: var(--s-3) var(--s-9);
   color: white;
-  background-color: #bfbfbf;
-  font-size: var(--fs-xl);
-  border-radius: var(--fs-sm);
+  background-color: var(--light-gray-2);
+  font-size: var(--fs-lg);
+  border-radius: var(--br-md);
   cursor: pointer;
-  &:hover {
-    background-color: rgba(179, 180, 179, 0.6);
-  }
 `;
 
-export const ButtonSave = styled.button`
-  padding: var(--s-3) var(--s-9);
+export const ButtonSave = styled(FormButton)`
+  padding: var(--s-3) var(--s-11);
   color: white;
-  background-color: #f2ba1d;
-  font-size: var(--fs-xl);
-  border-radius: var(--fs-sm);
+  background-color: var(--yellow);
+  font-size: var(--fs-lg);
+  border-radius: var(--br-md);
   cursor: pointer;
-  &:hover {
-    background-color: rgba(202, 150, 23, 0.4);
-  }
 `;
-
-export const Save = styled.div``;

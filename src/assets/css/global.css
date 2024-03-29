@@ -21,10 +21,14 @@
   --green: #71984a;
   --orange: #df6a2e;
   --light-gray: #e0dcdc88;
+  --light-gray-1: #F7F7F7;
+  --light-gray-2: #BFBFBF;
   --blue-gray: #6c737f;
   --ice-blue: #edf2f8;
   --dark-gray: #6e6565;
   --dark-brown: #66665D;
+  --gray: #BFBFBF;
+  
 
   /* Font sizes -------------------- */
   --fs-xs: 0.75rem;

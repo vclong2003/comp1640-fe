@@ -6,26 +6,28 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 0 var(--s-3);
   align-items: center;
-  border: 1px solid #f2ba1d;
-  border-radius: var(--fs-md);
+  border: 2px solid #f2ba1d;
+  border-radius: var(--br-md);
 `;
 
 export const LeftContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--s-3);
 `;
 
 export const ImageDoc = styled.img`
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
 `;
 
-export const TitleDoc = styled.div``;
+export const TitleDoc = styled.div`
+  font-size: var(--fs-sm);
+`;
 
 export const RightContainer = styled.div`
   font-size: var(--fs-xl);
-  padding-top: var(--s-1);
+  display: flex;
+  align-items: center;
   cursor: pointer;
 `;

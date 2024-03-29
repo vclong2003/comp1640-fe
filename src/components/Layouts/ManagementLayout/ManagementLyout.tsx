@@ -6,9 +6,9 @@ import { Menu } from "../../ManagementComponent/Menu/Menu";
 export default function ManagementLayout(): JSX.Element {
   return (
     <S.Container>
-      <Menu />
+      <HeaderComponent />
       <S.Content>
-        <HeaderComponent />
+        <Menu />
         <S.ChildrenComponent>
           <Outlet />
         </S.ChildrenComponent>

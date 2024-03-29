@@ -1,25 +1,18 @@
-import { Headline } from "../Faculty/Faculty.styled";
 import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { CiSearch } from "react-icons/ci";
 import InputAdornment from "@mui/material/InputAdornment";
-import {
-  AddUserButton,
-  DeleteButton,
-  HeadlineAndDelete,
-  SortByButton,
-} from "./User.styled";
+import { AddAndSort, Form, HeadlineAndDelete, Headline } from "./User.styled";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { FaPen } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 function createData(no: number, id: string, name: string, decription: string) {
   return { no, id, name, decription };
 }
@@ -34,37 +27,50 @@ const User = () => {
   return (
     <AuthorizedPage>
       <Headline>Users</Headline>
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "50ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          id="outlined-basic"
-          label="Search"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <CiSearch />
-              </InputAdornment>
-            ),
-          }}
-          variant="outlined"
-        />
 
-        <AddUserButton>Add Users</AddUserButton>
-        <SortByButton>Sort by</SortByButton>
-      </Box>
+      <Form>
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { width: "50ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            id="outlined-basic"
+            label="Search"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <CiSearch />
+                </InputAdornment>
+              ),
+            }}
+            variant="outlined"
+            size="small"
+          />
+        </Box>
+
+        <AddAndSort>
+          <Button variant="contained" size="medium" color="success">
+            Add new
+          </Button>
+
+          <Button variant="contained" size="medium">
+            Sort by
+          </Button>
+        </AddAndSort>
+      </Form>
 
       <HeadlineAndDelete>
         <Headline>List of users</Headline>
-        <DeleteButton>Delete All</DeleteButton>
+        <Button variant="contained" size="medium" color="error">
+          Delete All
+        </Button>
       </HeadlineAndDelete>
 
-      <TableContainer component={Paper}>
+      <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -89,13 +95,22 @@ const User = () => {
                 <TableCell align="left">{row.name}</TableCell>
                 <TableCell align="left">{row.decription}</TableCell>
                 <TableCell align="left">
-                  <Button variant="outlined" size="small" color="warning">
-                    <FaPen /> Edit
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    color="warning"
+                    startIcon={<EditIcon />}
+                  >
+                    Edit
                   </Button>
                 </TableCell>
                 <TableCell align="left">
-                  <Button variant="outlined" size="small" color="error">
-                    <MdDelete />
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    color="error"
+                    startIcon={<DeleteIcon />}
+                  >
                     Delete
                   </Button>
                 </TableCell>

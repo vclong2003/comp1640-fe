@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  display: flex;
 `;
 
 export const Content = styled.div`
-  width: 80%;
+  width: 100%;
+  display: flex;
 `;
 
 export const Headline = styled.h2`
@@ -15,5 +14,6 @@ export const Headline = styled.h2`
 `;
 
 export const ChildrenComponent = styled.div`
-  margin-left: 20px;
+  margin: 0 20px;
+  width: 85%;
 `;

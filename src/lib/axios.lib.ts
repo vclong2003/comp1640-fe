@@ -5,7 +5,6 @@ export const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    "X-Required-Auth": true,
   },
   withCredentials: true,
 });
@@ -15,11 +14,7 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (
-      error.response.status === 401 &&
-      !originalRequest._retry &&
-      originalRequest["X-Required-Auth"] === true
-    ) {
+    if (error.response.status === 401 && !originalRequest._retry) {
       try {
         await getNewAccessToken();
       } catch (error) {

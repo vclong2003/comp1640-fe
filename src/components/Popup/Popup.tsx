@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import * as S from "./Popup.styled";
 
 interface IPopupProps extends JSX.IntrinsicAttributes {
-  children: JSX.Element | JSX.Element[] | string | null | undefined;
+  children: ReactNode;
   show?: boolean;
   onClose: () => void;
 }

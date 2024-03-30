@@ -39,6 +39,7 @@ const PopupHeader = styled.div`
 
 const PopupBody = styled.div`
   overflow-y: auto;
+  border-radius: var(--br-md);
 `;
 
 const CloseButton = styled(IoClose)`

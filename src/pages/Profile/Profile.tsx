@@ -3,6 +3,7 @@ import Container from "@components/Container/Container";
 import ProfileInfoForm from "./ProfileInfoForm/ProfileInfoForm";
 import Avatar from "@components/Avatar/Avatar";
 import ChangePassword from "./ChangePassword/ChangePassword";
+import LoginSessions from "./LoginSessions/LoginSessions";
 
 export default function Profile() {
   return (
@@ -21,6 +22,7 @@ export default function Profile() {
           <S.LogoutFromAllDevicesBtn>
             Logout from all devices
           </S.LogoutFromAllDevicesBtn>
+          <LoginSessions />
         </S.AuthContainer>
       </S.Profile>
     </Container>

@@ -32,7 +32,7 @@ export const AvatarContainer = styled.div`
   margin: var(--s-1) auto;
 `;
 
-export const AuthContainer = styled.div`
+export const SecurityContainer = styled.div`
   flex: 5;
   display: flex;
   font-display: row;
@@ -44,6 +44,9 @@ export const SecurityTitle = styled.div`
   width: 100%;
   font-size: var(--fs-2xl);
   font-weight: var(--fw-semibold);
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
 `;
 
 export const LogoutFromAllDevicesBtn = styled(FormButton)`

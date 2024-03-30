@@ -54,7 +54,9 @@ const RegisterForm = ({ onSubmit }: IRegisterFormProps) => {
             <FormInput component="select" name="facultyId">
               <option value="">Please select a faculty</option>
               {faculties.map((faculty) => (
-                <option value={faculty._id}>{faculty.name}</option>
+                <option key={faculty._id} value={faculty._id}>
+                  {faculty.name}
+                </option>
               ))}
             </FormInput>
             <FormError name="facultyId" />

@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
         await getNewAccessToken();
       } catch (error) {
         console.log("Get new access token failed!");
-        return Promise.reject(error);
+        return;
       }
       originalRequest._retry = true;
       return axiosInstance(originalRequest);
@@ -41,8 +41,7 @@ axiosInstance.interceptors.response.use(
       error?.response?.data?.message ||
       error?.message ||
       "Something went wrong!";
-    notifyError(message);
-    return Promise.reject(message);
+    return notifyError(message);
   },
 );
 

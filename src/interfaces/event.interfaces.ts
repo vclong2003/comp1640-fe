@@ -8,9 +8,9 @@ export interface IEvent {
   name: string;
   description?: string;
   banner_image_url?: string;
-  start_date: Date;
-  first_closure_date: Date;
-  final_closure_date: Date;
+  start_date: string;
+  first_closure_date: string;
+  final_closure_date: string;
   is_accepting_new_contribution: boolean;
   is_contributions_editable: boolean;
   number_of_contributions: number;
@@ -28,9 +28,9 @@ export interface IEvent {
 export interface ICreatEventPayload {
   name: string;
   description: string;
-  start_date: Date;
-  first_closure_date: Date;
-  final_closure_date: Date;
+  start_date: string;
+  first_closure_date: string;
+  final_closure_date: string;
   facultyId: string;
   bannerImage: File;
 }
@@ -38,17 +38,17 @@ export interface ICreatEventPayload {
 export interface IUpdateEventPayload {
   name?: string;
   description?: string;
-  start_date?: Date;
-  first_closure_date?: Date;
-  final_closure_date?: Date;
+  start_date?: string;
+  first_closure_date?: string;
+  final_closure_date?: string;
   bannerImage?: File;
 }
 
 export interface IFindEventsPayload {
   name?: string;
   facultyId?: string;
-  start_date?: Date;
-  final_closure_date?: Date;
+  start_date?: string;
+  final_closure_date?: string;
   mcName?: string;
   sort?: EEventSort;
   skip?: number;

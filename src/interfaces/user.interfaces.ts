@@ -5,12 +5,12 @@ export enum ERole {
   MarketingCoordinator = "mc",
   Admin = "admin",
 }
-
 export enum EGender {
   Male = "male",
   Female = "female",
   Other = "other",
 }
+
 export interface IUser {
   _id: string;
   email: string;
@@ -25,31 +25,38 @@ export interface IUser {
   gender: EGender;
   role: ERole;
 }
+export interface ILoginSession {
+  _id: string;
+  browser: string;
+  date: Date;
+  isCurrentDevice: boolean;
+}
 
 export interface IUserState {
   user: IUser | null;
   users: IUser[];
+  loginSessions: ILoginSession[];
 }
 
-// Auth -------------------------------------
+// Login ---------------------------------------
 export interface ILoginPayload {
   email: string;
   password: string;
 }
 
+// Guest register -------------------------------
 export interface IGuestRegisterPayload {
   email: string;
   facultyId: string;
 }
-
 export interface IVerifyRegisterTokenPayload {
   token: string;
 }
-
 export interface IVerifyRegisterTokenResponse {
   email: string;
 }
 
+// Setup account -------------------------------
 export interface ISetupAccountPayload {
   token: string;
   password: string;
@@ -59,12 +66,22 @@ export interface ISetupAccountPayload {
   gender: EGender;
 }
 
+// Change password -----------------------------
 export interface IChangePasswordPayload {
   oldPassword: string;
   newPassword: string;
 }
 
-// User -------------------------------------
+// Login Session --------------------------------
+export interface IFindLoginSessionsPayload {
+  skip?: number;
+  limit?: number;
+}
+export interface IRemoveLoginSessionPayload {
+  sessionId: string;
+}
+
+// Update User ----------------------------------
 export interface IUpdateUserPayload {
   phone?: string;
   name?: string;
@@ -72,7 +89,7 @@ export interface IUpdateUserPayload {
   gender?: EGender;
   avatar?: File;
 }
-
+// Find users --------------------------------
 export interface IFindUsersPayload {
   name?: string;
   role: ERole;

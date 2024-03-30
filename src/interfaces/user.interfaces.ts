@@ -31,6 +31,7 @@ export interface IUserState {
   users: IUser[];
 }
 
+// Auth -------------------------------------
 export interface ILoginPayload {
   email: string;
   password: string;
@@ -58,6 +59,12 @@ export interface ISetupAccountPayload {
   gender: EGender;
 }
 
+export interface IChangePasswordPayload {
+  oldPassword: string;
+  newPassword: string;
+}
+
+// User -------------------------------------
 export interface IUpdateUserPayload {
   phone?: string;
   name?: string;

@@ -47,9 +47,8 @@ const PopupBody = styled.div`
 const CloseButton = styled(Button)`
   background-color: transparent;
   font-size: var(--fs-3xl);
-  color: var(--blue);
+  color: var(--black);
   padding: 0;
-  margin-bottom: var(--s-2);
 `;
 
 export { PopupOverlay, PopupContainer, PopupHeader, PopupBody, CloseButton };

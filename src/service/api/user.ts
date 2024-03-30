@@ -1,4 +1,5 @@
 import {
+  IChangePasswordPayload,
   IGuestRegisterPayload,
   ILoginPayload,
   IUpdateUserPayload,
@@ -24,8 +25,21 @@ const getCurrentUser = async (): Promise<IUser> => {
   return await axiosInstance.get("/user/my-profile");
 };
 
+const changePassword = async (
+  payload: IChangePasswordPayload,
+): Promise<void> => {
+  return await axiosInstance.put("/auth/password", payload);
+};
+
 const updateUser = async (payload: IUpdateUserPayload): Promise<IUser> => {
   return await axiosInstance.put("/user/my-profile", payload);
 };
 
-export default { login, guestRegister, getCurrentUser, logout, updateUser };
+export default {
+  login,
+  guestRegister,
+  getCurrentUser,
+  logout,
+  updateUser,
+  changePassword,
+};

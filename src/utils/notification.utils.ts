@@ -1,7 +1,11 @@
 import { toast } from "react-toastify";
 
-export const notifyError = (message: string) => {
-  toast.error(message);
+export const notifyError = (message: string | string[]) => {
+  if (Array.isArray(message)) {
+    toast.error(message.join(", "));
+  } else {
+    toast.error(message);
+  }
   return;
 };
 

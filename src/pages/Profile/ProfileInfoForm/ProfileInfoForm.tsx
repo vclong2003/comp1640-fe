@@ -1,10 +1,7 @@
 import * as S from "./ProfileInfoForm.styled";
 import { Formik } from "formik";
-import { Form, FormInput, FormLabel } from "../../../components/formComponents";
-import {
-  EGender,
-  IUpdateUserPayload,
-} from "../../../interfaces/user.interfaces";
+import { Form, FormInput, FormLabel } from "@components/formComponents";
+import { EGender, IUpdateUserPayload } from "@interfaces/user.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { toIsoDate } from "@utils/date.utils";

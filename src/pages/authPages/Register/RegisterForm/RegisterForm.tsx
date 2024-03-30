@@ -17,7 +17,6 @@ import { RegisterValidationSchema } from "@utils/auth.utils";
 
 interface IRegisterFormProps {
   onSubmit: (values: IGuestRegisterPayload) => void;
-  error: string;
 }
 
 const initialValues: IGuestRegisterPayload = {
@@ -25,7 +24,7 @@ const initialValues: IGuestRegisterPayload = {
   facultyId: "",
 };
 
-const RegisterForm = ({ onSubmit, error }: IRegisterFormProps) => {
+const RegisterForm = ({ onSubmit }: IRegisterFormProps) => {
   const { faculties } = useSelector((state: RootState) => state.facultyState);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -61,7 +60,6 @@ const RegisterForm = ({ onSubmit, error }: IRegisterFormProps) => {
             <FormError name="facultyId" />
           </FormGroup>
           <FormButton type="submit">Continue</FormButton>
-          {error && <S.Error>{error}</S.Error>}
         </Form>
       </Formik>
     </S.Container>

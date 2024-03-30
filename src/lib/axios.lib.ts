@@ -10,13 +10,21 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+const exceptUrls = [
+  "/login",
+  "/reset-password",
+  "/guest-register",
+  "/setup-account",
+];
+
 axiosInstance.interceptors.response.use(
   (response) => response.data,
   async (error) => {
     const originalRequest = error.config;
-    const isLoginRequest = originalRequest.url.includes("/login");
+    const requestUrl = originalRequest.url;
+    const isExceptUrl = exceptUrls.some((url) => requestUrl.includes(url));
     if (
-      !isLoginRequest &&
+      !isExceptUrl &&
       error.response.status === 401 &&
       !originalRequest._retry
     ) {

@@ -16,6 +16,7 @@ const PopupOverlay = styled.div<IPopupOverlayProps>`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  z-index: 5;
 `;
 
 const PopupContainer = styled.div`

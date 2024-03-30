@@ -1,5 +1,4 @@
 import * as S from "./Popup.styled";
-import { IoClose } from "react-icons/io5";
 
 interface IPopupProps extends JSX.IntrinsicAttributes {
   children: JSX.Element | JSX.Element[] | string | null | undefined;
@@ -23,9 +22,7 @@ export default function Popup({
     <S.PopupOverlay $show={show} onClick={onClose} {...rest}>
       <S.PopupContainer onClick={handleClickContent}>
         <S.PopupHeader>
-          <S.CloseButton onClick={onClose}>
-            <IoClose />
-          </S.CloseButton>
+          <S.CloseButton onClick={onClose} />
         </S.PopupHeader>
         <S.PopupBody>{children}</S.PopupBody>
       </S.PopupContainer>

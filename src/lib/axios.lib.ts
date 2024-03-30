@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "@config/api.config";
+import { notifyError } from "@utils/notification.utils";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
@@ -43,6 +44,7 @@ axiosInstance.interceptors.response.use(
       error?.message ||
       "Something went wrong!";
 
+    notifyError(message);
     console.error(error);
     return Promise.reject(message);
   },

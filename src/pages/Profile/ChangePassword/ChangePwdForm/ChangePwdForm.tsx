@@ -1,6 +1,7 @@
 import * as S from "./ChangePwdForm.styled";
 import {
   Form,
+  FormError,
   FormGroup,
   FormInput,
   FormLabel,
@@ -8,7 +9,8 @@ import {
 import { Formik } from "formik";
 import { IChangePasswordPayload } from "@interfaces/user.interfaces";
 import userService from "@service/api/user";
-import { notifyError, notifySuccess } from "@utils/notification.utils";
+import { notifySuccess } from "@utils/notification.utils";
+import { ChangePasswordValidationSchema } from "@utils/auth.utils";
 
 const initialValues: IChangePasswordPayload = {
   oldPassword: "",
@@ -27,29 +29,33 @@ export default function ChangePwdForm({
     userService
       .changePassword(values)
       .then(() => notifySuccess("Password changed successfully"))
-      .then(() => onDone())
-      .catch((error) => notifyError(error));
+      .then(() => onDone());
   };
 
   return (
     <Formik
       onSubmit={onSubmit}
-      initialValues={initialValues}
       onReset={onCancel}
+      initialValues={initialValues}
+      validationSchema={ChangePasswordValidationSchema}
     >
       <Form>
         <FormGroup>
           <FormLabel>Old Password</FormLabel>
           <FormInput type="password" name="oldPassword" />
+          <FormError name="oldPassword" />
         </FormGroup>
         <FormGroup>
           <FormLabel>New Password</FormLabel>
           <FormInput type="password" name="newPassword" />
+          <FormError name="newPassword" />
         </FormGroup>
-        <S.SaveButton type="submit">Change Password</S.SaveButton>
-        <S.CancelButton type="reset" onClick={onCancel}>
-          Cancel
-        </S.CancelButton>
+        <S.BtnConatiner>
+          <S.SaveButton type="submit">Save</S.SaveButton>
+          <S.CancelButton type="reset" onClick={onCancel}>
+            Cancel
+          </S.CancelButton>
+        </S.BtnConatiner>
       </Form>
     </Formik>
   );

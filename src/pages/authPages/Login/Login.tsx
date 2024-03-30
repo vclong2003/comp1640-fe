@@ -7,7 +7,6 @@ import { API_BASE_URL } from "@config/api.config";
 import { login } from "@store/user/userActions";
 import { ILoginPayload } from "@interfaces/user.interfaces";
 import { AppDispatch, RootState } from "@store/index";
-import { notifyError } from "@utils/notification.utils";
 
 export default function Login() {
   const { user } = useSelector((state: RootState) => state.userState);
@@ -16,9 +15,7 @@ export default function Login() {
   const [searchParams] = useSearchParams();
 
   const onLogin = (values: ILoginPayload) => {
-    dispatch(login(values))
-      .unwrap()
-      .catch((error) => notifyError(error.message));
+    dispatch(login(values));
   };
 
   const onGoogleLogin = () => {

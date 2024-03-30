@@ -16,3 +16,8 @@ export const SetupAccountValidationSchema = Yup.object().shape({
   phone: Yup.string().required("Required!"),
   dob: Yup.date().required("Required!"),
 });
+
+export const ChangePasswordValidationSchema = Yup.object().shape({
+  oldPassword: Yup.string().min(8, "Too short!").required("Required!"),
+  newPassword: Yup.string().min(8, "Too short!").required("Required!"),
+});

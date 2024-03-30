@@ -1,12 +1,18 @@
 import * as S from "./ProfileInfoForm.styled";
 import { Formik } from "formik";
-import { Form, FormInput, FormLabel } from "@components/formComponents";
+import {
+  Form,
+  FormError,
+  FormInput,
+  FormLabel,
+} from "@components/formComponents";
 import { EGender, IUpdateUserPayload } from "@interfaces/user.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { toIsoDate } from "@utils/date.utils";
 import { updateUser } from "@store/user/userActions";
-import { notifyError, notifySuccess } from "@utils/notification.utils";
+import { notifySuccess } from "@utils/notification.utils";
+import { UpdateUservalidationSchema } from "@utils/user.utils";
 
 export default function ProfileInfoForm() {
   const { user } = useSelector((state: RootState) => state.userState);
@@ -22,11 +28,14 @@ export default function ProfileInfoForm() {
   const onUpdateProfile = (values: IUpdateUserPayload) =>
     dispatch(updateUser(values))
       .unwrap()
-      .then(() => notifySuccess("Profile updated successfully"))
-      .catch((error) => notifyError(error.message));
+      .then(() => notifySuccess("Profile updated successfully"));
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onUpdateProfile}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onUpdateProfile}
+      validationSchema={UpdateUservalidationSchema}
+    >
       <Form>
         <S.FormGroup>
           <FormLabel>Email</FormLabel>
@@ -41,6 +50,7 @@ export default function ProfileInfoForm() {
           <S.FormGroup>
             <FormLabel>Name</FormLabel>
             <FormInput type="text" name="name" />
+            <FormError name="name" />
           </S.FormGroup>
           <S.FormGroup>
             <FormLabel>Phone</FormLabel>

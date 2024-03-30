@@ -28,7 +28,7 @@ export interface IUser {
 export interface ILoginSession {
   _id: string;
   browser: string;
-  date: Date;
+  date: string;
   isCurrentDevice: boolean;
 }
 

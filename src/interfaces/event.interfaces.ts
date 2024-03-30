@@ -6,8 +6,8 @@ export enum EEventSort {
 export interface IEvent {
   _id: string;
   name: string;
-  description: string;
-  banner_image_url: string;
+  description?: string;
+  banner_image_url?: string;
   start_date: Date;
   first_closure_date: Date;
   final_closure_date: Date;
@@ -17,7 +17,7 @@ export interface IEvent {
   faculty: {
     _id: string;
     name: string;
-    mc: {
+    mc?: {
       _id: string;
       name: string;
       email: string;

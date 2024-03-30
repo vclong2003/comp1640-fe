@@ -1,8 +1,8 @@
 export interface IFaculty {
   _id: string;
   name: string;
-  description: string;
-  banner_image_url: string;
+  description?: string;
+  banner_image_url?: string;
   mc?: {
     _id: string;
     name: string;
@@ -11,7 +11,7 @@ export interface IFaculty {
 }
 
 export interface IFacultyState {
-  faculties: Omit<IFaculty, "description" | "banner_image_url">[];
+  faculties: IFaculty[];
   faculty: IFaculty | null;
 }
 

@@ -1,11 +1,6 @@
 import * as S from "./ProfileInfoForm.styled";
 import { Formik } from "formik";
-import {
-  Form,
-  FormButton,
-  FormInput,
-  FormLabel,
-} from "../../../components/formComponents";
+import { Form, FormInput, FormLabel } from "../../../components/formComponents";
 import { EGender } from "../../../interfaces/user.interfaces";
 
 export default function ProfileInfoForm() {

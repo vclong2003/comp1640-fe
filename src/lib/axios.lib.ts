@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "@config/api.config";
+import { notifyError } from "@utils/notification.utils";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
@@ -13,8 +14,12 @@ axiosInstance.interceptors.response.use(
   (response) => response.data,
   async (error) => {
     const originalRequest = error.config;
-
-    if (error.response.status === 401 && !originalRequest._retry) {
+    const isLoginRequest = originalRequest.url.includes("/login");
+    if (
+      !isLoginRequest &&
+      error.response.status === 401 &&
+      !originalRequest._retry
+    ) {
       try {
         await getNewAccessToken();
       } catch (error) {
@@ -24,12 +29,11 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
       return axiosInstance(originalRequest);
     }
-
     const message =
       error?.response?.data?.message ||
       error?.message ||
       "Something went wrong!";
-
+    notifyError(message);
     return Promise.reject(message);
   },
 );

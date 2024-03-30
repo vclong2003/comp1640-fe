@@ -1,3 +1,4 @@
+import { FormButton } from "@components/formComponents";
 import styled from "styled-components";
 
 export const Profile = styled.div`
@@ -19,8 +20,9 @@ export const Title = styled.div`
   margin-bottom: var(--s-8);
 `;
 
-export const Left = styled.div`
+export const InfoContainer = styled.div`
   flex: 7;
+  margin-right: var(--s-5);
 `;
 export const AvatarContainer = styled.div`
   width: 96px;
@@ -28,6 +30,23 @@ export const AvatarContainer = styled.div`
   margin: var(--s-1) auto;
 `;
 
-export const Right = styled.div`
+export const AuthContainer = styled.div`
   flex: 5;
+  display: flex;
+  font-display: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+`;
+
+export const SecurityTitle = styled.div`
+  width: 100%;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-semibold);
+`;
+
+export const LogoutFromAllDevicesBtn = styled(FormButton)`
+  font-weight: var(--fw-medium);
+  padding: var(--s-2) var(--s-4);
+  margin-left: var(--s-2);
+  background-color: var(--light-gray-2);
 `;

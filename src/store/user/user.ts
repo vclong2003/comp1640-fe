@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IUserState } from "../../interfaces/user.interfaces";
-import { getCurrentUser, login, logout } from "./userActions";
+import { getCurrentUser, login, logout, updateUser } from "./userActions";
 
 export const name = "userState";
 const initialState: IUserState = {
@@ -22,6 +22,10 @@ const userState = createSlice({
     });
     builder.addCase(logout.fulfilled, (state) => {
       state.user = null;
+    });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.user = action.payload;
     });
   },
 });

@@ -1,5 +1,4 @@
 import { API_BASE_URL } from "@config/api.config";
-import { notifyError } from "@utils/notification.utils";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
@@ -29,7 +28,9 @@ axiosInstance.interceptors.response.use(
       !originalRequest._retry
     ) {
       try {
+        console.log("Trying to get new access token!");
         await getNewAccessToken();
+        console.log("Get new access token successfully!");
       } catch (error) {
         console.log("Get new access token failed!");
         return;
@@ -41,12 +42,13 @@ axiosInstance.interceptors.response.use(
       error?.response?.data?.message ||
       error?.message ||
       "Something went wrong!";
-    return notifyError(message);
+
+    console.error(error);
+    throw Error(message);
   },
 );
 
 const getNewAccessToken = async () => {
-  console.log("Getting new access token!");
   await axios.get(`${API_BASE_URL}/auth/access-token`, {
     withCredentials: true,
   });

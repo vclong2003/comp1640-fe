@@ -1,15 +1,44 @@
 import * as S from "./ProfileInfoForm.styled";
 import { Formik } from "formik";
 import { Form, FormInput, FormLabel } from "../../../components/formComponents";
-import { EGender } from "../../../interfaces/user.interfaces";
+import {
+  EGender,
+  IUpdateUserPayload,
+} from "../../../interfaces/user.interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { toIsoDate } from "@utils/date.utils";
+import { updateUser } from "@store/user/userActions";
+import { notifyError, notifySuccess } from "@utils/notification.utils";
 
 export default function ProfileInfoForm() {
+  const { user } = useSelector((state: RootState) => state.userState);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const initialValues: IUpdateUserPayload = {
+    name: user?.name,
+    phone: user?.phone,
+    dob: user?.dob && toIsoDate(user.dob),
+    gender: user?.gender,
+  };
+
+  const onUpdateProfile = (values: IUpdateUserPayload) =>
+    dispatch(updateUser(values))
+      .unwrap()
+      .then(() => notifySuccess("Profile updated successfully"))
+      .catch((error) => notifyError(error.message));
+
   return (
-    <Formik>
+    <Formik initialValues={initialValues} onSubmit={onUpdateProfile}>
       <Form>
         <S.FormGroup>
           <FormLabel>Email</FormLabel>
-          <FormInput disabled={true} type="text" name="name" />
+          <FormInput
+            disabled={true}
+            type="text"
+            name="email"
+            value={user?.email}
+          />
         </S.FormGroup>
         <S.HorizontalFormGroup>
           <S.FormGroup>
@@ -38,8 +67,8 @@ export default function ProfileInfoForm() {
           </S.FormGroup>
         </S.HorizontalFormGroup>
         <S.ButtonGroup>
-          <S.SaveButton>Save</S.SaveButton>
-          <S.CancelButton>Cancel</S.CancelButton>
+          <S.SaveButton type="submit">Save</S.SaveButton>
+          <S.CancelButton type="reset">Cancel</S.CancelButton>
         </S.ButtonGroup>
       </Form>
     </Formik>

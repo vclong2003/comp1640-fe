@@ -1,5 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ILoginPayload } from "../../interfaces/user.interfaces";
+import {
+  ILoginPayload,
+  IUpdateUserPayload,
+} from "../../interfaces/user.interfaces";
 import userService from "../../service/api/user";
 
 export const getCurrentUser = createAsyncThunk(
@@ -19,3 +22,10 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk("userState/logout", async () => {
   return await userService.logout();
 });
+
+export const updateUser = createAsyncThunk(
+  "userState/updateUser",
+  async (payload: IUpdateUserPayload) => {
+    return await userService.updateUser(payload);
+  },
+);

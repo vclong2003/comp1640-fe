@@ -17,7 +17,7 @@ export interface IUser {
   name: string;
   avatar_url?: string;
   phone?: string;
-  dob?: Date;
+  dob?: string;
   faculty?: {
     _id: string;
     name: string;
@@ -54,14 +54,14 @@ export interface ISetupAccountPayload {
   password: string;
   name: string;
   phone: string;
-  dob: Date | string;
+  dob: string;
   gender: EGender;
 }
 
 export interface IUpdateUserPayload {
   phone?: string;
   name?: string;
-  dob?: Date;
+  dob?: string;
   gender?: EGender;
   avatar?: File;
 }

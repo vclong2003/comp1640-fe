@@ -5,6 +5,7 @@ export const AvatarImage = styled.img`
   width: 100%;
   height: auto;
   border-radius: 50%;
+  object-fit: cover;
 `;
 
 export const AvatarUpdateIcon = styled.img`

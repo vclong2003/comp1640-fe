@@ -2,6 +2,7 @@ import "@assets/css/global.css"; // Global css
 import "react-big-calendar/lib/css/react-big-calendar.css"; // Css for calendar component
 import "react-quill/dist/quill.snow.css"; // Css for rich text editor
 import "react-toastify/dist/ReactToastify.css"; // Css for toast notification
+import "react-image-crop/dist/ReactCrop.css"; // Css for image cropper
 
 import { ReactNode, useEffect } from "react";
 import { APP_TITLE } from "@config/app.config";

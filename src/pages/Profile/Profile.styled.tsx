@@ -7,6 +7,8 @@ export const Profile = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
+  padding-top: var(--s-4);
+  padding-bottom: var(--s-8);
 `;
 
 export const Title = styled.div`

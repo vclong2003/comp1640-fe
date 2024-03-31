@@ -16,27 +16,6 @@ import { findEvents } from "@store/event/eventActions";
 import { getCalendarEvents } from "@utils/event.utils";
 import { IEvent } from "@interfaces/event.interfaces";
 
-const eventsTest: EventItem[] = [
-  {
-    title: "Test event",
-    start: new Date("2024-03-20T10:00:00"),
-    end: new Date("2024-03-20T12:00:00"),
-    resource: "you select vcl event",
-  },
-  {
-    title: "Test event 1",
-    start: new Date("2024-03-21T10:00:00"),
-    end: new Date("2024-03-21T19:00:00"),
-    resource: "you select event 1",
-  },
-  {
-    title: "Test long event",
-    start: new Date("2024-03-22T12:00:00"),
-    end: new Date("2024-04-22T14:00:00"),
-    resource: "you select long event",
-  },
-];
-
 export default function Event() {
   const { events } = useSelector((state: RootState) => state.eventState);
   const dispatch = useDispatch<AppDispatch>();

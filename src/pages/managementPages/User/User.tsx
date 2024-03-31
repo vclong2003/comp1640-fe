@@ -19,25 +19,25 @@ import UserRow from "./UserRows/UserRows";
 
 interface UserData {
   no: number;
-  name: string;
-  User: string;
-  startdate: string;
+  fullname: string;
+  email: string;
+  faculty: string;
 }
 
 const createData = (
   no: number,
-  name: string,
-  User: string,
-  startdate: string,
+  fullname: string,
+  email: string,
+  faculty: string,
 ): UserData => {
-  return { no, name, User, startdate };
+  return { no, fullname, email, faculty };
 };
 
 const Usersrows: UserData[] = [
-  createData(1, "User 1", "IT", "01/01/2023"),
-  createData(2, "User 2", "IT", "01/01/2023"),
-  createData(3, "User 3", "IT", "01/01/2023"),
-  createData(4, "User 4", "IT", "01/01/2023"),
+  createData(1, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
+  createData(2, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
+  createData(3, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
+  createData(4, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
 ];
 
 const User: React.FC = () => {
@@ -102,9 +102,9 @@ const User: React.FC = () => {
           <TableHead>
             <TableRow>
               <TableCell>No</TableCell>
-              <TableCell align="left">Name User&nbsp;</TableCell>
-              <TableCell align="left">User&nbsp;</TableCell>
-              <TableCell align="left">Start date&nbsp;</TableCell>
+              <TableCell align="left">Full Name &nbsp;</TableCell>
+              <TableCell align="left">Email&nbsp;</TableCell>
+              <TableCell align="left">Facutly&nbsp;</TableCell>
               <TableCell align="left">Action&nbsp;</TableCell>
               <TableCell align="left"></TableCell>
               <TableCell align="left"></TableCell>

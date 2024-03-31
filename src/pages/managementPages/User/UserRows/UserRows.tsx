@@ -7,21 +7,15 @@ import ViewIcon from "@mui/icons-material/Visibility";
 interface UserRowProps {
   User: {
     no: number;
-    name: string;
-    User: string;
-    startdate: string;
+    fullname: string;
+    email: string;
+    faculty: string;
   };
 }
 
 const UserRow: React.FC<UserRowProps> = ({ User }) => {
-  //   const [openViewDetailUserModal, setOpenViewDetailUserModal] =
-  //     useState(false);
   const [openDeleteUserModal, setOpenDeleteUserModal] = useState(false);
 
-  //   const handleOpenViewDetailUserModal = () =>
-  //     setOpenViewDetailUserModal(true);
-  // //   const handleCloseViewDetailUserModal = () =>
-  // //     setOpenViewDetailUserModal(false);
   const handleOpenDeleteUserModal = () => setOpenDeleteUserModal(true);
   const handleCloseDeleteUserModal = () => setOpenDeleteUserModal(false);
 
@@ -31,9 +25,9 @@ const UserRow: React.FC<UserRowProps> = ({ User }) => {
         <TableCell component="th" scope="row">
           {User.no}
         </TableCell>
-        <TableCell align="left">{User.name}</TableCell>
-        <TableCell align="left">{User.User}</TableCell>
-        <TableCell align="left">{User.startdate}</TableCell>
+        <TableCell align="left">{User.fullname}</TableCell>
+        <TableCell align="left">{User.email}</TableCell>
+        <TableCell align="left">{User.faculty}</TableCell>
         <TableCell align="left">
           <Button
             variant="outlined"

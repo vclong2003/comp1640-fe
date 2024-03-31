@@ -16,19 +16,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
-import ViewIcon from "@mui/icons-material/Visibility";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import ContributionRows from "./ContributionRows/ContributionRows";
+
+interface ContributionData {
+  no: number;
+  title: string;
+  author: string;
+  event: string;
+}
 function createData(no: number, title: string, author: string, event: string) {
   return { no, title, author, event };
 }
 
-const Contributions = [
+const Contributions: ContributionData[] = [
   createData(1, "Nguyen Van A", "Bui Huong", "IT"),
   createData(2, "Nguyen Van A", "Bui Huong", "IT"),
   createData(3, "Nguyen Van A", "Bui Huong", "IT"),
   createData(4, "Nguyen Van A", "Bui Huong", "IT"),
 ];
-const Contribution = () => {
+const Contribution: React.FC = () => {
   return (
     <AuthorizedPage>
       <Headline>Contributions</Headline>
@@ -89,37 +95,7 @@ const Contribution = () => {
           </TableHead>
           <TableBody>
             {Contributions.map((row) => (
-              <TableRow
-                key={row.title}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.no}
-                </TableCell>
-                <TableCell align="left">{row.title}</TableCell>
-                <TableCell align="left">{row.author}</TableCell>
-                <TableCell align="left">{row.event}</TableCell>
-                <TableCell align="left">
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="primary"
-                    startIcon={<ViewIcon />}
-                  >
-                    View
-                  </Button>
-                </TableCell>
-                <TableCell align="left">
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="error"
-                    startIcon={<FileDownloadIcon />}
-                  >
-                    Download
-                  </Button>
-                </TableCell>
-              </TableRow>
+              <ContributionRows key={row.no} Contribution={row} />
             ))}
           </TableBody>
         </Table>

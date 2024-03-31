@@ -6,6 +6,8 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { AdminMenu } from "./Menu.styled";
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
+import { ERole } from "@interfaces/user.interfaces";
 function a11yProps(index: number) {
   return {
     id: `vertical-tab-${index}`,
@@ -30,6 +32,7 @@ export const Menu = () => {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 2, borderColor: "divider" }}
       >
+        {/* Home ---------------------------------------- */}
         <Link to="/manage">
           <Tab
             icon={<FaHome />}
@@ -38,15 +41,20 @@ export const Menu = () => {
             {...a11yProps(0)}
           />
         </Link>
-
-        <Link to="/manage/faculty">
-          <Tab
-            icon={<LuSchool />}
-            iconPosition="start"
-            label="Faculties"
-            {...a11yProps(1)}
-          />
-        </Link>
+        {/* Faculty -------------------------------------- */}
+        <AuthorizedComponent
+          allowedRoles={[ERole.Admin, ERole.MarketingManager]}
+        >
+          <Link to="/manage/faculty">
+            <Tab
+              icon={<LuSchool />}
+              iconPosition="start"
+              label="Faculties"
+              {...a11yProps(1)}
+            />
+          </Link>
+        </AuthorizedComponent>
+        {/* Event ----------------------------------------- */}
         <Link to="/manage/event">
           <Tab
             icon={<MdOutlineEventAvailable />}
@@ -55,15 +63,18 @@ export const Menu = () => {
             {...a11yProps(2)}
           />
         </Link>
-
-        <Link to="/manage/user">
-          <Tab
-            icon={<FaUsers />}
-            iconPosition="start"
-            label="Users"
-            {...a11yProps(3)}
-          />
-        </Link>
+        {/* User ------------------------------------------ */}
+        <AuthorizedComponent allowedRoles={[ERole.Admin]}>
+          <Link to="/manage/user">
+            <Tab
+              icon={<FaUsers />}
+              iconPosition="start"
+              label="Users"
+              {...a11yProps(3)}
+            />
+          </Link>
+        </AuthorizedComponent>
+        {/* Contribution ----------------------------------- */}
         <Link to="/manage/contribution">
           <Tab
             icon={<FaFile />}

@@ -11,26 +11,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
-
-import Modal from "@mui/material/Modal";
+import AddNewFacultyModal from "./FacultyModal/AddNewFacultyModal";
 import React, { useEffect } from "react";
-import Typography from "@mui/material/Typography";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { findFaculties } from "@store/faculty/facultyActions";
 import FacultyRow from "./FacultyRow/FacultyRow";
-
-const style = {
-  position: "absolute" as const,
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 540,
-  bgcolor: "background.paper",
-  borderRadius: 4,
-  p: 4,
-};
 
 const Faculty = () => {
   const { faculties } = useSelector((state: RootState) => state.facultyState);
@@ -40,9 +26,11 @@ const Faculty = () => {
     dispatch(findFaculties({}));
   }, [dispatch]);
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [openAddNewFacultyModal, setOpenAddNewFacultyModal] =
+    React.useState(false);
+  const handleOpenAddNewFacultyModal = () => setOpenAddNewFacultyModal(true);
+  const handleCloseAddNewFacultyModal = () => setOpenAddNewFacultyModal(false);
+
   return (
     <AuthorizedPage>
       <Headline>Faculty</Headline>
@@ -76,7 +64,7 @@ const Faculty = () => {
             variant="contained"
             size="medium"
             color="success"
-            onClick={handleOpen}
+            onClick={handleOpenAddNewFacultyModal}
           >
             Add new
           </Button>
@@ -87,7 +75,7 @@ const Faculty = () => {
         </AddAndSort>
       </Form>
 
-      <TableContainer>
+      <TableContainer sx={{ mt: 5 }}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -106,51 +94,10 @@ const Faculty = () => {
         </Table>
       </TableContainer>
 
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add new Faculty
-          </Typography>
-          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-            <TextField
-              id="outlined-basic"
-              label="ID"
-              variant="outlined"
-              sx={{ mr: 2 }}
-            />
-            <TextField id="outlined-basic" label="Name" variant="outlined" />
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-            <TextField
-              id="outlined-basic"
-              label="Decription"
-              variant="outlined"
-            />
-            <Button
-              variant="outlined"
-              size="small"
-              startIcon={<CloudUploadIcon />}
-              sx={{ width: 222.67, color: "gray", borderColor: "gray" }}
-            >
-              Upload Image
-            </Button>
-          </Box>
-
-          <Button
-            variant="contained"
-            size="medium"
-            color="primary"
-            sx={{ mt: 4, left: "40%" }}
-          >
-            Submit
-          </Button>
-        </Box>
-      </Modal>
+      <AddNewFacultyModal
+        open={openAddNewFacultyModal}
+        handleClose={handleCloseAddNewFacultyModal}
+      />
     </AuthorizedPage>
   );
 };

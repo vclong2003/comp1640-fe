@@ -16,4 +16,8 @@ export const Headline = styled.h2`
 export const ChildrenComponent = styled.div`
   margin: 0 20px;
   width: 85%;
+
+  @media (max-width: 890px) {
+    width: 100%;
+  }
 `;

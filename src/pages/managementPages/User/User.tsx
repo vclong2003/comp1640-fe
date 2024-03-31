@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 import AddNewUserModal from "./UserModals/AddNewUsersModal";
-import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 import { AddAndSort, Form, Headline, HeadlineAndDelete } from "./User.styled";
 import UserRow from "./UserRows/UserRows";
 
@@ -47,9 +46,9 @@ const User: React.FC = () => {
   const handleCloseAddNewUserModal = () => setOpenAddNewUserModal(false);
 
   return (
-    <AuthorizedPage>
+    <>
+      {" "}
       <Headline>Users</Headline>
-
       <Form>
         <Box
           component="form"
@@ -89,14 +88,12 @@ const User: React.FC = () => {
           </Button>
         </AddAndSort>
       </Form>
-
       <HeadlineAndDelete>
         <Headline>List of Users</Headline>
         <Button variant="contained" size="medium" color="error">
           Delete All
         </Button>
       </HeadlineAndDelete>
-
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -117,12 +114,11 @@ const User: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer>
-
       <AddNewUserModal
         open={openAddNewUserModal}
         handleClose={handleCloseAddNewUserModal}
       />
-    </AuthorizedPage>
+    </>
   );
 };
 

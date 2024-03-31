@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Box,
@@ -13,41 +13,16 @@ import {
 } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 import AddNewEventModal from "./EventModal/AddNewEventModal";
-import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 import { AddAndSort, Form, Headline, HeadlineAndDelete } from "./Event.styled";
-import EventRow from "./EventRow/EventRow";
 
-interface EventData {
-  no: number;
-  name: string;
-  Event: string;
-  startdate: string;
-}
-
-const createData = (
-  no: number,
-  name: string,
-  Event: string,
-  startdate: string,
-): EventData => {
-  return { no, name, Event, startdate };
-};
-
-const Eventsrows: EventData[] = [
-  createData(1, "Event 1", "IT", "01/01/2023"),
-  createData(2, "Event 2", "IT", "01/01/2023"),
-  createData(3, "Event 3", "IT", "01/01/2023"),
-  createData(4, "Event 4", "IT", "01/01/2023"),
-];
-
-const Event: React.FC = () => {
+export default function Event() {
   const [openAddNewEventModal, setOpenAddNewEventModal] = useState(false);
 
   const handleOpenAddNewEventModal = () => setOpenAddNewEventModal(true);
   const handleCloseAddNewEventModal = () => setOpenAddNewEventModal(false);
 
   return (
-    <AuthorizedPage>
+    <>
       <Headline>Events</Headline>
 
       <Form>
@@ -110,11 +85,7 @@ const Event: React.FC = () => {
               <TableCell align="left"></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {Eventsrows.map((event) => (
-              <EventRow key={event.no} event={event} />
-            ))}
-          </TableBody>
+          <TableBody>{/* Map evt here */}</TableBody>
         </Table>
       </TableContainer>
 
@@ -122,8 +93,6 @@ const Event: React.FC = () => {
         open={openAddNewEventModal}
         handleClose={handleCloseAddNewEventModal}
       />
-    </AuthorizedPage>
+    </>
   );
-};
-
-export default Event;
+}

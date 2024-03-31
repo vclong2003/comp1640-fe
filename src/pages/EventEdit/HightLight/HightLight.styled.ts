@@ -1,3 +1,4 @@
+import { FormButton } from "@components/formComponents";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -50,14 +51,14 @@ export const Icon = styled.div`
 
 export const Text = styled.div``;
 
-export const BtnAdd = styled.button`
+export const BtnAdd = styled(FormButton)`
   float: right;
-  padding: var(--s-3) var(--s-8);
-  background-color: #f2ba1d;
+  padding: var(--s-2) var(--s-8);
+  background-color: var(--yellow);
   color: white;
   cursor: pointer;
   font-size: var(--fs-md);
-  border-radius: var(--fs-sm);
+  border-radius: var(--br-md);
   &:hover {
     background-color: rgba(231, 205, 23, 0.5);
   }
@@ -67,6 +68,6 @@ export const Button = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
-  padding: var(--s-6) var(--s-8);
+  padding: var(--s-4) var(--s-3);
   flex: 5;
 `;

@@ -1,6 +1,7 @@
 import * as S from "./HightLight.styled";
 import image from "../../../assets/images/detail.png";
 import { IoIosTimer } from "react-icons/io";
+import { Formik } from "formik";
 
 const HightLight = () => {
   return (
@@ -24,7 +25,9 @@ const HightLight = () => {
         </S.Bottom>
       </S.TextContainer>
       <S.Button>
+        <Formik>
         <S.BtnAdd>Add contribution</S.BtnAdd>
+        </Formik>
       </S.Button>
     </S.Container>
   );

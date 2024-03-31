@@ -1,10 +1,14 @@
 import moment from "moment";
-import { Calendar, Event, momentLocalizer } from "react-big-calendar";
-import Container from "../../components/Container/Container";
+import {
+  Calendar,
+  Event as EventItem,
+  momentLocalizer,
+} from "react-big-calendar";
+import Container from "@components/Container/Container";
 
 const localizer = momentLocalizer(moment);
 
-const events: Event[] = [
+const events: EventItem[] = [
   {
     title: "Test event",
     start: new Date("2024-03-20T10:00:00"),
@@ -25,7 +29,7 @@ const events: Event[] = [
   },
 ];
 
-export default function EventList() {
+export default function Event() {
   return (
     <Container>
       <Calendar

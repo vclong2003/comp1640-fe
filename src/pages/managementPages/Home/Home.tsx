@@ -1,7 +1,6 @@
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { LuSchool } from "react-icons/lu";
 import { FaUsers, FaFile } from "react-icons/fa";
-import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 import Box from "@mui/material/Box";
 import { InputAdornment, TextField } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
@@ -32,7 +31,8 @@ const BoxItemStyled = (color: string[]) => ({
 const Home = () => {
   const colors = ["#5B93FF", "#605BFF", "#FF8F6B", "#605BFF"];
   return (
-    <AuthorizedPage>
+    <>
+      {" "}
       <Box
         sx={{ display: "flex", justifyContent: "space-between", mt: "20px" }}
       >
@@ -91,7 +91,6 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-
       <Box
         sx={{ display: "flex", justifyContent: "space-between", mt: "40px" }}
       >
@@ -102,7 +101,7 @@ const Home = () => {
           sx={{ width: "60%", boxShadow: 3, height: 240, borderRadius: 2 }}
         ></Box>
       </Box>
-    </AuthorizedPage>
+    </>
   );
 };
 

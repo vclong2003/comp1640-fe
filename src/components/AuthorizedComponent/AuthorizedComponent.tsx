@@ -2,17 +2,21 @@ import { ERole } from "@interfaces/user.interfaces";
 import { RootState } from "@store/index";
 import { useSelector } from "react-redux";
 
-interface IAuthorizedComponent {
+interface IAuthorizedComponentProps {
   allowedRoles: ERole[];
   children: React.ReactNode;
 }
 
-const AuthorizedComponent = ({
+export default function AuthorizedComponent({
   allowedRoles,
   children,
-}: IAuthorizedComponent) => {
+}: IAuthorizedComponentProps) {
   const { user } = useSelector((state: RootState) => state.userState);
   if (!user) return "";
-  return !allowedRoles || allowedRoles.includes(user!.role) ? children : "";
-};
-export default AuthorizedComponent;
+
+  if (!allowedRoles || allowedRoles.includes(user!.role)) {
+    return children;
+  }
+
+  return "";
+}

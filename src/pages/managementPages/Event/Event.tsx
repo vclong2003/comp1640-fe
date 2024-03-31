@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 import AddNewEventModal from "./EventModal/AddNewEventModal";
-import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
 import { AddAndSort, Form, Headline, HeadlineAndDelete } from "./Event.styled";
 import EventRow from "./EventRow/EventRow";
 
@@ -47,7 +46,7 @@ const Event: React.FC = () => {
   const handleCloseAddNewEventModal = () => setOpenAddNewEventModal(false);
 
   return (
-    <AuthorizedPage>
+    <>
       <Headline>Events</Headline>
 
       <Form>
@@ -122,7 +121,7 @@ const Event: React.FC = () => {
         open={openAddNewEventModal}
         handleClose={handleCloseAddNewEventModal}
       />
-    </AuthorizedPage>
+    </>
   );
 };
 

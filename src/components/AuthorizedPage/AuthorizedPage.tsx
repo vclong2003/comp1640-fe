@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { ERole } from "@interfaces/user.interfaces";
 import { RootState } from "@store/index";
+import { notifyError } from "@utils/notification.utils";
 
 interface IAuthorizedPageProps {
   allowedRoles?: ERole[];
@@ -19,10 +20,11 @@ const AuthorizedPage = ({
 
   if (!user) return <Navigate to={"/login" + "?redirect=" + pathname} />;
 
-  return !allowedRoles || allowedRoles.includes(user!.role) ? (
-    children
-  ) : (
-    <Navigate to="/login" />
-  );
+  if (!allowedRoles || allowedRoles.includes(user!.role)) {
+    return <>{children}</>;
+  }
+
+  notifyError("You are not authorized to access this page!");
+  return <Navigate to="/" />;
 };
 export default AuthorizedPage;

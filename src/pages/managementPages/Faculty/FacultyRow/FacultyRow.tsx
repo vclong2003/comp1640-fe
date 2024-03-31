@@ -5,6 +5,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 import { IFaculty } from "@interfaces/faculty.interfaces";
 import ViewDetailFacultyModal from "../FacultyModal/ViewDetailFacultyModal";
+import DeleteFacultyModal from "../FacultyModal/DeleteFacultyModal";
 import React from "react";
 
 export interface IFacultyRowProps {
@@ -18,6 +19,11 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
     setOpenViewDetailFacultyModal(true);
   const handleCloseViewDetailFacultyModal = () =>
     setOpenViewDetailFacultyModal(false);
+
+  const [openDeleteFacultyModal, setOpenDeleteFacultyModal] =
+    React.useState(false);
+  const handleOpenDeleteFacultyModal = () => setOpenDeleteFacultyModal(true);
+  const handleCloseDeleteFacultyModal = () => setOpenDeleteFacultyModal(false);
 
   return (
     <>
@@ -44,6 +50,7 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
             size="small"
             color="error"
             startIcon={<DeleteIcon />}
+            onClick={handleOpenDeleteFacultyModal}
           >
             Delete
           </Button>
@@ -52,6 +59,10 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
       <ViewDetailFacultyModal
         open={openViewDetailFacultyModal}
         handleClose={handleCloseViewDetailFacultyModal}
+      />
+      <DeleteFacultyModal
+        open={openDeleteFacultyModal}
+        handleClose={handleCloseDeleteFacultyModal}
       />
     </>
   );

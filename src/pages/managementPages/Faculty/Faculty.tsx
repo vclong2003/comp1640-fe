@@ -75,7 +75,7 @@ const Faculty = () => {
         </AddAndSort>
       </Form>
 
-      <TableContainer>
+      <TableContainer sx={{ mt: 5 }}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>

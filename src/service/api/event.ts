@@ -11,15 +11,11 @@ import { buildQueryString } from "@utils/string.utils";
 
 // Create event ----------------------------------------------------------------
 const createEvent = async (payload: ICreatEventPayload): Promise<IEvent> => {
-  return await axiosInstance.post(
-    "/event",
-    objectToFormData(payload as unknown as { [key: string]: unknown }),
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+  return await axiosInstance.post("/event", objectToFormData({ ...payload }), {
+    headers: {
+      "Content-Type": "multipart/form-data",
     },
-  );
+  });
 };
 
 //Update event ----------------------------------------------------------------
@@ -27,7 +23,7 @@ const updateEvent = async (payload: IUpdateEventPayload): Promise<IEvent> => {
   const { _id, ...rest } = payload;
   return await axiosInstance.put(
     `/event/${_id}`,
-    objectToFormData(rest as { [key: string]: unknown }),
+    objectToFormData({ ...rest }),
     {
       headers: {
         "Content-Type": "multipart/form-data",

@@ -45,7 +45,7 @@ const changePassword = async (
 const updateUser = async (payload: IUpdateUserPayload): Promise<IUser> => {
   return await axiosInstance.put(
     "/user/my-profile",
-    objectToFormData(payload as { [key: string]: unknown }),
+    objectToFormData({ ...payload }),
     {
       headers: { "Content-Type": "multipart/form-data" },
     },

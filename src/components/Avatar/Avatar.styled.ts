@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const AvatarImage = styled.img`
   aspect-ratio: 1/1;
   width: 100%;
+  height: 100%;
   height: auto;
   border-radius: 50%;
   object-fit: cover;

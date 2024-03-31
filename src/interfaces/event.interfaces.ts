@@ -25,6 +25,7 @@ export interface IEvent {
   };
 }
 
+// Create event ---------------------------
 export interface ICreatEventPayload {
   name: string;
   description: string;
@@ -35,7 +36,9 @@ export interface ICreatEventPayload {
   bannerImage: File;
 }
 
+// Update event ---------------------------
 export interface IUpdateEventPayload {
+  _id: string;
   name?: string;
   description?: string;
   start_date?: string;
@@ -44,6 +47,17 @@ export interface IUpdateEventPayload {
   bannerImage?: File;
 }
 
+// Find event by id ---------------------------
+export interface IFindEventByIdPayload {
+  _id: string;
+}
+
+// Delete event ---------------------------
+export interface IDeleteEventPayload {
+  _id: string;
+}
+
+// Find events ---------------------------
 export interface IFindEventsPayload {
   name?: string;
   facultyId?: string;

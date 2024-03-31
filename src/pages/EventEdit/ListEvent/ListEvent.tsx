@@ -1,7 +1,7 @@
 import * as S from "./ListEvent.styled";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
-import Item from "../../../components/Item/Item";
+import Item from "@components/ContributionItem/ContributionItem";
 
 const ListEvent = () => {
   const [isPublish, setIsPublish] = useState(true);

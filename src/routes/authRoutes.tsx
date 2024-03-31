@@ -7,24 +7,24 @@ import ResetPassword from "@pages/authPages/ResetPassword/ResetPassword";
 
 export const authRoutes: IRoute[] = [
   {
-    path: "login",
+    path: "/login",
     component: <Login />,
   },
   {
-    path: "register",
+    path: "/register",
     component: <Register />,
   },
   {
-    path: "setup-account/:token",
+    path: "/setup-account",
     component: <SetupAccount />,
   },
 
   {
-    path: "forgot-password",
+    path: "/forgot-password",
     component: <ForgotPassword />,
   },
   {
-    path: "reset-password",
+    path: "/reset-password",
     component: <ResetPassword />,
   },
 ];

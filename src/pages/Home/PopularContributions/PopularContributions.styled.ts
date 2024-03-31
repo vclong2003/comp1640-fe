@@ -1,6 +1,6 @@
 import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
-import { default as BaseItem } from "@components/Item/Item";
+import { default as BaseItem } from "@components/ContributionItem/ContributionItem";
 
 export const Container = styled.div`
   display: flex;

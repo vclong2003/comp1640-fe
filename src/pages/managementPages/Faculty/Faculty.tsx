@@ -1,163 +1,103 @@
-import { useEffect, useState } from "react";
-import {
-  Headline,
-  ListAllFaculty,
-  ModalContainer,
-  ModalContent,
-  SaveAndClose,
-  SearchAndSort,
-} from "./Faculty.styled";
-import axios from "axios";
-import {
-  EvenRow,
-  OddRow,
-  TableComponent,
-  Td,
-  Th,
-} from "../../../components/ManagementComponent/Table/Table.styled";
-import { MediumButton } from "../../../components/ManagementComponent/Button/MediumButton/MediumButton.styled";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import { LargeButton } from "../../../components/ManagementComponent/Button/LargeButton/LargeButton.styled";
-import Dropdown from "../../../components/ManagementComponent/Dropdown/Dropdown";
-import AuthorizedPage from "../../../components/AuthorizedPage/AuthorizedPage";
-interface Faculty {
-  _id: string;
-  name: string;
-  mc: {
-    _id: string;
-    name: string;
-    email: string;
-  } | null;
-}
-
-interface ModalProps {
-  onClose: () => void;
-  children: React.ReactNode;
-}
-
-interface MC {
-  name: string;
-}
-
-const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
-  return (
-    <ModalContainer onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        {children}
-        <SaveAndClose>
-          <LargeButton onClick={onClose}>Close</LargeButton>
-          <LargeButton color="#71984A">Add</LargeButton>
-        </SaveAndClose>
-      </ModalContent>
-    </ModalContainer>
-  );
-};
+import AuthorizedPage from "@components/AuthorizedPage/AuthorizedPage";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { CiSearch } from "react-icons/ci";
+import InputAdornment from "@mui/material/InputAdornment";
+import { AddAndSort, Form, Headline } from "./Faculty.styled";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Button from "@mui/material/Button";
+import AddNewFacultyModal from "./FacultyModal/AddNewFacultyModal";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { findFaculties } from "@store/faculty/facultyActions";
+import FacultyRow from "./FacultyRow/FacultyRow";
 
 const Faculty = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [faculties, setFaculties] = useState<Faculty[]>([]);
+  const { faculties } = useSelector((state: RootState) => state.facultyState);
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://api.alhkq.live/faculty/all");
-        setFaculties(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+    dispatch(findFaculties({}));
+  }, [dispatch]);
 
-    fetchData();
-  }, []);
-
-  const [mcs, setMcs] = useState<MC[]>([]);
-
-  useEffect(() => {
-    const fetchMCs = async () => {
-      try {
-        const response = await axios.get<MC[]>(
-          "https://api.alhkq.live/user/all?role=mc",
-        );
-        setMcs(response.data);
-      } catch (error) {
-        console.error("Error fetching users:", error);
-      }
-    };
-
-    fetchMCs();
-  }, []);
+  const [openAddNewFacultyModal, setOpenAddNewFacultyModal] =
+    React.useState(false);
+  const handleOpenAddNewFacultyModal = () => setOpenAddNewFacultyModal(true);
+  const handleCloseAddNewFacultyModal = () => setOpenAddNewFacultyModal(false);
 
   return (
     <AuthorizedPage>
       <Headline>Faculty</Headline>
-      <SearchAndSort>
-        <input type="text" placeholder="Search" />
-        <button>Sort</button>
-      </SearchAndSort>
-      <ListAllFaculty>
-        <h3>List All Faculty</h3>
-        <LargeButton color="#71984A" onClick={() => setShowModal(true)}>
-          New falcuty
-        </LargeButton>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <h2> Add new Faculty</h2>
-            <p>Name Faculty</p>
-            <input type="text" placeholder="Information technology" required />
-            <p>Choose MC</p>
-            <Dropdown options={mcs.map((mc) => mc.name)} />
-          </Modal>
-        )}
-        <TableComponent>
-          <thead>
-            <tr>
-              <Th>Faculty Name</Th>
-              <Th>MC Name</Th>
-              <Th>MC Email</Th>
-              <Th></Th>
-              <Th></Th>
-            </tr>
-          </thead>
-          <tbody>
-            {faculties.map((faculty, index) =>
-              index % 2 === 0 ? (
-                <EvenRow key={index}>
-                  <Td>{faculty.name}</Td>
-                  <Td>{faculty.mc ? faculty.mc.name : "N/A"}</Td>
-                  <Td>{faculty.mc ? faculty.mc.email : "N/A"}</Td>
-                  <Td>
-                    <MediumButton color="#F2BA1D">
-                      <FaEdit /> Edit
-                    </MediumButton>
-                  </Td>
-                  <Td>
-                    <MediumButton color="#FF0000">
-                      <MdDelete /> Delete
-                    </MediumButton>
-                  </Td>
-                </EvenRow>
-              ) : (
-                <OddRow key={index}>
-                  <Td>{faculty.name}</Td>
-                  <Td>{faculty.mc ? faculty.mc.name : "N/A"}</Td>
-                  <Td>{faculty.mc ? faculty.mc.email : "N/A"}</Td>
-                  <Td>
-                    <MediumButton color="#F2BA1D">
-                      <FaEdit /> Edit
-                    </MediumButton>
-                  </Td>
-                  <Td>
-                    <MediumButton color="#FF0000">
-                      <MdDelete /> Delete
-                    </MediumButton>
-                  </Td>
-                </OddRow>
+
+      <Form>
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { width: "50ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            id="outlined-basic"
+            label="Search"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <CiSearch />
+                </InputAdornment>
               ),
-            )}
-          </tbody>
-        </TableComponent>
-      </ListAllFaculty>
+            }}
+            variant="outlined"
+            size="small"
+          />
+        </Box>
+
+        <AddAndSort>
+          <Button
+            variant="contained"
+            size="medium"
+            color="success"
+            onClick={handleOpenAddNewFacultyModal}
+          >
+            Add new
+          </Button>
+
+          <Button variant="contained" size="medium">
+            Sort by
+          </Button>
+        </AddAndSort>
+      </Form>
+
+      <TableContainer sx={{ mt: 5 }}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">ID</TableCell>
+              <TableCell align="left">Name</TableCell>
+              <TableCell align="left">MC Name</TableCell>
+              <TableCell align="left">MC Email</TableCell>
+              <TableCell align="left">Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {faculties.map((faculty) => (
+              <FacultyRow faculty={faculty} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      <AddNewFacultyModal
+        open={openAddNewFacultyModal}
+        handleClose={handleCloseAddNewFacultyModal}
+      />
     </AuthorizedPage>
   );
 };

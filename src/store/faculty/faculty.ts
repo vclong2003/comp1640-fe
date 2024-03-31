@@ -1,6 +1,6 @@
 import { IFacultyState } from "@interfaces/faculty.interfaces";
 import { createSlice } from "@reduxjs/toolkit";
-import { findFaculties } from "./facultyActions";
+import { createFaculty, findFaculties, updateFaculty } from "./facultyActions";
 
 const name = "facultyState";
 const initialState: IFacultyState = {
@@ -13,9 +13,19 @@ const facultyState = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Find faculties -------------------------------------------
     builder.addCase(findFaculties.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.faculties = action.payload;
+    });
+    // Create faculty -------------------------------------------
+    builder.addCase(createFaculty.fulfilled, (state, action) => {
+      state.faculties.push(action.payload);
+    });
+    // Update faculty -------------------------------------------
+    builder.addCase(updateFaculty.fulfilled, (state, action) => {
+      state.faculties = state.faculties.map((faculty) =>
+        faculty._id === action.payload._id ? action.payload : faculty,
+      );
     });
   },
 });

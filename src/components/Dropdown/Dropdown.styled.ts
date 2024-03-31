@@ -17,10 +17,9 @@ export const DropdownMenu = styled.div<IDropdownMenuProps>`
   z-index: 20;
   display: flex;
   flex-direction: column;
-  padding: var(--s-4);
   width: max-content;
   transform: ${({ $position }) =>
     $position === EDropDownPosition.LEFT
-      ? "translateX(-50%)"
+      ? "translateX(-80%)"
       : "translateX(0)"};
 `;

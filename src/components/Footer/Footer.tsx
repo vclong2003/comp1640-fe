@@ -41,10 +41,10 @@ const Footer = () => {
       </S.ContainerMiddle>
       <S.ContainerBottom>
         <S.TextBottom>
-          <S.icon>
+          <S.Icon>
             <FaRegCopyright />
-          </S.icon>
-          <S.text>2020 Y101, All rights reserved.</S.text>
+          </S.Icon>
+          <S.Text>2020 Y101, All rights reserved.</S.Text>
         </S.TextBottom>
       </S.ContainerBottom>
     </S.Foot>

@@ -3,7 +3,6 @@ import BackGround from "@assets/images/login-background.png";
 import LoginForm from "./LoginForm/LoginForm";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useSearchParams } from "react-router-dom";
-import { useState } from "react";
 import { API_BASE_URL } from "@config/api.config";
 import { login } from "@store/user/userActions";
 import { ILoginPayload } from "@interfaces/user.interfaces";
@@ -15,12 +14,8 @@ export default function Login() {
 
   const [searchParams] = useSearchParams();
 
-  const [error, setError] = useState("");
   const onLogin = (values: ILoginPayload) => {
-    setError("");
-    dispatch(login(values))
-      .unwrap()
-      .catch((error) => setError(error.message));
+    dispatch(login(values));
   };
 
   const onGoogleLogin = () => {
@@ -36,11 +31,7 @@ export default function Login() {
       <S.RightContent>
         <S.Title>Hey, Welcome Back!</S.Title>
         <S.Description>We are very happy to see you back!</S.Description>
-        <LoginForm
-          error={error}
-          onSubmit={onLogin}
-          onGoogleLogin={onGoogleLogin}
-        />
+        <LoginForm onSubmit={onLogin} onGoogleLogin={onGoogleLogin} />
       </S.RightContent>
     </S.Container>
   );

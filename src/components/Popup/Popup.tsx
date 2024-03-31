@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import * as S from "./Popup.styled";
 
 interface IPopupProps extends JSX.IntrinsicAttributes {
-  children: JSX.Element | JSX.Element[] | string | null | undefined;
+  children: ReactNode;
   show?: boolean;
   onClose: () => void;
 }
@@ -22,9 +23,7 @@ export default function Popup({
     <S.PopupOverlay $show={show} onClick={onClose} {...rest}>
       <S.PopupContainer onClick={handleClickContent}>
         <S.PopupHeader>
-          <S.CloseButton onClick={onClose}>
-            <i className="bi bi-x-circle" />
-          </S.CloseButton>
+          <S.CloseButton onClick={onClose} />
         </S.PopupHeader>
         <S.PopupBody>{children}</S.PopupBody>
       </S.PopupContainer>

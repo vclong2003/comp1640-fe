@@ -16,7 +16,10 @@ export const Button = styled.div`
   border: 1px solid #d9d9d9;
 `;
 
-export const BtnPublish = styled.button`
+interface IBtnPublishProps {
+  $active: boolean;
+}
+export const BtnPublish = styled.button<IBtnPublishProps>`
   padding: var(--s-2) var(--s-7);
   font-size: var(--fs-lg);
   cursor: pointer;
@@ -24,7 +27,10 @@ export const BtnPublish = styled.button`
   color: ${(props) => (props.$active ? "#1c1c1c" : "#D9D9D9")};
 `;
 
-export const BtnMyContribution = styled.button`
+interface IBtnMyContributionProps {
+  $active: boolean;
+}
+export const BtnMyContribution = styled.button<IBtnMyContributionProps>`
   padding: var(--s-2) var(--s-4);
   font-size: var(--fs-lg);
   cursor: pointer;

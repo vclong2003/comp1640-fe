@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import OffCanvas from "@components/OffCanvas/OffCanvas";
+import Link from "@components/Link/Link";
 
 const Navbar = () => {
   const location = useLocation();
@@ -23,19 +24,21 @@ const Navbar = () => {
         </S.ResponsiveNavButton>
         <OffCanvas show={isOffcanavsVisible} onClose={closeOffCanvas}>
           <S.VerticalNavList>
-            <S.ListLi>Home</S.ListLi>
-            <S.ListLi>Events</S.ListLi>
-            <S.ListLi>Contact Us</S.ListLi>
-            <S.ListLi>About Us</S.ListLi>
+            <S.NavItem>Home</S.NavItem>
+            <S.NavItem>Events</S.NavItem>
+            <S.NavItem>Contact Us</S.NavItem>
+            <S.NavItem>About Us</S.NavItem>
           </S.VerticalNavList>
         </OffCanvas>
-        <S.Logo>MagBook™</S.Logo>
-        <S.ListUl>
-          <S.ListLi>Home</S.ListLi>
-          <S.ListLi>Events</S.ListLi>
-          <S.ListLi>Contact Us</S.ListLi>
-          <S.ListLi>About Us</S.ListLi>
-        </S.ListUl>
+        <S.Logo>
+          <Link to="/home">MagBook™</Link>
+        </S.Logo>
+        <S.NavList>
+          <S.NavItem>Home</S.NavItem>
+          <S.NavItem>Events</S.NavItem>
+          <S.NavItem>Contact Us</S.NavItem>
+          <S.NavItem>About Us</S.NavItem>
+        </S.NavList>
         <S.Profile>
           <ProfileDropdown />
         </S.Profile>

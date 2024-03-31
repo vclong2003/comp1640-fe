@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../Button/Button";
+import { IoClose } from "react-icons/io5";
 
 interface IPopupOverlayProps {
   $show?: boolean;
@@ -12,11 +12,11 @@ const PopupOverlay = styled.div<IPopupOverlayProps>`
   width: 100%;
   height: 100%;
   background-color: var(--black-opacity);
-
   display: ${({ $show }) => ($show ? "flex" : "none")};
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  z-index: 5;
 `;
 
 const PopupContainer = styled.div`
@@ -26,30 +26,29 @@ const PopupContainer = styled.div`
   max-height: 80%;
   margin: 0 var(--s-8);
   background-color: var(--white);
-  padding: var(--s-4);
+  padding: var(--s-3);
   border-radius: var(--br-md);
   box-shadow: var(--shadow-md);
   overflow: hidden;
 `;
 
 const PopupHeader = styled.div`
-  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
 `;
 
 const PopupBody = styled.div`
-  width: 100%;
   overflow-y: auto;
+  border-radius: var(--br-md);
 `;
 
-const CloseButton = styled(Button)`
-  background-color: transparent;
+const CloseButton = styled(IoClose)`
   font-size: var(--fs-3xl);
-  color: var(--blue);
-  padding: 0;
-  margin-bottom: var(--s-2);
+  color: var(--gray);
+  margin: 0;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  cursor: pointer;
 `;
 
 export { PopupOverlay, PopupContainer, PopupHeader, PopupBody, CloseButton };

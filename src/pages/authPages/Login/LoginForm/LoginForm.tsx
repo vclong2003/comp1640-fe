@@ -1,5 +1,4 @@
 import * as S from "./LoginForm.styled";
-import * as Yup from "yup";
 
 import {
   Form,
@@ -10,11 +9,7 @@ import {
   FormLabel,
 } from "@components/formComponents";
 import { ILoginPayload } from "@interfaces/user.interfaces";
-
-const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email!").required("Required!"),
-  password: Yup.string().min(8, "Too short!").required("Required!"),
-});
+import { LoginValidationSchema } from "@utils/auth.utils";
 
 const initialValues: ILoginPayload = {
   email: "",
@@ -22,13 +17,11 @@ const initialValues: ILoginPayload = {
 };
 
 interface ILoginFormProps {
-  error: string;
   onSubmit: (values: ILoginPayload) => void;
   onGoogleLogin?: () => void;
 }
 
 export default function LoginForm({
-  error,
   onSubmit,
   onGoogleLogin,
 }: ILoginFormProps) {
@@ -36,11 +29,10 @@ export default function LoginForm({
     <S.Container>
       <S.FormContainer
         initialValues={initialValues}
-        validationSchema={LoginSchema}
+        validationSchema={LoginValidationSchema}
         onSubmit={(values) => onSubmit(values as ILoginPayload)}
       >
         <Form>
-          {error && <S.Error>{error}</S.Error>}
           <FormGroup>
             <FormLabel>Email</FormLabel>
             <FormInput

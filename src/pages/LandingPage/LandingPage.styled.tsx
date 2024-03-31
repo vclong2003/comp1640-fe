@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Landing from "../../assets/images/Landing.png";
 
 export const Container = styled.div`
-  background-image: url(${Landing});
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(${Landing});
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,7 +16,7 @@ export const Container = styled.div`
 
 export const Title = styled.div`
   font-size: 150px;
-  color: #df6a2e;
+  color: white;
   font-weight: bold;
 `;
 
@@ -38,9 +39,12 @@ export const BtnLogin = styled.button`
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
   &:hover {
     color: #df6a2e;
     background-color: white;
+    box-shadow: 0 4px 8px #df6a2e;
+    transform: translateY(-3px);
   }
 `;
 
@@ -53,8 +57,11 @@ export const BtnRegister = styled.button`
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
   &:hover {
     color: black;
     background-color: white;
+    box-shadow: 0 4px 8px #df6a2e;
+    transform: translateY(-3px);
   }
 `;

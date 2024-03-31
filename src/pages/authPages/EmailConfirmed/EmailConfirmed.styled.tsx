@@ -1,43 +1,88 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { DEVICES } from "../../../config/responsiveBreakpoints";
+
+const slideInFromLeft = keyframes`
+from {
+  transform: translate(-100%, 100%);
+}
+to {
+  transform: translate(0, 0);
+}
+`;
+
+const slideInFromRight = keyframes`
+0% {
+  opacity: 0;
+  transform: translateX(100%);
+}
+100% {
+  opacity: 1;
+  transform: translateX(0);
+}
+`;
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  height: 100vh;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  gap: 60px;
+  @media ${DEVICES.DESKTOP_L} {
+    justify-content: unset;
+  }
 `;
 
-export const Top = styled.div``;
+export const Background = styled.div`
+  display: none;
+  @media ${DEVICES.DESKTOP_L} {
+    display: unset;
+  }
+  animation: ${slideInFromLeft} 1s ease-in-out;
+`;
+
+export const Image = styled.img`
+  width: auto;
+  height: 100%;
+`;
+
+export const RightContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding: var(--s-10) var(--s-5);
+`;
 
 export const Title = styled.div`
-  font-size: 60px;
+  font-size: var(--fs-4xl);
+  @media ${DEVICES.DESKTOP_L} {
+    font-size: var(--fs-6xl);
+  }
+  animation: ${slideInFromRight} 1s ease forwards;
 `;
 
 export const Description = styled.div`
-  font-size: 30px;
-  margin-top: var(--s-10);
-  margin-bottom: var(--s-8);
-`;
-
-export const Middel = styled.div`
-  img {
-    width: 317px;
-    height: auto;
+  font-size: var(--fs-xl);
+  @media ${DEVICES.DESKTOP_L} {
+    font-size: var(--fs-3xl);
   }
+  animation: ${slideInFromRight} 1.5s ease forwards;
 `;
 
-export const Bottom = styled.div``;
+export const EmailImage = styled.img`
+  width: 60%;
+  animation: ${slideInFromRight} 1.75s ease forwards;
+`;
 
-export const BtnLogin = styled.button`
-  background-color: #236192;
-  padding: var(--s-5) var(--s-40);
-  border-radius: 20px;
+export const BackToLoginBtn = styled.button`
+  width: 360px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: var(--yellow);
   color: white;
-  font-size: 20px;
   cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
   &:hover {
-    background-color: rgba(80, 126, 169, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
   }
+  animation: ${slideInFromRight} 1.75s ease forwards;
 `;

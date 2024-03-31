@@ -3,10 +3,12 @@ import image from "@assets/images/login-background.png";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import { IGuestRegisterPayload } from "@interfaces/user.interfaces";
 import userService from "@service/api/user";
+import { useNavigate } from "react-router";
 
 export default function Register() {
+  const navigate = useNavigate();
   const onRegister = async (values: IGuestRegisterPayload) => {
-    userService.guestRegister(values);
+    userService.guestRegister(values).then(() => navigate("/email-sent"));
   };
 
   return (

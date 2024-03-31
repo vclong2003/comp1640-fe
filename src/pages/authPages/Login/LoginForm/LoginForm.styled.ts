@@ -1,11 +1,22 @@
 import { Formik } from "formik";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FormButton } from "../../../../components/formComponents";
+const slideInFromRight = keyframes`
+0% {
+  opacity: 0;
+  transform: translateX(100%);
+}
+100% {
+  opacity: 1;
+  transform: translateX(0);
+}
+`;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--s-5);
+  animation: ${slideInFromRight} 2s ease forwards;
 `;
 
 export const Title = styled.div`
@@ -23,21 +34,10 @@ export const LinkRegis = styled.div`
   color: var(--yellow);
   text-decoration: underline;
   cursor: pointer;
-`;
-
-export const Divider = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: var(--s-3);
-  font-size: var(--fs-xl);
-  padding: 0 var(--s-10);
-`;
-
-export const Line = styled.div`
-  border: 1px solid black;
-  width: 100%;
+  transition: box-shadow 0.3s, transform 0.3s;
+  &:hover {
+    transform: translateY(-2px);
+  }
 `;
 
 export const BtnLoginWithGoogle = styled(FormButton)`
@@ -45,4 +45,9 @@ export const BtnLoginWithGoogle = styled(FormButton)`
   background-color: var(--white);
   color: var(--blue-gray);
   border: 2px solid var(--blue-gray);
+  transition: box-shadow 0.3s, transform 0.3s;
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
 `;

@@ -16,6 +16,11 @@ export const AvatarContainer = styled.div`
   border: 2.4px solid var(--black);
 `;
 
+export const DropdownContent = styled.div`
+  box-shadow: var(--shadow-2xl);
+  background-color: var(--white);
+`;
+
 export const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,11 +30,6 @@ export const UserName = styled.p``;
 export const UserRole = styled.p`
   font-size: var(--fs-sm);
   color: var(--dark-gray);
-`;
-
-export const DropdownContent = styled.div`
-  box-shadow: var(--shadow-2xl);
-  background-color: var(--white);
 `;
 
 export const DropdownItem = styled.div`

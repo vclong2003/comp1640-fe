@@ -8,6 +8,18 @@
   outline: none;
   margin: 0;
   padding: 0;
+
+  /* Scrollbar ---------------------- */
+  ::-webkit-scrollbar {
+    width: var(--s-2);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--light-gray-2);
+    border-radius: var(--br-md);
+  }
 }
 
 :root {
@@ -15,20 +27,20 @@
   --blue: #236192;
   --white: #ffffff;
   --black: #000000;
+  --black-opacity: #00000088;
   --red: #e74533;
   --pink: #f4a7ba;
   --yellow: #f2ba1d;
   --green: #71984a;
   --orange: #df6a2e;
   --light-gray: #e0dcdc88;
-  --light-gray-1: #F7F7F7;
-  --light-gray-2: #BFBFBF;
+  --light-gray-1: #f7f7f7;
+  --light-gray-2: #bfbfbf;
   --blue-gray: #6c737f;
   --ice-blue: #edf2f8;
   --dark-gray: #6e6565;
-  --dark-brown: #66665D;
-  --gray: #BFBFBF;
-  
+  --dark-brown: #66665d;
+  --gray: #bfbfbf;
 
   /* Font sizes -------------------- */
   --fs-xs: 0.75rem;

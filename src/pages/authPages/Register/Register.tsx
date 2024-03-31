@@ -1,18 +1,12 @@
 import * as S from "./Register.styled";
 import image from "@assets/images/login-background.png";
 import RegisterForm from "./RegisterForm/RegisterForm";
-import { useState } from "react";
 import { IGuestRegisterPayload } from "@interfaces/user.interfaces";
 import userService from "@service/api/user";
 
 export default function Register() {
-  const [error, setError] = useState("");
-
   const onRegister = async (values: IGuestRegisterPayload) => {
-    setError("");
-    userService.guestRegister(values).catch((error) => {
-      setError(error);
-    });
+    userService.guestRegister(values);
   };
 
   return (
@@ -21,7 +15,7 @@ export default function Register() {
       <S.Form>
         <S.Title>Welcome to register !</S.Title>
         <S.Description>Please enter your email to cotinue</S.Description>
-        <RegisterForm error={error} onSubmit={onRegister} />
+        <RegisterForm onSubmit={onRegister} />
       </S.Form>
     </S.Container>
   );

@@ -11,7 +11,13 @@ export const managementRoutes: IRoute[] = [
   {
     path: "manage/",
     component: (
-      <AuthorizedPage allowedRoles={[ERole.Admin, ERole.MarketingManager]}>
+      <AuthorizedPage
+        allowedRoles={[
+          ERole.Admin,
+          ERole.MarketingManager,
+          ERole.MarketingCoordinator,
+        ]}
+      >
         <Home />
       </AuthorizedPage>
     ),
@@ -27,7 +33,7 @@ export const managementRoutes: IRoute[] = [
   {
     path: "manage/faculty",
     component: (
-      <AuthorizedPage allowedRoles={[ERole.Admin]}>
+      <AuthorizedPage allowedRoles={[ERole.Admin, ERole.MarketingManager]}>
         <Faculty />
       </AuthorizedPage>
     ),

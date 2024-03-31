@@ -143,3 +143,7 @@
 .rbc-btn-group {
   border-radius: var(--br-md) !important;
 }
+.rbc-event-content {
+  font-size: var(--fs-sm);
+  padding: var(--s-1);
+}

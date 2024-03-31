@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { useEffect } from "react";
 import { findEvents } from "@store/event/eventActions";
+import { getCalendarEvents } from "@utils/event.utils";
+import { IEvent } from "@interfaces/event.interfaces";
 
 const eventsTest: EventItem[] = [
   {
@@ -43,15 +45,12 @@ export default function Event() {
     dispatch(findEvents({}));
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(events);
-  }, [events]);
-
   const eventStyleGetter = (event: EventItem) => {
-    const backgroundColor =
-      event.resource === "you select event 1" ? "red" : "blue";
+    const eventData: IEvent = JSON.parse(event.resource);
     const style = {
-      backgroundColor,
+      backgroundColor: eventData.is_accepting_new_contribution
+        ? "var(--green)"
+        : "var(--red)",
     };
     return {
       style,
@@ -79,7 +78,7 @@ export default function Event() {
           startAccessor="start"
           endAccessor="end"
           style={{ height: 500 }}
-          events={eventsTest}
+          events={getCalendarEvents(events)}
           onSelectEvent={(event) => alert(event.resource)}
           eventPropGetter={eventStyleGetter}
         />

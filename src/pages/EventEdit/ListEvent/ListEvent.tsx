@@ -23,18 +23,27 @@ const ListEvent = () => {
         <S.Search>
           <S.Input>
             <input type="search" placeholder="Search Anything" />
+            <S.Icon>
+              <FaSearch />
+            </S.Icon>
           </S.Input>
-          <S.Icon>
-            <FaSearch />
-          </S.Icon>
         </S.Search>
       </S.Header>
       <S.ListItem>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        <S.Item>
+          <Item />
+        </S.Item>
+        <S.Item>
+          <Item />
+        </S.Item>
+        <S.Item>
+          <Item />
+        </S.Item>
+        <S.Item>
+          <Item />
+        </S.Item>
       </S.ListItem>
+      <S.BtnLoadMore>Load More</S.BtnLoadMore>
     </S.Container>
   );
 };

@@ -1,73 +1,92 @@
 import { FormButton } from "@components/formComponents";
 import styled from "styled-components";
+import { DEVICES } from "@config/responsiveBreakpoints";
 
 export const Container = styled.div`
   display: flex;
   position: relative;
-  justify-content: space-between;
+  max-height: 80vh;
 `;
 
 export const Image = styled.img`
   width: 100%;
-  height: 650px;
+  height: auto;
 `;
 
 export const TextContainer = styled.div`
   position: absolute;
   bottom: 0;
-  padding: var(--s-6) var(--s-6);
   color: white;
   display: flex;
   flex-direction: column;
   flex: 7;
+  border-radius: 0 0 var(--br-md) var(--br-md);
+  background: linear-gradient(to top, rgba(0, 0, 27, 0.8), rgba(0, 0, 27, 0));
+  @media ${DEVICES.DESKTOP} {
+    border-radius: 0 0 var(--br-lg) var(--br-lg);
+  }
 `;
 
 export const Title = styled.div`
-  font-size: 40px;
-  padding: var(--s-5) 0;
-  font-weight: bold;
+  font-size: var(--fs-xl);
+  margin-bottom: var(--s-2);
+  font-weight: var(--fw-semibold);
+  padding: 0 var(--s-1);
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-4xl);
+    margin-bottom: var(--s-5);
+    padding: 0 var(--s-6);
+  }
 `;
 
 export const Description = styled.div`
-  font-size: var(--fs-lg);
-  padding: var(--s-5) 0;
-  padding-right: var(--s-40);
-  width: auto;
+  font-size: var(--fs-xs);
+
+  padding: 0 var(--s-1);
+  @media ${DEVICES.DESKTOP} {
+    padding: 0 var(--s-6);
+    font-size: var(--fs-md);
+    margin-bottom: var(--s-3);
+  }
 `;
 
-export const Bottom = styled.div`
-  font-size: var(--fs-3xl);
-`;
+export const Bottom = styled.div``;
 
 export const Date = styled.div`
   display: flex;
-  gap: var(--s-4);
   align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--s-1);
+  @media ${DEVICES.DESKTOP} {
+    padding: 0 var(--s-6);
+  }
 `;
 
-export const Icon = styled.div`
-  padding-top: var(--s-2);
+export const Text = styled.div`
+  align-items: center;
+  display: flex;
+  gap: var(--s-1);
+  font-size: var(--fs-xs);
+  margin-bottom: 0;
+  @media ${DEVICES.DESKTOP} {
+    gap: var(--s-2);
+    font-size: var(--fs-2xl);
+  }
 `;
-
-export const Text = styled.div``;
 
 export const BtnAdd = styled(FormButton)`
   float: right;
-  padding: var(--s-2) var(--s-8);
+  padding: var(--s-1) var(--s-1);
   background-color: var(--yellow);
   color: white;
   cursor: pointer;
-  font-size: var(--fs-md);
+  font-size: var(--fs-xs);
   border-radius: var(--br-md);
   &:hover {
     background-color: rgba(231, 205, 23, 0.5);
   }
-`;
-
-export const Button = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  padding: var(--s-4) var(--s-3);
-  flex: 5;
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-2) var(--s-8);
+    font-size: var(--fs-md);
+  }
 `;

@@ -1,5 +1,5 @@
 import * as S from "./PopularContributions.styled";
-import Item from "../../../components/Item/Item";
+import Item from "../../../components/ContributionItem/ContributionItem";
 
 const PopularContributions = () => {
   return (

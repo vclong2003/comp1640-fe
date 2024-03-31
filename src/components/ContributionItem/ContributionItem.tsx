@@ -1,7 +1,9 @@
-import * as S from "./Item.styled";
+import * as S from "./ContributionItem.styled";
 import image from "../../assets/images/food.png";
 
-export default function Item(props: JSX.IntrinsicAttributes): JSX.Element {
+export default function ContributionItem(
+  props: JSX.IntrinsicAttributes,
+): JSX.Element {
   return (
     <S.Container {...props}>
       <S.Image src={image} alt="placeholder" />

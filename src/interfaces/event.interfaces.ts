@@ -25,6 +25,10 @@ export interface IEvent {
   };
 }
 
+export interface IEventState {
+  events: IEvent[];
+}
+
 // Create event ---------------------------
 export interface ICreatEventPayload {
   name: string;

@@ -6,10 +6,11 @@ export const Container = styled.div`
   margin-top: var(--s-5);
   border-bottom: 2px solid var(--black);
   margin-bottom: var(--s-4);
+  gap: var(--s-8);
 `;
 
 export const Left = styled.div`
-  flex: 9;
+  flex: 5;
   display: flex;
   flex-direction: column;
   @media ${DEVICES.DESKTOP} {
@@ -22,7 +23,6 @@ export const NameAuthor = styled.div`
   /* padding: var(--s-2) 0; */
   @media ${DEVICES.DESKTOP} {
     font-size: var(--fs-lg);
-    padding: var(--s-4) 0;
   }
 `;
 
@@ -32,7 +32,6 @@ export const Title = styled.div`
   margin: var(--s-3) 0;
   @media ${DEVICES.DESKTOP} {
     font-size: var(--fs-xl);
-    padding-bottom: var(--s-5);
   }
 `;
 
@@ -42,7 +41,7 @@ export const InteractionContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: var(--s-10) 0 var(--s-3) 0;
+  /* padding: var(--s-10) 0 var(--s-3) 0; */
   gap: var(--s-5);
 `;
 
@@ -61,7 +60,7 @@ export const Comment = styled.div`
 `;
 
 export const Right = styled.div`
-  flex: 3;
+  flex: 8;
   @media ${DEVICES.DESKTOP} {
     flex: 10;
   }
@@ -70,6 +69,9 @@ export const Right = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: auto;
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
+  border-radius: var(--br-md);
   object-fit: cover;
 `;
+
+

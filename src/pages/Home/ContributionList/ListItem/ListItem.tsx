@@ -15,7 +15,7 @@ export default function ListItem() {
           {/* <S.NameAuthor>Thao Huong</S.NameAuthor> */}
           <S.EventName>Event Name</S.EventName>
           <S.Title>
-            Bui,  new to the site! The hottest assets are out now
+            Bui, new to the site! The hottest assets are out now
           </S.Title>
           <S.Description>
             Edgar Shaw, a famous sailor and photographer, sails in remote parts

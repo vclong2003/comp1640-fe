@@ -39,7 +39,7 @@ export const Content = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: var(--s-4) 0;
-  gap: var(--s-5);
+  gap: var(--s-3);
 `;
 
 export const Bottom = styled.div`

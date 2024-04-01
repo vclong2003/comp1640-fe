@@ -11,6 +11,8 @@ const ContributionList = () => {
         <ListItem />
         <ListItem />
         <ListItem />
+        <ListItem />
+        <ListItem />
       </S.Content>
       <S.Bottom>
         <S.Button>Load more</S.Button>

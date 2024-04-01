@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   gap: var(--s-4);
-  width: 49.5%;
+  width: 49%;
   box-shadow: var(--shadow-1);
   padding: var(--s-4);
   border-radius: var(--br-xl);
@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  flex: 8;
+  flex: 9;
   display: flex;
   flex-direction: column;
 `;

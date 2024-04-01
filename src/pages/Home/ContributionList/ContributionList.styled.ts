@@ -33,7 +33,14 @@ export const Icon = styled.div``;
 
 export const Text = styled.div``;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: var(--s-4) 0;
+  gap: var(--s-4);
+`;
 
 export const Bottom = styled.div`
   align-items: center;

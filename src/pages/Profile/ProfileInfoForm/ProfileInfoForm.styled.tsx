@@ -3,11 +3,17 @@ import {
   FormGroup as BaseFormGroup,
   FormButton,
 } from "../../../components/formComponents";
+import { DEVICES } from "@config/responsiveBreakpoints";
 
 export const HorizontalFormGroup = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: var(--s-3);
+
+  @media ${DEVICES.DESKTOP} {
+    flex-direction: row;
+    gap: var(--s-3);
+  }
 `;
 
 export const FormGroup = styled(BaseFormGroup)`

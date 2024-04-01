@@ -7,6 +7,7 @@ import { ERole } from "@interfaces/user.interfaces";
 import AddContribution from "@pages/AddContribution/AddContribution";
 import ContributionDetail from "@pages/ContributionDetail/ContributionDetail";
 import Event from "@pages/Event/Event";
+import AboutUs from "@pages/AboutUs/AboutUs";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
@@ -52,7 +53,19 @@ export const defaultLayoutRoutes: IRoute[] = [
     ),
   },
   {
-    path: "/eventdetail",
-    component: <EventDetail />,
+    path: "eventdetail",
+    component: (
+      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
+        <EventDetail />
+      </AuthorizedPage>
+    ),
+  },
+  {
+    path: "about-us",
+    component: (
+      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
+        <AboutUs />
+      </AuthorizedPage>
+    ),
   },
 ];

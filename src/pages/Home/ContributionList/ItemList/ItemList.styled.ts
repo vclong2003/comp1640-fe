@@ -61,6 +61,7 @@ export const Comment = styled.div`
 
 export const Right = styled.div`
   flex: 8;
+  padding-top: var(--s-5);
   @media ${DEVICES.DESKTOP} {
     flex: 10;
   }
@@ -68,10 +69,9 @@ export const Right = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
   aspect-ratio: 1/1;
   border-radius: var(--br-md);
   object-fit: cover;
+  margin-bottom: var(--s-3);
 `;
-
-

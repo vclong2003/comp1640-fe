@@ -10,7 +10,7 @@ const Footer = () => {
     <S.Foot>
       <S.ContainerTop>
         <S.Left>
-          <S.FirstLeft>Header</S.FirstLeft>
+          <S.FirstLeft>MagBook™</S.FirstLeft>
           <S.SecondLeft>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare
             cursus sed nunc eget dictum Sed ornare cursus sed nunc eget dictumd
@@ -41,9 +41,7 @@ const Footer = () => {
       </S.ContainerMiddle>
       <S.ContainerBottom>
         <S.TextBottom>
-          <S.Icon>
-            <FaRegCopyright />
-          </S.Icon>
+          <FaRegCopyright />
           <S.Text>2020 Y101, All rights reserved.</S.Text>
         </S.TextBottom>
       </S.ContainerBottom>

@@ -10,7 +10,7 @@ const ItemList = () => {
         <S.Image src={image}></S.Image>
       </S.Left>
       <S.Right>
-        <S.NameAuthor>By Thao Huong</S.NameAuthor>
+        <S.NameAuthor>Thao Huong</S.NameAuthor>
         <S.Title>Bui,  new to the site! The hottest assets are out now</S.Title>
         <S.Description>
           Edgar Shaw, a famous sailor and photographer, sails in remote parts

@@ -5,9 +5,7 @@ import { FaCommentAlt } from "react-icons/fa";
 export default function ListItem() {
   return (
     <S.Container>
-      <S.Left>
-        <S.Image src="https://picsum.photos/600/400"></S.Image>
-      </S.Left>
+      <S.Image src="https://picsum.photos/600/400"></S.Image>
       <S.Right>
         <S.EventName>ok</S.EventName>
         <S.Title>Bui, new to the site! The hottest assets are out now</S.Title>

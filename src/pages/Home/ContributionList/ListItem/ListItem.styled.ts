@@ -4,6 +4,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
 `;
+export const Image = styled.img`
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+`;
 
 export const Left = styled.div`
   flex: 9;
@@ -62,11 +68,4 @@ export const Right = styled.div`
   @media ${DEVICES.DESKTOP} {
     flex: 10;
   }
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: cover;
 `;

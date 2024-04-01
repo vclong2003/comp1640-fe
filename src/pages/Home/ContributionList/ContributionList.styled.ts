@@ -42,6 +42,8 @@ export const Bottom = styled.div`
 `;
 
 export const Button = styled(FormButton)`
-  padding: var(--s-3) var(--s-4);
-  background-color: var(--blue);
+  padding: var(--s-2) var(--s-8);
+  background-color: var(--black);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-normal);
 `;

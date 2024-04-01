@@ -13,7 +13,7 @@ const ContributionList = () => {
         <ListItem />
       </S.Content>
       <S.Bottom>
-        <S.Button>Load More Contributions</S.Button>
+        <S.Button>Load more</S.Button>
       </S.Bottom>
     </S.Container>
   );

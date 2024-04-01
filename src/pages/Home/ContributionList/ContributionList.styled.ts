@@ -11,7 +11,8 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 2px solid var(--black);
+  padding-bottom: var(--s-3);
+  border-bottom: 2px solid var(--dark-gray);
 `;
 
 export const TitleHeader = styled.div`

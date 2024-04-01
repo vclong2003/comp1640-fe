@@ -5,18 +5,17 @@ import { default as BaseItem } from "@components/ContributionItem/ContributionIt
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: auto;
 `;
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--s-2);
+  margin-bottom: var(--s-3);
 `;
 
 export const Title = styled.div`
-  font-size: var(--fs-md);
+  font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
   @media ${DEVICES.DESKTOP} {
     display: unset;
@@ -45,7 +44,6 @@ export const PopularContributionItemsContainer = styled.div`
 export const Item = styled(BaseItem)`
   border-radius: var(--br-xl);
   width: 50%;
-  box-shadow: var(--shadow-lg);
   @media ${DEVICES.DESKTOP} {
     display: unset;
   }

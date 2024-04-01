@@ -7,8 +7,8 @@ export default function ListItem() {
     <S.Container>
       <S.Image src="https://picsum.photos/600/400"></S.Image>
       <S.Right>
-        <S.NameAuthor>Thao Huong</S.NameAuthor>
-        <S.Title>Bui,  new to the site! The hottest assets are out now</S.Title>
+        <S.EventName>Thao Huong</S.EventName>
+        <S.Title>Bui, new to the site! The hottest assets are out now</S.Title>
         <S.Description>
           Edgar Shaw, a famous sailor and photographer, sails in remote parts of
           the world and makes his photo experience.

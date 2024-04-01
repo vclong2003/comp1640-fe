@@ -74,3 +74,4 @@ export const Image = styled.img`
   border-radius: var(--br-md);
   object-fit: cover;
   margin-bottom: var(--s-3);
+`;

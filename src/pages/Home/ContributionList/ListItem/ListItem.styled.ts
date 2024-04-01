@@ -18,7 +18,7 @@ export const Left = styled.div`
   }
 `;
 
-export const NameAuthor = styled.div`
+export const EventName = styled.div`
   font-size: var(--fs-sm);
   /* padding: var(--s-2) 0; */
   @media ${DEVICES.DESKTOP} {
@@ -74,4 +74,3 @@ export const Image = styled.img`
   border-radius: var(--br-md);
   object-fit: cover;
   margin-bottom: var(--s-3);
-`;

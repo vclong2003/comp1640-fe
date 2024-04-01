@@ -11,7 +11,8 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 2px solid var(--black);
+  padding-bottom: var(--s-3);
+  border-bottom: 2px solid var(--dark-gray);
 `;
 
 export const TitleHeader = styled.div`
@@ -41,6 +42,8 @@ export const Bottom = styled.div`
 `;
 
 export const Button = styled(FormButton)`
-  padding: var(--s-3) var(--s-4);
-  background-color: var(--blue);
+  padding: var(--s-2) var(--s-8);
+  background-color: var(--black);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-normal);
 `;

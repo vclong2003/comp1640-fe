@@ -3,9 +3,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  margin-top: var(--s-5);
-  border-bottom: 2px solid var(--black);
-  margin-bottom: var(--s-4);
+`;
+export const Image = styled.img`
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
 `;
 
 export const Left = styled.div`
@@ -17,7 +20,7 @@ export const Left = styled.div`
   }
 `;
 
-export const NameAuthor = styled.div`
+export const EventName = styled.div`
   font-size: var(--fs-sm);
   /* padding: var(--s-2) 0; */
   @media ${DEVICES.DESKTOP} {
@@ -65,11 +68,4 @@ export const Right = styled.div`
   @media ${DEVICES.DESKTOP} {
     flex: 10;
   }
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: cover;
 `;

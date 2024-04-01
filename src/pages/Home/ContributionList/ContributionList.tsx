@@ -1,26 +1,19 @@
 import * as S from "./ContributionList.styled";
-import { IoFilterSharp } from "react-icons/io5";
-import ItemList from "./ItemList/ItemList";
+import ListItem from "./ListItem/ListItem";
 
 const ContributionList = () => {
   return (
     <S.Container>
       <S.Header>
-        <S.TitleHeader>Browse latest articles</S.TitleHeader>
-        <S.Filters>
-          <S.Icon>
-            <IoFilterSharp />
-          </S.Icon>
-          <S.Text>Filter</S.Text>
-        </S.Filters>
+        <S.TitleHeader>Browse popular contributions</S.TitleHeader>
       </S.Header>
       <S.Content>
-        <ItemList />
-        <ItemList />
-        <ItemList />
+        <ListItem />
+        <ListItem />
+        <ListItem />
       </S.Content>
       <S.Bottom>
-        <S.Button>Load More Contributions</S.Button>
+        <S.Button>Load more</S.Button>
       </S.Bottom>
     </S.Container>
   );

@@ -4,13 +4,17 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   margin-top: var(--s-5);
-  border-bottom: 2px solid var(--black);
-  margin-bottom: var(--s-4);
+  flex-direction: column;
+  gap: var(--s-3);
+`;
+
+export const ContainerTop = styled.div`
+  display: flex;
   gap: var(--s-8);
 `;
 
 export const Left = styled.div`
-  flex: 5;
+  flex: 3;
   display: flex;
   flex-direction: column;
   @media ${DEVICES.DESKTOP} {
@@ -20,9 +24,9 @@ export const Left = styled.div`
 
 export const EventName = styled.div`
   font-size: var(--fs-sm);
-  /* padding: var(--s-2) 0; */
   @media ${DEVICES.DESKTOP} {
     font-size: var(--fs-lg);
+    margin-bottom: var(--s-5);
   }
 `;
 
@@ -31,18 +35,22 @@ export const Title = styled.div`
   font-weight: var(--fw-semibold);
   margin: var(--s-3) 0;
   @media ${DEVICES.DESKTOP} {
-    font-size: var(--fs-xl);
+    font-size: var(--fs-2xl);
   }
 `;
 
-export const Description = styled.div``;
+export const Description = styled.div`
+  font-size: var(--fs-md);
+  width: 100%;
+`;
 
 export const InteractionContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* padding: var(--s-10) 0 var(--s-3) 0; */
-  gap: var(--s-5);
+  width: 30%;
+  justify-content: space-between;
+  margin-top: var(--s-2);
 `;
 
 export const Like = styled.div`
@@ -60,12 +68,16 @@ export const Comment = styled.div`
 `;
 
 export const Right = styled.div`
-  flex: 8;
-  padding-top: var(--s-5);
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   @media ${DEVICES.DESKTOP} {
     flex: 10;
   }
 `;
+
+export const ContainerImage = styled.div``;
 
 export const Image = styled.img`
   width: 100%;
@@ -73,5 +85,8 @@ export const Image = styled.img`
   aspect-ratio: 1/1;
   border-radius: var(--br-md);
   object-fit: cover;
-  margin-bottom: var(--s-3);
+`;
+
+export const ContainerBottom = styled.div`
+  border: 1px solid black;
 `;

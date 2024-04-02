@@ -3,9 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: var(--s-4);
   border-radius: var(--br-xl);
-  width: 25%;
   margin-bottom: var(--s-4);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: var(--shadow-1);
 `;
 
 export const Image = styled.img`

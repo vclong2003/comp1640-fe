@@ -12,12 +12,11 @@ import { EGender, ISetupAccountPayload } from "@interfaces/user.interfaces";
 import { SetupAccountValidationSchema } from "@utils/auth.utils";
 
 interface ISetupFormProps {
-  onSubmit: (values: Omit<ISetupAccountPayload, "token">) => void;
-  error: string;
+  onSubmit: (values: Partial<ISetupAccountPayload>) => void;
   email: string;
 }
 
-const initialValues: Omit<ISetupAccountPayload, "token"> = {
+const initialValues: Partial<ISetupAccountPayload> = {
   password: "",
   name: "",
   phone: "",
@@ -25,7 +24,7 @@ const initialValues: Omit<ISetupAccountPayload, "token"> = {
   dob: "",
 };
 
-const SetupForm = ({ email, error, onSubmit }: ISetupFormProps) => {
+const SetupForm = ({ email, onSubmit }: ISetupFormProps) => {
   return (
     <S.Container>
       <S.Title>Setup Your Account</S.Title>
@@ -70,7 +69,6 @@ const SetupForm = ({ email, error, onSubmit }: ISetupFormProps) => {
             <FormError name="password" />
           </FormGroup>
           <FormButton type="submit">Submit</FormButton>
-          {error && <S.Error>{error}</S.Error>}
         </Form>
       </Formik>
     </S.Container>

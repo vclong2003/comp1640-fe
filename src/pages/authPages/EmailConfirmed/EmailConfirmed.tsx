@@ -12,9 +12,7 @@ const EmailConfirmed = () => {
       <S.RightContent>
         <S.Title>Check your Email!</S.Title>
         <S.Description>We sent an email to you!</S.Description>
-
         <S.EmailImage src={Success}></S.EmailImage>
-
         <Link to="/login">
           <S.BackToLoginBtn>Back to Login</S.BackToLoginBtn>
         </Link>

@@ -5,6 +5,9 @@ export const Container = styled.div`
   padding: var(--s-4);
   border-radius: var(--br-xl);
   box-shadow: var(--shadow-1);
+  @media ${DEVICES.DESKTOP} {
+    margin-bottom: var(--s-2);
+  }
 `;
 
 export const Image = styled.img`

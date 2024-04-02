@@ -30,7 +30,7 @@ export const Menu = () => {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 2, borderColor: "divider" }}
+        sx={{ borderRight: 0, borderColor: "divider" }}
       >
         {/* Home ---------------------------------------- */}
         <Link to="/manage">
@@ -39,6 +39,7 @@ export const Menu = () => {
             iconPosition="start"
             label="Dashboard"
             {...a11yProps(0)}
+            sx={{ width: "100%", justifyContent: "flex-start" }}
           />
         </Link>
         {/* Faculty -------------------------------------- */}
@@ -51,6 +52,7 @@ export const Menu = () => {
               iconPosition="start"
               label="Faculties"
               {...a11yProps(1)}
+              sx={{ width: "100%", justifyContent: "flex-start" }}
             />
           </Link>
         </AuthorizedComponent>
@@ -61,6 +63,7 @@ export const Menu = () => {
             iconPosition="start"
             label="Events"
             {...a11yProps(2)}
+            sx={{ width: "100%", justifyContent: "flex-start" }}
           />
         </Link>
         {/* User ------------------------------------------ */}
@@ -71,6 +74,7 @@ export const Menu = () => {
               iconPosition="start"
               label="Users"
               {...a11yProps(3)}
+              sx={{ width: "100%", justifyContent: "flex-start" }}
             />
           </Link>
         </AuthorizedComponent>
@@ -81,6 +85,7 @@ export const Menu = () => {
             iconPosition="start"
             label="Contributions"
             {...a11yProps(4)}
+            sx={{ width: "100%", justifyContent: "flex-start" }}
           />
         </Link>
       </Tabs>

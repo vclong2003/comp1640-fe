@@ -67,10 +67,6 @@ const Faculty = () => {
           >
             Add new
           </Button>
-
-          <Button variant="contained" size="medium">
-            Sort by
-          </Button>
         </AddAndSort>
       </Form>
 

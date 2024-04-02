@@ -68,7 +68,7 @@ export interface ISetupAccountPayload {
 
 export interface IResetPasswordPayload {
   token: string;
-  newPassword: string;
+  password: string;
 }
 
 // Change password -----------------------------

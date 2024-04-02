@@ -1,4 +1,4 @@
-import logo from "../../assets/images/Splash/logo.png";
+import logo from "@assets/images/Splash/logo.png";
 
 const Splash = () => {
   return (

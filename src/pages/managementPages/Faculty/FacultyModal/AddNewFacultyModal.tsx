@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { useState } from "react";
+import { InputLabel, MenuItem, Select } from "@mui/material";
 
 const style = {
   position: "absolute" as const,
@@ -17,13 +19,21 @@ const style = {
   p: 4,
 };
 
-const FacultyModal = ({
+export default function FacultyModal({
   open,
   handleClose,
 }: {
   open: boolean;
   handleClose: () => void;
-}) => {
+}) {
+  const [bannerImageUrl, setBannerImageUrl] = useState("");
+
+  const onSelectBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const file = e.target.files[0];
+    setBannerImageUrl(URL.createObjectURL(file));
+  };
+
   return (
     <Modal
       open={open}
@@ -36,12 +46,9 @@ const FacultyModal = ({
           Add new Faculty
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <TextField
-            id="outlined-basic"
-            label="ID"
-            variant="outlined"
-            sx={{ mr: 2 }}
-          />
+          <Select>
+            <MenuItem value={10}>Ten</MenuItem>
+          </Select>
           <TextField id="outlined-basic" label="Name" variant="outlined" />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
@@ -50,13 +57,15 @@ const FacultyModal = ({
             label="Decription"
             variant="outlined"
           />
-          <Button
-            variant="outlined"
-            size="small"
-            startIcon={<CloudUploadIcon />}
-            sx={{ width: 222.67, color: "gray", borderColor: "gray" }}
-          >
-            Upload Image
+          <Button variant="outlined" component="label">
+            <input
+              id="bannerImageInput"
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={onSelectBannerImage}
+            />
+            <CloudUploadIcon /> Select Banner Image
           </Button>
         </Box>
 
@@ -71,6 +80,4 @@ const FacultyModal = ({
       </Box>
     </Modal>
   );
-};
-
-export default FacultyModal;
+}

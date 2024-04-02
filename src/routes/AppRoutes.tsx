@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router";
-import DefaultLayout from "../components/Layouts/DefaultLayout";
-import ManagementLayout from "../components/Layouts/ManagementLayout/ManagementLyout";
-import AuthLayout from "../components/Layouts/AuthLayout";
+import DefaultLayout from "@components/Layouts/DefaultLayout";
+import ManagementLayout from "@components/Layouts/ManagementLayout/ManagementLyout";
+import AuthLayout from "@components/Layouts/AuthLayout";
 import { defaultLayoutRoutes } from "./defaultLayoutRoutes";
 import { authRoutes } from "./authRoutes";
 import { managementRoutes } from "./managementRoutes";
-import LandingPage from "../pages/LandingPage/LandingPage";
+import LandingPage from "@pages/LandingPage/LandingPage";
 
 export default function AppRoutes(): JSX.Element {
   return (

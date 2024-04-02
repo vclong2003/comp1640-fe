@@ -7,7 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const ContainerForm = styled(Form)``;
+export const ContainerForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Input = styled(FormInput)`
   margin-bottom: var(--s-4);

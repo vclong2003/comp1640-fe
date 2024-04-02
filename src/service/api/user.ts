@@ -6,6 +6,7 @@ import {
   ILoginSession,
   IRemoveLoginSessionPayload,
   IResetPasswordPayload,
+  ISendResetPasswordEmailPayload,
   IUpdateUserPayload,
   IUser,
 } from "@interfaces/user.interfaces";
@@ -40,6 +41,13 @@ const changePassword = async (
   payload: IChangePasswordPayload,
 ): Promise<void> => {
   return await axiosInstance.put("/auth/password", payload);
+};
+
+//Send reset password email -------------------------------------
+const sendResetPasswordEmail = async (
+  payload: ISendResetPasswordEmailPayload,
+): Promise<void> => {
+  return await axiosInstance.post("/auth/reset-password-email", payload);
 };
 
 // Reset password ------------------------------------------------
@@ -91,4 +99,5 @@ export default {
   removeLoginSession,
   logoutAllDevices,
   resetPassword,
+  sendResetPasswordEmail,
 };

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IUserState } from "../../interfaces/user.interfaces";
 import {
   findLoginSessions,
+  findUsers,
   getCurrentUser,
   login,
   logout,
@@ -48,6 +49,10 @@ const userState = createSlice({
       state.loginSessions = state.loginSessions.filter(
         (session) => session._id !== action.payload.sessionId,
       );
+    });
+    // Find users --------------------------------------------------
+    builder.addCase(findUsers.fulfilled, (state, action) => {
+      state.users = action.payload;
     });
   },
 });

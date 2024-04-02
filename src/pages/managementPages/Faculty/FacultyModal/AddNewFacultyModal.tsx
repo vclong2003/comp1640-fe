@@ -101,15 +101,7 @@ export default function FacultyModal({
                   </MenuItem>
                 ))}
               </Field>
-              {/* <Select
-                defaultValue=""
-                variant="outlined"
-                sx={{ minWidth: 200 }}
-                name="mcId"
-                id="mcId"
-              >
-               
-              </Select> */}
+
               {/* Name ------------------------------------- */}
               <Field
                 as={TextField}

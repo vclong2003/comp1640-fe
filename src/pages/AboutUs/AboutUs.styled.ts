@@ -1,81 +1,78 @@
+import { FormButton } from "@components/formComponents";
+import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  text-align: center;
-  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: var(--s-5);
+  padding: 0 var(--s-10);
 `;
 
-export const Header = styled.header`
-  width: 98%;
+export const Title = styled.div`
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--s-5);
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-3xl);
+    margin-bottom: var(--s-10);
+  }
+`;
+
+export const LeftContent = styled.div`
+  flex: 7;
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-5) 0;
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-10) var(--s-6);
+  }
+`;
+
+export const Text = styled.div`
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--s-8);
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-3xl);
+    margin-bottom: var(--s-8);
+  }
+`;
+
+export const Description = styled.div`
+  font-size: var(--fs-md);
+  margin-bottom: var(--s-0);
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--s-10);
+  }
+`;
+
+export const Button = styled(FormButton)`
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin: 20px auto;
+  font-size: var(--fs-md);
+  width: 50%;
+  @media ${DEVICES.DESKTOP} {
+    width: 20%;
+  }
 `;
 
-export const Title = styled.h1`
-  font-size: 55px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  position: relative;
-`;
-
-export const Section = styled.section`
-  display: flex;
-  align-items: center;
-  width: 85%;
-  margin: auto;
-  padding-bottom: 30px;
-`;
-
-export const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 0 50%;
-  padding: 30px;
-  height: 100%;
+export const RightContent = styled.div`
+  width: 100%;
+  display: none;
+  @media ${DEVICES.DESKTOP} {
+    flex: 5;
+    display: unset;
+  }
 `;
 
 export const Image = styled.img`
-  flex: 0 50%;
-  max-width: 50%;
-  height: auto;
-  margin: 5px;
-  border-radius: 10px;
-`;
-
-export const ContentTitle = styled.h2`
-  font-size: 35px;
-  margin: 0;
-  margin-bottom: 20px;
-  text-align: left;
-`;
-
-export const ContentParagraph = styled.p`
-  color: #666;
-  font-size: 20px;
-  line-height: 1.5;
-  margin: 0;
-  margin-bottom: 30px;
-  text-align: left;
-`;
-
-export const ButtonContainer = styled.div`
-  text-align: left;
-  margin-bottom: 20px;
-`;
-
-export const Button = styled.button`
-  display: inline-block;
-  background-color: #ffa500;
-  border: none;
-  border-radius: 10px;
-  padding: 15px 30px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: orangered;
-  }
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--br-xl);
 `;

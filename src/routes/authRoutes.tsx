@@ -1,5 +1,5 @@
 import { IRoute } from "../interfaces/common.interfaces";
-import Login from "../pages/authPages/Login/Login";
+import Login from "@pages/authPages/Login/Login";
 import Register from "../pages/authPages/Register/Register";
 import SetupAccount from "../pages/authPages/SetupAccount/SetupAccount";
 import ForgotPassword from "../pages/authPages/ForgotPassword/ForgotPassword";

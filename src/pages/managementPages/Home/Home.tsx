@@ -31,6 +31,9 @@ const Home: React.FC = () => {
           display: "flex",
           justifyContent: "space-between",
           marginTop: "40px",
+          "@media only screen and (max-width: 600px)": {
+            display: "block",
+          },
         }}
       >
         <Box
@@ -39,6 +42,9 @@ const Home: React.FC = () => {
             boxShadow: "3px 3px 6px rgba(0, 0, 0, 0.1)",
             height: 240,
             borderRadius: 2,
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+            },
           }}
         >
           <DoughnutChart sourceData={DoughnutData} />
@@ -49,6 +55,10 @@ const Home: React.FC = () => {
             boxShadow: "3px 3px 6px rgba(0, 0, 0, 0.1)",
             height: 240,
             borderRadius: 2,
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+              marginTop: 2,
+            },
           }}
         >
           <BarChart sourceData={sourceData} />

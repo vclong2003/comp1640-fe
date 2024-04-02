@@ -27,6 +27,13 @@ const BoxItemStyled = (color: string[]): React.CSSProperties => ({
   color: "white",
 });
 
+const mobileMediaQuery = {
+  "@media only screen and (max-width: 600px)": {
+    width: "100%",
+    height: "80px",
+  },
+};
+
 const Cards = () => {
   const colors = ["#5B93FF", "#605BFF", "#FF8F6B", "#605BFF"];
 
@@ -36,9 +43,17 @@ const Cards = () => {
         display: "flex",
         justifyContent: "space-between",
         marginTop: "20px",
+        "@media only screen and (max-width: 600px)": {
+          display: "block",
+        },
       }}
     >
-      <Box sx={BoxDashBoardStyled}>
+      <Box
+        sx={{
+          ...BoxDashBoardStyled,
+          ...mobileMediaQuery,
+        }}
+      >
         <Box sx={BoxItemStyled(colors)}>
           <FaUsers />
         </Box>
@@ -47,7 +62,12 @@ const Cards = () => {
           <p>Student</p>
         </Box>
       </Box>
-      <Box sx={BoxDashBoardStyled}>
+      <Box
+        sx={{
+          ...BoxDashBoardStyled,
+          ...mobileMediaQuery,
+        }}
+      >
         <Box sx={BoxItemStyled(colors)}>
           <LuSchool />
         </Box>
@@ -56,7 +76,12 @@ const Cards = () => {
           <p>Faculty</p>
         </Box>
       </Box>
-      <Box sx={BoxDashBoardStyled}>
+      <Box
+        sx={{
+          ...BoxDashBoardStyled,
+          ...mobileMediaQuery,
+        }}
+      >
         <Box sx={BoxItemStyled(colors)}>
           <FaFile />
         </Box>
@@ -65,7 +90,12 @@ const Cards = () => {
           <p>Files</p>
         </Box>
       </Box>
-      <Box sx={BoxDashBoardStyled}>
+      <Box
+        sx={{
+          ...BoxDashBoardStyled,
+          ...mobileMediaQuery,
+        }}
+      >
         <Box sx={BoxItemStyled(colors)}>
           <MdOutlineEventAvailable />
         </Box>

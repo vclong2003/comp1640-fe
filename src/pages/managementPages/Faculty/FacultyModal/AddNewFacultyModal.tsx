@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 import { MenuItem, Select } from "@mui/material";
 import { Textarea } from "@mui/joy";
-import { IUser } from "@interfaces/user.interfaces";
+// import { IUser } from "@interfaces/user.interfaces";
 
 const style = {
   position: "absolute" as const,
@@ -18,6 +18,9 @@ const style = {
   bgcolor: "background.paper",
   borderRadius: 4,
   p: 4,
+  "@media only screen and (max-width: 600px)": {
+    width: "90%",
+  },
 };
 
 export default function FacultyModal({
@@ -27,7 +30,7 @@ export default function FacultyModal({
   open: boolean;
   handleClose: () => void;
 }) {
-  const [mcList, setMcList] = useState<IUser[]>([]);
+  // const [mcList, setMcList] = useState<IUser[]>([]);
   const [bannerImageUrl, setBannerImageUrl] = useState("");
 
   const onSelectBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,17 +50,41 @@ export default function FacultyModal({
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Add new Faculty
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mt: 2,
+            "@media only screen and (max-width: 600px)": {
+              display: "block",
+            },
+          }}
+        >
           <Select
             defaultValue=""
             variant="outlined"
             required
-            sx={{ minWidth: 200 }}
+            sx={{
+              minWidth: 200,
+              "@media only screen and (max-width: 600px)": {
+                width: "100%",
+              },
+            }}
           >
             <MenuItem value="">Select MC</MenuItem>
             <MenuItem value={10}>Ten</MenuItem>
           </Select>
-          <TextField id="outlined-basic" label="Name" variant="outlined" />
+          <TextField
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            sx={{
+              "@media only screen and (max-width: 600px)": {
+                width: "100%",
+                mt: 2,
+              },
+            }}
+          />
         </Box>
         <Box
           sx={{
@@ -85,14 +112,17 @@ export default function FacultyModal({
           </Button>
         </Box>
 
-        <Button
-          variant="contained"
-          size="medium"
-          color="primary"
-          sx={{ mt: 4, left: "40%" }}
-        >
-          Submit
-        </Button>
+        <Box sx={{ mt: 4 }}>
+          {bannerImageUrl && (
+            <img src={bannerImageUrl} alt="Banner" style={{ width: "100%" }} />
+          )}
+        </Box>
+
+        <Box sx={{ display: "flex", mt: 4, justifyContent: "center" }}>
+          <Button variant="contained" size="medium" color="primary">
+            Submit
+          </Button>
+        </Box>
       </Box>
     </Modal>
   );

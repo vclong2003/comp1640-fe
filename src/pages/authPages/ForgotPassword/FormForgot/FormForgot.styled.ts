@@ -23,4 +23,5 @@ export const BtnContinue = styled(FormButton)`
 
 export const BtnBack = styled(FormButton)`
   margin: 0;
+  width: 100%;
 `;

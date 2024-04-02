@@ -1,3 +1,4 @@
+import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
 export const Event = styled.div`
@@ -13,12 +14,15 @@ export const BannerImageContainer = styled.div`
 `;
 
 export const BannerImage = styled.img`
-  aspect-ratio: 3;
+  aspect-ratio: 16/9;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: var(--br-md);
   filter: brightness(0.7);
+  @media ${DEVICES.DESKTOP} {
+    aspect-ratio: 3;
+  }
 `;
 
 export const BannerText = styled.div`
@@ -29,15 +33,21 @@ export const BannerText = styled.div`
 `;
 
 export const FacultyName = styled.p`
-  font-size: var(--fs-4xl);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-semibold);
   color: var(--white);
   text-shadow: var(--text-shadow);
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-4xl);
+  }
 `;
 
 export const FacultyDescription = styled.p`
-  font-size: var(--fs-xl);
+  font-size: var(--fs-md);
   color: var(--white);
   font-style: italic;
   text-shadow: var(--text-shadow);
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-xl);
+  }
 `;

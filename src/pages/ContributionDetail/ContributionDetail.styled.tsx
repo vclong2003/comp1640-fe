@@ -1,3 +1,4 @@
+import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -8,11 +9,19 @@ export const Container = styled.div`
 
 export const TopContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: var(--s-5);
+  @media ${DEVICES.DESKTOP} {
+    display: flex;
+    flex-wrap: nowrap;
+  }
 `;
 
 export const Left = styled.div`
-  flex: 8;
+  width: 100%;
+  @media ${DEVICES.DESKTOP} {
+    flex: 8;
+  }
 `;
 
 export const Right = styled.div`

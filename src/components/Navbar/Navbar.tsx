@@ -34,10 +34,10 @@ const Navbar = () => {
           <Link to="/home">MagBook™</Link>
         </S.Logo>
         <S.NavList>
-          <S.NavItem>Home</S.NavItem>
-          <S.NavItem>Events</S.NavItem>
+          <S.NavItem to="/home">Home</S.NavItem>
+          <S.NavItem to="/event">Events</S.NavItem>
           <S.NavItem>Contact Us</S.NavItem>
-          <S.NavItem>About Us</S.NavItem>
+          <S.NavItem to="/about-us">About Us</S.NavItem>
         </S.NavList>
         <S.Profile>
           <ProfileDropdown />

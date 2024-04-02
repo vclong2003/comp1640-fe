@@ -22,19 +22,7 @@ const Footer = () => {
             <RiInstagramFill />
             <FaYoutube />
           </S.ThirdLeft>
-        </S.Left>
-        <S.Middle>
-          <S.MiddleFirst>Header Text</S.MiddleFirst>
-          <S.MiddleSecond>Button</S.MiddleSecond>
-          <S.MiddleSecond>Button</S.MiddleSecond>
-          <S.MiddleThird>Button</S.MiddleThird>
-        </S.Middle>
-        <S.Right>
-          <S.RightFirst>Header Text</S.RightFirst>
-          <S.RightSecond>Button</S.RightSecond>
-          <S.RightSecond>Button</S.RightSecond>
-          <S.RightThird>Button</S.RightThird>
-        </S.Right>
+        </S.Left>       
       </S.ContainerTop>
       <S.ContainerMiddle>
         <S.Line></S.Line>

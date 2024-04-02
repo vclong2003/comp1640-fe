@@ -83,7 +83,7 @@ const Faculty = () => {
           </TableHead>
           <TableBody>
             {faculties.map((faculty) => (
-              <FacultyRow faculty={faculty} />
+              <FacultyRow key={faculty._id} faculty={faculty} />
             ))}
           </TableBody>
         </Table>

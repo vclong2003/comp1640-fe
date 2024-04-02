@@ -61,7 +61,9 @@ const RegisterForm = ({ onSubmit }: IRegisterFormProps) => {
             </FormInput>
             <FormError name="facultyId" />
           </FormGroup>
+          {/* <Link to="/email-sent"> */}
           <FormButton type="submit">Continue</FormButton>
+          {/* </Link> */}
         </Form>
       </Formik>
     </S.Container>

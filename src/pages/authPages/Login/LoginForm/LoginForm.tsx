@@ -10,6 +10,7 @@ import {
 } from "@components/formComponents";
 import { ILoginPayload } from "@interfaces/user.interfaces";
 import { LoginValidationSchema } from "@utils/auth.utils";
+import { Link } from "react-router-dom";
 
 const initialValues: ILoginPayload = {
   email: "",
@@ -57,7 +58,9 @@ export default function LoginForm({
           </S.BtnLoginWithGoogle>
         </Form>
       </S.FormContainer>
-      <S.LinkRegis>Don't have an account? Register here!</S.LinkRegis>
+      <Link to="/register">
+        <S.LinkRegis>Don't have an account? Register here!</S.LinkRegis>
+      </Link>
     </S.Container>
   );
 }

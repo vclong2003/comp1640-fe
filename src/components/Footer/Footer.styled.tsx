@@ -5,10 +5,8 @@ export const Foot = styled.div`
   border: none;
   width: 100%;
   background-color: var(--black);
-  /* height: 45vh; */
   @media ${DEVICES.DESKTOP} {
     border: none;
-    /* width: 100%; */
   }
 `;
 
@@ -22,7 +20,7 @@ export const ContainerTop = styled.div`
   @media ${DEVICES.DESKTOP} {
     display: flex;
     flex-direction: row;
-    padding: var(--s-12);
+    padding: var(--s-8);
     color: var(--white);
   }
 `;
@@ -46,8 +44,9 @@ export const FirstLeft = styled.div`
   font-size: var(--fs-2xl);
   margin-bottom: var(--s-1);
   font-weight: var(--fw-semibold);
+  border-bottom: 2px solid white;
   @media ${DEVICES.DESKTOP} {
-    font-size: 36px;
+    font-size: var(--fs-4xl);
   }
 `;
 
@@ -59,80 +58,12 @@ export const SecondLeft = styled.div`
 `;
 
 export const ThirdLeft = styled.div`
-  font-size: 18px;
+  font-size: var(--fs-xl);
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  width: 100%;
   gap: 10px;
-`;
-
-export const Middle = styled.div`
-  display: none;
-  @media ${DEVICES.DESKTOP} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--s-4);
-    flex: 6;
-  }
-`;
-
-export const MiddleFirst = styled.div`
-  font-size: var(--fs-lg);
-  align-items: flex-start;
-  @media ${DEVICES.DESKTOP} {
-    font-size: 36px;
-    margin-bottom: var(--s-5);
-  }
-`;
-
-export const MiddleSecond = styled.div`
-  font-size: var(--fs-xs);
-  @media ${DEVICES.DESKTOP} {
-    font-size: 18px;
-    margin-bottom: var(--s-5);
-  }
-`;
-
-export const MiddleThird = styled.div`
-  font-size: var(--fs-xs);
-  @media ${DEVICES.DESKTOP} {
-    font-size: 18px;
-  }
-`;
-
-export const Right = styled.div`
-  display: none;
-  @media ${DEVICES.DESKTOP} {
-    display: flex;
-    flex-direction: column;
-    flex: 6;
-    align-items: center;
-    gap: var(--s-4);
-  }
-`;
-
-export const RightFirst = styled.div`
-  font-size: var(--fs-lg);
-  @media ${DEVICES.DESKTOP} {
-    font-size: 36px;
-    margin-bottom: var(--s-5);
-  }
-`;
-
-export const RightSecond = styled.div`
-  font-size: var(--fs-xs);
-  @media ${DEVICES.DESKTOP} {
-    font-size: 18px;
-    margin-bottom: var(--s-5);
-  }
-`;
-
-export const RightThird = styled.div`
-  font-size: var(--fs-xs);
-  @media ${DEVICES.DESKTOP} {
-    font-size: 18px;
-    margin-bottom: var(--s-5);
-  }
 `;
 
 export const ContainerMiddle = styled.div`

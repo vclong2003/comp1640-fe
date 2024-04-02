@@ -66,6 +66,11 @@ export interface ISetupAccountPayload {
   gender: EGender;
 }
 
+export interface IResetPasswordPayload {
+  token: string;
+  newPassword: string;
+}
+
 // Change password -----------------------------
 export interface IChangePasswordPayload {
   oldPassword: string;

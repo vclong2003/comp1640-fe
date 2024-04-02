@@ -7,14 +7,13 @@ export const ContainerForm = styled.div`
   border-radius: var(--br-md);
   padding: var(--s-6);
   box-shadow: var(--shadow-md);
-  background-color: var(--ice-blue);
+  background-color: var(--white);
+  box-shadow: var(--shadow-1);
 `;
 
 export const Label = styled(FormLabel)``;
 
-export const Input = styled(FormInput)`
-  background-color: var(--white);
-`;
+export const Input = styled(FormInput)``;
 
 export const BtnReset = styled(FormButton)``;
 

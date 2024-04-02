@@ -1,19 +1,22 @@
 import * as S from "./PasswordForm.styled";
 import { Formik } from "formik";
 import { Form, FormGroup } from "@components/formComponents";
+import { useState } from "react";
 
 const PasswordForm = () => {
+  const [email, setSemail] = useState("slkdjfskjf");
+
   return (
     <S.ContainerForm>
       <Formik>
         <Form>
           <FormGroup>
             <S.Label>Email</S.Label>
-            <S.Input></S.Input>
+            <S.Input disabled value={email} />
           </FormGroup>
           <FormGroup>
             <S.Label>Password</S.Label>
-            <S.Input></S.Input>
+            <S.Input />
           </FormGroup>
         </Form>
       </Formik>

@@ -1,4 +1,5 @@
 import { FormButton, FormInput } from "@components/formComponents";
+import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -14,8 +15,11 @@ export const TopContainer = styled.div`
 
 export const ContainerDocument = styled.div`
   background-color: var(--light-gray-1);
-  padding: var(--s-3) var(--s-8);
+  padding: var(--s-2) var(--s-4);
   border-radius: var(--br-md);
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-3) var(--s-8);
+  }
 `;
 
 export const DocumentFile = styled.div`
@@ -61,15 +65,16 @@ export const Divider = styled.div`
 export const DocumentImg = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0 var(--s-1);
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--s-2);
   row-gap: var(--s-4);
 `;
 
 export const AddImg = styled.button`
-  width: 110px;
-  height: 110px;
+  width: 29%;
+  aspect-ratio: 1;
+
   background-color: rgba(179, 180, 179, 1);
   border-radius: var(--br-md);
   cursor: pointer;
@@ -88,8 +93,11 @@ export const PrivateCmt = styled.div`
   flex-direction: column;
   gap: var(--s-4);
   background-color: var(--light-gray-1);
-  padding: var(--s-3) var(--s-8);
+  padding: var(--s-3) var(--s-4);
   border-radius: var(--br-md);
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-3) var(--s-8);
+  }
 `;
 
 export const TitleComment = styled.div`
@@ -128,10 +136,13 @@ export const BottomContainer = styled.div``;
 export const BtnPublish = styled(FormButton)`
   background-color: var(--light-gray-2);
   width: 100%;
-  padding: var(--s-3) 0;
+  padding: var(--s-2) 0;
   color: white;
   font-weight: bold;
   font-size: var(--fs-md);
   border-radius: var(--br-md);
   cursor: pointer;
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-3) 0;
+  }
 `;

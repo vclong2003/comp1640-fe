@@ -3,11 +3,14 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
   display: flex;
+  width: 29%;
 `;
 
 export const Image = styled.img`
-  width: 110px;
-  height: 110px;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
   z-index: 0;
   border-radius: var(--br-md);
 `;
@@ -17,7 +20,7 @@ export const IconDelete = styled.div`
   z-index: 1;
   color: white;
   right: 0;
-  padding: var(--s-1) var(--s-1);
+  margin: var(--s-3);
   font-size: var(--fs-md);
   cursor: pointer;
 `;

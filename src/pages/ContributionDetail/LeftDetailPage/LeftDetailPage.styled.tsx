@@ -1,4 +1,5 @@
 import { FormInput } from "@components/formComponents";
+import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -15,7 +16,9 @@ export const Image = styled.img`
   border-radius: var(--br-md);
   z-index: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 `;
 
 export const Text = styled.div`
@@ -24,15 +27,22 @@ export const Text = styled.div`
 `;
 
 export const Status = styled.div`
-  margin: var(--s-3) var(--s-3);
+  margin: var(--s-2) var(--s-1);
   top: 0;
+  @media ${DEVICES.DESKTOP} {
+    margin: var(--s-3) var(--s-3);
+  }
 `;
 export const TextStatus = styled.div`
   background-color: #71984a;
-  padding: var(--s-2) var(--s-6);
+  padding: var(--s-1) var(--s-3);
   border-radius: var(--br-md);
   color: white;
-  font-size: var(--fs-md);
+  font-size: var(--fs-xs);
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-2) var(--s-6);
+    font-size: var(--fs-sm);
+  }
 `;
 
 export const Icon = styled.div`
@@ -40,22 +50,33 @@ export const Icon = styled.div`
   top: 0;
   right: 0;
   z-index: 1;
-  margin: var(--s-3) var(--s-3);
+  margin: var(--s-2) var(--s-1);
   top: 0;
-  font-size: 30px;
+  font-size: var(--fs-xl);
+  @media ${DEVICES.DESKTOP} {
+    margin: var(--s-3) var(--s-3);
+    font-size: var(--fs-2xl);
+  }
 `;
 
 export const Bottom = styled.div`
   position: absolute;
   bottom: 0;
-  padding: var(--s-10) var(--s-5);
+  padding: var(--s-5) var(--s-2);
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-10) var(--s-5);
+  }
 `;
 
 export const Description = styled.div`
   color: white;
-  font-size: var(--fs-3xl);
-  margin-bottom: var(--s-8);
+  font-size: var(--fs-lg);
+  margin-bottom: var(--s-3);
   font-weight: bold;
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--s-5);
+  }
 `;
 
 export const Author = styled.div`
@@ -73,9 +94,13 @@ export const Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--s-2);
-  font-size: var(--fs-xl);
+  gap: var(--s-1);
+  font-size: var(--fs-lg);
   border-bottom: 2px solid black;
+  @media ${DEVICES.DESKTOP} {
+    gap: var(--s-2);
+    font-size: var(--fs-xl);
+  }
 `;
 
 export const ContainerComment = styled.div`

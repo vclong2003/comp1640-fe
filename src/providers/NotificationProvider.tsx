@@ -10,6 +10,7 @@ export default function NotificationProvider({
   return (
     <>
       <ToastContainer
+        stacked
         position="top-right"
         autoClose={4000}
         hideProgressBar={false}

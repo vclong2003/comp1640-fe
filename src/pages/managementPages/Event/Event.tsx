@@ -14,18 +14,28 @@ import {
 import { CiSearch } from "react-icons/ci";
 import AddNewEventModal from "./EventModal/AddNewEventModal";
 import { AddAndSort, Form, Headline, HeadlineAndDelete } from "./Event.styled";
-
+import EventFilterModal from "./EventModal/EventFilterModal";
 export default function Event() {
   const [openAddNewEventModal, setOpenAddNewEventModal] = useState(false);
-
   const handleOpenAddNewEventModal = () => setOpenAddNewEventModal(true);
   const handleCloseAddNewEventModal = () => setOpenAddNewEventModal(false);
 
+  const [openEventFilterModal, setOpenEventFilterModal] = useState(false);
+  const handleOpenEventFilterModal = () => setOpenEventFilterModal(true);
+  const handleCloseEventFilterModal = () => setOpenEventFilterModal(false);
   return (
     <>
       <Headline>Events</Headline>
 
       <Form>
+        <Button
+          variant="contained"
+          size="medium"
+          onClick={handleOpenEventFilterModal}
+        >
+          Filter
+        </Button>
+
         <Box
           component="form"
           sx={{
@@ -85,13 +95,17 @@ export default function Event() {
               <TableCell align="left"></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>{/* Map evt here */}</TableBody>
+          <TableBody></TableBody>
         </Table>
       </TableContainer>
 
       <AddNewEventModal
         open={openAddNewEventModal}
         handleClose={handleCloseAddNewEventModal}
+      />
+      <EventFilterModal
+        open={openEventFilterModal}
+        handleClose={handleCloseEventFilterModal}
       />
     </>
   );

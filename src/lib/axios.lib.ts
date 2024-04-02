@@ -22,7 +22,10 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     const requestUrl = originalRequest.url;
-    const isExceptUrl = exceptUrls.some((url) => requestUrl.includes(url));
+    let isExceptUrl = exceptUrls.some((url) => requestUrl.includes(url));
+    if (requestUrl.includes("/login-session")) {
+      isExceptUrl = false;
+    }
     if (
       !isExceptUrl &&
       error.response.status === 401 &&

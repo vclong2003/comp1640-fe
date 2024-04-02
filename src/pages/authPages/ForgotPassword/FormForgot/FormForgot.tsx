@@ -1,3 +1,4 @@
+import Link from "@components/Link/Link";
 import * as S from "./FormForgot.styled";
 
 const FormForgot = () => {
@@ -7,7 +8,9 @@ const FormForgot = () => {
         <>
           <S.Input placeholder="Enter your Email"></S.Input>
           <S.BtnContinue>Continue</S.BtnContinue>
-          <S.BtnBack>Back to Login</S.BtnBack>
+          <Link to="/Login">
+            <S.BtnBack>Back to Login</S.BtnBack>
+          </Link>
         </>
       </S.ContainerForm>
     </S.Container>

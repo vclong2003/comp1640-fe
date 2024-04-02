@@ -61,6 +61,9 @@ export default function LoginForm({
       <Link to="/register">
         <S.LinkRegis>Don't have an account? Register here!</S.LinkRegis>
       </Link>
+      <Link to="/forgot-password">
+        <S.LinkForgot>Forgot Password.</S.LinkForgot>
+      </Link>
     </S.Container>
   );
 }

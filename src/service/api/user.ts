@@ -12,7 +12,6 @@ import {
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
 import { buildQueryString } from "@utils/string.utils";
-import ResetPassword from "@pages/authPages/ResetPassword/ResetPassword";
 
 // Login --------------------------------------------------------
 const login = async (payload: ILoginPayload): Promise<IUser> => {
@@ -42,9 +41,10 @@ const changePassword = async (
 ): Promise<void> => {
   return await axiosInstance.put("/auth/password", payload);
 };
+
 // Reset password ------------------------------------------------
-const ResetPassword = async (payload: IResetPasswordPayload): Promise<void> => {
-  return await axiosInstance.put("/auth/reset-password", payload);
+const resetPassword = async (payload: IResetPasswordPayload): Promise<void> => {
+  return await axiosInstance.post("/auth/reset-password", payload);
 };
 
 // Update user --------------------------------------------------
@@ -90,5 +90,5 @@ export default {
   findLoginSessions,
   removeLoginSession,
   logoutAllDevices,
-  ResetPassword,
+  resetPassword,
 };

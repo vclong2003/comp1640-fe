@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { IResetPasswordPayload } from "@interfaces/user.interfaces";
 import { ResetPasswordValidationSchema } from "@utils/auth.utils";
+import userService from "@service/api/user";
+import { notifySuccess } from "@utils/notification.utils";
 
 const initialValues: Partial<IResetPasswordPayload> = {
   password: "",
@@ -14,7 +16,6 @@ const PasswordForm = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const [email, setSemail] = useState("slkdjfskjf");
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -26,27 +27,34 @@ const PasswordForm = () => {
     setToken(token);
   }, [searchParams, navigate]);
 
-  useEffect(() => {}, [email]);
+  const resetPassword = (values: Partial<IResetPasswordPayload>) => {
+    console.log(token);
+    if (!token) return;
+    userService
+      .resetPassword({ token, ...values } as IResetPasswordPayload)
+      .then(() =>
+        notifySuccess("Password reset successfully, you can login now!"),
+      )
+      .then(() => navigate("/login"));
+  };
 
   return (
     <S.ContainerForm>
       <Formik
         initialValues={initialValues}
         validationSchema={ResetPasswordValidationSchema}
+        onSubmit={resetPassword}
       >
         <Form>
-          <FormGroup>
-            <S.Label>Email</S.Label>
-            <S.Input disabled value={email} />
-          </FormGroup>
           <FormGroup>
             <S.Label>Password</S.Label>
             <S.Input name="password" />
             <FormError name="password" />
           </FormGroup>
+          <S.BtnReset type="submit">Reset</S.BtnReset>
         </Form>
       </Formik>
-      <S.BtnReset>Reset</S.BtnReset>
+
       <S.Text>Back To Login</S.Text>
     </S.ContainerForm>
   );

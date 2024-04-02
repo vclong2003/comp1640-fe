@@ -4,7 +4,7 @@ import SetupForm from "./SetupForm/SetupForm";
 import userService from "@service/api/user";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { notifyError, notifySuccess } from "@utils/notification.utils";
+import { notifySuccess } from "@utils/notification.utils";
 import { ISetupAccountPayload } from "@interfaces/user.interfaces";
 
 const SetupAccount = () => {
@@ -30,10 +30,7 @@ const SetupAccount = () => {
       .then((res) => {
         setEmail(res.email);
       })
-      .catch(() => {
-        notifyError("The URL in invalid!");
-        navigate("/");
-      });
+      .catch(() => navigate("/"));
   }, [token, navigate]);
 
   const handleSubmission = async (values: Partial<ISetupAccountPayload>) => {

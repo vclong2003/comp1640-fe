@@ -1,105 +1,68 @@
-import { MdOutlineEventAvailable } from "react-icons/md";
-import { LuSchool } from "react-icons/lu";
-import { FaUsers, FaFile } from "react-icons/fa";
+import React from "react";
 import Box from "@mui/material/Box";
-import { InputAdornment, TextField } from "@mui/material";
-import { CiSearch } from "react-icons/ci";
+import sourceData from "./Charts/SourceData.json";
+import { defaults } from "chart.js/auto";
+import BarChart from "./Charts/BarChart";
+import DoughnutData from "./Charts/DoughnutChart.json";
+import DoughnutChart from "./Charts/Doughnut";
+import Cards from "./Cards/Cards";
 
-const BoxDashBoardStyled = {
-  width: "24%",
-  height: "160px",
-  borderRadius: 2,
-  boxShadow: 3,
-  cursor: "pointer",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
+defaults.maintainAspectRatio = false;
+defaults.responsive = true;
+defaults.plugins.title.display = true;
+defaults.plugins.title.align = "start";
+defaults.plugins.title.color = "black";
 
-const BoxItemStyled = (color: string[]) => ({
-  width: "40px",
-  height: "40px",
-  borderRadius: "50%",
-  backgroundColor: color,
-  mr: 2,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  color: "white",
-});
-
-const Home = () => {
-  const colors = ["#5B93FF", "#605BFF", "#FF8F6B", "#605BFF"];
+const Home: React.FC = () => {
   return (
     <>
-      {" "}
       <Box
-        sx={{ display: "flex", justifyContent: "space-between", mt: "20px" }}
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "20px",
+        }}
       >
         <h2>Dashboard</h2>
-        <TextField
-          id="outlined-basic"
-          label="Search"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <CiSearch />
-              </InputAdornment>
-            ),
+      </Box>
+      <Cards />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "40px",
+          "@media only screen and (max-width: 600px)": {
+            display: "block",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            width: "30%",
+            boxShadow: "3px 3px 6px rgba(0, 0, 0, 0.1)",
+            height: 240,
+            borderRadius: 2,
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+            },
           }}
-          variant="outlined"
-          size="small"
-        />
-      </Box>
-      <Box
-        sx={{ display: "flex", justifyContent: "space-between", mt: "20px" }}
-      >
-        <Box sx={BoxDashBoardStyled}>
-          <Box sx={BoxItemStyled([colors[0]])}>
-            <FaUsers />
-          </Box>
-          <Box>
-            <h3>178+</h3>
-            <p>Student</p>
-          </Box>
+        >
+          <DoughnutChart sourceData={DoughnutData} />
         </Box>
-        <Box sx={BoxDashBoardStyled}>
-          <Box sx={BoxItemStyled([colors[1]])}>
-            <LuSchool />
-          </Box>
-          <Box>
-            <h3>6+</h3>
-            <p>Faculty</p>
-          </Box>
-        </Box>
-        <Box sx={BoxDashBoardStyled}>
-          <Box sx={BoxItemStyled([colors[2]])}>
-            <FaFile />
-          </Box>
-          <Box>
-            <h3>190+</h3>
-            <p>Files</p>
-          </Box>
-        </Box>
-        <Box sx={BoxDashBoardStyled}>
-          <Box sx={BoxItemStyled([colors[3]])}>
-            <MdOutlineEventAvailable />
-          </Box>
-          <Box>
-            <h3>12+</h3>
-            <p>Events</p>
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        sx={{ display: "flex", justifyContent: "space-between", mt: "40px" }}
-      >
         <Box
-          sx={{ width: "30%", boxShadow: 3, height: 240, borderRadius: 2 }}
-        ></Box>
-        <Box
-          sx={{ width: "60%", boxShadow: 3, height: 240, borderRadius: 2 }}
-        ></Box>
+          sx={{
+            width: "65%",
+            boxShadow: "3px 3px 6px rgba(0, 0, 0, 0.1)",
+            height: 240,
+            borderRadius: 2,
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+              marginTop: 2,
+            },
+          }}
+        >
+          <BarChart sourceData={sourceData} />
+        </Box>
       </Box>
     </>
   );

@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { CiSearch } from "react-icons/ci";
 import InputAdornment from "@mui/material/InputAdornment";
-import { AddAndSort, Form, Headline } from "./Faculty.styled";
+import { Headline } from "./Faculty.styled";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -34,15 +34,16 @@ const Faculty = () => {
     <>
       <Headline>Faculty</Headline>
 
-      <Form>
-        <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { width: "50ch" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          "@media only screen and (max-width: 600px)": {
+            display: "block",
+          },
+        }}
+      >
+        <Box component="form" noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
             label="Search"
@@ -55,22 +56,35 @@ const Faculty = () => {
             }}
             variant="outlined"
             size="small"
+            sx={{
+              "@media only screen and (max-width: 600px)": {
+                width: "100%",
+              },
+            }}
           />
         </Box>
 
-        <AddAndSort>
-          <Button
-            variant="contained"
-            size="medium"
-            color="success"
-            onClick={handleOpenAddNewFacultyModal}
-          >
-            Add new
-          </Button>
-        </AddAndSort>
-      </Form>
+        <Button
+          variant="contained"
+          size="medium"
+          color="success"
+          onClick={handleOpenAddNewFacultyModal}
+          sx={{
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+              mt: "10px",
+            },
+          }}
+        >
+          Add new
+        </Button>
+      </Box>
 
-      <TableContainer sx={{ mt: 5 }}>
+      <TableContainer
+        sx={{
+          mt: "10px",
+        }}
+      >
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>

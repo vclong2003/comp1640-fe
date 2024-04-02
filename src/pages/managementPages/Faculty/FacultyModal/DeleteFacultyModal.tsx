@@ -12,6 +12,9 @@ const style = {
   bgcolor: "background.paper",
   borderRadius: 4,
   p: 4,
+  "@media only screen and (max-width: 600px)": {
+    width: "90%",
+  },
 };
 
 const DeleteFacultyModal = ({

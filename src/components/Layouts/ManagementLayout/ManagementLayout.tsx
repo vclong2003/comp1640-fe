@@ -1,8 +1,8 @@
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiDrawer from "@mui/material/Drawer";
+// import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+// import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
@@ -16,7 +16,7 @@ import {
   ListItemIcon,
   ListItemText,
   createTheme,
-  styled,
+  // styled,
 } from "@mui/material";
 import { Outlet } from "react-router";
 import { ThemeProvider } from "styled-components";
@@ -24,15 +24,15 @@ import Link from "@components/Link/Link";
 import { FaUsers, FaFile, FaHome } from "react-icons/fa";
 import { LuSchool } from "react-icons/lu";
 import { MdOutlineEventAvailable } from "react-icons/md";
-import Menu from "@mui/material/Menu";
+// import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+// import MenuItem from "@mui/material/MenuItem";
 import AppBar from "./Header";
 import Drawer from "./Menu";
 
-const pages = ["Dashboard", "Faculties", "Events", "Users", "Contributions"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+// const pages = ["Dashboard", "Faculties", "Events", "Users", "Contributions"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const mainListItems = (
   <React.Fragment>
@@ -87,27 +87,27 @@ export default function ManagementLayout() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null,
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
-  );
+  // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+  //   null,
+  // );
+  // const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+  //   null,
+  // );
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
+  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -152,14 +152,14 @@ export default function ManagementLayout() {
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton> */}
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            </IconButton> 
+             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
+                // onClick={handleOpenNavMenu}
                 color="inherit"
               >
                 <MenuIcon />
@@ -188,7 +188,7 @@ export default function ManagementLayout() {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Box> */}
 
             <Box
               sx={{ width: "85%", display: "flex", justifyContent: "flex-end" }}
@@ -201,15 +201,21 @@ export default function ManagementLayout() {
                 }}
               >
                 <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
+                  <IconButton sx={{ p: 0 }}>
                     <Avatar
                       alt="Remy Sharp"
                       src="/static/images/avatar/2.jpg"
                     />
                   </IconButton>
                 </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
+                {/* <Menu
+                  sx={{
+                    mt: "45px",
+                    "@media only screen and (max-width: 600px)": {
+                      display: "none",
+                    },
+                  }}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
                   anchorOrigin={{
@@ -225,16 +231,24 @@ export default function ManagementLayout() {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{}}>
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
                   ))}
-                </Menu>
+                </Menu> */}
               </Box>
             </Box>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer
+          variant="permanent"
+          open={open}
+          sx={{
+            "@media only screen and (max-width: 600px)": {
+              display: "none",
+            },
+          }}
+        >
           <Toolbar
             sx={{
               display: "flex",

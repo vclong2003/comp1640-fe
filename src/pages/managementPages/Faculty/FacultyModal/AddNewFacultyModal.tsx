@@ -24,6 +24,9 @@ const style = {
   bgcolor: "background.paper",
   borderRadius: 4,
   p: 4,
+  "@media only screen and (max-width: 600px)": {
+    width: "90%",
+  },
 };
 
 const initialValues: Partial<ICreateFacultyPayload> = {
@@ -39,7 +42,7 @@ export default function FacultyModal({
   open: boolean;
   handleClose: () => void;
 }) {
-  const { users: mcList } = useSelector((state: RootState) => state.userState);
+  // const { users: mcList } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
 
   const [bannerImage, setBannerImage] = useState<File | null>(null);

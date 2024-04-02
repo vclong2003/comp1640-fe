@@ -20,6 +20,7 @@ export const Header = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: var(--s-2);
   @media ${DEVICES.DESKTOP} {
     display: flex;
     justify-content: space-between;
@@ -74,7 +75,7 @@ export const Input = styled.div`
   input {
     font-size: var(--fs-md);
     border: 1px solid rgba(126, 136, 137, 1);
-    border-radius: var(--br-lg);
+    border-radius: var(--br-md);
     padding: var(--s-1) var(--s-9) var(--s-1) var(--s-2);
     &::-webkit-search-cancel-button {
       -webkit-appearance: none;
@@ -94,6 +95,7 @@ export const Icon = styled.div`
 export const ListItem = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: var(--s-2);
 
   @media ${DEVICES.DESKTOP} {
     display: flex;
@@ -103,11 +105,9 @@ export const ListItem = styled.div`
 `;
 
 export const Item = styled(BaseItem)`
-  border-radius: var(--br-xl);
-  width: 50%;
-  /* box-shadow: var(--shadow-lg); */
+  width: 48%;
   @media ${DEVICES.DESKTOP} {
-    display: unset;
+    width: 24%;
   }
 `;
 

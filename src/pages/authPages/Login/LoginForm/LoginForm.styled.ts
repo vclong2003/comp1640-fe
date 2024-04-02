@@ -40,6 +40,17 @@ export const LinkRegis = styled.div`
   }
 `;
 
+export const LinkForgot = styled.div`
+  font-size: var(--fs-xl);
+  color: var(--yellow);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+  &:hover {
+    transform: translateY(-2px);
+  }
+`;
+
 export const BtnLoginWithGoogle = styled(FormButton)`
   margin: 0;
   background-color: var(--white);

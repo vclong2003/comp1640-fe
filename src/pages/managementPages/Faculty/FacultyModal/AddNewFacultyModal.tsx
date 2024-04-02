@@ -2,11 +2,12 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useState } from "react";
-import { InputLabel, MenuItem, Select } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
+import { Textarea } from "@mui/joy";
+import { IUser } from "@interfaces/user.interfaces";
 
 const style = {
   position: "absolute" as const,
@@ -26,6 +27,7 @@ export default function FacultyModal({
   open: boolean;
   handleClose: () => void;
 }) {
+  const [mcList, setMcList] = useState<IUser[]>([]);
   const [bannerImageUrl, setBannerImageUrl] = useState("");
 
   const onSelectBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,15 +48,29 @@ export default function FacultyModal({
           Add new Faculty
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <Select>
+          <Select
+            defaultValue=""
+            variant="outlined"
+            required
+            sx={{ minWidth: 200 }}
+          >
+            <MenuItem value="">Select MC</MenuItem>
             <MenuItem value={10}>Ten</MenuItem>
           </Select>
           <TextField id="outlined-basic" label="Name" variant="outlined" />
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <TextField
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "column",
+            gap: 2,
+            mt: 2,
+          }}
+        >
+          <Textarea
             id="outlined-basic"
-            label="Decription"
+            placeholder="Decription"
             variant="outlined"
           />
           <Button variant="outlined" component="label">
@@ -65,7 +81,7 @@ export default function FacultyModal({
               hidden
               onChange={onSelectBannerImage}
             />
-            <CloudUploadIcon /> Select Banner Image
+            Select Banner Image
           </Button>
         </Box>
 

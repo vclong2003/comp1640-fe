@@ -63,7 +63,7 @@ export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "about-us",
     component: (
-      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
+      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin, ERole.Guest]}>
         <AboutUs />
       </AuthorizedPage>
     ),

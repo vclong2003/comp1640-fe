@@ -1,5 +1,25 @@
 import { DEVICES } from "@config/responsiveBreakpoints";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const slideInFromLeft = keyframes`
+from {
+  transform: translate(-100%, 100%);
+}
+to {
+  transform: translate(0, 0);
+}
+`;
+
+const slideInFromRight = keyframes`
+0% {
+  opacity: 0;
+  transform: translateX(100%);
+}
+100% {
+  opacity: 1;
+  transform: translateX(0);
+}
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -17,6 +37,7 @@ export const BackgroundContainer = styled.div`
   @media ${DEVICES.DESKTOP_L} {
     flex: 7;
   }
+  animation: ${slideInFromLeft} 1s ease-in-out;
 `;
 
 export const Background = styled.img`
@@ -39,6 +60,7 @@ export const Form = styled.div`
     flex: 4;
     padding: var(--s-30) 0;
   }
+  animation: ${slideInFromRight} 1.5s ease forwards;
 `;
 
 export const Title = styled.div`

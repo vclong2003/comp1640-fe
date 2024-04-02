@@ -19,7 +19,7 @@ export const TitleHeader = styled.div`
   font-size: var(--fs-md);
   font-weight: var(--fw-semibold);
   @media ${DEVICES.DESKTOP} {
-    font-size: var(--fs-2xl);
+    font-size: var(--fs-xl);
   }
 `;
 
@@ -38,6 +38,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: var(--s-2);
   @media ${DEVICES.DESKTOP} {
     display: flex;
     flex-direction: row;

@@ -16,8 +16,12 @@ export const TextContainer = styled.div`
 
 export const Title = styled.h1`
   font-weight: var(--fw-bold);
-  padding: var(--s-2) var(--s-5);
+  padding: var(--s-1) var(--s-3);
   font-size: var(--fs-2xl);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   @media ${DEVICES.DESKTOP} {
     display: unset;
     font-size: var(--fs-4xl);
@@ -27,9 +31,14 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   font-size: var(--fs-md);
-  padding: var(--s-3) var(--s-5);
+  padding: var(--s-1) var(--s-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   @media ${DEVICES.DESKTOP} {
     font-size: var(--fs-xl);
+    padding: var(--s-6) var(--s-5);
   }
 `;
 

@@ -5,10 +5,10 @@ import { MdDeleteOutline } from "react-icons/md";
 const ItemImageFile = () => {
   return (
     <S.Container>
-      <S.Image src={img} />
-      <S.IconDelete>
-        <MdDeleteOutline />
-      </S.IconDelete>
+      <S.Image src={img}></S.Image>
+        <S.IconDelete>
+          <MdDeleteOutline />
+        </S.IconDelete>      
     </S.Container>
   );
 };

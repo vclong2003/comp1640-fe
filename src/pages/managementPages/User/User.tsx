@@ -10,6 +10,8 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 import AddNewUserModal from "./UserModals/AddNewUsersModal";
@@ -45,22 +47,36 @@ const User: React.FC = () => {
   const handleOpenAddNewUserModal = () => setOpenAddNewUserModal(true);
   const handleCloseAddNewUserModal = () => setOpenAddNewUserModal(false);
 
+  const [openUserFilterModal, setOpenUserFilterModal] = useState(false);
+  const handleOpenUserFilterModal = () => setOpenUserFilterModal(true);
+  const handleCloseUserFilterModal = () => setOpenUserFilterModal(false);
   return (
     <>
-      {" "}
       <Headline>Users</Headline>
+
       <Form>
+        {/* <Button
+          variant="contained"
+          size="medium"
+          onClick={handleOpenUserFilterModal}
+        >
+          Filter
+        </Button> */}
+
         <Box
           component="form"
-          sx={{
-            "& > :not(style)": { width: "50ch" },
-          }}
           noValidate
           autoComplete="off"
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            gap: "var(--s-5)",
+          }}
         >
           <TextField
             id="outlined-basic"
-            label="Search"
+            label="Name"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -68,11 +84,58 @@ const User: React.FC = () => {
                 </InputAdornment>
               ),
             }}
+            sx={{ width: "20%", height: "40px" }}
             variant="outlined"
             size="small"
           />
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <CiSearch />
+                </InputAdornment>
+              ),
+            }}
+            sx={{ width: "20%", height: "40px" }}
+            variant="outlined"
+            size="small"
+          />
+          <Select
+            disabled={false}
+            placeholder="Role"
+            // size="sm"
+            variant="outlined"
+            sx={{ width: "10%", height: "40px" }}
+          >
+            <MenuItem value="@">ten</MenuItem>
+            <MenuItem value="!">ten</MenuItem>
+            <MenuItem value="yes">ten</MenuItem>
+            <MenuItem value="alo">ten</MenuItem>
+          </Select>
+          <Select
+            disabled={false}
+            placeholder="Faculty"
+            // size="sm"
+            variant="outlined"
+            sx={{ width: "10%", height: "40px" }}
+          >
+            <MenuItem value="1">1</MenuItem>
+            <MenuItem value="2">2</MenuItem>
+            <MenuItem value="3">3</MenuItem>
+            <MenuItem value="4">4</MenuItem>
+          </Select>
+          <Button variant="contained" size="medium" color="error">
+            Reset All
+          </Button>
+          <Button variant="contained" size="medium" color="error">
+            Apply
+          </Button>
         </Box>
-
+      </Form>
+      <HeadlineAndDelete>
+        <Headline>List of Users</Headline>
         <AddAndSort>
           <Button
             variant="contained"
@@ -83,16 +146,10 @@ const User: React.FC = () => {
             Add new
           </Button>
 
-          <Button variant="contained" size="medium">
-            Sort by
+          <Button variant="contained" size="medium" color="error">
+            Delete All
           </Button>
         </AddAndSort>
-      </Form>
-      <HeadlineAndDelete>
-        <Headline>List of Users</Headline>
-        <Button variant="contained" size="medium" color="error">
-          Delete All
-        </Button>
       </HeadlineAndDelete>
       <TableContainer>
         <Table aria-label="simple table">

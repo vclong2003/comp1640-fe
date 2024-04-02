@@ -22,34 +22,51 @@ export const ContentContainer = styled.div`
 `;
 
 export const EventName = styled.div`
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   color: var(--dark-gray);
+  @media ${DEVICES.PHONE_L} {
+    font-size: var(--fs-sm);
+    color: var(--dark-gray);
+  }
 `;
 
 export const Title = styled.div`
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
   font-weight: var(--fw-semibold);
-  margin-top: var(--s-2);
+  margin: var(--s-2) 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  @media ${DEVICES.PHONE_L} {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    margin-top: var(--s-2);
+  }
 `;
 
 export const Description = styled.div`
-  font-size: var(--fs-md);
+  font-size: var(--fs-xs);
   width: 100%;
-  display: none;
+  margin-bottom: var(--s-1);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   @media ${DEVICES.PHONE_L} {
-    display: unset;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
   }
 `;
 
 export const InteractionContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 100%;
   justify-content: space-between;
   margin-top: auto;
   @media ${DEVICES.PHONE_L} {
-    width: 30%;
+    width: 50%;
   }
 `;
 
@@ -58,6 +75,10 @@ export const Like = styled.div`
   flex-direction: row;
   align-items: center;
   gap: var(--s-1);
+  font-size: var(--fs-xs);
+  @media ${DEVICES.PHONE_L} {
+    font-size: var(--fs-md);
+  }
 `;
 
 export const Comment = styled.div`
@@ -65,6 +86,10 @@ export const Comment = styled.div`
   flex-direction: row;
   align-items: center;
   gap: var(--s-1);
+  font-size: var(--fs-xs);
+  @media ${DEVICES.PHONE_L} {
+    font-size: var(--fs-md);
+  }
 `;
 
 export const ImageContainer = styled.div`

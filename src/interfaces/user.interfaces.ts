@@ -49,6 +49,8 @@ export interface IGuestRegisterPayload {
   email: string;
   facultyId: string;
 }
+
+// Verify register token ------------------------
 export interface IVerifyRegisterTokenPayload {
   token: string;
 }
@@ -66,9 +68,13 @@ export interface ISetupAccountPayload {
   gender: EGender;
 }
 
+// Reset password -----------------------------
+export interface ISendResetPasswordEmailPayload {
+  email: string;
+}
 export interface IResetPasswordPayload {
   token: string;
-  newPassword: string;
+  password: string;
 }
 
 // Change password -----------------------------

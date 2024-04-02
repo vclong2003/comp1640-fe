@@ -23,5 +23,5 @@ export const ChangePasswordValidationSchema = Yup.object().shape({
 });
 
 export const ResetPasswordValidationSchema = Yup.object().shape({
-  newPassword: Yup.string().min(8, "Too short!").required("Required!"),
+  password: Yup.string().min(8, "Too short!").required("Required!"),
 });

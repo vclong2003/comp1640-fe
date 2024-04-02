@@ -49,6 +49,8 @@ export interface IGuestRegisterPayload {
   email: string;
   facultyId: string;
 }
+
+// Verify register token ------------------------
 export interface IVerifyRegisterTokenPayload {
   token: string;
 }

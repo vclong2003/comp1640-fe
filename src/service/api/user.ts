@@ -7,8 +7,11 @@ import {
   IRemoveLoginSessionPayload,
   IResetPasswordPayload,
   ISendResetPasswordEmailPayload,
+  ISetupAccountPayload,
   IUpdateUserPayload,
   IUser,
+  IVerifyRegisterTokenPayload,
+  IVerifyRegisterTokenResponse,
 } from "@interfaces/user.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -88,6 +91,18 @@ const logoutAllDevices = async (): Promise<void> => {
   return await axiosInstance.post("/auth/logout-all");
 };
 
+// Setup account ------------------------------------------------
+const setupAccount = async (payload: ISetupAccountPayload): Promise<void> => {
+  return await axiosInstance.post("/auth/setup-account", payload);
+};
+
+// Verify register token ----------------------------------------
+const verifyRegisterToken = async (
+  payload: IVerifyRegisterTokenPayload,
+): Promise<IVerifyRegisterTokenResponse> => {
+  return await axiosInstance.post("/auth/verify-register-token", payload);
+};
+
 export default {
   login,
   guestRegister,
@@ -100,4 +115,6 @@ export default {
   logoutAllDevices,
   resetPassword,
   sendResetPasswordEmail,
+  setupAccount,
+  verifyRegisterToken,
 };

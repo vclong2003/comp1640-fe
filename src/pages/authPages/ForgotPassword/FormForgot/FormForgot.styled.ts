@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { FormButton, FormInput } from "../../../../components/formComponents";
-import { Formik } from "formik";
+import { Form } from "formik";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const ContainerForm = styled(Formik)``;
+export const ContainerForm = styled(Form)``;
 
 export const Input = styled(FormInput)`
   margin-bottom: var(--s-4);

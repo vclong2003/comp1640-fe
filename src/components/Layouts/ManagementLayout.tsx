@@ -27,6 +27,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import { Outlet } from "react-router";
 import { ThemeProvider } from "styled-components";
+import Link from "@components/Link/Link";
 
 const mainListItems = (
   <React.Fragment>
@@ -34,7 +35,9 @@ const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <Link to="/manage">
+        <ListItemText primary="Dashboard" />
+      </Link>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>

@@ -1,6 +1,7 @@
 import {
   IChangePasswordPayload,
   IFindLoginSessionsPayload,
+  IFindUsersPayload,
   IGuestRegisterPayload,
   ILoginPayload,
   ILoginSession,
@@ -56,6 +57,14 @@ const sendResetPasswordEmail = async (
 // Reset password ------------------------------------------------
 const resetPassword = async (payload: IResetPasswordPayload): Promise<void> => {
   return await axiosInstance.post("/auth/reset-password", payload);
+};
+
+// Find users --------------------------------------------------
+const findUsers = async (payload: IFindUsersPayload): Promise<IUser[]> => {
+  const queryString = buildQueryString(
+    payload as unknown as { [key: string]: unknown },
+  );
+  return await axiosInstance.get(`/user${queryString}`);
 };
 
 // Update user --------------------------------------------------
@@ -117,4 +126,5 @@ export default {
   sendResetPasswordEmail,
   setupAccount,
   verifyRegisterToken,
+  findUsers,
 };

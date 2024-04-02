@@ -1,11 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   IFindLoginSessionsPayload,
+  IFindUsersPayload,
   ILoginPayload,
   IRemoveLoginSessionPayload,
   IUpdateUserPayload,
-} from "../../interfaces/user.interfaces";
-import userService from "../../service/api/user";
+} from "@interfaces/user.interfaces";
+import userService from "@service/api/user";
+
+// Find users --------------------------------------------------
+export const findUsers = createAsyncThunk(
+  "userState/findUsers",
+  async (payload: IFindUsersPayload) => {
+    return await userService.findUsers(payload);
+  },
+);
 
 // Get current user ---------------------------------------------
 export const getCurrentUser = createAsyncThunk(

@@ -66,13 +66,13 @@ export const ThirdLeft = styled.div`
 `;
 
 export const Middle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--s-4);
-  flex: 6;
+  display: none;
   @media ${DEVICES.DESKTOP} {
-    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    flex: 6;
   }
 `;
 
@@ -101,14 +101,13 @@ export const MiddleThird = styled.div`
 `;
 
 export const Right = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 6;
-  align-items: center;
-  gap: var(--s-4);
+  display: none;
   @media ${DEVICES.DESKTOP} {
-    flex: 3;
+    display: flex;
+    flex-direction: column;
+    flex: 6;
     align-items: center;
+    gap: var(--s-4);
   }
 `;
 

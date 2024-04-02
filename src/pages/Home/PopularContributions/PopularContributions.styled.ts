@@ -26,11 +26,12 @@ export const PopularContributionItemsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: var(---s-2);
   justify-content: space-between;
 `;
 
 export const Item = styled(BaseItem)`
-  width: 49%;
+  width: 48%;
 
   @media ${DEVICES.DESKTOP} {
     width: 24%;

@@ -41,7 +41,10 @@ export const Title = styled.div`
 
 export const Description = styled.div`
   font-size: var(--fs-xs);
-
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   padding: 0 var(--s-1);
   @media ${DEVICES.DESKTOP} {
     padding: 0 var(--s-6);

@@ -1,4 +1,4 @@
-import facultyService from "@service/api/faculty";
+import facultyService from "@service/faculty";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   ICreateFacultyPayload,

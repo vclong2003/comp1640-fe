@@ -6,7 +6,7 @@ import {
   IRemoveLoginSessionPayload,
   IUpdateUserPayload,
 } from "@interfaces/user.interfaces";
-import userService from "@service/api/user";
+import userService from "@service/user";
 
 // Find users --------------------------------------------------
 export const findUsers = createAsyncThunk(

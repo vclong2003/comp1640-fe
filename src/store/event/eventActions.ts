@@ -5,7 +5,7 @@ import {
   IFindEventsPayload,
 } from "@interfaces/event.interfaces";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import eventService from "@service/api/event";
+import eventService from "@service/event";
 
 // Find events -------------------------------------------
 export const findEvents = createAsyncThunk(

@@ -1,6 +1,5 @@
 import { IRoute } from "@interfaces/common.interfaces";
 import Home from "@pages/Home/Home";
-import EventDetail from "@pages/EventEdit/EventEdit";
 import AuthorizedPage from "@components/AuthorizedPage/AuthorizedPage";
 import Profile from "@pages/Profile/Profile";
 import { ERole } from "@interfaces/user.interfaces";
@@ -8,6 +7,7 @@ import AddContribution from "@pages/AddContribution/AddContribution";
 import ContributionDetail from "@pages/ContributionDetail/ContributionDetail";
 import Event from "@pages/Event/Event";
 import AboutUs from "@pages/AboutUs/AboutUs";
+import EventDetail from "@pages/EventDetail/EventDetail";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
@@ -45,7 +45,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     ),
   },
   {
-    path: "add-contribution",
+    path: "/add-contribution",
     component: (
       <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
         <AddContribution />
@@ -53,7 +53,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     ),
   },
   {
-    path: "eventdetail",
+    path: "/event/:id",
     component: (
       <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
         <EventDetail />

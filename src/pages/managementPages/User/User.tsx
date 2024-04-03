@@ -10,14 +10,15 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Select,
-  MenuItem,
 } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 import AddNewUserModal from "./UserModals/AddNewUsersModal";
-import { AddAndSort, Form, Headline, HeadlineAndDelete } from "./User.styled";
+import { AddAndSort, Headline, HeadlineAndDelete } from "./User.styled";
 import UserRow from "./UserRows/UserRows";
-
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 interface UserData {
   no: number;
   fullname: string;
@@ -41,37 +42,52 @@ const Usersrows: UserData[] = [
   createData(4, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
 ];
 
+const mobileMediaQuery = {
+  "@media only screen and (max-width: 600px)": {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    mb: "8px",
+  },
+};
+
+const FilterMediaQuery = {
+  "@media only screen and (max-width: 600px)": {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    mb: "8px",
+  },
+};
+
 const User: React.FC = () => {
   const [openAddNewUserModal, setOpenAddNewUserModal] = useState(false);
 
   const handleOpenAddNewUserModal = () => setOpenAddNewUserModal(true);
   const handleCloseAddNewUserModal = () => setOpenAddNewUserModal(false);
 
-  const [openUserFilterModal, setOpenUserFilterModal] = useState(false);
-  const handleOpenUserFilterModal = () => setOpenUserFilterModal(true);
-  const handleCloseUserFilterModal = () => setOpenUserFilterModal(false);
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
   return (
     <>
       <Headline>Users</Headline>
 
-      <Form>
-        {/* <Button
-          variant="contained"
-          size="medium"
-          onClick={handleOpenUserFilterModal}
-        >
-          Filter
-        </Button> */}
-
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          "@media only screen and (max-width: 600px)": {
+            display: "block",
+          },
+        }}
+      >
         <Box
-          component="form"
-          noValidate
-          autoComplete="off"
           sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "row",
-            gap: "var(--s-5)",
+            width: "50%",
+            ...mobileMediaQuery,
           }}
         >
           <TextField
@@ -84,7 +100,7 @@ const User: React.FC = () => {
                 </InputAdornment>
               ),
             }}
-            sx={{ width: "20%", height: "40px" }}
+            sx={{ width: "45%", height: "40px", mr: "10px" }}
             variant="outlined"
             size="small"
           />
@@ -98,42 +114,85 @@ const User: React.FC = () => {
                 </InputAdornment>
               ),
             }}
-            sx={{ width: "20%", height: "40px" }}
+            sx={{ width: "45%", height: "40px" }}
             variant="outlined"
             size="small"
           />
-          <Select
-            disabled={false}
-            placeholder="Role"
-            // size="sm"
-            variant="outlined"
-            sx={{ width: "10%", height: "40px" }}
-          >
-            <MenuItem value="@">ten</MenuItem>
-            <MenuItem value="!">ten</MenuItem>
-            <MenuItem value="yes">ten</MenuItem>
-            <MenuItem value="alo">ten</MenuItem>
-          </Select>
-          <Select
-            disabled={false}
-            placeholder="Faculty"
-            // size="sm"
-            variant="outlined"
-            sx={{ width: "10%", height: "40px" }}
-          >
-            <MenuItem value="1">1</MenuItem>
-            <MenuItem value="2">2</MenuItem>
-            <MenuItem value="3">3</MenuItem>
-            <MenuItem value="4">4</MenuItem>
-          </Select>
-          <Button variant="contained" size="medium" color="error">
-            Reset All
-          </Button>
-          <Button variant="contained" size="medium" color="error">
-            Apply
-          </Button>
         </Box>
-      </Form>
+        <Box
+          sx={{
+            width: "50%",
+            display: "flex",
+            justifyContent: "flex-end",
+
+            "@media only screen and (max-width: 600px)": {
+              display: "block",
+              width: "100%",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              width: "60%",
+              display: "flex",
+              justifyContent: "flex-end",
+              height: "40px",
+              ...FilterMediaQuery,
+            }}
+          >
+            <FormControl size="small" sx={{ width: "45%", mr: "8px" }}>
+              <InputLabel id="demo-simple-select-label">Role</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={age}
+                label="Age"
+                onChange={handleChange}
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+
+            <FormControl size="small" sx={{ width: "45%" }}>
+              <InputLabel>Faculty</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={age}
+                label="Age"
+                onChange={handleChange}
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+
+          <Box
+            sx={{
+              width: "40%",
+              display: "flex",
+              justifyContent: "flex-end",
+              ...FilterMediaQuery,
+            }}
+          >
+            <Button
+              variant="outlined"
+              size="medium"
+              color="info"
+              sx={{ mr: "8px" }}
+            >
+              Reset All
+            </Button>
+            <Button variant="contained" size="medium" color="info">
+              Apply
+            </Button>
+          </Box>
+        </Box>
+      </Box>
       <HeadlineAndDelete>
         <Headline>List of Users</Headline>
         <AddAndSort>

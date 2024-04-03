@@ -83,12 +83,7 @@ export default function FacultyModal({
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form>
             <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                mt: 2,
-                gap: "var(--s-3)",
-              }}
+              sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
             >
               {/* Select MC ------------------------------- */}
               <Field
@@ -99,7 +94,7 @@ export default function FacultyModal({
                 size="small"
                 id="mcId"
                 select
-                sx={{ width: "100%" }}
+                sx={{ minWidth: 200 }}
               >
                 <MenuItem value="">Select MC</MenuItem>
                 {mcList.map((mc: IUser) => (
@@ -117,7 +112,6 @@ export default function FacultyModal({
                 variant="outlined"
                 name="name"
                 id="name"
-                size="small"
               />
             </Box>
             <Box

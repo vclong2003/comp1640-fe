@@ -17,7 +17,7 @@ import { getCalendarEvents } from "@utils/event.utils";
 import { IEvent } from "@interfaces/event.interfaces";
 import { useNavigate } from "react-router";
 
-import facultyService from "@service/api/faculty";
+import facultyService from "@service/faculty";
 import { IFaculty } from "@interfaces/faculty.interfaces";
 
 export default function Event() {

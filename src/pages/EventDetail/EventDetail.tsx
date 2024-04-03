@@ -4,7 +4,7 @@ import HightLight from "./HightLight/HightLight";
 import ListEvent from "./ListEvent/ListEvent";
 import { useEffect, useState } from "react";
 import { IEvent } from "@interfaces/event.interfaces";
-import eventService from "@service/api/event";
+import eventService from "@service/event";
 import { useParams } from "react-router-dom";
 
 const EventDetail = () => {
@@ -25,7 +25,7 @@ const EventDetail = () => {
           <HightLight event={event} />
         </S.HightLightEvent>
         <S.ListEvent>
-          <ListEvent />
+          <ListEvent event={event} />
         </S.ListEvent>
       </S.Container>
     </Container>

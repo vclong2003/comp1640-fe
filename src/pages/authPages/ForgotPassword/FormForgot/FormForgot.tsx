@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import Link from "@components/Link/Link";
 import * as S from "./FormForgot.styled";
-import userService from "@service/api/user";
+import userService from "@service/user";
 import { ISendResetPasswordEmailPayload } from "@interfaces/user.interfaces";
 import { notifySuccess } from "@utils/notification.utils";
 

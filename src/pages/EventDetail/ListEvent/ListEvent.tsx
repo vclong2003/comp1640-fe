@@ -2,8 +2,13 @@ import * as S from "./ListEvent.styled";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import Item from "@components/ContributionItem/ContributionItem";
+import { IEvent } from "@interfaces/event.interfaces";
 
-const ListEvent = () => {
+interface IListEventProps {
+  event?: IEvent;
+}
+
+const ListEvent = ({ event }: IListEventProps) => {
   const [isPublish, setIsPublish] = useState(true);
 
   return (

@@ -191,7 +191,7 @@ export default function ManagementLayout() {
             </Box> */}
 
             <Box
-              sx={{ width: "85%", display: "flex", justifyContent: "flex-end" }}
+              sx={{ width: "92%", display: "flex", justifyContent: "flex-end" }}
             >
               <Box
                 sx={{

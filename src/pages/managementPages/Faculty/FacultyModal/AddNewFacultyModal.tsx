@@ -24,6 +24,9 @@ const style = {
   bgcolor: "background.paper",
   borderRadius: 4,
   p: 4,
+  "@media only screen and (max-width: 600px)": {
+    width: "90%",
+  },
 };
 
 const initialValues: Partial<ICreateFacultyPayload> = {
@@ -80,7 +83,14 @@ export default function FacultyModal({
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form>
             <Box
-              sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                mt: 2,
+                "@media only screen and (max-width: 600px)": {
+                  display: "block",
+                },
+              }}
             >
               {/* Select MC ------------------------------- */}
               <Field
@@ -90,7 +100,13 @@ export default function FacultyModal({
                 name="mcId"
                 id="mcId"
                 select
-                sx={{ minWidth: 200 }}
+                sx={{
+                  minWidth: 200,
+                  "@media only screen and (max-width: 600px)": {
+                    width: "100%",
+                    mt: 2,
+                  },
+                }}
               >
                 <MenuItem value="">Select MC</MenuItem>
                 {mcList.map((mc: IUser) => (
@@ -109,6 +125,12 @@ export default function FacultyModal({
                 variant="outlined"
                 name="name"
                 id="name"
+                sx={{
+                  "@media only screen and (max-width: 600px)": {
+                    width: "100%",
+                    mt: 2,
+                  },
+                }}
               />
             </Box>
             <Box

@@ -7,6 +7,9 @@ export const HeadlineAndDelete = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 24px;
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 
 export const Form = styled.div`
@@ -20,4 +23,7 @@ export const AddAndSort = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;

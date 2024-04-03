@@ -42,7 +42,7 @@ export default function FacultyModal({
   open: boolean;
   handleClose: () => void;
 }) {
-  // const { users: mcList } = useSelector((state: RootState) => state.userState);
+  const { users: mcList } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
 
   const [bannerImage, setBannerImage] = useState<File | null>(null);

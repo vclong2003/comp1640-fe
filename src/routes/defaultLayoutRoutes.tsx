@@ -53,7 +53,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     ),
   },
   {
-    path: "/event/:id",
+    path: "/event/:eventId",
     component: (
       <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
         <EventDetail />

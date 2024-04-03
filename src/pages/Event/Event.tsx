@@ -61,7 +61,10 @@ export default function Event() {
     <Container>
       <S.Event>
         <S.BannerImageContainer>
-          <S.BannerImage src={PLaceholderBanner} alt="Banner" />
+          <S.BannerImage
+            src={faculty?.banner_image_url || PLaceholderBanner}
+            alt="Banner"
+          />
           <S.BannerText>
             <S.FacultyName>{faculty?.name}</S.FacultyName>
             <S.FacultyDescription>{faculty?.description}</S.FacultyDescription>

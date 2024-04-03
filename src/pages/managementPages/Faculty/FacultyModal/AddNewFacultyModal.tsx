@@ -104,7 +104,6 @@ export default function FacultyModal({
                   </MenuItem>
                 ))}
               </Field>
-
               {/* Name ------------------------------------- */}
               <Field
                 as={TextField}

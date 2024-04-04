@@ -8,7 +8,6 @@ import { IoSend } from "react-icons/io5";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import Avatar from "@components/Avatar/Avatar";
-import { Formik } from "formik";
 
 const LeftDetailPage = () => {
   const [test, setTest] = useState("");
@@ -70,9 +69,9 @@ const LeftDetailPage = () => {
           <S.ImageAva>
             <Avatar isUpdateable={true} />
           </S.ImageAva>
-          <Formik>
-            <S.InputCmt placeholder="Add Comment"></S.InputCmt>
-          </Formik>
+
+          <S.InputCmt placeholder="Add Comment"></S.InputCmt>
+
           <S.IconSent>
             <IoSend />
           </S.IconSent>

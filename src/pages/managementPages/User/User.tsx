@@ -47,9 +47,9 @@ const User: React.FC = () => {
   const handleOpenAddNewUserModal = () => setOpenAddNewUserModal(true);
   const handleCloseAddNewUserModal = () => setOpenAddNewUserModal(false);
 
-  const [openUserFilterModal, setOpenUserFilterModal] = useState(false);
-  const handleOpenUserFilterModal = () => setOpenUserFilterModal(true);
-  const handleCloseUserFilterModal = () => setOpenUserFilterModal(false);
+  // const [openUserFilterModal, setOpenUserFilterModal] = useState(false);
+  // const handleOpenUserFilterModal = () => setOpenUserFilterModal(true);
+  // const handleCloseUserFilterModal = () => setOpenUserFilterModal(false);
   return (
     <>
       <Headline>Users</Headline>

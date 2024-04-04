@@ -1,6 +1,6 @@
 import * as S from "./ListEvent.styled";
 import { FaSearch } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IEvent } from "@interfaces/event.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
@@ -13,22 +13,28 @@ interface IListEventProps {
 
 const ListEvent = ({ event }: IListEventProps) => {
   const [isPublish, setIsPublish] = useState(true);
+  const [title, setTitle] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const { contributions } = useSelector(
     (state: RootState) => state.contributionState,
   );
   const { user } = useSelector((state: RootState) => state.userState);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
     if (!event) return;
-    const payload: IFindContributionsPayload = { eventId: event._id };
-    if (isPublish) {
-      payload.is_publication = true;
-    } else {
-      payload.authorId = user?._id;
-    }
-    dispatch(findContributions(payload));
-  }, [event, dispatch, isPublish, user]);
+
+    timerRef.current = setTimeout(() => {
+      const payload: IFindContributionsPayload = { eventId: event._id };
+      if (isPublish) {
+        payload.is_publication = true;
+      } else {
+        payload.authorId = user?._id;
+      }
+      if (title) payload.title = title;
+      dispatch(findContributions(payload));
+    }, 500);
+  }, [event, dispatch, isPublish, user, title]);
 
   return (
     <S.Container>
@@ -46,7 +52,12 @@ const ListEvent = ({ event }: IListEventProps) => {
         </S.Button>
         <S.Search>
           <S.Input>
-            <input type="search" placeholder="Search Anything" />
+            <input
+              type="search"
+              placeholder="Search Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
             <S.Icon>
               <FaSearch />
             </S.Icon>

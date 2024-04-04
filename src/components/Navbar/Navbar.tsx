@@ -24,10 +24,9 @@ const Navbar = () => {
         </S.ResponsiveNavButton>
         <OffCanvas show={isOffcanavsVisible} onClose={closeOffCanvas}>
           <S.VerticalNavList>
-            <S.NavItem>Home</S.NavItem>
-            <S.NavItem>Events</S.NavItem>
-            <S.NavItem>Contact Us</S.NavItem>
-            <S.NavItem>About Us</S.NavItem>
+            <S.NavItem to="/home">Home</S.NavItem>
+            <S.NavItem to="/event">Events</S.NavItem>
+            <S.NavItem to="/about-us">About Us</S.NavItem>
           </S.VerticalNavList>
         </OffCanvas>
         <S.Logo>
@@ -36,7 +35,6 @@ const Navbar = () => {
         <S.NavList>
           <S.NavItem to="/home">Home</S.NavItem>
           <S.NavItem to="/event">Events</S.NavItem>
-          <S.NavItem>Contact Us</S.NavItem>
           <S.NavItem to="/about-us">About Us</S.NavItem>
         </S.NavList>
         <S.Profile>

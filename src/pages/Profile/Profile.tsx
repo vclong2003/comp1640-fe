@@ -10,7 +10,7 @@ import { FaShieldDog } from "react-icons/fa6";
 import Popup from "@components/Popup/Popup";
 import ImageCropper from "@components/ImageCropper/ImageCropper";
 import { useState } from "react";
-import { updateUser } from "@store/user/userActions";
+import { updateUser } from "@store/userActions";
 import { notifySuccess } from "@utils/notification.utils";
 
 export default function Profile() {

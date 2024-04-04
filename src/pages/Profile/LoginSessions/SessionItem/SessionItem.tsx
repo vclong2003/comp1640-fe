@@ -3,7 +3,7 @@ import * as S from "./SessionItem.styled";
 import { ILoginSession } from "@interfaces/user.interfaces";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
-import { removeLoginSession } from "@store/user/userActions";
+import { removeLoginSession } from "@store/userActions";
 import { notifyInfo } from "@utils/notification.utils";
 
 interface ILoginSessionProps {

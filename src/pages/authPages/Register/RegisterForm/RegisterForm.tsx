@@ -11,7 +11,7 @@ import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { useEffect } from "react";
-import { findFaculties } from "@store/faculty/facultyActions";
+import { findFaculties } from "@store/facultyActions";
 import { IGuestRegisterPayload } from "@interfaces/user.interfaces";
 import { RegisterValidationSchema } from "@utils/auth.utils";
 

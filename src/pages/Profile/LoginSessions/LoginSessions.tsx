@@ -3,7 +3,7 @@ import * as S from "./LoginSessions.styled";
 import SessionItem from "./SessionItem/SessionItem";
 import { AppDispatch, RootState } from "@store/index";
 import { useEffect } from "react";
-import { findLoginSessions } from "@store/user/userActions";
+import { findLoginSessions } from "@store/userActions";
 
 export default function LoginSessions() {
   const { loginSessions } = useSelector((state: RootState) => state.userState);

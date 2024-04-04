@@ -16,24 +16,23 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import ContributionRows from "./ContributionRows/ContributionRows";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { findContributions } from "@store/contribution";
+import { useEffect } from "react";
+import { findFaculties } from "@store/faculty";
 
-interface ContributionData {
-  no: number;
-  title: string;
-  author: string;
-  event: string;
-}
-function createData(no: number, title: string, author: string, event: string) {
-  return { no, title, author, event };
-}
-
-const Contributions: ContributionData[] = [
-  createData(1, "Nguyen Van A", "Bui Huong", "IT"),
-  createData(2, "Nguyen Van A", "Bui Huong", "IT"),
-  createData(3, "Nguyen Van A", "Bui Huong", "IT"),
-  createData(4, "Nguyen Van A", "Bui Huong", "IT"),
-];
 const Contribution: React.FC = () => {
+  const { contributions } = useSelector(
+    (state: RootState) => state.contributionState,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(findFaculties({}));
+    dispatch(findContributions({}));
+  }, [dispatch]);
+
   return (
     <>
       <Headline>Contributions</Headline>
@@ -93,8 +92,11 @@ const Contribution: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Contributions.map((row) => (
-              <ContributionRows key={row.no} Contribution={row} />
+            {contributions.map((contribution) => (
+              <ContributionRows
+                key={contribution._id}
+                contribution={contribution}
+              />
             ))}
           </TableBody>
         </Table>

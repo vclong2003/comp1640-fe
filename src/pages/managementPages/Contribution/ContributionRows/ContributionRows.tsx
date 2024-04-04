@@ -3,16 +3,15 @@ import { Button, TableCell, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteContributionModal from "../ContributionModal/DeleteContributionModal";
 import ViewIcon from "@mui/icons-material/Visibility";
+import { IContribution } from "@interfaces/contribution.interfaces";
+
 interface ContributionRowProps {
-  Contribution: {
-    no: number;
-    title: string;
-    author: string;
-    event: string;
-  };
+  contribution: IContribution;
 }
 
-const ContributionRow: React.FC<ContributionRowProps> = ({ Contribution }) => {
+const ContributionRow: React.FC<ContributionRowProps> = ({
+  contribution,
+}: ContributionRowProps) => {
   const [openDeleteContributionModal, setOpenDeleteContributionModal] =
     useState(false);
 
@@ -25,11 +24,11 @@ const ContributionRow: React.FC<ContributionRowProps> = ({ Contribution }) => {
     <>
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
         <TableCell component="th" scope="row">
-          {Contribution.no}
+          {contribution._id}
         </TableCell>
-        <TableCell align="left">{Contribution.title}</TableCell>
-        <TableCell align="left">{Contribution.author}</TableCell>
-        <TableCell align="left">{Contribution.event}</TableCell>
+        <TableCell align="left">{contribution.title}</TableCell>
+        <TableCell align="left">{contribution.author.name}</TableCell>
+        <TableCell align="left">{contribution.event.name}</TableCell>
         <TableCell align="left">
           <Button
             variant="outlined"

@@ -45,7 +45,7 @@ export interface IComment {
 }
 
 export interface IContributionState {
-  contributions: Partial<IContribution>[];
+  contributions: IContribution[];
   comments: IComment[];
   privateComments: IComment[];
   total: number;

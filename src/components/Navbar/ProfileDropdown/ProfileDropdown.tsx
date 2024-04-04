@@ -4,8 +4,8 @@ import { AppDispatch, RootState } from "@store/index";
 import { EDropDownPosition } from "../../Dropdown/dropdown.enums";
 import Dropdown from "../../Dropdown/Dropdown";
 import Avatar from "../../Avatar/Avatar";
-import { logout } from "@store/user/userActions";
 import Link from "@components/Link/Link";
+import { logout } from "@store/user";
 
 export default function ProfileDropdown() {
   const { user } = useSelector((state: RootState) => state.userState);

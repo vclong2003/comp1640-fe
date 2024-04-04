@@ -7,10 +7,10 @@ const PopularContributions = () => {
         <S.Title>Popular Contributions</S.Title>
       </S.Header>
       <S.PopularContributionItemsContainer>
+        {/* <S.Item />
         <S.Item />
         <S.Item />
-        <S.Item />
-        <S.Item />
+        <S.Item /> */}
       </S.PopularContributionItemsContainer>
     </S.Container>
   );

@@ -3,9 +3,9 @@ import BackGround from "@assets/images/login-background.png";
 import LoginForm from "./LoginForm/LoginForm";
 import { useDispatch } from "react-redux";
 import { API_BASE_URL } from "@config/api.config";
-import { login } from "@store/user/userActions";
 import { ILoginPayload } from "@interfaces/user.interfaces";
 import { AppDispatch } from "@store/index";
+import { login } from "@store/user";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();

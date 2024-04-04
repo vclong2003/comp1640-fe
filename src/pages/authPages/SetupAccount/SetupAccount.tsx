@@ -1,7 +1,7 @@
 import * as S from "./SetupAccount.styled";
 import Setup from "@assets/images/Setup.png";
 import SetupForm from "./SetupForm/SetupForm";
-import userService from "@service/api/user";
+import userService from "@service/user";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { notifySuccess } from "@utils/notification.utils";

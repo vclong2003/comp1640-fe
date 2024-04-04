@@ -5,7 +5,6 @@ import * as S from "./RightDetailPage.styled";
 import { IoMdAdd } from "react-icons/io";
 import { BsPersonFillLock } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
-import { Formik } from "formik";
 
 const RightDetailPage = () => {
   return (
@@ -18,12 +17,11 @@ const RightDetailPage = () => {
               <ItemDocumentFile />
               <ItemDocumentFile />
               <ItemDocumentFile />
-              <Formik>
-                <S.BtnAddDocs>
-                  <IoMdAdd />
-                  <S.BtnText>Add Docs</S.BtnText>
-                </S.BtnAddDocs>
-              </Formik>
+
+              <S.BtnAddDocs>
+                <IoMdAdd />
+                <S.BtnText>Add Docs</S.BtnText>
+              </S.BtnAddDocs>
             </S.Content>
             <S.Divider></S.Divider>
           </S.DocumentFile>
@@ -46,20 +44,16 @@ const RightDetailPage = () => {
           <ContributionsDetail />
           <ContributionsDetail />
           <ContributionsDetail />
-          <Formik>
           <S.InputAddCmt>
             <S.Input placeholder="Add Comment"></S.Input>
             <S.IconSent>
               <IoSend />
             </S.IconSent>
           </S.InputAddCmt>
-          </Formik>
         </S.PrivateCmt>
       </S.TopContainer>
       <S.BottomContainer>
-        <Formik>
         <S.BtnPublish>Publish</S.BtnPublish>
-        </Formik>
       </S.BottomContainer>
     </S.Container>
   );

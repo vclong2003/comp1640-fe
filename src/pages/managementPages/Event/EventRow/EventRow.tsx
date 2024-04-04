@@ -5,16 +5,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import ViewDetailEventModal from "../EventModal/ViewDetailEventModal";
 import DeleteEventModal from "../EventModal/DeleteEventModal";
 import ViewIcon from "@mui/icons-material/Visibility";
+import { IEvent } from "@interfaces/event.interfaces";
+import { toIsoDate, toLocaleDateTime } from "@utils/date.utils";
 interface EventRowProps {
-  event: {
-    no: number;
-    name: string;
-    Event: string;
-    startdate: string;
-  };
+  event: IEvent;
 }
 
-const EventRow: React.FC<EventRowProps> = ({ event }) => {
+const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
   const [openViewDetailEventModal, setOpenViewDetailEventModal] =
     useState(false);
   const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
@@ -30,11 +27,14 @@ const EventRow: React.FC<EventRowProps> = ({ event }) => {
     <>
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
         <TableCell component="th" scope="row">
-          {event.no}
+          {event.name}
         </TableCell>
-        <TableCell align="left">{event.name}</TableCell>
-        <TableCell align="left">{event.Event}</TableCell>
-        <TableCell align="left">{event.startdate}</TableCell>
+        <TableCell align="left">{toLocaleDateTime(event.start_date)}</TableCell>
+        <TableCell align="left">
+          {toIsoDate(event.first_closure_date)}
+        </TableCell>
+        <TableCell align="left">{toIsoDate(event.final_closure_date)}</TableCell>
+        <TableCell align="left">{event.faculty?.name}</TableCell>
         <TableCell align="left">
           <Button
             variant="outlined"

@@ -30,7 +30,7 @@ export interface IEventState {
 }
 
 // Create event ---------------------------
-export interface ICreatEventPayload {
+export interface ICreateEventPayload {
   name: string;
   description: string;
   start_date: string;

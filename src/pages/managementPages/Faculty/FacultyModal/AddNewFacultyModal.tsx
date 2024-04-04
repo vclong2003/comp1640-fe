@@ -83,7 +83,12 @@ export default function FacultyModal({
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form>
             <Box
-              sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                mt: 2,
+                gap: "var(--s-4)",
+              }}
             >
               {/* Select MC ------------------------------- */}
               <Field
@@ -112,6 +117,7 @@ export default function FacultyModal({
                 variant="outlined"
                 name="name"
                 id="name"
+                size="small"
               />
             </Box>
             <Box

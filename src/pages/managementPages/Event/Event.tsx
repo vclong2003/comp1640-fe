@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Box,
@@ -15,7 +15,18 @@ import { CiSearch } from "react-icons/ci";
 import AddNewEventModal from "./EventModal/AddNewEventModal";
 import { AddAndSort, Form, Headline, HeadlineAndDelete } from "./Event.styled";
 import EventFilterModal from "./EventModal/EventFilterModal";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { findEvents } from "@store/event/eventActions";
+import EventRow from "./EventRow/EventRow";
 export default function Event() {
+  const { events } = useSelector((state: RootState) => state.eventState);
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(findEvents({}));
+  }, [dispatch]);
+
   const [openAddNewEventModal, setOpenAddNewEventModal] = useState(false);
   const handleOpenAddNewEventModal = () => setOpenAddNewEventModal(true);
   const handleCloseAddNewEventModal = () => setOpenAddNewEventModal(false);
@@ -86,16 +97,19 @@ export default function Event() {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>No</TableCell>
-              <TableCell align="left">Name Event&nbsp;</TableCell>
-              <TableCell align="left">Event&nbsp;</TableCell>
+              <TableCell align="left">Name</TableCell>
               <TableCell align="left">Start date&nbsp;</TableCell>
+              <TableCell align="left">First Closure Date</TableCell>
+              <TableCell align="left">Final Closure Date</TableCell>
+              <TableCell align="left">Faculty Name</TableCell>
               <TableCell align="left">Action&nbsp;</TableCell>
-              <TableCell align="left"></TableCell>
-              <TableCell align="left"></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody></TableBody>
+          <TableBody>
+            {events.map((event) => (
+              <EventRow key={event._id} event={event} />
+            ))}
+          </TableBody>
         </Table>
       </TableContainer>
 

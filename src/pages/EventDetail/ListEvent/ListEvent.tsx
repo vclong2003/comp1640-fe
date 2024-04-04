@@ -1,8 +1,11 @@
 import * as S from "./ListEvent.styled";
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
-import Item from "@components/ContributionItem/ContributionItem";
+import { useEffect, useState } from "react";
 import { IEvent } from "@interfaces/event.interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { findContributions } from "@store/contribution";
+import { IFindContributionsPayload } from "@interfaces/contribution.interfaces";
 
 interface IListEventProps {
   event?: IEvent;
@@ -10,6 +13,22 @@ interface IListEventProps {
 
 const ListEvent = ({ event }: IListEventProps) => {
   const [isPublish, setIsPublish] = useState(true);
+  const dispatch = useDispatch<AppDispatch>();
+  const { contributions } = useSelector(
+    (state: RootState) => state.contributionState,
+  );
+  const { user } = useSelector((state: RootState) => state.userState);
+
+  useEffect(() => {
+    if (!event) return;
+    const payload: IFindContributionsPayload = { eventId: event._id };
+    if (isPublish) {
+      payload.is_publication = true;
+    } else {
+      payload.authorId = user?._id;
+    }
+    dispatch(findContributions(payload));
+  }, [event, dispatch, isPublish, user]);
 
   return (
     <S.Container>
@@ -35,18 +54,10 @@ const ListEvent = ({ event }: IListEventProps) => {
         </S.Search>
       </S.Header>
       <S.ListItem>
-        <S.Item>
-          <Item />
-        </S.Item>
-        <S.Item>
-          <Item />
-        </S.Item>
-        <S.Item>
-          <Item />
-        </S.Item>
-        <S.Item>
-          <Item />
-        </S.Item>
+        {/* Map here */}
+        {contributions.map((contribution) => (
+          <S.Item key={contribution._id} contribution={contribution} />
+        ))}
       </S.ListItem>
       <S.BtnLoadMore>Load More</S.BtnLoadMore>
     </S.Container>

@@ -8,6 +8,7 @@ import {
   IFindContributionByIdPayload,
   IFindContributionsPayload,
   ILikeContributionPayload,
+  IRemoveCommentPayload,
   IRemoveContributionFilePayload,
   IUpdateContriButionPayload,
 } from "@interfaces/contribution.interfaces";
@@ -72,17 +73,17 @@ const findContributions = async (
   return await axiosInstance.get(`/contribution${query}`);
 };
 
-// Find comments by contribution id ------------------
-const findCommentsByContributionId = async (
+// Find comments --------------------------------
+const findAllComments = async (
   payload: IFindCommentsPayload,
-): Promise<IComment> => {
+): Promise<IComment[]> => {
   return await axiosInstance.get(
     `/contribution/${payload.contributionId}/comment`,
   );
 };
 
 // Add comment --------------------------------------
-const addComment = async (payload: IAddCommentPayload): Promise<void> => {
+const addComment = async (payload: IAddCommentPayload): Promise<IComment> => {
   return await axiosInstance.post(
     `/contribution/${payload.contributionId}/comment`,
     {
@@ -102,33 +103,31 @@ const likeContribution = async (
 
 // Find all private comments ----------------------------------------
 const findAllPrivateComments = async (
-  contributionId: string,
+  payload: IFindCommentsPayload,
 ): Promise<IComment[]> => {
   return await axiosInstance.get(
-    `/contribution/${contributionId}/comment/private`,
+    `/contribution/${payload.contributionId}/comment/private`,
   );
 };
 
 // Add private comment ----------------------------------------------
 const addPrivateComment = async (
-  contributionId: string,
-  dto: IAddCommentPayload,
-): Promise<void> => {
+  payload: IAddCommentPayload,
+): Promise<IComment> => {
   return await axiosInstance.post(
-    `/contribution/${contributionId}/comment/private`,
+    `/contribution/${payload.contributionId}/comment/private`,
     {
-      content: dto.content,
+      content: payload.content,
     },
   );
 };
 
 // Remove private comment ----------------------------------------------
 const removePrivateComment = async (
-  contributionId: string,
-  commentId: string,
+  payload: IRemoveCommentPayload,
 ): Promise<void> => {
   return await axiosInstance.delete(
-    `/contribution/${contributionId}/comment/private/${commentId}`,
+    `/contribution/${payload.contributionId}/comment/private/${payload.commentId}`,
   );
 };
 
@@ -136,7 +135,7 @@ export default {
   addContribution,
   findContributionById,
   findContributions,
-  findCommentsByContributionId,
+  findAllComments,
   addComment,
   updateContribution,
   removeContributionFile,

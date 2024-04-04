@@ -6,6 +6,10 @@ export interface IContribution {
   submitted_at: Date;
   is_publication: boolean;
   is_editable: boolean;
+  is_liked: boolean;
+  likes: number;
+  comments: number;
+  private_comments: number;
   author: {
     _id: string;
     avatar_url: string;
@@ -29,9 +33,21 @@ export interface IContribution {
     file_url: string;
   }[];
 }
+export interface IComment {
+  _id: string;
+  content: string;
+  posted_at: Date;
+  author: {
+    _id: string;
+    avatar_url: string;
+    name: string;
+  };
+}
 
 export interface IContributionState {
   contributions: Partial<IContribution>[];
+  comments: IComment[];
+  privateComments: IComment[];
   total: number;
 }
 
@@ -78,18 +94,6 @@ export interface IFindContributionsPayload {
 export interface IRemoveContributionFilePayload {
   contributionId: string;
   file_url: string;
-}
-
-// Comment ----------------------------------
-export interface IComment {
-  _id: string;
-  content: string;
-  posted_at: Date;
-  author: {
-    _id: string;
-    avatar_url: string;
-    name: string;
-  };
 }
 
 // Find Comments ------------------------------

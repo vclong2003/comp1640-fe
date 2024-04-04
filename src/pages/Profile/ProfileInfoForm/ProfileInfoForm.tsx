@@ -10,9 +10,9 @@ import { EGender, IUpdateUserPayload } from "@interfaces/user.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { toIsoDate } from "@utils/date.utils";
-import { updateUser } from "@store/userActions";
 import { notifySuccess } from "@utils/notification.utils";
 import { UpdateUservalidationSchema } from "@utils/user.utils";
+import { updateUser } from "@store/user";
 
 export default function ProfileInfoForm() {
   const { user } = useSelector((state: RootState) => state.userState);

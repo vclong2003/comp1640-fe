@@ -12,13 +12,13 @@ import PLaceholderBanner from "@assets/images/banner_placeholder.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { useEffect, useState } from "react";
-import { findEvents } from "@store/eventActions";
 import { getCalendarEvents } from "@utils/event.utils";
 import { IEvent } from "@interfaces/event.interfaces";
 import { useNavigate } from "react-router";
 
 import facultyService from "@service/faculty";
 import { IFaculty } from "@interfaces/faculty.interfaces";
+import { findEvents } from "@store/event";
 
 export default function Event() {
   const { events } = useSelector((state: RootState) => state.eventState);

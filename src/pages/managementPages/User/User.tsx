@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Box,
@@ -19,28 +19,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-interface UserData {
-  no: number;
-  fullname: string;
-  email: string;
-  faculty: string;
-}
-
-const createData = (
-  no: number,
-  fullname: string,
-  email: string,
-  faculty: string,
-): UserData => {
-  return { no, fullname, email, faculty };
-};
-
-const Usersrows: UserData[] = [
-  createData(1, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
-  createData(2, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
-  createData(3, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
-  createData(4, "NguyenVanA", "nguyenvana@gmail.com", "IT"),
-];
+import { findFaculties } from "@store/faculty";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { findUsers } from "@store/user";
+import { ERole } from "@interfaces/user.interfaces";
 
 const mobileMediaQuery = {
   "@media only screen and (max-width: 600px)": {
@@ -61,14 +44,24 @@ const FilterMediaQuery = {
 };
 
 const User: React.FC = () => {
+  const { users } = useSelector((state: RootState) => state.userState);
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(findFaculties({}));
+    dispatch(findUsers({ role: ERole.Student }));
+  }, [dispatch]);
+
   const [openAddNewUserModal, setOpenAddNewUserModal] = useState(false);
 
   const handleOpenAddNewUserModal = () => setOpenAddNewUserModal(true);
   const handleCloseAddNewUserModal = () => setOpenAddNewUserModal(false);
 
-  const [openUserFilterModal, setOpenUserFilterModal] = useState(false);
-  const handleOpenUserFilterModal = () => setOpenUserFilterModal(true);
-  const handleCloseUserFilterModal = () => setOpenUserFilterModal(false);
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
   return (
     <>
       <Headline>Users</Headline>
@@ -212,18 +205,15 @@ const User: React.FC = () => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>No</TableCell>
               <TableCell align="left">Full Name &nbsp;</TableCell>
               <TableCell align="left">Email&nbsp;</TableCell>
               <TableCell align="left">Facutly&nbsp;</TableCell>
               <TableCell align="left">Action&nbsp;</TableCell>
-              <TableCell align="left"></TableCell>
-              <TableCell align="left"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {Usersrows.map((User) => (
-              <UserRow key={User.no} User={User} />
+            {users.map((user) => (
+              <UserRow key={user.name} user={user} />
             ))}
           </TableBody>
         </Table>

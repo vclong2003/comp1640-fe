@@ -4,16 +4,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 // import EditIcon from "@mui/icons-material/Edit";
 import DeleteUserModal from "../UserModals/DeleteUserModal";
 import ViewIcon from "@mui/icons-material/Visibility";
+import { IUser } from "@interfaces/user.interfaces";
 interface UserRowProps {
-  User: {
-    no: number;
-    fullname: string;
-    email: string;
-    faculty: string;
-  };
+  user: IUser;
 }
 
-const UserRow: React.FC<UserRowProps> = ({ User }) => {
+const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
   const [openDeleteUserModal, setOpenDeleteUserModal] = useState(false);
 
   const handleOpenDeleteUserModal = () => setOpenDeleteUserModal(true);
@@ -22,12 +18,11 @@ const UserRow: React.FC<UserRowProps> = ({ User }) => {
   return (
     <>
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-        <TableCell component="th" scope="row">
-          {User.no}
-        </TableCell>
-        <TableCell align="left">{User.fullname}</TableCell>
-        <TableCell align="left">{User.email}</TableCell>
-        <TableCell align="left">{User.faculty}</TableCell>
+        <TableCell align="left">{user?.name}</TableCell>
+        <TableCell align="left">{user?.email}</TableCell>
+        <TableCell align="left">{user?.faculty?.name}</TableCell>
+        <TableCell align="left"></TableCell>
+
         <TableCell align="left">
           <Button
             variant="outlined"

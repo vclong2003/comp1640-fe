@@ -85,11 +85,9 @@ export default function FacultyModal({
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                flexDirection: "column",
                 mt: 2,
-                "@media only screen and (max-width: 600px)": {
-                  display: "block",
-                },
+                gap: "var(--s-4)",
               }}
             >
               {/* Select MC ------------------------------- */}
@@ -98,15 +96,10 @@ export default function FacultyModal({
                 label="Select MC"
                 variant="outlined"
                 name="mcId"
+                size="small"
                 id="mcId"
                 select
-                sx={{
-                  minWidth: 200,
-                  "@media only screen and (max-width: 600px)": {
-                    width: "100%",
-                    mt: 2,
-                  },
-                }}
+                sx={{ minWidth: 200 }}
               >
                 <MenuItem value="">Select MC</MenuItem>
                 {mcList.map((mc: IUser) => (
@@ -124,18 +117,12 @@ export default function FacultyModal({
                 variant="outlined"
                 name="name"
                 id="name"
-                sx={{
-                  "@media only screen and (max-width: 600px)": {
-                    width: "100%",
-                    mt: 2,
-                  },
-                }}
+                size="small"
               />
             </Box>
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
                 flexDirection: "column",
                 gap: 2,
                 mt: 2,

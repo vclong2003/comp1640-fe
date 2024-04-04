@@ -1,5 +1,6 @@
 import {
   IChangePasswordPayload,
+  ICreateUserPayload,
   IFindLoginSessionsPayload,
   IFindUsersPayload,
   IGuestRegisterPayload,
@@ -112,6 +113,10 @@ const verifyRegisterToken = async (
   return await axiosInstance.post("/auth/verify-register-token", payload);
 };
 
+const createuser = async (payload: ICreateUserPayload) => {
+  return await axiosInstance.post("/auth/register-email", payload);
+}
+
 export default {
   login,
   guestRegister,
@@ -127,4 +132,5 @@ export default {
   setupAccount,
   verifyRegisterToken,
   findUsers,
+  createuser,
 };

@@ -14,8 +14,8 @@ import AddNewFacultyModal from "./FacultyModal/AddNewFacultyModal";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
-import { findFaculties } from "@store/faculty/facultyActions";
 import FacultyRow from "./FacultyRow/FacultyRow";
+import { findFaculties } from "@store/faculty";
 
 const Faculty = () => {
   const { faculties } = useSelector((state: RootState) => state.facultyState);

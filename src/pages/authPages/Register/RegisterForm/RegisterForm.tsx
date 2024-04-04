@@ -11,9 +11,9 @@ import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { useEffect } from "react";
-import { findFaculties } from "@store/faculty/facultyActions";
 import { IGuestRegisterPayload } from "@interfaces/user.interfaces";
 import { RegisterValidationSchema } from "@utils/auth.utils";
+import { findFaculties } from "@store/faculty";
 
 interface IRegisterFormProps {
   onSubmit: (values: IGuestRegisterPayload) => void;

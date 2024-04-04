@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userState from "./user/user";
-import facultyState from "./faculty/faculty";
-import eventState from "./event/event";
+import userState from "./user";
+import facultyState from "./faculty";
+import eventState from "./event";
+import contributionState from "./contribution";
 
 const store = configureStore({
   reducer: {
     [userState.name]: userState.reducer,
     [facultyState.name]: facultyState.reducer,
     [eventState.name]: eventState.reducer,
+    [contributionState.name]: contributionState.reducer,
   },
 });
 

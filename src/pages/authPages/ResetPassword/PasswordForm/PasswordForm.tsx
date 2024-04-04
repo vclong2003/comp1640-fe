@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { IResetPasswordPayload } from "@interfaces/user.interfaces";
 import { ResetPasswordValidationSchema } from "@utils/auth.utils";
-import userService from "@service/api/user";
+import userService from "@service/user";
 import { notifySuccess } from "@utils/notification.utils";
 
 const initialValues: Partial<IResetPasswordPayload> = {

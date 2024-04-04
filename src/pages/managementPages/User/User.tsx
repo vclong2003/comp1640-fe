@@ -66,11 +66,9 @@ const User: React.FC = () => {
   const handleOpenAddNewUserModal = () => setOpenAddNewUserModal(true);
   const handleCloseAddNewUserModal = () => setOpenAddNewUserModal(false);
 
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
+  // const [openUserFilterModal, setOpenUserFilterModal] = useState(false);
+  // const handleOpenUserFilterModal = () => setOpenUserFilterModal(true);
+  // const handleCloseUserFilterModal = () => setOpenUserFilterModal(false);
   return (
     <>
       <Headline>Users</Headline>

@@ -9,11 +9,11 @@ import { Textarea } from "@mui/joy";
 import { ERole, IUser } from "@interfaces/user.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
-import { findUsers } from "@store/user/userActions";
 import { Field, Form, Formik } from "formik";
 import { ICreateFacultyPayload } from "@interfaces/faculty.interfaces";
 import { notifyInfo, notifySuccess } from "@utils/notification.utils";
-import { createFaculty } from "@store/faculty/facultyActions";
+import { findUsers } from "@store/user";
+import { createFaculty } from "@store/faculty";
 
 const style = {
   position: "absolute" as const,

@@ -1,20 +1,26 @@
 import * as S from "./ContributionItem.styled";
 import image from "../../assets/images/food.png";
+import { IContribution } from "@interfaces/contribution.interfaces";
 
-export default function ContributionItem(
-  props: JSX.IntrinsicAttributes,
-): JSX.Element {
+interface IContributionProps extends JSX.IntrinsicAttributes {
+  contribution: Partial<IContribution>;
+}
+
+export default function ContributionItem({
+  contribution,
+  ...props
+}: IContributionProps): JSX.Element {
   return (
     <S.Container {...props}>
-      <S.Image src={image} alt="placeholder" />
-      <S.Title>Contribution Title</S.Title>
-      <S.Description>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </S.Description>
+      <S.Image
+        src={contribution?.banner_image_url || image}
+        alt="placeholder"
+      />
+      <S.Title>{contribution?.title}</S.Title>
+      <S.Description>{contribution?.description}</S.Description>
       <S.InteractionContainer>
-        <S.Like>Like</S.Like>
-        <S.Comment>Comment</S.Comment>
+        <S.Like>{contribution?.likes} Like</S.Like>
+        <S.Comment>{contribution?.comments} Comment</S.Comment>
       </S.InteractionContainer>
     </S.Container>
   );

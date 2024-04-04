@@ -8,7 +8,7 @@ import {
 } from "@components/formComponents";
 import { Formik } from "formik";
 import { IChangePasswordPayload } from "@interfaces/user.interfaces";
-import userService from "@service/api/user";
+import userService from "@service/user";
 import { notifySuccess } from "@utils/notification.utils";
 import { ChangePasswordValidationSchema } from "@utils/auth.utils";
 

@@ -10,8 +10,8 @@ import { FaShieldDog } from "react-icons/fa6";
 import Popup from "@components/Popup/Popup";
 import ImageCropper from "@components/ImageCropper/ImageCropper";
 import { useState } from "react";
-import { updateUser } from "@store/user/userActions";
 import { notifySuccess } from "@utils/notification.utils";
+import { updateUser } from "@store/user";
 
 export default function Profile() {
   const { user } = useSelector((state: RootState) => state.userState);

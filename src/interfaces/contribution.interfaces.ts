@@ -30,6 +30,11 @@ export interface IContribution {
   }[];
 }
 
+export interface IContributionState {
+  contributions: Partial<IContribution>[];
+  total: number;
+}
+
 // Add Contribution --------------------------
 export interface IAddContributionPayload {
   title: string;

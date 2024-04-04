@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
 import Splash from "../pages/Splash/Splash";
-import { getCurrentUser } from "../store/user/userActions";
+import { getCurrentUser } from "../store/userActions";
 
 interface IInitialLoadProviderProps {
   children: ReactNode;

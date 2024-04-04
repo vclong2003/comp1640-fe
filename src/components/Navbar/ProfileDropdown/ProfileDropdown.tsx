@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from "@store/index";
 import { EDropDownPosition } from "../../Dropdown/dropdown.enums";
 import Dropdown from "../../Dropdown/Dropdown";
 import Avatar from "../../Avatar/Avatar";
-import { logout } from "@store/user/userActions";
+import { logout } from "@store/userActions";
 import Link from "@components/Link/Link";
 
 export default function ProfileDropdown() {

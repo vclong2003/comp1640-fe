@@ -4,11 +4,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import React from "react";
+import { useEffect } from "react";
+import { ERole, ICreateUserPayload } from "@interfaces/user.interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import services from "@service/user";
+import { notifySuccess } from "@utils/notification.utils";
+import { Field, Form, Formik } from "formik";
+import { IFaculty } from "@interfaces/faculty.interfaces";
+import { findFaculties } from "@store/faculty";
 const style = {
   position: "absolute" as const,
   top: "50%",
@@ -20,6 +25,12 @@ const style = {
   p: 4,
 };
 
+const intialValues: ICreateUserPayload = {
+  email: "",
+  facultyId: "",
+  role: ERole.Student,
+};
+
 const AddNewUserModal = ({
   open,
   handleClose,
@@ -27,10 +38,19 @@ const AddNewUserModal = ({
   open: boolean;
   handleClose: () => void;
 }) => {
-  const [age, setAge] = React.useState("");
+  const { faculties } = useSelector((state: RootState) => state.facultyState);
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+  useEffect(() => {
+    dispatch(findFaculties({}));
+  }, [dispatch]);
+
+  const handleSubmit = (values: ICreateUserPayload) => {
+    console.log(values);
+    services
+      .createuser(values)
+      .then(() => notifySuccess("Create user successfully"))
+      .then(() => handleClose());
   };
   return (
     <Modal
@@ -43,36 +63,76 @@ const AddNewUserModal = ({
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Add new User
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <TextField
-            id="outlined-basic"
-            label="Gmail"
-            variant="outlined"
-            sx={{ mr: 2 }}
-          />
-          <FormControl sx={{ minWidth: 240 }}>
-            <InputLabel id="demo-simple-select-label">Faculty</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={age}
-              label="Age"
-              onChange={handleChange}
+        <Formik initialValues={intialValues} onSubmit={handleSubmit}>
+          <Form>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "var(--s-4)",
+                mt: 2,
+              }}
             >
-              <MenuItem value={"IT"}>IT</MenuItem>
-              <MenuItem value={"Business"}>Business</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+              <Field
+                as={TextField}
+                labele="Select Faculty"
+                variant="outlined"
+                name="facultyId"
+                size="small"
+                id="fcId"
+                select
+                sx={{ minWidth: 200 }}
+              >
+                <MenuItem value="">Select Faculty</MenuItem>
+                {faculties.map((fc: IFaculty) => (
+                  <MenuItem key={fc._id} value={fc._id}>
+                    {fc.name}
+                    <br />
+                    {/* Current Faculty: {fc.?.name} */}
+                  </MenuItem>
+                ))}
+              </Field>
+              <Field
+                as={TextField}
+                id="outlined-basic"
+                label="Gmail"
+                variant="outlined"
+                name="email"
+                type="email"
+              />
+              <Field
+                as={TextField}
+                labele="Select Role"
+                variant="outlined"
+                name="role"
+                size="small"
+                id="fcId"
+                select
+                sx={{ minWidth: 200 }}
+              >
+                <MenuItem value="">Select Role</MenuItem>
+                <MenuItem value={ERole.Student}>Student</MenuItem>
+                <MenuItem value={ERole.Admin}>Admin</MenuItem>
+                <MenuItem value={ERole.MarketingCoordinator}>
+                  Marketing Condiantor
+                </MenuItem>
+                <MenuItem value={ERole.MarketingManager}>
+                  Marketing Manager
+                </MenuItem>
+              </Field>
+            </Box>
 
-        <Button
-          variant="contained"
-          size="medium"
-          color="primary"
-          sx={{ mt: 4, left: "40%" }}
-        >
-          Submit
-        </Button>
+            <Button
+              variant="contained"
+              size="medium"
+              color="primary"
+              sx={{ mt: 4, left: "40%" }}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+        </Formik>
       </Box>
     </Modal>
   );

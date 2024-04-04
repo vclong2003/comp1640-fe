@@ -33,7 +33,9 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
         <TableCell align="left">
           {toIsoDate(event.first_closure_date)}
         </TableCell>
-        <TableCell align="left">{toIsoDate(event.final_closure_date)}</TableCell>
+        <TableCell align="left">
+          {toIsoDate(event.final_closure_date)}
+        </TableCell>
         <TableCell align="left">{event.faculty?.name}</TableCell>
         <TableCell align="left">
           <Button

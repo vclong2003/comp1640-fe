@@ -50,6 +50,12 @@ export interface IGuestRegisterPayload {
   facultyId: string;
 }
 
+export interface ICreateUserPayload {
+  email: string;
+  facultyId: string;
+  role: ERole;
+}
+
 // Verify register token ------------------------
 export interface IVerifyRegisterTokenPayload {
   token: string;

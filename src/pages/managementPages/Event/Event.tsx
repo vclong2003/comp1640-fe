@@ -17,8 +17,9 @@ import { AddAndSort, Form, Headline, HeadlineAndDelete } from "./Event.styled";
 import EventFilterModal from "./EventModal/EventFilterModal";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
-import { findEvents } from "@store/event/eventActions";
+
 import EventRow from "./EventRow/EventRow";
+import { findEvents } from "@store/event";
 export default function Event() {
   const { events } = useSelector((state: RootState) => state.eventState);
   const dispatch = useDispatch<AppDispatch>();

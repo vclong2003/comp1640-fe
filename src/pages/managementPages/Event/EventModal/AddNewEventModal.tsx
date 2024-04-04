@@ -2,21 +2,19 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { Textarea } from "@mui/joy";
 import { ICreateEventPayload } from "@interfaces/event.interfaces";
 import { useEffect, useState } from "react";
 import { notifyInfo, notifySuccess } from "@utils/notification.utils";
-import { createEvent } from "@store/event/eventActions";
+
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { Field, Form, Formik } from "formik";
 import { MenuItem } from "@mui/material";
-import { findUsers } from "@store/user/userActions";
-import { ERole } from "@interfaces/user.interfaces";
 import { IFaculty } from "@interfaces/faculty.interfaces";
+import { createEvent, findEvents } from "@store/event";
 
 const style = {
   position: "absolute" as const,
@@ -51,7 +49,7 @@ const AddNewEventModal = ({
   const [bannerImage, setBannerImage] = useState<File | null>(null);
 
   useEffect(() => {
-    dispatch(findUsers({ role: ERole.MarketingCoordinator }));
+    dispatch(findEvents({}));
   }, [dispatch]);
 
   const onSelectBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +94,7 @@ const AddNewEventModal = ({
                 as={TextField}
                 label="Select Faculty"
                 variant="outlined"
-                name="fcId"
+                name="facultyId"
                 size="small"
                 id="fcId"
                 select
@@ -105,7 +103,7 @@ const AddNewEventModal = ({
                 <MenuItem value="">Select Faculty</MenuItem>
                 {faculties.map((fc: IFaculty) => (
                   <MenuItem key={fc._id} value={fc._id}>
-                    {fc._id},{fc.name}
+                    {fc.name}
                     <br />
                     {/* Current Faculty: {fc.?.name} */}
                   </MenuItem>
@@ -142,6 +140,7 @@ const AddNewEventModal = ({
                 placeholder="Start Date"
                 variant="outlined"
                 size="small"
+                type="datetime-local"
               />
               <Field
                 as={TextField}
@@ -150,6 +149,7 @@ const AddNewEventModal = ({
                 placeholder="First Closure Date"
                 variant="outlined"
                 size="small"
+                type="Date"
               />
               <Field
                 as={TextField}
@@ -158,6 +158,7 @@ const AddNewEventModal = ({
                 placeholder="Final Closure Date"
                 variant="outlined"
                 size="small"
+                type="Date"
               />
               <Button variant="outlined" component="label">
                 <input

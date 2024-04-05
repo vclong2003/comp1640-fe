@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
-import DefaultLayout from "@components/Layouts/DefaultLayout";
+import DefaultLayout from "@layouts/DefaultLayout";
+import ManagementLayout from "@layouts/ManagementLayout/ManagementLayout";
+import AuthLayout from "@layouts/AuthLayout";
 // import ManagementLayout from "@components/Layouts/ManagementLayout/ManagementLyout";
-import ManagementLayout from "@components/Layouts/ManagementLayout/ManagementLayout";
-import AuthLayout from "@components/Layouts/AuthLayout";
 import { defaultLayoutRoutes } from "./defaultLayoutRoutes";
 import { authRoutes } from "./authRoutes";
 import { managementRoutes } from "./managementRoutes";

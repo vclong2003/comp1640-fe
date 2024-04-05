@@ -62,10 +62,6 @@ const Contribution: React.FC = () => {
         </Box>
 
         <AddAndSort>
-          <Button variant="contained" size="medium" color="success">
-            Add new
-          </Button>
-
           <Button variant="contained" size="medium">
             Sort by
           </Button>

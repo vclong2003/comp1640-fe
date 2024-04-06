@@ -37,6 +37,14 @@ export const defaultLayoutRoutes: IRoute[] = [
     ),
   },
   {
+    path: "/contribution/new",
+    component: (
+      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
+        <AddContribution />
+      </AuthorizedPage>
+    ),
+  },
+  {
     path: "/contribution/:contributionId",
     component: (
       <AuthorizedPage>
@@ -44,14 +52,7 @@ export const defaultLayoutRoutes: IRoute[] = [
       </AuthorizedPage>
     ),
   },
-  {
-    path: "/add-contribution",
-    component: (
-      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
-        <AddContribution />
-      </AuthorizedPage>
-    ),
-  },
+
   {
     path: "/event/:eventId",
     component: (

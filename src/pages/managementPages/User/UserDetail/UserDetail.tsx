@@ -7,25 +7,39 @@ import {
   FormInput,
   FormLabel,
 } from "@components/formComponents";
-import { EGender, IUpdateUserPayload } from "@interfaces/user.interfaces";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/index";
+import {
+  EGender,
+  IUpdateUserPayload,
+  IUser,
+} from "@interfaces/user.interfaces";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@store/index";
 import { toIsoDate } from "@utils/date.utils";
 import { notifySuccess } from "@utils/notification.utils";
 import { UpdateUservalidationSchema } from "@utils/user.utils";
 import { updateUser } from "@store/user";
 import { Typography } from "@mui/material";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import service from "@service/user";
+import { useFormikContext } from "formik";
 
 const UserDetail = () => {
-  const { user } = useSelector((state: RootState) => state.userState);
+  const { userId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
+  const [user, setUser] = useState<IUser>();
 
   const initialValues: IUpdateUserPayload = {
-    name: user?.name,
-    phone: user?.phone,
-    dob: user?.dob && toIsoDate(user.dob),
-    gender: user?.gender,
+    name: "",
+    phone: "",
+    dob: "",
+    gender: EGender.Female,
   };
+
+  useEffect(() => {
+    if (!userId) return;
+    service.getUserById({ id: userId }).then((user) => setUser(user));
+  });
 
   const onUpdateProfile = (values: IUpdateUserPayload) =>
     dispatch(updateUser(values))
@@ -46,12 +60,13 @@ const UserDetail = () => {
             validationSchema={UpdateUservalidationSchema}
           >
             <Form>
+              <UserDetailUpdater user={user} />
               <FormLabel>Email</FormLabel>
               <FormInput
+                value={user?.email}
                 disabled={true}
                 type="text"
                 name="email"
-                value={user?.email}
               />
 
               <FormLabel>Name</FormLabel>
@@ -97,5 +112,21 @@ const UserDetail = () => {
     </>
   );
 };
+
+function UserDetailUpdater({ user }: { user?: IUser }) {
+  const { setValues } = useFormikContext();
+
+  useEffect(() => {
+    if (!user) return;
+    setValues({
+      name: user.name,
+      phone: user.phone,
+      dob: user.dob && toIsoDate(user.dob),
+      gender: user.gender,
+    });
+  }, [user, setValues]);
+
+  return "";
+}
 
 export default UserDetail;

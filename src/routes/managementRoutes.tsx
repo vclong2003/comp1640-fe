@@ -68,7 +68,7 @@ export const managementRoutes: IRoute[] = [
     ),
   },
   {
-    path: "manage/user/detail",
+    path: "manage/user/:userId",
     component: (
       <AuthorizedPage>
         <UserDetail />

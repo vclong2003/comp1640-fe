@@ -5,12 +5,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteUserModal from "../UserModals/DeleteUserModal";
 import ViewIcon from "@mui/icons-material/Visibility";
 import { IUser } from "@interfaces/user.interfaces";
+import { useNavigate } from "react-router";
 
 interface UserRowProps {
   user: IUser;
 }
 
 const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
+  const navigate = useNavigate();
   const [openDeleteUserModal, setOpenDeleteUserModal] = useState(false);
 
   const handleOpenDeleteUserModal = () => setOpenDeleteUserModal(true);
@@ -30,6 +32,7 @@ const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
             color="info"
             startIcon={<ViewIcon />}
             sx={{ mr: 4 }}
+            onClick={() => navigate(`${user._id}`)}
           >
             View
           </Button>

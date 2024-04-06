@@ -48,6 +48,7 @@ const AddNewEventModal = ({
   const dispatch = useDispatch<AppDispatch>();
 
   const [bannerImage, setBannerImage] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(findFaculties({}));
@@ -65,11 +66,12 @@ const AddNewEventModal = ({
       notifyInfo("Please select banner image");
       return;
     }
-    console.log(values);
+    setLoading(true);
     dispatch(createEvent({ ...values, bannerImage } as ICreateEventPayload))
       .unwrap()
       .then(() => notifySuccess("Create event successfully"))
-      .then(() => handleClose());
+      .then(() => handleClose())
+      .finally(() => setLoading(false));
   };
   return (
     <Modal
@@ -176,8 +178,9 @@ const AddNewEventModal = ({
               color="primary"
               sx={{ mt: 4, left: "40%" }}
               type="submit"
+              disabled={loading}
             >
-              Submit
+              {loading ? "Loading..." : "Create"}
             </Button>
           </Form>
         </Formik>

@@ -17,6 +17,7 @@ const style = {
   },
 };
 
+
 const DeleteFacultyModal = ({
   open,
   handleClose,

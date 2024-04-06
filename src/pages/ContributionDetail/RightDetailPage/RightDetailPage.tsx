@@ -1,10 +1,10 @@
 import ItemDocumentFile from "./ItemDocumentFile/ItemDocumentFile";
 import ItemImageFile from "./ItemImageFile/ItemImageFile";
 import * as S from "./RightDetailPage.styled";
-import { IoMdAdd } from "react-icons/io";
 import { BsPersonFillLock } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
-import CommentItem from "../CommentItem/CommentItem";
+import UserInfo from "../UserInfo/UserInfo";
+
 
 const RightDetailPage = () => {
   return (
@@ -17,10 +17,8 @@ const RightDetailPage = () => {
               <ItemDocumentFile />
               <ItemDocumentFile />
               <ItemDocumentFile />
-
               <S.BtnAddDocs>
-                <IoMdAdd />
-                <S.BtnText>Add Docs</S.BtnText>
+                <S.BtnText>Download file (zip.file)</S.BtnText>
               </S.BtnAddDocs>
             </S.Content>
             <S.Divider></S.Divider>
@@ -29,11 +27,6 @@ const RightDetailPage = () => {
             <ItemImageFile />
             <ItemImageFile />
             <ItemImageFile />
-            <S.AddImg>
-              <S.AddIcon>
-                <IoMdAdd />
-              </S.AddIcon>
-            </S.AddImg>
           </S.DocumentImg>
         </S.ContainerDocument>
         <S.PrivateCmt>
@@ -41,9 +34,7 @@ const RightDetailPage = () => {
             <BsPersonFillLock />
             <S.TextTitle>1 Private Comments</S.TextTitle>
           </S.TitleComment>
-          <CommentItem />
-          <CommentItem />
-          <CommentItem />
+          <UserInfo />
           <S.InputAddCmt>
             <S.Input placeholder="Add Comment"></S.Input>
             <S.IconSent>
@@ -52,9 +43,6 @@ const RightDetailPage = () => {
           </S.InputAddCmt>
         </S.PrivateCmt>
       </S.TopContainer>
-      <S.BottomContainer>
-        <S.BtnPublish>Publish</S.BtnPublish>
-      </S.BottomContainer>
     </S.Container>
   );
 };

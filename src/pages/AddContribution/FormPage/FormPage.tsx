@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as S from "./FormPage.styled";
 import ReactQuill from "react-quill";
 import { IAddContributionPayload } from "@interfaces/contribution.interfaces";
+import FileSelector from "../FilesSelector/FileSelector";
 
 const FormPage = () => {
   const [payload, setPayload] = useState<IAddContributionPayload>({
@@ -16,14 +17,14 @@ const FormPage = () => {
     <S.Container>
       <S.ItemInput>
         <S.Text>Title</S.Text>
-        <S.Input>
+        <S.InputTitle>
           <input
             value={payload.title}
             onChange={(e) => setPayload({ ...payload, title: e.target.value })}
             type="text"
             placeholder="Enter event title"
           />
-        </S.Input>
+        </S.InputTitle>
       </S.ItemInput>
       <S.ItemInput>
         <S.Text>Description</S.Text>
@@ -47,14 +48,14 @@ const FormPage = () => {
       <S.ItemInput>
         <S.Text>Image Files</S.Text>
         <S.Input>
-          <input type="text" />
+          <FileSelector />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
       <S.ItemInput>
         <S.Text>Word Files</S.Text>
         <S.Input>
-          <input type="text" />
+          <FileSelector />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>

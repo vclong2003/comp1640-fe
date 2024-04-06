@@ -67,7 +67,7 @@ export const Bottom = styled.div`
   }
 `;
 
-export const Description = styled.div`
+export const DescriptionContribute = styled.div`
   color: white;
   font-size: var(--fs-lg);
   margin-bottom: var(--s-3);
@@ -82,12 +82,41 @@ export const Author = styled.div`
   color: white;
 `;
 
-export const BottomContainer = styled.div`
+export const MiddleContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: var(--s-5) 0;
   gap: var(--s-7);
 `;
+
+export const ContainerDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+`;
+
+export const Description = styled.div`
+  font-size: var(--fs-sm);
+  @media ${DEVICES.DESKTOP} {
+    font-size: var(--fs-md);
+  }
+`;
+export const ContainerLike = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  gap: var(--s-2);
+  font-size: var(--fs-md);
+  justify-content: flex-end;
+  color: red;
+  border-bottom: 2px solid black;
+`;
+
+export const Like = styled.div`
+  padding-bottom: var(--s-2);
+`;
+
+export const BottomContainer = styled.div``;
 
 export const Title = styled.div`
   display: flex;
@@ -95,7 +124,7 @@ export const Title = styled.div`
   align-items: center;
   gap: var(--s-1);
   font-size: var(--fs-lg);
-  border-bottom: 2px solid black;
+
   @media ${DEVICES.DESKTOP} {
     gap: var(--s-2);
     font-size: var(--fs-xl);
@@ -106,6 +135,7 @@ export const ContainerComment = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--s-4);
+  margin: var(--s-4) 0;
 `;
 
 export const Person = styled.div``;
@@ -126,8 +156,12 @@ export const AddCmt = styled.div`
 `;
 
 export const ImageAva = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
+  @media ${DEVICES.DESKTOP} {
+    width: 48px;
+    height: 48px;
+  }
 `;
 
 export const InputCmt = styled.input`

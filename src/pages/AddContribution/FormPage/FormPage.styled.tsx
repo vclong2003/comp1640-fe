@@ -14,29 +14,18 @@ export const Text = styled.div`
   font-weight: bold;
 `;
 
+export const InputTitle = styled.div`
+input{
+  padding: var(--s-3);
+  background-color: var(--light-gray);
+  width: 100%;
+  font-size: var(--fs-md);
+  border-radius: var(--br-md);
+}
+
+`;
+
 export const Input = styled.div`
-  input {
-    width: 100%;
-    height: 28px;
-    padding: var(--s-5);
-    font-size: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    justify-content: center;
-    &:hover {
-      background-color: #dedede;
-    }
-  }
-  textarea {
-    width: 100%;
-    padding: var(--s-5);
-    font-size: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    &:hover {
-      background-color: #dedede;
-    }
-  }
 `;
 
 export const InputCheckbox = styled.div`

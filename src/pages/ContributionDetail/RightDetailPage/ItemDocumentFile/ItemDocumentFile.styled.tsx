@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  
   padding: 0 var(--s-3);
   align-items: center;
   border: 2px solid #f2ba1d;
@@ -25,9 +25,4 @@ export const TitleDoc = styled.div`
   font-size: var(--fs-sm);
 `;
 
-export const RightContainer = styled.div`
-  font-size: var(--fs-xl);
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
+

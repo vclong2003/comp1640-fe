@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { IUpdateFacultyPayload } from "@interfaces/faculty.interfaces";
 
 const style = {
   position: "absolute" as const,
@@ -19,6 +20,12 @@ const style = {
     width: "90%",
   },
 };
+
+const intilValues: Partial<IUpdateFacultyPayload> = {
+  name: "",
+  _id:"",
+  mcId:"",
+}
 
 const ViewDetailFacultyModal = ({
   open,

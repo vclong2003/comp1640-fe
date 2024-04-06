@@ -1,16 +1,15 @@
 import * as S from "./LeftDetailPage.styled";
 import Detail from "../../../assets/images/detail.png";
-import { FiEdit } from "react-icons/fi";
 import { IoMdPerson } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
-import { useState } from "react";
-import ReactQuill from "react-quill";
+// import { useState } from "react";
+// import ReactQuill from "react-quill";
 import Avatar from "@components/Avatar/Avatar";
-import LeftComment from "../CommentItem/LeftComment/LeftComment";
-import CommentItem from "../CommentItem/CommentItem";
+import UserInfo from "../UserInfo/UserInfo";
+import { FaHeart } from "react-icons/fa";
 
 const LeftDetailPage = () => {
-  const [test, setTest] = useState("");
+  // const [test, setTest] = useState("");
 
   return (
     <S.Container>
@@ -21,18 +20,17 @@ const LeftDetailPage = () => {
             <S.TextStatus>Published</S.TextStatus>
           </S.Status>
         </S.Text>
-        <S.Icon>
-          <FiEdit />
-        </S.Icon>
         <S.Bottom>
-          <S.Description>Dream Weekends #2 on the edge world</S.Description>
+          <S.DescriptionContribute>
+            Dream Weekends #2 on the edge world
+          </S.DescriptionContribute>
           <S.Author>
-            <LeftComment />
+            <UserInfo />
           </S.Author>
         </S.Bottom>
       </S.TopContainer>
-      <S.BottomContainer>
-        <div>
+      <S.MiddleContainer>
+        {/* <div>
           <ReactQuill
             value={test}
             onChange={setTest}
@@ -47,7 +45,30 @@ const LeftDetailPage = () => {
               ],
             }}
           />
-        </div>
+        </div> */}
+        <S.ContainerDescription>
+          <S.Description>
+            It is shown by default, until the collapse plugin adds the
+            appropriate classes that we use to style each element. These classes
+            control the overall appearance, as well as the showing and hiding
+            via CSS transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the .accordion-body, though the
+            transition does limit overflow. It is shown by default, until the
+            collapse plugin adds the appropriate classes that we use to style
+            each element. These classes control the overall appearance, as well
+            as the showing and hiding via CSS transitions. You can modify any of
+            this with custom CSS or overriding our default variables. It's also
+            worth noting that just about any HTML can go within
+            the .accordion-body, though the transition does limit overflow.
+          </S.Description>
+          <S.ContainerLike>
+            <FaHeart />
+            <S.Like>100</S.Like>
+          </S.ContainerLike>
+        </S.ContainerDescription>
+      </S.MiddleContainer>
+      <S.BottomContainer>
         <S.Title>
           <S.Person>
             <IoMdPerson />
@@ -56,19 +77,17 @@ const LeftDetailPage = () => {
         </S.Title>
         <S.ContainerComment>
           <S.CmtItem>
-            <CommentItem />
+            <UserInfo />
           </S.CmtItem>
           <S.CmtItem>
-            <CommentItem />
+            <UserInfo />
           </S.CmtItem>
         </S.ContainerComment>
         <S.AddCmt>
           <S.ImageAva>
             <Avatar isUpdateable={true} />
           </S.ImageAva>
-
           <S.InputCmt placeholder="Add Comment"></S.InputCmt>
-
           <S.IconSent>
             <IoSend />
           </S.IconSent>

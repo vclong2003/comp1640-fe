@@ -10,6 +10,7 @@ export default defineConfig({
     tsconfigPaths(),
     checker({
       typescript: true,
+      overlay: false,
     }),
   ],
   server: {

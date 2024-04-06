@@ -7,11 +7,15 @@ import DeleteEventModal from "../EventModal/DeleteEventModal";
 import ViewIcon from "@mui/icons-material/Visibility";
 import { IEvent } from "@interfaces/event.interfaces";
 import { toIsoDate, toLocaleDateTime } from "@utils/date.utils";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@store/index";
+import { deleteEvent } from "@store/event";
 interface EventRowProps {
   event: IEvent;
 }
 
 const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
+  const dispatch = useDispatch<AppDispatch>();
   const [openViewDetailEventModal, setOpenViewDetailEventModal] =
     useState(false);
   const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
@@ -22,6 +26,12 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
     setOpenViewDetailEventModal(false);
   const handleOpenDeleteEventModal = () => setOpenDeleteEventModal(true);
   const handleCloseDeleteEventModal = () => setOpenDeleteEventModal(false);
+
+  const handleDeleteEvent = () => {
+    dispatch(deleteEvent({ _id: event._id }))
+      .unwrap()
+      .then(() => handleCloseDeleteEventModal());
+  };
 
   return (
     <>
@@ -76,6 +86,7 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
       <DeleteEventModal
         open={openDeleteEventModal}
         handleClose={handleCloseDeleteEventModal}
+        onConfirmDelete={handleDeleteEvent}
       />
     </>
   );

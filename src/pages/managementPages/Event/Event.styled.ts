@@ -18,7 +18,6 @@ export const Form = styled.div`
 `;
 
 export const AddAndSort = styled.div`
-  width: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;

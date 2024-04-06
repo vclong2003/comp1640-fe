@@ -44,7 +44,7 @@ export const TextStatus = styled.div`
   }
 `;
 
-export const Icon = styled.div`
+export const Icon = styled.label`
   position: absolute;
   top: 0;
   right: 0;

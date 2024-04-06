@@ -1,39 +1,54 @@
 import * as S from "./LeftDetailPage.styled";
 import Detail from "../../../assets/images/detail.png";
-import { FiEdit } from "react-icons/fi";
 import { IoMdPerson } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
-import { useState } from "react";
-import ReactQuill from "react-quill";
+
 import Avatar from "@components/Avatar/Avatar";
 import LeftComment from "../CommentItem/LeftComment/LeftComment";
 import CommentItem from "../CommentItem/CommentItem";
+import { IContribution } from "@interfaces/contribution.interfaces";
+import { toLocaleDateTime } from "@utils/date.utils";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { useEffect } from "react";
+import { findComments } from "@store/contribution";
 
-const LeftDetailPage = () => {
-  const [test, setTest] = useState("");
+interface ILeftDetailPageProps {
+  contribution: IContribution;
+}
+
+const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { comments } = useSelector(
+    (state: RootState) => state.contributionState,
+  );
+  useEffect(() => {
+    dispatch(findComments({ contributionId: contribution._id }));
+  }, [dispatch, contribution._id]);
 
   return (
     <S.Container>
       <S.TopContainer>
-        <S.Image src={Detail} />
+        <S.Image src={contribution?.banner_image_url || Detail} />
         <S.Text>
           <S.Status>
-            <S.TextStatus>Published</S.TextStatus>
+            {contribution?.is_publication && (
+              <S.TextStatus>Published</S.TextStatus>
+            )}
           </S.Status>
         </S.Text>
-        <S.Icon>
-          <FiEdit />
-        </S.Icon>
         <S.Bottom>
-          <S.Description>Dream Weekends #2 on the edge world</S.Description>
+          <S.Description>
+            {contribution && toLocaleDateTime(contribution.submitted_at)}
+          </S.Description>
           <S.Author>
             <LeftComment />
           </S.Author>
         </S.Bottom>
       </S.TopContainer>
       <S.BottomContainer>
-        <div>
-          <ReactQuill
+        {contribution?.description}
+        {/* <ReactQuill
             value={test}
             onChange={setTest}
             placeholder="Test rich text editor"
@@ -46,8 +61,7 @@ const LeftDetailPage = () => {
                 ["clean"],
               ],
             }}
-          />
-        </div>
+          /> */}
         <S.Title>
           <S.Person>
             <IoMdPerson />
@@ -55,20 +69,18 @@ const LeftDetailPage = () => {
           <S.TextCmt>Comments</S.TextCmt>
         </S.Title>
         <S.ContainerComment>
-          <S.CmtItem>
-            <CommentItem />
-          </S.CmtItem>
-          <S.CmtItem>
-            <CommentItem />
-          </S.CmtItem>
+          {comments.map((comment) => (
+            <S.CmtItem key={comment._id}>
+              <CommentItem comment={comment} />
+            </S.CmtItem>
+          ))}
         </S.ContainerComment>
+        {/* Add Comment */}
         <S.AddCmt>
           <S.ImageAva>
             <Avatar isUpdateable={true} />
           </S.ImageAva>
-
           <S.InputCmt placeholder="Add Comment"></S.InputCmt>
-
           <S.IconSent>
             <IoSend />
           </S.IconSent>

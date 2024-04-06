@@ -31,7 +31,7 @@ const style = {
 const intialValues: Partial<ICreateEventPayload> = {
   name: "",
   description: "",
-  start_date: "",
+  start_date: new Date().toISOString(),
   first_closure_date: "",
   final_closure_date: "",
   facultyId: "",
@@ -153,7 +153,7 @@ const AddNewEventModal = ({
               />
               <Field
                 as={TextField}
-                name="final-closure-date"
+                name="final_closure_date"
                 placeholder="Final Closure Date"
                 variant="outlined"
                 size="small"

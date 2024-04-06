@@ -11,6 +11,7 @@ import eventService from "@service/event";
 const name = "eventState";
 const initialState: IEventState = {
   events: [],
+  filter: {},
 };
 
 // Find events -------------------------------------------
@@ -49,7 +50,11 @@ export const deleteEvent = createAsyncThunk(
 const eventState = createSlice({
   name,
   initialState,
-  reducers: {},
+  reducers: {
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // Find events ------------------------------------------------
     builder.addCase(findEvents.fulfilled, (state, action) => {
@@ -78,3 +83,4 @@ const eventState = createSlice({
 });
 
 export default eventState;
+export const { setFilter } = eventState.actions;

@@ -1,5 +1,5 @@
 import * as S from "./LeftDetailPage.styled";
-import Detail from "../../../assets/images/detail.png";
+import Detail from "@assets/images/detail.png";
 import { IoMdPerson } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
 

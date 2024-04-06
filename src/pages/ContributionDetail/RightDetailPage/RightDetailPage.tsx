@@ -4,9 +4,14 @@ import * as S from "./RightDetailPage.styled";
 import { BsPersonFillLock } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
 import UserInfo from "../UserInfo/UserInfo";
+import { IContribution } from "@interfaces/contribution.interfaces";
 
+interface IRightDeatilPageProps {
+  contribution: IContribution;
+}
 
-const RightDetailPage = () => {
+const RightDetailPage = ({ contribution }: IRightDeatilPageProps) => {
+  const { images, documents } = contribution;
   return (
     <S.Container>
       <S.TopContainer>
@@ -14,9 +19,13 @@ const RightDetailPage = () => {
           <S.DocumentFile>
             <S.Title>Files</S.Title>
             <S.Content>
-              <ItemDocumentFile />
-              <ItemDocumentFile />
-              <ItemDocumentFile />
+              {documents.map((item, index) => (
+                <ItemDocumentFile
+                  key={index}
+                  file_name={item.file_name}
+                  file_url={item.file_url}
+                />
+              ))}
               <S.BtnAddDocs>
                 <S.BtnText>Download file (zip.file)</S.BtnText>
               </S.BtnAddDocs>
@@ -24,9 +33,14 @@ const RightDetailPage = () => {
             <S.Divider></S.Divider>
           </S.DocumentFile>
           <S.DocumentImg>
-            <ItemImageFile />
-            <ItemImageFile />
-            <ItemImageFile />
+            {images.map((item, index) => (
+              
+              <ItemImageFile
+                key={index}
+                file_name={item.file_name}
+                file_url={item.file_url}
+              />
+            ))}
           </S.DocumentImg>
         </S.ContainerDocument>
         <S.PrivateCmt>

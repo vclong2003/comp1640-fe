@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./FileSelector.styled";
 import { CiCircleRemove } from "react-icons/ci";
 
 interface IFilesSelectorProps {
   type: "images" | "documents";
+  onChange(files: File[]): void;
 }
 
-export default function FileSelector() {
+export default function FileSelector({ type, onChange }: IFilesSelectorProps) {
   const [files, setFiles] = useState<File[]>([]);
   const addFile = (file: File | null) => {
     if (!file) return;
@@ -16,6 +17,10 @@ export default function FileSelector() {
   const removeFile = (file: File) => {
     setFiles(files.filter((item) => item.name !== file.name));
   };
+
+  useEffect(() => {
+    onChange(files);
+  }, [files]);
 
   return (
     <>
@@ -27,6 +32,11 @@ export default function FileSelector() {
       <S.AddButton>
         <input
           type="file"
+          accept={
+            (type === "images" && "image/*") ||
+            (type === "documents" && ".doc, .docx") ||
+            ""
+          }
           hidden
           onChange={(e) => addFile(e.target?.files && e.target.files[0])}
         />

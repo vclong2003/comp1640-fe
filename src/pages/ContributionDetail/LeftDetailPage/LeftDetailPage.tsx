@@ -7,9 +7,17 @@ import { IoSend } from "react-icons/io5";
 import Avatar from "@components/Avatar/Avatar";
 import UserInfo from "../UserInfo/UserInfo";
 import { FaHeart } from "react-icons/fa";
+import { IContribution } from "@interfaces/contribution.interfaces";
 
-const LeftDetailPage = () => {
-  // const [test, setTest] = useState("");
+interface ILeftDetailPageProps{
+  contribution: IContribution;
+}
+
+
+
+const LeftDetailPage = ({contribution}:ILeftDetailPageProps) => {
+
+
 
   return (
     <S.Container>

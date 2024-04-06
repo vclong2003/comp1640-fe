@@ -3,8 +3,13 @@ import * as S from "./FormPage.styled";
 import ReactQuill from "react-quill";
 import { IAddContributionPayload } from "@interfaces/contribution.interfaces";
 import FileSelector from "../FilesSelector/FileSelector";
+import service from "@service/contribution";
+import { useParams } from "react-router";
+import { useSearchParams } from "react-router-dom";
 
 const FormPage = () => {
+  const [params] = useSearchParams();
+
   const [payload, setPayload] = useState<IAddContributionPayload>({
     title: "",
     description: "",
@@ -12,6 +17,12 @@ const FormPage = () => {
     documents: [],
     images: [],
   });
+
+  const addContribiution = () => {
+    const eventId = params.get("eventId");
+    if (!eventId) return;
+    service.addContribution({ ...payload, eventId });
+  };
 
   return (
     <S.Container>
@@ -48,14 +59,20 @@ const FormPage = () => {
       <S.ItemInput>
         <S.Text>Image Files</S.Text>
         <S.Input>
-          <FileSelector />
+          <FileSelector
+            type="images"
+            onChange={(files) => setPayload({ ...payload, images: files })}
+          />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
       <S.ItemInput>
         <S.Text>Word Files</S.Text>
         <S.Input>
-          <FileSelector />
+          <FileSelector
+            type="documents"
+            onChange={(files) => setPayload({ ...payload, documents: files })}
+          />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
@@ -65,7 +82,7 @@ const FormPage = () => {
         </S.InputCheckbox>
       </S.ItemInput>
       <S.Submit>
-        <S.BtnSubmit>Submit</S.BtnSubmit>
+        <S.BtnSubmit onClick={addContribiution}>Submit</S.BtnSubmit>
       </S.Submit>
     </S.Container>
   );

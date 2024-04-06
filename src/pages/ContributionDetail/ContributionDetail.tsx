@@ -25,10 +25,10 @@ export default function ContributionDetail() {
       <S.Container>
         <S.TopContainer>
           <S.Left>
-            {contribution && <LeftDetailPage contribution={contribution} />}
+            {true && <LeftDetailPage contribution ={contribution!} />}
           </S.Left>
           <S.Right>
-            <RightDetailPage />
+            <RightDetailPage contribution={contribution!} />
           </S.Right>
         </S.TopContainer>
       </S.Container>

@@ -6,12 +6,15 @@ import { API_BASE_URL } from "@config/api.config";
 import { ILoginPayload } from "@interfaces/user.interfaces";
 import { AppDispatch } from "@store/index";
 import { login } from "@store/user";
+import { useState } from "react";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
+  const [loading, setLoading] = useState(false);
 
   const onLogin = (values: ILoginPayload) => {
-    dispatch(login(values));
+    setLoading(true);
+    dispatch(login(values)).finally(() => setLoading(false));
   };
 
   const onGoogleLogin = () => {
@@ -26,7 +29,11 @@ export default function Login() {
       <S.RightContent>
         <S.Title>Hey, Welcome Back!</S.Title>
         <S.Description>We are very happy to see you back!</S.Description>
-        <LoginForm onSubmit={onLogin} onGoogleLogin={onGoogleLogin} />
+        <LoginForm
+          loading={loading}
+          onSubmit={onLogin}
+          onGoogleLogin={onGoogleLogin}
+        />
       </S.RightContent>
     </S.Container>
   );

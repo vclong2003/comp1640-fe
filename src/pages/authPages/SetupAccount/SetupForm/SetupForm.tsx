@@ -14,6 +14,7 @@ import { SetupAccountValidationSchema } from "@utils/auth.utils";
 interface ISetupFormProps {
   onSubmit: (values: Partial<ISetupAccountPayload>) => void;
   email: string;
+  loading?: boolean;
 }
 
 const initialValues: Partial<ISetupAccountPayload> = {
@@ -24,7 +25,7 @@ const initialValues: Partial<ISetupAccountPayload> = {
   dob: "",
 };
 
-const SetupForm = ({ email, onSubmit }: ISetupFormProps) => {
+const SetupForm = ({ email, onSubmit, loading }: ISetupFormProps) => {
   return (
     <S.Container>
       <S.Title>Setup Your Account</S.Title>
@@ -68,7 +69,9 @@ const SetupForm = ({ email, onSubmit }: ISetupFormProps) => {
             <FormInput type="password" name="password" />
             <FormError name="password" />
           </FormGroup>
-          <FormButton type="submit">Submit</FormButton>
+          <FormButton type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Create my account"}
+          </FormButton>
         </Form>
       </Formik>
     </S.Container>

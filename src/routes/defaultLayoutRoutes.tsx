@@ -37,7 +37,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     ),
   },
   {
-    path: "/contribution/:id",
+    path: "/contribution/:contributionId",
     component: (
       <AuthorizedPage>
         <ContributionDetail />

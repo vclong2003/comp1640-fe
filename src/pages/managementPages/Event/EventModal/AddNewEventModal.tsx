@@ -31,7 +31,7 @@ const style = {
 const intialValues: Partial<ICreateEventPayload> = {
   name: "",
   description: "",
-  start_date: "",
+  start_date: new Date().toISOString(),
   first_closure_date: "",
   final_closure_date: "",
   facultyId: "",

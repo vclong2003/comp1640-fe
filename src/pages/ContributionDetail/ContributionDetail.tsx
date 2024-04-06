@@ -25,7 +25,7 @@ export default function ContributionDetail() {
       <S.Container>
         <S.TopContainer>
           <S.Left>
-            <LeftDetailPage />
+            {contribution && <LeftDetailPage contribution={contribution} />}
           </S.Left>
           <S.Right>
             <RightDetailPage />

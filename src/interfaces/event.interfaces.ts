@@ -27,6 +27,7 @@ export interface IEvent {
 
 export interface IEventState {
   events: IEvent[];
+  filter: IFindEventsPayload;
 }
 
 // Create event ---------------------------

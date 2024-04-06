@@ -14,10 +14,12 @@ const LeftDetailPage = () => {
   return (
     <S.Container>
       <S.TopContainer>
-        <S.Image src={Detail} />
+        <S.Image src={contribution?.banner_image_url || Detail} />
         <S.Text>
           <S.Status>
-            <S.TextStatus>Published</S.TextStatus>
+            {contribution?.is_publication && (
+              <S.TextStatus>Published</S.TextStatus>
+            )}
           </S.Status>
         </S.Text>
         <S.Bottom>
@@ -83,6 +85,7 @@ const LeftDetailPage = () => {
             <UserInfo />
           </S.CmtItem>
         </S.ContainerComment>
+        {/* Add Comment */}
         <S.AddCmt>
           <S.ImageAva>
             <Avatar isUpdateable={true} />

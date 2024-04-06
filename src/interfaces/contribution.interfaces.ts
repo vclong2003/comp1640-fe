@@ -3,7 +3,7 @@ export interface IContribution {
   title: string;
   description: string;
   banner_image_url: string;
-  submitted_at: Date;
+  submitted_at: string;
   is_publication: boolean;
   is_editable: boolean;
   is_liked: boolean;
@@ -36,7 +36,7 @@ export interface IContribution {
 export interface IComment {
   _id: string;
   content: string;
-  posted_at: Date;
+  posted_at: string;
   author: {
     _id: string;
     avatar_url: string;
@@ -70,6 +70,7 @@ export interface IUpdateContriButionPayload {
   description?: string;
   documents?: File[];
   images?: File[];
+  bannerImage?: File;
 }
 
 // Find Contribution by id -----------------

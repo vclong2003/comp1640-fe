@@ -1,8 +1,8 @@
-import * as S from "./ContributionsDetail.styled";
+import * as S from "./CommentItem.styled";
 import { SlOptionsVertical } from "react-icons/sl";
 import LeftComment from "./LeftComment/LeftComment";
 
-const ContributionsDetail = () => {
+export default function CommentItem() {
   return (
     <S.Container>
       <S.Left>
@@ -13,6 +13,4 @@ const ContributionsDetail = () => {
       </S.Right>
     </S.Container>
   );
-};
-
-export default ContributionsDetail;
+}

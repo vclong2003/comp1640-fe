@@ -1,10 +1,10 @@
-import ContributionsDetail from "../../../components/ContributionsDetail/ContributionsDetail";
 import ItemDocumentFile from "./ItemDocumentFile/ItemDocumentFile";
 import ItemImageFile from "./ItemImageFile/ItemImageFile";
 import * as S from "./RightDetailPage.styled";
 import { IoMdAdd } from "react-icons/io";
 import { BsPersonFillLock } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
+import CommentItem from "../CommentItem/CommentItem";
 
 const RightDetailPage = () => {
   return (
@@ -41,9 +41,9 @@ const RightDetailPage = () => {
             <BsPersonFillLock />
             <S.TextTitle>1 Private Comments</S.TextTitle>
           </S.TitleComment>
-          <ContributionsDetail />
-          <ContributionsDetail />
-          <ContributionsDetail />
+          <CommentItem />
+          <CommentItem />
+          <CommentItem />
           <S.InputAddCmt>
             <S.Input placeholder="Add Comment"></S.Input>
             <S.IconSent>

@@ -15,6 +15,7 @@ import { Field, Form, Formik } from "formik";
 import { MenuItem } from "@mui/material";
 import { IFaculty } from "@interfaces/faculty.interfaces";
 import { createEvent, findEvents } from "@store/event";
+import { findFaculties } from "@store/faculty";
 
 const style = {
   position: "absolute" as const,
@@ -49,6 +50,7 @@ const AddNewEventModal = ({
   const [bannerImage, setBannerImage] = useState<File | null>(null);
 
   useEffect(() => {
+    dispatch(findFaculties({}));
     dispatch(findEvents({}));
   }, [dispatch]);
 
@@ -135,8 +137,7 @@ const AddNewEventModal = ({
               />
               <Field
                 as={TextField}
-                id="startdate"
-                name="startdate"
+                name="start_date"
                 placeholder="Start Date"
                 variant="outlined"
                 size="small"
@@ -144,8 +145,7 @@ const AddNewEventModal = ({
               />
               <Field
                 as={TextField}
-                id="first-closure-date"
-                name="first-closure-date"
+                name="first_closure_date"
                 placeholder="First Closure Date"
                 variant="outlined"
                 size="small"
@@ -153,7 +153,6 @@ const AddNewEventModal = ({
               />
               <Field
                 as={TextField}
-                id="final-closure-date"
                 name="final-closure-date"
                 placeholder="Final Closure Date"
                 variant="outlined"

@@ -1,13 +1,13 @@
 import * as S from "./LeftDetailPage.styled";
 import Detail from "../../../assets/images/detail.png";
-import LeftComment from "../../../components/ContributionsDetail/LeftComment/LeftComment";
 import { FiEdit } from "react-icons/fi";
 import { IoMdPerson } from "react-icons/io";
-import ContributionsDetail from "../../../components/ContributionsDetail/ContributionsDetail";
 import { IoSend } from "react-icons/io5";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import Avatar from "@components/Avatar/Avatar";
+import LeftComment from "../CommentItem/LeftComment/LeftComment";
+import CommentItem from "../CommentItem/CommentItem";
 
 const LeftDetailPage = () => {
   const [test, setTest] = useState("");
@@ -56,13 +56,10 @@ const LeftDetailPage = () => {
         </S.Title>
         <S.ContainerComment>
           <S.CmtItem>
-            <ContributionsDetail />
+            <CommentItem />
           </S.CmtItem>
           <S.CmtItem>
-            <ContributionsDetail />
-          </S.CmtItem>
-          <S.CmtItem>
-            <ContributionsDetail />
+            <CommentItem />
           </S.CmtItem>
         </S.ContainerComment>
         <S.AddCmt>

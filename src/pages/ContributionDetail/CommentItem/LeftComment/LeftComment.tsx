@@ -5,7 +5,7 @@ const LeftComment = () => {
   return (
     <S.Container>
       <S.Ava>
-      <Avatar isUpdateable={true} />
+        <Avatar />
       </S.Ava>
       <S.InfoComment>
         <S.Author>

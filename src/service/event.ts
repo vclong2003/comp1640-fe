@@ -1,5 +1,5 @@
 import {
-  ICreatEventPayload,
+  ICreateEventPayload,
   IEvent,
   IFindEventByIdPayload,
   IFindEventsPayload,
@@ -10,7 +10,7 @@ import { objectToFormData } from "@utils/data.utils";
 import { buildQueryString } from "@utils/string.utils";
 
 // Create event ----------------------------------------------------------------
-const createEvent = async (payload: ICreatEventPayload): Promise<IEvent> => {
+const createEvent = async (payload: ICreateEventPayload): Promise<IEvent> => {
   return await axiosInstance.post("/event", objectToFormData({ ...payload }), {
     headers: {
       "Content-Type": "multipart/form-data",

@@ -21,7 +21,6 @@ const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
         <TableCell align="left">{user?.name}</TableCell>
         <TableCell align="left">{user?.email}</TableCell>
         <TableCell align="left">{user?.faculty?.name}</TableCell>
-        <TableCell align="left"></TableCell>
 
         <TableCell align="left">
           <Button

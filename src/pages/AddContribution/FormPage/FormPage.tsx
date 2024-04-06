@@ -4,10 +4,10 @@ import ReactQuill from "react-quill";
 import { IAddContributionPayload } from "@interfaces/contribution.interfaces";
 import FileSelector from "../FilesSelector/FileSelector";
 import service from "@service/contribution";
-import { useParams } from "react-router";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const FormPage = () => {
+  const navigate = useNavigate();
   const [params] = useSearchParams();
 
   const [payload, setPayload] = useState<IAddContributionPayload>({
@@ -19,9 +19,12 @@ const FormPage = () => {
   });
 
   const addContribiution = () => {
+    console.log("payload", payload);
     const eventId = params.get("eventId");
     if (!eventId) return;
-    service.addContribution({ ...payload, eventId });
+    service
+      .addContribution({ ...payload, eventId })
+      .then((res) => navigate(`/contribution/${res._id}`));
   };
 
   return (
@@ -61,7 +64,7 @@ const FormPage = () => {
         <S.Input>
           <FileSelector
             type="images"
-            onChange={(files) => setPayload({ ...payload, images: files })}
+            onChange={(files) => setPayload({ ...payload, images: [...files] })}
           />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>
@@ -71,7 +74,9 @@ const FormPage = () => {
         <S.Input>
           <FileSelector
             type="documents"
-            onChange={(files) => setPayload({ ...payload, documents: files })}
+            onChange={(files) =>
+              setPayload({ ...payload, documents: [...files] })
+            }
           />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>

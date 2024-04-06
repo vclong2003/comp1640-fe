@@ -25,8 +25,8 @@ export default function FileSelector({ type, onChange }: IFilesSelectorProps) {
   return (
     <>
       <S.FilesContainer>
-        {files.map((item) => (
-          <FileItem file={item} onRemove={removeFile} />
+        {files.map((item, index) => (
+          <FileItem key={index} file={item} onRemove={removeFile} />
         ))}
       </S.FilesContainer>
       <S.AddButton>

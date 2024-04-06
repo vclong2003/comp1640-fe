@@ -20,6 +20,7 @@ import { buildQueryString } from "@utils/string.utils";
 const addContribution = async (
   payload: IAddContributionPayload,
 ): Promise<IAddContributionResponse> => {
+  console.log("payload", objectToFormData({ ...payload }));
   return await axiosInstance.post(
     "/contribution",
     objectToFormData({ ...payload }),

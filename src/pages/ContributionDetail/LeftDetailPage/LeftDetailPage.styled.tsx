@@ -1,4 +1,3 @@
-import { FormInput } from "@components/formComponents";
 import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
@@ -131,7 +130,7 @@ export const ImageAva = styled.div`
   height: 48px;
 `;
 
-export const InputCmt = styled(FormInput)`
+export const InputCmt = styled.input`
   flex: 1;
   width: 100%;
   border: 1px solid rgba(179, 180, 179, 1);

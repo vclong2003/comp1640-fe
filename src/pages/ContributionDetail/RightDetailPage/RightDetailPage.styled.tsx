@@ -1,4 +1,4 @@
-import { FormButton, FormInput } from "@components/formComponents";
+import { FormButton } from "@components/formComponents";
 import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
@@ -118,11 +118,11 @@ export const InputAddCmt = styled.div`
   gap: var(--s-2);
 `;
 
-export const Input = styled(FormInput)`
+export const Input = styled.input`
   flex: 1;
   border: 2px solid rgba(179, 180, 179, 1);
   padding: var(--s-1) var(--s-3);
-  border-radius: var(--fs-md);
+  border-radius: var(--br-lg);
   font-size: var(--fs-md);
   background-color: transparent;
 `;

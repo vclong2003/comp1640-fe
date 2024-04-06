@@ -1,7 +1,6 @@
-import { IEventState } from "@interfaces/event.interfaces";
+import { ICreateEventPayload, IEventState } from "@interfaces/event.interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  ICreatEventPayload,
   IDeleteEventPayload,
   IEvent,
   IFindEventsPayload,
@@ -25,7 +24,7 @@ export const findEvents = createAsyncThunk(
 // Create event ------------------------------------------
 export const createEvent = createAsyncThunk(
   "eventState/createEvent",
-  async (payload: ICreatEventPayload) => {
+  async (payload: ICreateEventPayload) => {
     return await eventService.createEvent(payload);
   },
 );

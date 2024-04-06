@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { notifyInfo } from "@utils/notification.utils";
 import { removeLoginSession } from "@store/user";
+import { useState } from "react";
 
 interface ILoginSessionProps {
   LoginSession: ILoginSession;
@@ -12,12 +13,16 @@ interface ILoginSessionProps {
 export default function SessionItem({ LoginSession }: ILoginSessionProps) {
   const { browser, date, isCurrentDevice } = LoginSession;
 
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
 
   const logutDevice = () => {
+    if (loading) return;
+    setLoading(true);
     dispatch(removeLoginSession({ sessionId: LoginSession._id }))
       .unwrap()
-      .then(() => notifyInfo(`Logged out from ${browser}`));
+      .then(() => notifyInfo(`Logged out from ${browser}`))
+      .finally(() => setLoading(false));
   };
 
   return (

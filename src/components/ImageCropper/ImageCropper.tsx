@@ -8,11 +8,13 @@ interface IImageCropperProps {
   initialImageUrl: string | undefined | null;
   onSave: (file: File) => void;
   onClose: () => void;
+  loading?: boolean;
 }
 export default function ImageCropper({
   initialImageUrl,
   onClose,
   onSave,
+  loading,
 }: IImageCropperProps) {
   const [avatarUrl, setAvatarUrl] = useState(initialImageUrl);
   const [crop, setCrop] = useState<Crop | undefined>();
@@ -55,7 +57,9 @@ export default function ImageCropper({
         Select New Image
       </S.FileInputLabel>
       <S.BtnContainer>
-        <S.SaveBtn onClick={save}>Save</S.SaveBtn>
+        <S.SaveBtn onClick={save} disabled={loading}>
+          {loading ? "Loading..." : "Save"}
+        </S.SaveBtn>
         <S.ResetBtn onClick={reset}>Reset</S.ResetBtn>
         <S.CancelBtn onClick={onClose}>Cancel</S.CancelBtn>
       </S.BtnContainer>

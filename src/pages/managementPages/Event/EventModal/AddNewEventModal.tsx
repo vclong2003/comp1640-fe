@@ -149,7 +149,7 @@ const AddNewEventModal = ({
                 placeholder="First Closure Date"
                 variant="outlined"
                 size="small"
-                type="Date"
+                type="datetime-local"
               />
               <Field
                 as={TextField}
@@ -157,7 +157,7 @@ const AddNewEventModal = ({
                 placeholder="Final Closure Date"
                 variant="outlined"
                 size="small"
-                type="Date"
+                type="datetime-local"
               />
               <Button variant="outlined" component="label">
                 <input

@@ -15,8 +15,8 @@ const initialValues: Partial<IResetPasswordPayload> = {
 const PasswordForm = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-
   const [token, setToken] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = searchParams.get("token");
@@ -28,14 +28,15 @@ const PasswordForm = () => {
   }, [searchParams, navigate]);
 
   const resetPassword = (values: Partial<IResetPasswordPayload>) => {
-    console.log(token);
     if (!token) return;
+    setLoading(true);
     userService
       .resetPassword({ token, ...values } as IResetPasswordPayload)
       .then(() =>
         notifySuccess("Password reset successfully, you can login now!"),
       )
-      .then(() => navigate("/login"));
+      .then(() => navigate("/login"))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -51,7 +52,9 @@ const PasswordForm = () => {
             <S.Input name="password" />
             <FormError name="password" />
           </FormGroup>
-          <S.BtnReset type="submit">Reset</S.BtnReset>
+          <S.BtnReset type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Reset Password"}
+          </S.BtnReset>
         </Form>
       </Formik>
 

@@ -17,6 +17,7 @@ import { findFaculties } from "@store/faculty";
 
 interface IRegisterFormProps {
   onSubmit: (values: IGuestRegisterPayload) => void;
+  loading?: boolean;
 }
 
 const initialValues: IGuestRegisterPayload = {
@@ -24,7 +25,7 @@ const initialValues: IGuestRegisterPayload = {
   facultyId: "",
 };
 
-const RegisterForm = ({ onSubmit }: IRegisterFormProps) => {
+const RegisterForm = ({ onSubmit, loading }: IRegisterFormProps) => {
   const { faculties } = useSelector((state: RootState) => state.facultyState);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -62,7 +63,9 @@ const RegisterForm = ({ onSubmit }: IRegisterFormProps) => {
             <FormError name="facultyId" />
           </FormGroup>
           {/* <Link to="/email-sent"> */}
-          <FormButton type="submit">Continue</FormButton>
+          <FormButton type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Continue"}
+          </FormButton>
           {/* </Link> */}
         </Form>
       </Formik>

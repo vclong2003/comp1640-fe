@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: var(--s-3);
+  padding: var(--s-3) 0;
 `;
 
 export const TopContainer = styled.div`

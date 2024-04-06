@@ -1,17 +1,19 @@
 import * as S from "./ItemDocumentFile.styled";
-import { TiDeleteOutline } from "react-icons/ti";
 import Word from "../../../../assets/images/Word.png";
 
-const ItemDocumentFile = () => {
+interface IItemDocumnetFileProps{
+  file_name: string;
+  file_url: string;
+
+}
+
+const ItemDocumentFile = ({file_name, file_url}:IItemDocumnetFileProps) => {
   return (
     <S.Container>
       <S.LeftContainer>
         <S.ImageDoc src={Word} />
-        <S.TitleDoc>Ideas 1.docx</S.TitleDoc>
+        <S.TitleDoc>{file_name}</S.TitleDoc>
       </S.LeftContainer>
-      <S.RightContainer>
-        <TiDeleteOutline />
-      </S.RightContainer>
     </S.Container>
   );
 };

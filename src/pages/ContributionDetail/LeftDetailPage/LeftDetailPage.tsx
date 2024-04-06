@@ -2,29 +2,22 @@ import * as S from "./LeftDetailPage.styled";
 import Detail from "../../../assets/images/detail.png";
 import { IoMdPerson } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
-
+// import { useState } from "react";
+// import ReactQuill from "react-quill";
 import Avatar from "@components/Avatar/Avatar";
-import LeftComment from "../CommentItem/LeftComment/LeftComment";
-import CommentItem from "../CommentItem/CommentItem";
+import UserInfo from "../UserInfo/UserInfo";
+import { FaHeart } from "react-icons/fa";
 import { IContribution } from "@interfaces/contribution.interfaces";
-import { toLocaleDateTime } from "@utils/date.utils";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/index";
-import { useEffect } from "react";
-import { findComments } from "@store/contribution";
 
-interface ILeftDetailPageProps {
+interface ILeftDetailPageProps{
   contribution: IContribution;
 }
 
-const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { comments } = useSelector(
-    (state: RootState) => state.contributionState,
-  );
-  useEffect(() => {
-    dispatch(findComments({ contributionId: contribution._id }));
-  }, [dispatch, contribution._id]);
+
+
+const LeftDetailPage = ({contribution}:ILeftDetailPageProps) => {
+
+
 
   return (
     <S.Container>
@@ -38,17 +31,17 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
           </S.Status>
         </S.Text>
         <S.Bottom>
-          <S.Description>
-            {contribution && toLocaleDateTime(contribution.submitted_at)}
-          </S.Description>
+          <S.DescriptionContribute>
+            Dream Weekends #2 on the edge world
+          </S.DescriptionContribute>
           <S.Author>
-            <LeftComment />
+            <UserInfo />
           </S.Author>
         </S.Bottom>
       </S.TopContainer>
-      <S.BottomContainer>
-        {contribution?.description}
-        {/* <ReactQuill
+      <S.MiddleContainer>
+        {/* <div>
+          <ReactQuill
             value={test}
             onChange={setTest}
             placeholder="Test rich text editor"
@@ -61,7 +54,31 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
                 ["clean"],
               ],
             }}
-          /> */}
+          />
+        </div> */}
+        <S.ContainerDescription>
+          <S.Description>
+            It is shown by default, until the collapse plugin adds the
+            appropriate classes that we use to style each element. These classes
+            control the overall appearance, as well as the showing and hiding
+            via CSS transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the .accordion-body, though the
+            transition does limit overflow. It is shown by default, until the
+            collapse plugin adds the appropriate classes that we use to style
+            each element. These classes control the overall appearance, as well
+            as the showing and hiding via CSS transitions. You can modify any of
+            this with custom CSS or overriding our default variables. It's also
+            worth noting that just about any HTML can go within
+            the .accordion-body, though the transition does limit overflow.
+          </S.Description>
+          <S.ContainerLike>
+            <FaHeart />
+            <S.Like>100</S.Like>
+          </S.ContainerLike>
+        </S.ContainerDescription>
+      </S.MiddleContainer>
+      <S.BottomContainer>
         <S.Title>
           <S.Person>
             <IoMdPerson />
@@ -69,11 +86,12 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
           <S.TextCmt>Comments</S.TextCmt>
         </S.Title>
         <S.ContainerComment>
-          {comments.map((comment) => (
-            <S.CmtItem key={comment._id}>
-              <CommentItem comment={comment} />
-            </S.CmtItem>
-          ))}
+          <S.CmtItem>
+            <UserInfo />
+          </S.CmtItem>
+          <S.CmtItem>
+            <UserInfo />
+          </S.CmtItem>
         </S.ContainerComment>
         {/* Add Comment */}
         <S.AddCmt>

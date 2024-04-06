@@ -13,6 +13,7 @@ const SetupAccount = () => {
 
   const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = searchParams.get("token");
@@ -35,12 +36,14 @@ const SetupAccount = () => {
 
   const handleSubmission = async (values: Partial<ISetupAccountPayload>) => {
     if (!token) return;
+    setLoading(true);
     userService
       .setupAccount({ ...values, token } as ISetupAccountPayload)
       .then(() =>
         notifySuccess("Account setup successfully, you can login now!"),
       )
-      .then(() => navigate("/login"));
+      .then(() => navigate("/login"))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -49,7 +52,11 @@ const SetupAccount = () => {
         <img src={Setup} alt="" />
       </S.Left>
       <S.Right>
-        <SetupForm email={email} onSubmit={handleSubmission} />
+        <SetupForm
+          loading={loading}
+          email={email}
+          onSubmit={handleSubmission}
+        />
       </S.Right>
     </S.Container>
   );

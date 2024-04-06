@@ -20,11 +20,13 @@ const initialValues: ILoginPayload = {
 interface ILoginFormProps {
   onSubmit: (values: ILoginPayload) => void;
   onGoogleLogin?: () => void;
+  loading?: boolean;
 }
 
 export default function LoginForm({
   onSubmit,
   onGoogleLogin,
+  loading,
 }: ILoginFormProps) {
   return (
     <S.Container>
@@ -52,8 +54,14 @@ export default function LoginForm({
             />
             <FormError name="password" />
           </FormGroup>
-          <FormButton type="submit">LOGIN</FormButton>
-          <S.BtnLoginWithGoogle type="button" onClick={onGoogleLogin}>
+          <FormButton type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Login"}
+          </FormButton>
+          <S.BtnLoginWithGoogle
+            type="button"
+            onClick={onGoogleLogin}
+            disabled={loading}
+          >
             Login With Google
           </S.BtnLoginWithGoogle>
         </Form>

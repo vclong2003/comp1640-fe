@@ -1,14 +1,15 @@
 import * as S from "./ItemImageFile.styled";
-import img from "../../../../assets/images/imageFile.png";
-import { MdDeleteOutline } from "react-icons/md";
 
-const ItemImageFile = () => {
+
+interface IItemImageFileProps{
+  file_name: string;
+  file_url: string;
+}
+
+const ItemImageFile = ({file_name, file_url}:IItemImageFileProps) => {
   return (
     <S.Container>
-      <S.Image src={img}></S.Image>
-        <S.IconDelete>
-          <MdDeleteOutline />
-        </S.IconDelete>      
+      <S.Image src={ file_url}></S.Image>   
     </S.Container>
   );
 };

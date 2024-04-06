@@ -40,13 +40,10 @@ export const Content = styled.div`
   gap: var(--s-3);
 `;
 
-export const BtnAddDocs = styled(FormButton)`
-  background-color: #f2ba1d;
+export const BtnAddDocs = styled(FormButton)` 
   display: flex;
   color: var(--black);
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
   border-radius: var(--br-md);
   font-size: var(--fs-sm);
   gap: var(--s-1);
@@ -131,18 +128,5 @@ export const IconSent = styled.div`
   font-size: var(--fs-md);
 `;
 
-export const BottomContainer = styled.div``;
 
-export const BtnPublish = styled(FormButton)`
-  background-color: var(--light-gray-2);
-  width: 100%;
-  padding: var(--s-2) 0;
-  color: white;
-  font-weight: bold;
-  font-size: var(--fs-md);
-  border-radius: var(--br-md);
-  cursor: pointer;
-  @media ${DEVICES.DESKTOP} {
-    padding: var(--s-3) 0;
-  }
-`;
+

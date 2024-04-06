@@ -1,5 +1,4 @@
 import Container from "@components/Container/Container";
-import BottomDetailPage from "./BottomDetailPage/BottomDetailPage";
 import * as S from "./ContributionDetail.styled";
 import LeftDetailPage from "./LeftDetailPage/LeftDetailPage";
 import RightDetailPage from "./RightDetailPage/RightDetailPage";
@@ -29,12 +28,9 @@ export default function ContributionDetail() {
             {contribution && <LeftDetailPage contribution={contribution} />}
           </S.Left>
           <S.Right>
-            <RightDetailPage />
+            {contribution && <RightDetailPage contribution={contribution} />}
           </S.Right>
         </S.TopContainer>
-        <S.BottomContainer>
-          <BottomDetailPage />
-        </S.BottomContainer>
       </S.Container>
     </Container>
   );

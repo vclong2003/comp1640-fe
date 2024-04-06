@@ -14,6 +14,10 @@ const style = {
   p: 4,
 };
 
+
+
+
+
 const DeleteEventModal = ({
   open,
   handleClose,

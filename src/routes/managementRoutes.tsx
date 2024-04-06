@@ -6,6 +6,7 @@ import Event from "@pages/managementPages/Event/Event";
 import Contribution from "@pages/managementPages/Contribution/Contribution";
 import AuthorizedPage from "@components/AuthorizedPage/AuthorizedPage";
 import { ERole } from "@interfaces/user.interfaces";
+import UserDetail from "@pages/managementPages/User/UserDetail/UserDetail";
 
 export const managementRoutes: IRoute[] = [
   {
@@ -63,6 +64,14 @@ export const managementRoutes: IRoute[] = [
         ]}
       >
         <Contribution />
+      </AuthorizedPage>
+    ),
+  },
+  {
+    path: "manage/user/detail",
+    component: (
+      <AuthorizedPage>
+        <UserDetail />
       </AuthorizedPage>
     ),
   },

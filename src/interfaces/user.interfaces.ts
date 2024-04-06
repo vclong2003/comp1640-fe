@@ -115,3 +115,7 @@ export interface IFindUsersPayload {
   skip?: number;
   limit?: number;
 }
+
+export interface IGetUserByIdPayload {
+  id: string;
+}

@@ -3,6 +3,7 @@ import {
   ICreateUserPayload,
   IFindLoginSessionsPayload,
   IFindUsersPayload,
+  IGetUserByIdPayload,
   IGuestRegisterPayload,
   ILoginPayload,
   ILoginSession,
@@ -68,6 +69,11 @@ const findUsers = async (payload: IFindUsersPayload): Promise<IUser[]> => {
   return await axiosInstance.get(`/user${queryString}`);
 };
 
+// Get User By Id --------------------------------------------------
+const getUserById = async (payload: IGetUserByIdPayload): Promise<IUser> => {
+  return await axiosInstance.get(`/user/${payload.id}`);
+};
+
 // Update user --------------------------------------------------
 const updateUser = async (payload: IUpdateUserPayload): Promise<IUser> => {
   return await axiosInstance.put(
@@ -115,7 +121,7 @@ const verifyRegisterToken = async (
 
 const createuser = async (payload: ICreateUserPayload) => {
   return await axiosInstance.post("/auth/register-email", payload);
-}
+};
 
 export default {
   login,
@@ -133,4 +139,5 @@ export default {
   verifyRegisterToken,
   findUsers,
   createuser,
+  getUserById,
 };

@@ -1,18 +1,22 @@
 import * as S from "./LeftDetailPage.styled";
 import Detail from "@assets/images/detail.png";
-import { IoMdPerson } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
 
 import Avatar from "@components/Avatar/Avatar";
 import UserInfo from "../UserInfo/UserInfo";
 import { FaHeart } from "react-icons/fa";
 import { IContribution } from "@interfaces/contribution.interfaces";
+import { toLocaleDateTime } from "@utils/date.utils";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/index";
 
 interface ILeftDetailPageProps {
   contribution: IContribution;
 }
 
 const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
+  const { user } = useSelector((state: RootState) => state.userState);
+
   return (
     <S.Container>
       <S.TopContainer>
@@ -29,7 +33,11 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
             Dream Weekends #2 on the edge world
           </S.DescriptionContribute>
           <S.Author>
-            <UserInfo />
+            <UserInfo
+              name={contribution.author.name}
+              avatar_url={contribution.author.avatar_url}
+              additionalInfo={toLocaleDateTime(contribution.submitted_at)}
+            />
           </S.Author>
         </S.Bottom>
       </S.TopContainer>
@@ -47,17 +55,17 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
       <S.BottomContainer>
         <S.Title>
           <S.Person>
-            <IoMdPerson />
+            <Avatar imageUrl={user?.avatar_url} />
           </S.Person>
           <S.TextCmt>Comments</S.TextCmt>
         </S.Title>
         <S.ContainerComment>
-          <S.CmtItem>
+          {/* <S.CmtItem>
             <UserInfo />
           </S.CmtItem>
           <S.CmtItem>
             <UserInfo />
-          </S.CmtItem>
+          </S.CmtItem> */}
         </S.ContainerComment>
         {/* Add Comment */}
         <S.AddCmt>

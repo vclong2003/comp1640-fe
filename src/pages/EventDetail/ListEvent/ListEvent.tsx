@@ -8,7 +8,7 @@ import { findContributions } from "@store/contribution";
 import { IFindContributionsPayload } from "@interfaces/contribution.interfaces";
 
 interface IListEventProps {
-  event?: IEvent;
+  event: IEvent;
 }
 
 const ListEvent = ({ event }: IListEventProps) => {
@@ -19,21 +19,18 @@ const ListEvent = ({ event }: IListEventProps) => {
     (state: RootState) => state.contributionState,
   );
   const { user } = useSelector((state: RootState) => state.userState);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
     if (!event) return;
 
-    timerRef.current = setTimeout(() => {
-      const payload: IFindContributionsPayload = { eventId: event._id };
-      if (isPublish) {
-        payload.is_publication = true;
-      } else {
-        payload.authorId = user?._id;
-      }
-      if (title) payload.title = title;
-      dispatch(findContributions(payload));
-    }, 500);
+    const payload: IFindContributionsPayload = { eventId: event._id };
+    if (isPublish) {
+      payload.is_publication = true;
+    } else {
+      payload.authorId = user?._id;
+    }
+    if (title) payload.title = title;
+    dispatch(findContributions(payload));
   }, [event, dispatch, isPublish, user, title]);
 
   return (

@@ -21,7 +21,6 @@ export const TextContainer = styled.div`
   flex-direction: column;
   flex: 7;
   border-radius: 0 0 var(--br-md) var(--br-md);
-  background: linear-gradient(to top, rgba(0, 0, 27, 0.8), rgba(0, 0, 27, 0));
   @media ${DEVICES.DESKTOP} {
     border-radius: 0 0 var(--br-lg) var(--br-lg);
   }

@@ -59,24 +59,28 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
           </S.Person>
           <S.TextCmt>Comments</S.TextCmt>
         </S.Title>
-        <S.ContainerComment>
-          {/* <S.CmtItem>
+        {contribution.is_publication && (
+          <>
+            <S.ContainerComment>
+              {/* <S.CmtItem>
             <UserInfo />
           </S.CmtItem>
           <S.CmtItem>
             <UserInfo />
           </S.CmtItem> */}
-        </S.ContainerComment>
-        {/* Add Comment */}
-        <S.AddCmt>
-          <S.ImageAva>
-            <Avatar isUpdateable={true} />
-          </S.ImageAva>
-          <S.InputCmt placeholder="Add Comment"></S.InputCmt>
-          <S.IconSent>
-            <IoSend />
-          </S.IconSent>
-        </S.AddCmt>
+            </S.ContainerComment>
+            {/* Add Comment */}
+            <S.AddCmt>
+              <S.ImageAva>
+                <Avatar isUpdateable={true} />
+              </S.ImageAva>
+              <S.InputCmt placeholder="Add Comment"></S.InputCmt>
+              <S.IconSent>
+                <IoSend />
+              </S.IconSent>
+            </S.AddCmt>
+          </>
+        )}
       </S.BottomContainer>
     </S.Container>
   );

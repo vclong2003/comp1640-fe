@@ -96,6 +96,7 @@ export const ListItem = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-2);
+  width: 100%;
 
   @media ${DEVICES.DESKTOP} {
     display: flex;
@@ -107,7 +108,7 @@ export const ListItem = styled.div`
 export const Item = styled(BaseItem)`
   width: 48%;
   @media ${DEVICES.DESKTOP} {
-    width: 24%;
+    width:24%;
   }
 `;
 

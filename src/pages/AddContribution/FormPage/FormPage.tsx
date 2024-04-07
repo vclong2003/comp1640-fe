@@ -5,11 +5,14 @@ import { IAddContributionPayload } from "@interfaces/contribution.interfaces";
 import FileSelector from "../FilesSelector/FileSelector";
 import service from "@service/contribution";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { notifyInfo } from "@utils/notification.utils";
 
 const FormPage = () => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
 
+  const [loading, setLoading] = useState(false);
+  const [isAgreeToTerm, setIsAgreeToTerm] = useState(false);
   const [payload, setPayload] = useState<IAddContributionPayload>({
     title: "",
     description: "",
@@ -19,12 +22,22 @@ const FormPage = () => {
   });
 
   const addContribiution = () => {
-    console.log("payload", payload);
     const eventId = params.get("eventId");
     if (!eventId) return;
+    if (!isAgreeToTerm) {
+      return notifyInfo("Please agree to the terms of service");
+    }
+    setLoading(true);
     service
       .addContribution({ ...payload, eventId })
-      .then((res) => navigate(`/contribution/${res._id}`));
+      .then((res) => navigate(`/contribution/${res._id}`))
+      .finally(() => setLoading(false));
+  };
+
+  const onChageBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setPayload({ ...payload, bannerImage: e.target.files[0] });
+    }
   };
 
   return (
@@ -52,11 +65,17 @@ const FormPage = () => {
                 [{ header: [1, 2, 3, false] }],
                 ["bold", "italic"],
                 [{ list: "ordered" }, { list: "bullet" }],
-                ["link", "image"],
+                ["link"],
                 ["clean"],
               ],
             }}
           />
+        </S.Input>
+      </S.ItemInput>
+      <S.ItemInput>
+        <S.Text>BannerImage</S.Text>
+        <S.Input>
+          <input type="file" accept="image/*" onChange={onChageBannerImage} />
         </S.Input>
       </S.ItemInput>
       <S.ItemInput>
@@ -82,12 +101,19 @@ const FormPage = () => {
         <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
       <S.ItemInput>
-        <S.InputCheckbox>
-          <input type="checkbox" /> i agree with term and privacy
-        </S.InputCheckbox>
+        <input
+          type="checkbox"
+          checked={isAgreeToTerm}
+          onChange={() => setIsAgreeToTerm(!isAgreeToTerm)}
+        />{" "}
+        I have read and agree to the terms of service. I understand that this is
+        a public platform and that my contribution will be visible to all users
+        if approved.
       </S.ItemInput>
       <S.Submit>
-        <S.BtnSubmit onClick={addContribiution}>Submit</S.BtnSubmit>
+        <S.BtnSubmit disabled={loading} onClick={addContribiution}>
+          {loading ? "Loading..." : "Upload My Contribution"}
+        </S.BtnSubmit>
       </S.Submit>
     </S.Container>
   );

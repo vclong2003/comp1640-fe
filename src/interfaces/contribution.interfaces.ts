@@ -58,6 +58,7 @@ export interface IAddContributionPayload {
   eventId: string;
   documents: File[];
   images: File[];
+  bannerImage?: File;
 }
 export interface IAddContributionResponse {
   _id: string;

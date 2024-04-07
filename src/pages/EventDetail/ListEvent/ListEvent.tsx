@@ -1,6 +1,6 @@
 import * as S from "./ListEvent.styled";
 import { FaSearch } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { IEvent } from "@interfaces/event.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";

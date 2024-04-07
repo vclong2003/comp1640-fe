@@ -35,7 +35,9 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
       </S.TopContainer>
       <S.MiddleContainer>
         <S.ContainerDescription>
-          <S.Description>{contribution.description}</S.Description>
+          <S.Description
+            dangerouslySetInnerHTML={{ __html: contribution.description }}
+          />
           <S.ContainerLike>
             <FaHeart />
             <S.Like>{contribution.likes}</S.Like>

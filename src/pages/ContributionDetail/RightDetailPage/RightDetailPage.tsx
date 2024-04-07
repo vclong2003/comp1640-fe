@@ -11,6 +11,7 @@ import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedCompo
 import { ERole } from "@interfaces/user.interfaces";
 import { useEffect, useState } from "react";
 import { addPrivateComment, findPrivateComments } from "@store/contribution";
+import { toIsoDate } from "@utils/date.utils";
 
 interface IRightDeatilPageProps {
   contribution: IContribution;
@@ -107,7 +108,7 @@ function PrivateComment({ contribution }: IPrivateCommentProps) {
           <UserInfo
             name={comment.author.name}
             avatar_url={comment.author.avatar_url}
-            additionalInfo={comment.posted_at}
+            additionalInfo={toIsoDate(comment.posted_at)}
           />
           <div>{comment.content}</div>
         </div>

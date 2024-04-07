@@ -2,12 +2,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { CiSearch } from "react-icons/ci";
 import InputAdornment from "@mui/material/InputAdornment";
-import {
-  AddAndSort,
-  Form,
-  HeadlineAndDelete,
-  Headline,
-} from "./Contribution.styled";
+import { HeadlineAndDelete, Headline } from "./Contribution.styled";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -37,7 +32,7 @@ const Contribution: React.FC = () => {
     <>
       <Headline>Contributions</Headline>
 
-      <Form>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box
           component="form"
           sx={{
@@ -61,16 +56,10 @@ const Contribution: React.FC = () => {
           />
         </Box>
 
-        <AddAndSort>
-          <Button variant="contained" size="medium" color="success">
-            Add new
-          </Button>
-
-          <Button variant="contained" size="medium">
-            Sort by
-          </Button>
-        </AddAndSort>
-      </Form>
+        <Button variant="contained" size="medium">
+          Sort by
+        </Button>
+      </Box>
 
       <HeadlineAndDelete>
         <Headline>List of contributions</Headline>

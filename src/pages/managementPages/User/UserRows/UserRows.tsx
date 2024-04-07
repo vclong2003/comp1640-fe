@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Button, TableCell, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-// import EditIcon from "@mui/icons-material/Edit";
+
 import DeleteUserModal from "../UserModals/DeleteUserModal";
 import ViewIcon from "@mui/icons-material/Visibility";
 import { IUser } from "@interfaces/user.interfaces";
+import { useNavigate } from "react-router";
+
 interface UserRowProps {
   user: IUser;
 }
 
 const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
+  const navigate = useNavigate();
   const [openDeleteUserModal, setOpenDeleteUserModal] = useState(false);
 
   const handleOpenDeleteUserModal = () => setOpenDeleteUserModal(true);
@@ -21,7 +24,6 @@ const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
         <TableCell align="left">{user?.name}</TableCell>
         <TableCell align="left">{user?.email}</TableCell>
         <TableCell align="left">{user?.faculty?.name}</TableCell>
-        <TableCell align="left"></TableCell>
 
         <TableCell align="left">
           <Button
@@ -30,20 +32,11 @@ const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
             color="info"
             startIcon={<ViewIcon />}
             sx={{ mr: 4 }}
-            // onClick={handleOpenViewDetailUserModal}
+            onClick={() => navigate(`${user._id}`)}
           >
             View
           </Button>
-          {/* <Button
-            variant="outlined"
-            size="small"
-            color="warning"
-            startIcon={<EditIcon />}
-            sx={{ mr: 4 }}
-            // onClick={handleOpenViewDetailUserModal}
-          >
-            Edit
-          </Button> */}
+
           <Button
             variant="outlined"
             size="small"
@@ -55,10 +48,7 @@ const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
           </Button>
         </TableCell>
       </TableRow>
-      {/* <ViewDetailUserModal
-        open={openViewDetailUserModal}
-        handleClose={handleCloseViewDetailUserModal}
-      /> */}
+
       <DeleteUserModal
         open={openDeleteUserModal}
         handleClose={handleCloseDeleteUserModal}

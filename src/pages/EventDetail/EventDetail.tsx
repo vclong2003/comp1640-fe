@@ -22,11 +22,9 @@ const EventDetail = () => {
     <Container>
       <S.Container>
         <S.HightLightEvent>
-          <HightLight event={event} />
+          {event && <HightLight event={event} />}
         </S.HightLightEvent>
-        <S.ListEvent>
-          <ListEvent event={event} />
-        </S.ListEvent>
+        <S.ListEvent>{event && <ListEvent event={event} />}</S.ListEvent>
       </S.Container>
     </Container>
   );

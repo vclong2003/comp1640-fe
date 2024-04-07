@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import OffCanvas from "@components/OffCanvas/OffCanvas";
 import Link from "@components/Link/Link";
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
+import { ERole } from "@interfaces/user.interfaces";
 
 const Navbar = () => {
   const location = useLocation();
@@ -34,7 +36,24 @@ const Navbar = () => {
         </S.Logo>
         <S.NavList>
           <S.NavItem to="/home">Home</S.NavItem>
-          <S.NavItem to="/event">Events</S.NavItem>
+          <AuthorizedComponent
+            allowedRoles={[
+              ERole.Guest,
+              ERole.Student,
+              ERole.MarketingCoordinator,
+            ]}
+          >
+            <S.NavItem to="/event">Events</S.NavItem>
+          </AuthorizedComponent>
+          <AuthorizedComponent
+            allowedRoles={[
+              ERole.Admin,
+              ERole.MarketingManager,
+              ERole.MarketingCoordinator,
+            ]}
+          >
+            <S.NavItem to="/manage">Manage</S.NavItem>
+          </AuthorizedComponent>
           <S.NavItem to="/about-us">About Us</S.NavItem>
         </S.NavList>
         <S.Profile>

@@ -13,10 +13,12 @@ import { toIsoDate } from "@utils/date.utils";
 import { notifySuccess } from "@utils/notification.utils";
 import { UpdateUservalidationSchema } from "@utils/user.utils";
 import { updateUser } from "@store/user";
+import { useState } from "react";
 
 export default function ProfileInfoForm() {
   const { user } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
+  const [loading, setLoading] = useState(false);
 
   const initialValues: IUpdateUserPayload = {
     name: user?.name,
@@ -25,10 +27,13 @@ export default function ProfileInfoForm() {
     gender: user?.gender,
   };
 
-  const onUpdateProfile = (values: IUpdateUserPayload) =>
+  const onUpdateProfile = (values: IUpdateUserPayload) => {
+    setLoading(true);
     dispatch(updateUser(values))
       .unwrap()
-      .then(() => notifySuccess("Profile updated successfully"));
+      .then(() => notifySuccess("Profile updated successfully"))
+      .finally(() => setLoading(false));
+  };
 
   return (
     <Formik
@@ -74,7 +79,9 @@ export default function ProfileInfoForm() {
           </S.FormGroup>
         </S.HorizontalFormGroup>
         <S.ButtonGroup>
-          <S.SaveButton type="submit">Save</S.SaveButton>
+          <S.SaveButton type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Save"}
+          </S.SaveButton>
           <S.CancelButton type="reset">Cancel</S.CancelButton>
         </S.ButtonGroup>
       </Form>

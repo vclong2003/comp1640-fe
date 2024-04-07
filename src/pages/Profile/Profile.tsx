@@ -14,17 +14,21 @@ import { notifySuccess } from "@utils/notification.utils";
 import { updateUser } from "@store/user";
 
 export default function Profile() {
+  const [loading, setLoading] = useState(false);
   const { user } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
 
   const [showImageCropper, setShowImageCropper] = useState(false);
   const openImageCropper = () => setShowImageCropper(true);
   const closeImageCropper = () => setShowImageCropper(false);
-  const updateAvatar = (file: File) =>
+  const updateAvatar = (file: File) => {
+    setLoading(true);
     dispatch(updateUser({ avatar: file }))
       .unwrap()
       .then(() => notifySuccess("Nice! Your avatar has been updated!"))
-      .then(closeImageCropper);
+      .then(closeImageCropper)
+      .finally(() => setLoading(false));
+  };
 
   return (
     <Container>
@@ -41,6 +45,7 @@ export default function Profile() {
           <Popup show={showImageCropper} onClose={closeImageCropper}>
             {showImageCropper && (
               <ImageCropper
+                loading={loading}
                 initialImageUrl={user?.avatar_url}
                 onClose={closeImageCropper}
                 onSave={updateAvatar}

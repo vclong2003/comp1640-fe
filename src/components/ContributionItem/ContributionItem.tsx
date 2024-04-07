@@ -1,6 +1,7 @@
 import * as S from "./ContributionItem.styled";
 import image from "../../assets/images/food.png";
 import { IContribution } from "@interfaces/contribution.interfaces";
+import { useNavigate } from "react-router";
 
 interface IContributionProps extends JSX.IntrinsicAttributes {
   contribution: Partial<IContribution>;
@@ -10,8 +11,12 @@ export default function ContributionItem({
   contribution,
   ...props
 }: IContributionProps): JSX.Element {
+  const navigate = useNavigate();
+
+  const handleClick = () => navigate(`/contribution/${contribution?._id}`);
+
   return (
-    <S.Container {...props}>
+    <S.Container {...props} onClick={handleClick}>
       <S.Image
         src={contribution?.banner_image_url || image}
         alt="placeholder"

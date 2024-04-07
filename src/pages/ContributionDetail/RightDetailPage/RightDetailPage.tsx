@@ -5,13 +5,24 @@ import { BsPersonFillLock } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
 import UserInfo from "../UserInfo/UserInfo";
 import { IContribution } from "@interfaces/contribution.interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
+import { ERole } from "@interfaces/user.interfaces";
+import { useEffect, useState } from "react";
+import { addPrivateComment, findPrivateComments } from "@store/contribution";
 
 interface IRightDeatilPageProps {
   contribution: IContribution;
 }
 
-const RightDetailPage = ({ contribution }: IRightDeatilPageProps) => {
-  const { images, documents } = contribution;
+export default function RightDetailPage({
+  contribution,
+}: IRightDeatilPageProps) {
+  const { user } = useSelector((state: RootState) => state.userState);
+
+  const { images, documents, author } = contribution;
+
   return (
     <S.Container>
       <S.TopContainer>
@@ -26,15 +37,11 @@ const RightDetailPage = ({ contribution }: IRightDeatilPageProps) => {
                   file_url={item.file_url}
                 />
               ))}
-              <S.BtnAddDocs>
-                <S.BtnText>Download file (zip.file)</S.BtnText>
-              </S.BtnAddDocs>
             </S.Content>
             <S.Divider></S.Divider>
           </S.DocumentFile>
           <S.DocumentImg>
             {images.map((item, index) => (
-              
               <ItemImageFile
                 key={index}
                 file_name={item.file_name}
@@ -43,22 +50,78 @@ const RightDetailPage = ({ contribution }: IRightDeatilPageProps) => {
             ))}
           </S.DocumentImg>
         </S.ContainerDocument>
-        <S.PrivateCmt>
-          <S.TitleComment>
-            <BsPersonFillLock />
-            <S.TextTitle>1 Private Comments</S.TextTitle>
-          </S.TitleComment>
-          <UserInfo />
-          <S.InputAddCmt>
-            <S.Input placeholder="Add Comment"></S.Input>
-            <S.IconSent>
-              <IoSend />
-            </S.IconSent>
-          </S.InputAddCmt>
-        </S.PrivateCmt>
+        <AuthorizedComponent
+          allowedRoles={[
+            ERole.Admin,
+            ERole.MarketingManager,
+            ERole.MarketingCoordinator,
+            ERole.Student,
+          ]}
+        >
+          {(user?.role !== ERole.Student || user?._id === author._id) && (
+            <PrivateComment contribution={contribution} />
+          )}
+        </AuthorizedComponent>
       </S.TopContainer>
     </S.Container>
   );
-};
+}
 
-export default RightDetailPage;
+// Private Comment ------------------------------------------------------------
+interface IPrivateCommentProps {
+  contribution: IContribution;
+}
+function PrivateComment({ contribution }: IPrivateCommentProps) {
+  const { privateComments } = useSelector(
+    (state: RootState) => state.contributionState,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onAdd = () => {
+    if (loading) return;
+    if (input.trim() === "") return;
+    setLoading(true);
+    dispatch(
+      addPrivateComment({ contributionId: contribution._id, content: input }),
+    )
+      .unwrap()
+      .then(() => setInput(""))
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    dispatch(findPrivateComments({ contributionId: contribution._id }));
+  }, [contribution._id, dispatch]);
+
+  return (
+    <S.PrivateCmt>
+      <S.TitleComment>
+        <BsPersonFillLock />
+        <S.TextTitle>1 Private Comments</S.TextTitle>
+      </S.TitleComment>
+      {/* Comment item: user info, content */}
+      {privateComments.map((comment, index) => (
+        <div key={index}>
+          <UserInfo
+            name={comment.author.name}
+            avatar_url={comment.author.avatar_url}
+            additionalInfo={comment.posted_at}
+          />
+          <div>{comment.content}</div>
+        </div>
+      ))}
+      <S.InputAddCmt>
+        <S.Input
+          placeholder="Add Comment"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <S.IconSent onClick={onAdd}>
+          <IoSend />
+        </S.IconSent>
+      </S.InputAddCmt>
+    </S.PrivateCmt>
+  );
+}

@@ -1,12 +1,29 @@
 import ReactQuill from "react-quill";
 import * as S from "./EditForm.styled";
-import { IContribution } from "@interfaces/contribution.interfaces";
+import {
+  IContribution,
+  IUpdateContriButionPayload,
+} from "@interfaces/contribution.interfaces";
+import { useState } from "react";
 
 interface IEditFormProps {
   contribution: IContribution;
 }
 
 export default function EditForm({ contribution }: IEditFormProps) {
+  const [currentFiles, setCurrentFiles] = useState({
+    documents: contribution.documents,
+    images: contribution.images,
+    banner_image_url: contribution.banner_image_url,
+  });
+  const [payload, setPayload] = useState<IUpdateContriButionPayload>({
+    _id: contribution._id,
+    title: contribution.title,
+    description: contribution.description,
+    images: [],
+    documents: [],
+  });
+
   return (
     <S.Container>
       <S.ItemInput>

@@ -17,13 +17,14 @@ const style = {
   },
 };
 
-
 const DeleteFacultyModal = ({
   open,
   handleClose,
+  onConfirmDelete,
 }: {
   open: boolean;
   handleClose: () => void;
+  onConfirmDelete: () => void;
 }) => {
   return (
     <Modal
@@ -51,7 +52,12 @@ const DeleteFacultyModal = ({
           >
             No
           </Button>
-          <Button variant="contained" size="medium" color="error">
+          <Button
+            variant="contained"
+            size="medium"
+            color="error"
+            onClick={onConfirmDelete}
+          >
             Yes
           </Button>
         </Box>

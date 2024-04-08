@@ -2,9 +2,12 @@ import ReactQuill from "react-quill";
 import * as S from "./EditForm.styled";
 import {
   IContribution,
+  IContributionFile,
   IUpdateContriButionPayload,
 } from "@interfaces/contribution.interfaces";
 import { useState } from "react";
+import FileList from "../FileList/FileList";
+import service from "@service/contribution";
 
 interface IEditFormProps {
   contribution: IContribution;
@@ -14,7 +17,6 @@ export default function EditForm({ contribution }: IEditFormProps) {
   const [currentFiles, setCurrentFiles] = useState({
     documents: contribution.documents,
     images: contribution.images,
-    banner_image_url: contribution.banner_image_url,
   });
   const [payload, setPayload] = useState<IUpdateContriButionPayload>({
     _id: contribution._id,
@@ -23,6 +25,25 @@ export default function EditForm({ contribution }: IEditFormProps) {
     images: [],
     documents: [],
   });
+
+  const removeFile = (file: IContributionFile) => {
+    service
+      .removeContributionFile({
+        contributionId: contribution._id,
+        file_url: file.file_url,
+      })
+      .then(() =>
+        setCurrentFiles({
+          ...currentFiles,
+          documents: currentFiles.documents.filter(
+            (item) => item.file_url !== file.file_url,
+          ),
+          images: currentFiles.images.filter(
+            (item) => item.file_url !== file.file_url,
+          ),
+        }),
+      );
+  };
 
   return (
     <S.Container>
@@ -58,6 +79,9 @@ export default function EditForm({ contribution }: IEditFormProps) {
       <S.ItemInput>
         <S.Text>Image Files</S.Text>
         <S.Input>
+          <FileList files={currentFiles.images} onRemove={removeFile} />
+        </S.Input>
+        <S.Input>
           {/* <FileSelector
             type="images"
             onChange={(files) => setPayload({ ...payload, images: [...files] })}
@@ -67,6 +91,9 @@ export default function EditForm({ contribution }: IEditFormProps) {
       </S.ItemInput>
       <S.ItemInput>
         <S.Text>Word Files</S.Text>
+        <S.Input>
+          <FileList files={currentFiles.documents} onRemove={removeFile} />
+        </S.Input>
         <S.Input>
           {/* <FileSelector
             type="documents"

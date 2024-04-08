@@ -45,7 +45,7 @@ export default function FacultyModal({
   const { users: mcList } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
 
-  const [bannerImage, setBannerImage] = useState<File | null>(null);
+  const [bannerImage, setBannerImage] = useState<File>();
 
   useEffect(() => {
     dispatch(findUsers({ role: ERole.MarketingCoordinator }));
@@ -62,7 +62,6 @@ export default function FacultyModal({
       notifyInfo("Please select banner image");
       return;
     }
-    console.log(values);
     dispatch(createFaculty({ ...values, bannerImage } as ICreateFacultyPayload))
       .unwrap()
       .then(() => notifySuccess("Create faculty successfully"))
@@ -90,6 +89,15 @@ export default function FacultyModal({
                 gap: "var(--s-4)",
               }}
             >
+              {/* Name ------------------------------------- */}
+              <Field
+                as={TextField}
+                label="Name"
+                variant="outlined"
+                name="name"
+                id="name"
+                size="small"
+              />
               {/* Select MC ------------------------------- */}
               <Field
                 as={TextField}
@@ -110,15 +118,6 @@ export default function FacultyModal({
                   </MenuItem>
                 ))}
               </Field>
-              {/* Name ------------------------------------- */}
-              <Field
-                as={TextField}
-                label="Name"
-                variant="outlined"
-                name="name"
-                id="name"
-                size="small"
-              />
             </Box>
             <Box
               sx={{

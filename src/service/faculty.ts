@@ -6,6 +6,7 @@ import {
   IMoveStudentPayload,
   IRemoveStudentPayload,
   IUpdateFacultyPayload,
+  IFindFacultyByIdPayload,
 } from "@interfaces/faculty.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -31,7 +32,15 @@ const findFacultyById = async (
 const createFaculty = async (
   payload: ICreateFacultyPayload,
 ): Promise<IFaculty> => {
-  return await axiosInstance.post("/faculty", objectToFormData({ ...payload }));
+  return await axiosInstance.post(
+    "/faculty",
+    objectToFormData({ ...payload }),
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    },
+  );
 };
 
 // Update faculty ------------------------------------------
@@ -43,6 +52,14 @@ const updateFaculty = async (
     `/faculty/${_id}`,
     objectToFormData({ ...rest }),
   );
+};
+
+// Delete faculty ----------------------------------------------------------------
+const deleteFaculty = async (
+  payload: IFindFacultyByIdPayload,
+): Promise<void> => {
+  const { _id } = payload;
+  return await axiosInstance.delete(`/faculty/${_id}`);
 };
 
 // Move student --------------------------------------------
@@ -66,4 +83,5 @@ export default {
   updateFaculty,
   moveStudent,
   removeStudent,
+  deleteFaculty,
 };

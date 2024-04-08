@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: auto;
+  
 `;
 
 export const TextContainer = styled.div`

@@ -105,6 +105,7 @@ export interface IUpdateUserPayload {
   dob?: string;
   gender?: EGender;
   avatar?: File;
+  facultyId?: string;
 }
 // Find users --------------------------------
 export interface IFindUsersPayload {

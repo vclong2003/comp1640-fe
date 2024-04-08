@@ -75,7 +75,15 @@ const AddNewUserModal = ({
             >
               <Field
                 as={TextField}
-                labele="Select Faculty"
+                id="outlined-basic"
+                label="Gmail"
+                variant="outlined"
+                name="email"
+                type="email"
+              />
+              <Field
+                as={TextField}
+                label="Select Faculty"
                 variant="outlined"
                 name="facultyId"
                 size="small"
@@ -92,17 +100,10 @@ const AddNewUserModal = ({
                   </MenuItem>
                 ))}
               </Field>
+
               <Field
                 as={TextField}
-                id="outlined-basic"
-                label="Gmail"
-                variant="outlined"
-                name="email"
-                type="email"
-              />
-              <Field
-                as={TextField}
-                labele="Select Role"
+                label="Select Role"
                 variant="outlined"
                 name="role"
                 size="small"

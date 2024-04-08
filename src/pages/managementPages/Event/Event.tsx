@@ -36,7 +36,7 @@ export default function Event() {
 
       <Button
         variant="contained"
-        size="medium"
+        size="large"
         color="success"
         onClick={handleOpenAddNewEventModal}
       >

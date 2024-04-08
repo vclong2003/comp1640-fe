@@ -1,17 +1,14 @@
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-// import { IUpdateFacultyPayload } from "@interfaces/faculty.interfaces";
+import Button from "@mui/material/Button";
 
-const style = {
+import Modal from "@mui/material/Modal";
+
+const styled = {
   position: "absolute" as const,
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 540,
+  width: "600px",
   bgcolor: "background.paper",
   borderRadius: 4,
   p: 4,
@@ -19,12 +16,6 @@ const style = {
     width: "90%",
   },
 };
-
-// const intilValues: Partial<IUpdateFacultyPayload> = {
-//   name: "",
-//   _id: "",
-//   mcId: "",
-// };
 
 const ViewDetailFacultyModal = ({
   open,
@@ -40,35 +31,7 @@ const ViewDetailFacultyModal = ({
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Faculty Detail
-        </Typography>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <TextField
-            id="outlined-basic"
-            label="ID"
-            variant="outlined"
-            sx={{ mr: 2 }}
-          />
-          <TextField id="outlined-basic" label="Name" variant="outlined" />
-        </Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <TextField
-            id="outlined-basic"
-            label="Decription"
-            variant="outlined"
-          />
-          <Button
-            variant="outlined"
-            size="small"
-            startIcon={<CloudUploadIcon />}
-            sx={{ width: 222.67, color: "gray", borderColor: "gray" }}
-          >
-            Upload Image
-          </Button>
-        </Box>
-
+      <Box sx={styled}>
         <Button
           variant="contained"
           size="medium"

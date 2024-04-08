@@ -10,6 +10,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { deleteFaculty } from "@store/faculty";
+import { notifySuccess } from "@utils/notification.utils";
 export interface IFacultyRowProps {
   faculty: Omit<IFaculty, "description" | "banner_image_url">;
 }
@@ -31,6 +32,7 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
   const handleDeleteFaculty = () => {
     dispatch(deleteFaculty({ _id: faculty._id }))
       .unwrap()
+      .then(() => notifySuccess("You deleted faculty successfully"))
       .then(() => handleCloseDeleteFacultyModal());
   };
 

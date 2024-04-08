@@ -4,7 +4,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteContributionModal from "../ContributionModal/DeleteContributionModal";
 import ViewIcon from "@mui/icons-material/Visibility";
 import { IContribution } from "@interfaces/contribution.interfaces";
-
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@store/index";
+import { notifySuccess } from "@utils/notification.utils";
+import { deleteContribution } from "@store/contribution";
 interface ContributionRowProps {
   contribution: IContribution;
 }
@@ -14,11 +17,18 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
 }: ContributionRowProps) => {
   const [openDeleteContributionModal, setOpenDeleteContributionModal] =
     useState(false);
-
+  const dispatch = useDispatch<AppDispatch>();
   const handleOpenDeleteContributionModal = () =>
     setOpenDeleteContributionModal(true);
   const handleCloseDeleteContributionModal = () =>
     setOpenDeleteContributionModal(false);
+
+  const handleDeleteContribution = () => {
+    dispatch(deleteContribution({ _id: contribution._id }))
+      .unwrap()
+      .then(() => notifySuccess("You deleted faculty successfully"))
+      .then(() => handleCloseDeleteContributionModal());
+  };
 
   return (
     <>
@@ -55,6 +65,7 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
       <DeleteContributionModal
         open={openDeleteContributionModal}
         handleClose={handleCloseDeleteContributionModal}
+        onConfirmDelete={handleDeleteContribution}
       />
     </>
   );

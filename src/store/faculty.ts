@@ -40,7 +40,7 @@ export const updateFaculty = createAsyncThunk(
   },
 );
 
-// Delete event ------------------------------------------
+// Delete faculty ------------------------------------------
 export const deleteFaculty = createAsyncThunk(
   "eventState/deleteFaculty",
   async (payload: IDeleteFacultyPayload) => {

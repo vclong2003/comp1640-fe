@@ -119,3 +119,8 @@ export interface IRemoveCommentPayload {
 export interface ILikeContributionPayload {
   contributionId: string;
 }
+
+// Delete Contribution ---------------------------
+export interface IDeleteContributionPayload {
+  _id: string;
+}

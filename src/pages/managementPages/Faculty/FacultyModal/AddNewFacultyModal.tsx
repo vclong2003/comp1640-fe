@@ -90,6 +90,15 @@ export default function FacultyModal({
                 gap: "var(--s-4)",
               }}
             >
+              {/* Name ------------------------------------- */}
+              <Field
+                as={TextField}
+                label="Name"
+                variant="outlined"
+                name="name"
+                id="name"
+                size="small"
+              />
               {/* Select MC ------------------------------- */}
               <Field
                 as={TextField}
@@ -110,15 +119,6 @@ export default function FacultyModal({
                   </MenuItem>
                 ))}
               </Field>
-              {/* Name ------------------------------------- */}
-              <Field
-                as={TextField}
-                label="Name"
-                variant="outlined"
-                name="name"
-                id="name"
-                size="small"
-              />
             </Box>
             <Box
               sx={{

@@ -7,12 +7,15 @@ import { IFaculty } from "@interfaces/faculty.interfaces";
 import ViewDetailFacultyModal from "../FacultyModal/ViewDetailFacultyModal";
 import DeleteFacultyModal from "../FacultyModal/DeleteFacultyModal";
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@store/index";
+import { deleteFaculty } from "@store/faculty";
 export interface IFacultyRowProps {
   faculty: Omit<IFaculty, "description" | "banner_image_url">;
 }
 
 export default function FacultyRow({ faculty }: IFacultyRowProps) {
+  const dispatch = useDispatch<AppDispatch>();
   const [openViewDetailFacultyModal, setOpenViewDetailFacultyModal] =
     React.useState(false);
   const handleOpenViewDetailFacultyModal = () =>
@@ -24,6 +27,12 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
     React.useState(false);
   const handleOpenDeleteFacultyModal = () => setOpenDeleteFacultyModal(true);
   const handleCloseDeleteFacultyModal = () => setOpenDeleteFacultyModal(false);
+
+  const handleDeleteFaculty = () => {
+    dispatch(deleteFaculty({ _id: faculty._id }))
+      .unwrap()
+      .then(() => handleCloseDeleteFacultyModal());
+  };
 
   return (
     <>
@@ -63,6 +72,7 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
       <DeleteFacultyModal
         open={openDeleteFacultyModal}
         handleClose={handleCloseDeleteFacultyModal}
+        onConfirmDelete={handleDeleteFaculty}
       />
     </>
   );

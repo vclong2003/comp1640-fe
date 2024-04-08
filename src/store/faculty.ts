@@ -1,4 +1,7 @@
-import { IFacultyState } from "@interfaces/faculty.interfaces";
+import {
+  IDeleteFacultyPayload,
+  IFacultyState,
+} from "@interfaces/faculty.interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 import facultyService from "@service/faculty";
 import { createAsyncThunk } from "@reduxjs/toolkit";
@@ -37,6 +40,15 @@ export const updateFaculty = createAsyncThunk(
   },
 );
 
+// Delete event ------------------------------------------
+export const deleteFaculty = createAsyncThunk(
+  "eventState/deleteFaculty",
+  async (payload: IDeleteFacultyPayload) => {
+    await facultyService.deleteFaculty(payload);
+    return payload;
+  },
+);
+
 const facultyState = createSlice({
   name,
   initialState,
@@ -54,6 +66,12 @@ const facultyState = createSlice({
     builder.addCase(updateFaculty.fulfilled, (state, action) => {
       state.faculties = state.faculties.map((faculty) =>
         faculty._id === action.payload._id ? action.payload : faculty,
+      );
+    });
+    // Delete faculty ---------------------------------------------
+    builder.addCase(deleteFaculty.fulfilled, (state, action) => {
+      state.faculties = state.faculties.filter(
+        (faculty) => faculty._id !== action.payload._id,
       );
     });
   },

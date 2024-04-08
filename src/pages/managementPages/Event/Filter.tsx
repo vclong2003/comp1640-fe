@@ -1,5 +1,5 @@
 import { IFindEventsPayload } from "@interfaces/event.interfaces";
-import { Box, Button, Grid, MenuItem, TextField } from "@mui/material";
+import { Box, Button, MenuItem, TextField } from "@mui/material";
 import { setFilter } from "@store/event";
 import { findFaculties } from "@store/faculty";
 import { AppDispatch, RootState } from "@store/index";
@@ -31,6 +31,12 @@ export default function Filter() {
     dispatch(setFilter(initialValues));
   };
 
+  const styled = {
+    width: "160px",
+    height: "56px",
+    m: "16px",
+    ml: 0,
+  };
   return (
     <Box width="100%" marginTop={2}>
       <Formik
@@ -39,73 +45,62 @@ export default function Filter() {
         onReset={onReset}
       >
         <Form>
-          <Grid container spacing={2}>
-            <Grid item>
-              <Field
-                as={TextField}
-                name="facultyId"
-                label="Faculty"
-                select
-                helperText="Select faculty"
-                defaultValue=""
-              >
-                <MenuItem value="">All</MenuItem>
-                {faculties.map((faculty) => (
-                  <MenuItem key={faculty._id} value={faculty._id}>
-                    {faculty.name}
-                  </MenuItem>
-                ))}
-              </Field>
-            </Grid>
-            <Grid item>
-              <Field
-                as={TextField}
-                name="name"
-                label="Name"
-                variant="outlined"
-                fullWidth
-              />
-            </Grid>
-            <Grid item>
-              <Field
-                as={TextField}
-                name="mcName"
-                label="MC Name"
-                variant="outlined"
-                fullWidth
-              />
-            </Grid>
-            <Grid item>
-              <Field
-                as={TextField}
-                name="start_date"
-                type="date"
-                variant="outlined"
-                fullWidth
-                helperText="Start Date"
-              />
-            </Grid>
-            <Grid item>
-              <Field
-                as={TextField}
-                name="final_closure_date"
-                helperText="Final Closure Date"
-                type="date"
-                variant="outlined"
-                fullWidth
-              />
-            </Grid>
-            <Grid item>
-              <Button variant="contained" type="submit">
-                Apply
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant="outlined" type="reset">
-                Cancel
-              </Button>
-            </Grid>
-          </Grid>
+          <Field
+            as={TextField}
+            name="facultyId"
+            label="Faculty"
+            select
+            defaultValue=""
+            sx={styled}
+          >
+            <MenuItem value="">All</MenuItem>
+            {faculties.map((faculty) => (
+              <MenuItem key={faculty._id} value={faculty._id}>
+                {faculty.name}
+              </MenuItem>
+            ))}
+          </Field>
+
+          <Field
+            as={TextField}
+            name="name"
+            label="Name"
+            variant="outlined"
+            sx={styled}
+          />
+
+          <Field
+            as={TextField}
+            name="mcName"
+            label="MC Name"
+            variant="outlined"
+            fullWidth
+            sx={styled}
+          />
+
+          <Field
+            as={TextField}
+            type="date"
+            variant="outlined"
+            sx={styled}
+            label="Start Date"
+          />
+
+          <Field
+            as={TextField}
+            label="Final Closure Date"
+            type="date"
+            variant="outlined"
+            sx={styled}
+          />
+
+          <Button variant="contained" type="submit" sx={styled} size="large">
+            Apply
+          </Button>
+
+          <Button variant="outlined" type="reset" sx={styled}>
+            Reset
+          </Button>
         </Form>
       </Formik>
     </Box>

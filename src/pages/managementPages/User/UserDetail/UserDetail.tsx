@@ -49,7 +49,7 @@ const UserDetail = () => {
   return (
     <>
       <Typography variant="h4">User profile</Typography>
-      <Box sx={{ display: "flex", width: "100%" }}>
+      <Box sx={{ display: "flex"  ,width: "100%" }}>
         <Box sx={{ width: "50%" }}>
           <img></img>
         </Box>

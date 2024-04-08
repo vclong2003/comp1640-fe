@@ -1,14 +1,19 @@
 import * as S from "./LeftDetailPage.styled";
 import Detail from "@assets/images/detail.png";
 import { IoSend } from "react-icons/io5";
-
+import { MdEditSquare } from "react-icons/md";
 import Avatar from "@components/Avatar/Avatar";
 import UserInfo from "../UserInfo/UserInfo";
 import { FaHeart } from "react-icons/fa";
 import { IContribution } from "@interfaces/contribution.interfaces";
-import { toLocaleDateTime } from "@utils/date.utils";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/index";
+import { toIsoDate, toLocaleDateTime } from "@utils/date.utils";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { addComment, findComments } from "@store/contribution";
+import { useEffect, useState } from "react";
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
+import { ERole } from "@interfaces/user.interfaces";
+import { useNavigate } from "react-router";
 
 interface ILeftDetailPageProps {
   contribution: IContribution;
@@ -16,7 +21,7 @@ interface ILeftDetailPageProps {
 
 const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
   const { user } = useSelector((state: RootState) => state.userState);
-
+const navigate = useNavigate();
   return (
     <S.Container>
       <S.TopContainer>
@@ -28,6 +33,16 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
             )}
           </S.Status>
         </S.Text>
+        <AuthorizedComponent
+          allowedRoles={[ERole.MarketingCoordinator, ERole.Student]}
+        >
+          {(user?.role !== ERole.Student ||
+            contribution.author._id === user?._id) && (
+            <S.Icon onClick={()=>navigate("edit")}>
+              <MdEditSquare />
+            </S.Icon>
+          )}
+        </AuthorizedComponent>
         <S.Bottom>
           <S.DescriptionContribute>
             Dream Weekends #2 on the edge world
@@ -53,32 +68,9 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
         </S.ContainerDescription>
       </S.MiddleContainer>
       <S.BottomContainer>
-        {true && (
+        {contribution.is_publication && (
           <>
-            <S.Title>
-              <S.Person>
-                <Avatar imageUrl={user?.avatar_url} />
-              </S.Person>
-              <S.TextCmt>Comments</S.TextCmt>
-            </S.Title>
-            <S.ContainerComment>
-              {/* <S.CmtItem>
-            <UserInfo />
-          </S.CmtItem>
-          <S.CmtItem>
-            <UserInfo />
-          </S.CmtItem> */}
-            </S.ContainerComment>
-            {/* Add Comment */}
-            <S.AddCmt>
-              <S.ImageAva>
-                <Avatar imageUrl={user?.avatar_url} />
-              </S.ImageAva>
-              <S.InputCmt placeholder="Add Comment"></S.InputCmt>
-              <S.IconSent>
-                <IoSend />
-              </S.IconSent>
-            </S.AddCmt>
+            <Commnet contribution={contribution} />
           </>
         )}
       </S.BottomContainer>
@@ -87,3 +79,69 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
 };
 
 export default LeftDetailPage;
+
+// Comment
+interface ICommentProps {
+  contribution: IContribution;
+}
+
+function Commnet({ contribution }: ICommentProps) {
+  const { comments } = useSelector(
+    (state: RootState) => state.contributionState,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { user } = useSelector((state: RootState) => state.userState);
+
+  const onAdd = () => {
+    if (loading) return;
+    if (input.trim() === "") return;
+    setLoading(true);
+    dispatch(addComment({ contributionId: contribution._id, content: input }))
+      .unwrap()
+      .then(() => setInput(""))
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    dispatch(findComments({ contributionId: contribution._id }));
+  }, [contribution._id, dispatch]);
+  console.log(contribution);
+  return (
+    <S.Comment>
+      <S.Title>
+        <S.TextCmt>Comments</S.TextCmt>
+      </S.Title>
+      {comments.map((comments, index) => (
+        <S.ContainerComment key={index}>
+          <S.CmtItem>
+            <S.LeftItem>
+              <Avatar imageUrl={comments.author.avatar_url} />
+            </S.LeftItem>
+            <S.RightItem>
+              <S.User>
+                <S.NameUser>{comments.author.name}</S.NameUser>
+                <S.Date>{toIsoDate(comments.posted_at)}</S.Date>
+              </S.User>
+              <S.CommentContent>{comments.content}</S.CommentContent>
+            </S.RightItem>
+          </S.CmtItem>
+        </S.ContainerComment>
+      ))}
+      <S.AddCmt>
+        <S.ImageAva>
+          <Avatar imageUrl={user?.avatar_url} />
+        </S.ImageAva>
+        <S.InputCmt
+          placeholder="Add Comment"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        ></S.InputCmt>
+        <S.IconSent onClick={onAdd}>
+          <IoSend />
+        </S.IconSent>
+      </S.AddCmt>
+    </S.Comment>
+  );
+}

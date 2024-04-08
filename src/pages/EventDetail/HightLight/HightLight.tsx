@@ -18,7 +18,7 @@ const HightLight = ({ event }: IHightLightProps) => {
 
   return (
     <S.Container>
-      <S.Image src={image} />
+      <S.Image src={event?.banner_image_url || image} />
       <S.TextContainer>
         <S.Title>{event && event.name}</S.Title>
         <S.Bottom>

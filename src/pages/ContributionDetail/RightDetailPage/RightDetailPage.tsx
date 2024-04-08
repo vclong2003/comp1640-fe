@@ -35,7 +35,7 @@ export default function RightDetailPage({
                 <ItemDocumentFile
                   key={index}
                   file_name={item.file_name}
-                  file_url={item.file_url}
+                  file_access_url={item.file_access_url}
                 />
               ))}
             </S.Content>
@@ -46,7 +46,7 @@ export default function RightDetailPage({
               <ItemImageFile
                 key={index}
                 file_name={item.file_name}
-                file_url={item.file_url}
+                file_access_url={item.file_access_url}
               />
             ))}
           </S.DocumentImg>

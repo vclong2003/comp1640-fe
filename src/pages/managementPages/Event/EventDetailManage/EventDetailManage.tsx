@@ -1,23 +1,21 @@
 import { IEvent, IUpdateEventPayload } from "@interfaces/event.interfaces";
-import { AppDispatch, RootState } from "@store/index";
+import { AppDispatch } from "@store/index";
 import { Field, Form, Formik, useFormikContext } from "formik";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import service from "@service/event";
 import { updateEvent } from "@store/event";
 import { notifySuccess } from "@utils/notification.utils";
-import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { Textarea } from "@mui/joy";
-import { IFaculty } from "@interfaces/faculty.interfaces";
-import { toInputDateTime, toLocaleDateTime } from "@utils/date.utils";
-import contribution from "@service/contribution";
+
+import { toInputDateTime } from "@utils/date.utils";
 
 const EventDetailManage = () => {
   const { eventId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const [event, setEvent] = useState<IEvent>();
-  const { faculties } = useSelector((state: RootState) => state.facultyState);
 
   const intialValues: Partial<IUpdateEventPayload> = {
     name: "",

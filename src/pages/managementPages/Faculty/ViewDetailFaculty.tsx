@@ -10,14 +10,19 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 
 import { notifySuccess } from "@utils/notification.utils";
-import { UpdateFacultyvalidationSchema } from "@utils/faculty.utils";
+
 import { updateFaculty } from "@store/faculty";
-import { Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import service from "@service/faculty";
 import { useFormikContext } from "formik";
-
+import Textarea from "@mui/joy/Textarea";
+import styled from "styled-components";
+const ImageStyled = styled.img`
+  width: 100%;
+  border-radius: 8px;
+`;
 const FacultyDetail = () => {
   const { facultyId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
@@ -28,6 +33,13 @@ const FacultyDetail = () => {
     _id: "",
     description: "",
     mcId: "",
+  };
+
+  const [bannerImage, setBannerImage] = useState<File>();
+  const onSelectBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const file = e.target.files[0];
+    setBannerImage(file);
   };
 
   useEffect(() => {
@@ -45,48 +57,99 @@ const FacultyDetail = () => {
 
   return (
     <>
-      <Typography variant="h4">Faculty Detail</Typography>
-      <Box sx={{ display: "flex", width: "100%" }}>
-        <Box sx={{ width: "50%" }}>
-          <img></img>
+      <Typography variant="h4">Event information</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          mt: 5,
+          "@media only screen and (max-width: 600px)": {
+            display: "block",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            width: "50%",
+
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+            },
+          }}
+        >
+          <ImageStyled
+            src={
+              (bannerImage && URL.createObjectURL(bannerImage)) ||
+              faculty?.banner_image_url ||
+              ""
+            }
+          />
+          <Button variant="outlined" component="label">
+            <input
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={onSelectBannerImage}
+            />
+            {bannerImage ? bannerImage.name : "Select Banner Image"}
+          </Button>
         </Box>
-        <Box sx={{ width: "50%", border: "1px" }}>
+        <Box
+          sx={{
+            width: "50%",
+            ml: 2,
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+              ml: 0,
+              mt: 2,
+            },
+          }}
+        >
           <Formik
             initialValues={initialValues}
             onSubmit={onUpdateFacultyDetail}
-            validationSchema={UpdateFacultyvalidationSchema}
           >
             <Form>
               <FacultyDetailUpdater Faculty={faculty} />
-              <Field
-                value={faculty?._id}
-                disabled={true}
-                type="text"
-                name="id"
-                label="ID"
-              ></Field>
-
-              <Field
-                value={faculty?.name}
-                type="text"
-                name="name"
-                sx={{ mb: "12px" }}
-              ></Field>
-
-              <Field
-                value={faculty?.mc?.name}
-                type="text"
-                name="mcName"
-                label="MC Name"
-              ></Field>
-
-              <Field
-                value={faculty?.description}
-                type="text"
-                name="description"
-                label="Description"
-                multiline
-              ></Field>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "var(--s-3)",
+                }}
+              >
+                <Field
+                  as={TextField}
+                  variant="outlined"
+                  name="id"
+                  id="id"
+                  size="small"
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  mt: 1,
+                  gap: "var(--s-2)",
+                }}
+              >
+                <Field as={Textarea} id="name" name="name" variant="outlined" />
+                <Field
+                  as={Textarea}
+                  id="description"
+                  name="description"
+                  placeholder="Decription"
+                  variant="outlined"
+                />
+                <Field
+                  as={Textarea}
+                  id="mcName"
+                  name="mcName"
+                  placeholder="Decription"
+                  variant="outlined"
+                />
+              </Box>
 
               <Box
                 sx={{

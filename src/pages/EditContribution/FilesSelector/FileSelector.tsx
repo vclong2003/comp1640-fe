@@ -3,8 +3,6 @@ import * as S from "./FileSelector.styled";
 import { CiCircleRemove } from "react-icons/ci";
 
 interface IFilesSelectorProps {
-  originalFiles: IOrgFileItem[];
-  onRemoveOriginalFile(file: IOrgFileItem): void;
   type: "images" | "documents";
   onChange(files: File[]): void;
 }

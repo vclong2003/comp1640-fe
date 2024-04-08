@@ -7,6 +7,7 @@ import {
   IRemoveStudentPayload,
   IUpdateFacultyPayload,
   IFindFacultyByIdPayload,
+  IGetFacultyByIdPayload,
 } from "@interfaces/faculty.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -46,6 +47,13 @@ const updateFaculty = async (
   );
 };
 
+// Get Faculty By Id --------------------------------------------------
+const getFacultyById = async (
+  payload: IGetFacultyByIdPayload,
+): Promise<IFaculty> => {
+  return await axiosInstance.get(`/faculty/${payload.id}`);
+};
+
 // Delete faculty ----------------------------------------------------------------
 const deleteFaculty = async (
   payload: IFindFacultyByIdPayload,
@@ -76,4 +84,5 @@ export default {
   moveStudent,
   removeStudent,
   deleteFaculty,
+  getFacultyById,
 };

@@ -44,6 +44,10 @@ export interface IFindFacultyByIdPayload {
   _id: string;
 }
 
+export interface IGetFacultyByIdPayload {
+  id: string;
+}
+
 // delete faculty by id ----------------------
 export interface IDeleteFacultyPayload {
   _id: string;

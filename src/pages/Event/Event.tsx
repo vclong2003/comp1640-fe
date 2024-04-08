@@ -80,6 +80,16 @@ export default function Event() {
           eventPropGetter={eventStyleGetter}
         />
       </S.Event>
+      <S.StatusEvent>
+        <S.ContainerItem>
+          <S.BoderDone></S.BoderDone>
+          <S.Done>Done</S.Done>
+        </S.ContainerItem>
+        <S.ContainerItem>
+          <S.BoderInProcess></S.BoderInProcess>
+          <S.Inprocess>In Process</S.Inprocess>
+        </S.ContainerItem>
+      </S.StatusEvent>
     </Container>
   );
 }

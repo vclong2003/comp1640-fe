@@ -16,4 +16,7 @@ export const InfoContainer = styled.div``;
 
 export const NameUser = styled.div``;
 
-export const Date = styled.div``;
+export const Date = styled.div`
+color: var(--gray);
+font-size: var(--fs-sm);
+`;

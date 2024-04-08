@@ -40,7 +40,7 @@ export const Content = styled.div`
   gap: var(--s-3);
 `;
 
-export const BtnAddDocs = styled(FormButton)` 
+export const BtnAddDocs = styled(FormButton)`
   display: flex;
   color: var(--black);
   justify-content: center;
@@ -66,6 +66,11 @@ export const DocumentImg = styled.div`
   flex-wrap: wrap;
   gap: var(--s-2);
   row-gap: var(--s-4);
+  &::after {
+    content: "";
+    
+    width: 29%;
+  }
 `;
 
 export const AddImg = styled.button`
@@ -128,5 +133,10 @@ export const IconSent = styled.div`
   font-size: var(--fs-md);
 `;
 
+export const ContainerComment = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+`;
 
-
+export const CommentContent = styled.div``;

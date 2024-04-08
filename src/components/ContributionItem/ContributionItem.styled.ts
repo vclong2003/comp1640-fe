@@ -26,7 +26,7 @@ export const Title = styled.h3`
   font-size: var(--fs-md);
   font-weight: var(--fw-semibold);
   @media ${DEVICES.PHONE_L} {
-    padding: var(--s-2) 0;
+    padding: var(--s-1) 0;
     font-size: var(--fs-lg);
   }
 `;

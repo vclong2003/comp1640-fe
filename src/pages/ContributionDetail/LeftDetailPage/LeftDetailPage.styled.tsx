@@ -138,7 +138,14 @@ export const ContainerComment = styled.div`
   margin: var(--s-4) 0;
 `;
 
-export const Person = styled.div``;
+export const Person = styled.div`
+  width: 36px;
+  height: 36px;
+  @media ${DEVICES.DESKTOP} {
+    width: 48px;
+    height: 48px;
+  }
+`;
 
 export const TextCmt = styled.div`
   font-weight: bold;
@@ -178,3 +185,6 @@ export const IconSent = styled.div`
   font-size: var(--fs-lg);
   cursor: pointer;
 `;
+
+
+

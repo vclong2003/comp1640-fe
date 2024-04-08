@@ -104,14 +104,14 @@ function PrivateComment({ contribution }: IPrivateCommentProps) {
       </S.TitleComment>
       {/* Comment item: user info, content */}
       {privateComments.map((comment, index) => (
-        <div key={index}>
+        <S.ContainerComment key={index}>
           <UserInfo
             name={comment.author.name}
             avatar_url={comment.author.avatar_url}
             additionalInfo={toIsoDate(comment.posted_at)}
           />
-          <div>{comment.content}</div>
-        </div>
+          <S.CommentContent>{comment.content}</S.CommentContent>
+        </S.ContainerComment>
       ))}
       <S.InputAddCmt>
         <S.Input

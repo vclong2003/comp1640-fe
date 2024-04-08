@@ -53,14 +53,14 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
         </S.ContainerDescription>
       </S.MiddleContainer>
       <S.BottomContainer>
-        <S.Title>
-          <S.Person>
-            <Avatar imageUrl={user?.avatar_url} />
-          </S.Person>
-          <S.TextCmt>Comments</S.TextCmt>
-        </S.Title>
-        {contribution.is_publication && (
+        {true && (
           <>
+            <S.Title>
+              <S.Person>
+                <Avatar imageUrl={user?.avatar_url} />
+              </S.Person>
+              <S.TextCmt>Comments</S.TextCmt>
+            </S.Title>
             <S.ContainerComment>
               {/* <S.CmtItem>
             <UserInfo />
@@ -72,7 +72,7 @@ const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
             {/* Add Comment */}
             <S.AddCmt>
               <S.ImageAva>
-                <Avatar isUpdateable={true} />
+                <Avatar imageUrl={user?.avatar_url} />
               </S.ImageAva>
               <S.InputCmt placeholder="Add Comment"></S.InputCmt>
               <S.IconSent>

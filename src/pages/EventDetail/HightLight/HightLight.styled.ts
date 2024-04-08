@@ -11,7 +11,10 @@ export const Container = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: auto;
-  
+  object-fit: cover;
+  aspect-ratio: 1;
+  border-radius: var(--br-md);
+  aspect-ratio: 21/9;
 `;
 
 export const TextContainer = styled.div`

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, TableCell, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import ViewDetailEventModal from "../EventModal/ViewDetailEventModal";
 import DeleteEventModal from "../EventModal/DeleteEventModal";
 import ViewIcon from "@mui/icons-material/Visibility";
@@ -10,6 +9,7 @@ import { toIsoDate, toLocaleDateTime } from "@utils/date.utils";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { deleteEvent } from "@store/event";
+import { useNavigate } from "react-router";
 interface EventRowProps {
   event: IEvent;
 }
@@ -20,8 +20,8 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
     useState(false);
   const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
 
-  const handleOpenViewDetailEventModal = () =>
-    setOpenViewDetailEventModal(true);
+  // const handleOpenViewDetailEventModal = () =>
+  //   setOpenViewDetailEventModal(true);
   const handleCloseViewDetailEventModal = () =>
     setOpenViewDetailEventModal(false);
   const handleOpenDeleteEventModal = () => setOpenDeleteEventModal(true);
@@ -32,6 +32,8 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
       .unwrap()
       .then(() => handleCloseDeleteEventModal());
   };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -54,19 +56,9 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
             color="info"
             startIcon={<ViewIcon />}
             sx={{ mr: 4 }}
-            onClick={handleOpenViewDetailEventModal}
+            onClick={() => navigate(`${event._id}`)}
           >
             View
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            color="warning"
-            startIcon={<EditIcon />}
-            sx={{ mr: 4 }}
-            onClick={handleOpenViewDetailEventModal}
-          >
-            Edit
           </Button>
           <Button
             variant="outlined"

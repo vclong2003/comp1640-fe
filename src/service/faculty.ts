@@ -33,7 +33,15 @@ const findFacultyById = async (
 const createFaculty = async (
   payload: ICreateFacultyPayload,
 ): Promise<IFaculty> => {
-  return await axiosInstance.post("/faculty", objectToFormData({ ...payload }));
+  return await axiosInstance.post(
+    "/faculty",
+    objectToFormData({ ...payload }),
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    },
+  );
 };
 
 // Update faculty ------------------------------------------

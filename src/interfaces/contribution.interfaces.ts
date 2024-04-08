@@ -24,14 +24,13 @@ export interface IContribution {
     _id: string;
     name: string;
   };
-  documents: {
-    file_name: string;
-    file_url: string;
-  }[];
-  images: {
-    file_name: string;
-    file_url: string;
-  }[];
+  documents: IContributionFile[];
+  images: IContributionFile[];
+}
+export interface IContributionFile {
+  file_name: string;
+  file_url: string;
+  file_access_url: string;
 }
 export interface IComment {
   _id: string;

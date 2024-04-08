@@ -1,4 +1,4 @@
-import { ICreateEventPayload, IEventState } from "@interfaces/event.interfaces";
+import { ICreateEventPayload, IEventState, IUpdateEventPayload } from "@interfaces/event.interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 import {
   IDeleteEventPayload,
@@ -33,7 +33,7 @@ export const createEvent = createAsyncThunk(
 // Update event ------------------------------------------
 export const updateEvent = createAsyncThunk(
   "eventState/updateEvent",
-  async (payload: IEvent) => {
+  async (payload: IUpdateEventPayload) => {
     return await eventService.updateEvent(payload);
   },
 );

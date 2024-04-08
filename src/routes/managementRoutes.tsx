@@ -7,6 +7,7 @@ import Contribution from "@pages/managementPages/Contribution/Contribution";
 import AuthorizedPage from "@components/AuthorizedPage/AuthorizedPage";
 import { ERole } from "@interfaces/user.interfaces";
 import UserDetail from "@pages/managementPages/User/UserDetail/UserDetail";
+import EventDetailManage from "@pages/managementPages/Event/EventDetailManage/EventDetailManage";
 import ViewDetailFaculty from "@pages/managementPages/Faculty/ViewDetailFaculty";
 export const managementRoutes: IRoute[] = [
   {
@@ -53,6 +54,21 @@ export const managementRoutes: IRoute[] = [
       </AuthorizedPage>
     ),
   },
+  {
+    path: "manage/event/:eventId",
+    component: (
+      <AuthorizedPage
+        allowedRoles={[
+          ERole.Admin,
+          ERole.MarketingCoordinator,
+          ERole.MarketingManager,
+        ]}
+      >
+        <EventDetailManage />
+      </AuthorizedPage>
+    ),
+  },
+
   {
     path: "manage/contribution",
     component: (

@@ -2,10 +2,10 @@ import { useState } from "react";
 import * as S from "./FormPage.styled";
 import ReactQuill from "react-quill";
 import { IAddContributionPayload } from "@interfaces/contribution.interfaces";
-import FileSelector from "../FilesSelector/FileSelector";
 import service from "@service/contribution";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { notifyInfo } from "@utils/notification.utils";
+import FileSelector from "../FilesSelector/FileSelector";
 
 const FormPage = () => {
   const navigate = useNavigate();

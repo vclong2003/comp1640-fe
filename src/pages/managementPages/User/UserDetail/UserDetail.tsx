@@ -49,10 +49,7 @@ const UserDetail = () => {
   return (
     <>
       <Typography variant="h4">User profile</Typography>
-      <Box sx={{ display: "flex", width: "100%" }}>
-        <Box sx={{ width: "50%" }}>
-          <img></img>
-        </Box>
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems:"center" ,width: "100%", mt: 5 }}>
         <Box sx={{ width: "50%", border: "1px" }}>
           <Formik
             initialValues={initialValues}

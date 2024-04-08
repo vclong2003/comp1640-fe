@@ -152,7 +152,39 @@ export const TextCmt = styled.div`
 `;
 
 export const CmtItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-2);
+`;
+
+export const LeftItem = styled.div`
+  width: 32px;
+  height: 32px;
+`;
+
+export const RightItem = styled.div`
+  background-color: var(--light-gray);
+  padding: var(--s-1) var(--s-2);
+  border-radius: var(--br-md);
+  flex-direction: column;
+  display: flex;
+  gap: var(--s-2);
+  flex-wrap: wrap;
   width: 100%;
+  
+`;
+
+export const User = styled.div`
+  font-style: italic;
+`;
+
+export const NameUser = styled.div`
+  font-size: var(--fs-sm);
+`;
+
+export const Date = styled.div`
+  font-size: var(--fs-xs);
+  color: var(--blue-gray);
 `;
 
 export const AddCmt = styled.div`
@@ -186,5 +218,8 @@ export const IconSent = styled.div`
   cursor: pointer;
 `;
 
+export const Comment = styled.div``;
 
-
+export const CommentContent = styled.div`
+  word-break: break-all;
+`;

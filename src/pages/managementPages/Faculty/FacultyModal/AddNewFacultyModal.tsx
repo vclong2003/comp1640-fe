@@ -45,7 +45,7 @@ export default function FacultyModal({
   const { users: mcList } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
 
-  const [bannerImage, setBannerImage] = useState<File | null>(null);
+  const [bannerImage, setBannerImage] = useState<File>();
 
   useEffect(() => {
     dispatch(findUsers({ role: ERole.MarketingCoordinator }));
@@ -62,7 +62,6 @@ export default function FacultyModal({
       notifyInfo("Please select banner image");
       return;
     }
-    console.log(values);
     dispatch(createFaculty({ ...values, bannerImage } as ICreateFacultyPayload))
       .unwrap()
       .then(() => notifySuccess("Create faculty successfully"))

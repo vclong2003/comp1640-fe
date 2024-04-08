@@ -20,6 +20,7 @@ export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 7;
+  width: 100%;
   border-radius: 0 0 var(--br-md) var(--br-md);
   @media ${DEVICES.DESKTOP} {
     border-radius: 0 0 var(--br-lg) var(--br-lg);

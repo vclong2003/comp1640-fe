@@ -8,6 +8,7 @@ import ContributionDetail from "@pages/ContributionDetail/ContributionDetail";
 import Event from "@pages/Event/Event";
 import AboutUs from "@pages/AboutUs/AboutUs";
 import EventDetail from "@pages/EventDetail/EventDetail";
+import EditContribution from "@pages/EditContribution/EditContribution";
 
 export const defaultLayoutRoutes: IRoute[] = [
   {
@@ -53,7 +54,22 @@ export const defaultLayoutRoutes: IRoute[] = [
       </AuthorizedPage>
     ),
   },
-
+  {
+    path: "/contribution/:contributionId/edit",
+    component: (
+      <AuthorizedPage
+        allowedRoles={[
+          ERole.Student,
+          ERole.Admin,
+          ERole.Guest,
+          ERole.MarketingCoordinator,
+          ERole.MarketingManager,
+        ]}
+      >
+        <EditContribution />
+      </AuthorizedPage>
+    ),
+  },
   {
     path: "/event/:eventId",
     component: (

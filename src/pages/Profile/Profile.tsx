@@ -21,6 +21,7 @@ export default function Profile() {
   const [showImageCropper, setShowImageCropper] = useState(false);
   const openImageCropper = () => setShowImageCropper(true);
   const closeImageCropper = () => setShowImageCropper(false);
+
   const updateAvatar = (file: File) => {
     setLoading(true);
     dispatch(updateUser({ avatar: file }))

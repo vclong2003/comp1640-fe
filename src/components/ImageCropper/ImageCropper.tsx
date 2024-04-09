@@ -3,6 +3,7 @@ import * as S from "./ImageCropper.styled";
 import { FiUpload } from "react-icons/fi";
 import { Crop } from "react-image-crop";
 import { cropImage } from "@utils/image.utils";
+import { notifyInfo } from "@utils/notification.utils";
 
 interface IImageCropperProps {
   initialImageUrl: string | undefined | null;
@@ -27,7 +28,11 @@ export default function ImageCropper({
   };
 
   const save = () => {
-    if (!image || !crop) return;
+    if (!image || !crop) {
+      notifyInfo("Please crop!");
+      return;
+    }
+
     cropImage(image, crop)
       .then((file) => onSave(file))
       .catch((error) => console.error(error));
@@ -58,7 +63,7 @@ export default function ImageCropper({
       </S.FileInputLabel>
       <S.BtnContainer>
         <S.SaveBtn onClick={save} disabled={loading}>
-          {loading ? "Loading..." : "Save"}
+          {loading ? "Saving..." : "Save"}
         </S.SaveBtn>
         <S.ResetBtn onClick={reset}>Reset</S.ResetBtn>
         <S.CancelBtn onClick={onClose}>Cancel</S.CancelBtn>

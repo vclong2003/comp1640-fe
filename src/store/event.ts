@@ -1,8 +1,11 @@
-import { ICreateEventPayload, IEventState, IUpdateEventPayload } from "@interfaces/event.interfaces";
+import {
+  ICreateEventPayload,
+  IEventState,
+  IUpdateEventPayload,
+} from "@interfaces/event.interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 import {
   IDeleteEventPayload,
-  IEvent,
   IFindEventsPayload,
 } from "@interfaces/event.interfaces";
 import { createAsyncThunk } from "@reduxjs/toolkit";

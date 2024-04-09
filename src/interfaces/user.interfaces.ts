@@ -110,7 +110,7 @@ export interface IUpdateUserPayload {
 // Find users --------------------------------
 export interface IFindUsersPayload {
   name?: string;
-  role: ERole;
+  role?: ERole;
   email?: string;
   facultyId?: string;
   skip?: number;

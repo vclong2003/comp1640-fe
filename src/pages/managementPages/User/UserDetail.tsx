@@ -39,7 +39,7 @@ const UserDetail = () => {
   useEffect(() => {
     if (!userId) return;
     service.getUserById({ id: userId }).then((user) => setUser(user));
-  });
+  }, [userId]);
 
   const onUpdateProfile = (values: IUpdateUserPayload) =>
     dispatch(updateUser(values))
@@ -49,7 +49,15 @@ const UserDetail = () => {
   return (
     <>
       <Typography variant="h4">User profile</Typography>
-      <Box sx={{ display: "flex", justifyContent: "center", alignItems:"center" ,width: "100%", mt: 5 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          mt: 5,
+        }}
+      >
         <Box sx={{ width: "50%", border: "1px" }}>
           <Formik
             initialValues={initialValues}

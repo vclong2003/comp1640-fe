@@ -6,7 +6,7 @@ import Event from "@pages/managementPages/Event/Event";
 import Contribution from "@pages/managementPages/Contribution/Contribution";
 import AuthorizedPage from "@components/AuthorizedPage/AuthorizedPage";
 import { ERole } from "@interfaces/user.interfaces";
-import UserDetail from "@pages/managementPages/User/UserDetail/UserDetail"
+import UserDetail from "@pages/managementPages/User/UserDetail";
 import EventDetailManage from "@pages/managementPages/Event/EventDetailManage/EventDetailManage";
 
 export const managementRoutes: IRoute[] = [
@@ -64,7 +64,7 @@ export const managementRoutes: IRoute[] = [
           ERole.MarketingManager,
         ]}
       >
-        <EventDetailManage/>
+        <EventDetailManage />
       </AuthorizedPage>
     ),
   },

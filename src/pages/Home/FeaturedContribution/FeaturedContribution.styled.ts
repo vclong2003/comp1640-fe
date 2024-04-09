@@ -48,6 +48,6 @@ export const Image = styled.img`
   z-index: 0;
   width: 100%;
   height: auto;
-
+  aspect-ratio: 3/2;
   object-fit: cover;
 `;

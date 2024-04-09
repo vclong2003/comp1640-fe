@@ -23,7 +23,6 @@ import { findFaculties } from "@store/faculty";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { findUsers } from "@store/user";
-import { ERole } from "@interfaces/user.interfaces";
 
 const mobileMediaQuery = {
   "@media only screen and (max-width: 600px)": {
@@ -49,7 +48,7 @@ const User: React.FC = () => {
 
   useEffect(() => {
     dispatch(findFaculties({}));
-    dispatch(findUsers({ role: ERole.Student }));
+    dispatch(findUsers({}));
   }, [dispatch]);
 
   const [openAddNewUserModal, setOpenAddNewUserModal] = useState(false);
@@ -205,10 +204,11 @@ const User: React.FC = () => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Full Name &nbsp;</TableCell>
-              <TableCell align="left">Email&nbsp;</TableCell>
-              <TableCell align="left">Facutly&nbsp;</TableCell>
-              <TableCell align="left">Action&nbsp;</TableCell>
+              <TableCell align="left">Full Name</TableCell>
+              <TableCell align="left">Email</TableCell>
+              <TableCell align="left">Facutly</TableCell>
+              <TableCell align="left">Role</TableCell>
+              <TableCell align="left"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

@@ -1,7 +1,7 @@
 import { Button, TableCell, TableRow } from "@mui/material";
 
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+import EyeIcon from "@mui/icons-material/Visibility";
 
 import { IFaculty } from "@interfaces/faculty.interfaces";
 import DeleteFacultyModal from "../FacultyModal/DeleteFacultyModal";
@@ -44,12 +44,12 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
           <Button
             variant="outlined"
             size="small"
-            color="warning"
-            startIcon={<EditIcon />}
+            color="info"
+            startIcon={<EyeIcon />}
             sx={{ mr: 4 }}
             onClick={() => navigate(`${faculty._id}`)}
           >
-            Edit
+            View
           </Button>
           <Button
             variant="outlined"

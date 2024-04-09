@@ -1,22 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, TableCell, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-import DeleteUserModal from "../UserModals/DeleteUserModal";
-import ViewIcon from "@mui/icons-material/Visibility";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { IUser } from "@interfaces/user.interfaces";
 import { useNavigate } from "react-router";
-
+import { useDispatch } from "react-redux";
+import { enableUser, disableUser } from "@store/user";
+import { notifySuccess } from "@utils/notification.utils";
+import { AppDispatch } from "@store/index";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 interface UserRowProps {
   user: IUser;
 }
 
 const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
   const navigate = useNavigate();
-  const [openDeleteUserModal, setOpenDeleteUserModal] = useState(false);
 
-  const handleOpenDeleteUserModal = () => setOpenDeleteUserModal(true);
-  const handleCloseDeleteUserModal = () => setOpenDeleteUserModal(false);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleToggleUserStatus = () => {
+    if (user.disabled) {
+      dispatch(
+        enableUser({
+          id: user._id,
+          disabled: false,
+        }),
+      )
+        .unwrap()
+        .then(() => notifySuccess("You enabled the user successfully"));
+    } else {
+      dispatch(
+        disableUser({
+          id: user._id,
+          disabled: true,
+        }),
+      )
+        .unwrap()
+        .then(() => notifySuccess("You disabled the user successfully"));
+    }
+  };
 
   return (
     <>
@@ -30,7 +52,7 @@ const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
             variant="outlined"
             size="small"
             color="info"
-            startIcon={<ViewIcon />}
+            startIcon={<VisibilityIcon />}
             sx={{ mr: 4 }}
             onClick={() => navigate(`${user._id}`)}
           >
@@ -40,19 +62,14 @@ const UserRow: React.FC<UserRowProps> = ({ user }: UserRowProps) => {
           <Button
             variant="outlined"
             size="small"
-            color="error"
-            startIcon={<DeleteIcon />}
-            onClick={handleOpenDeleteUserModal}
+            color={user.disabled ? "success" : "error"}
+            startIcon={user.disabled ? <CheckCircleIcon /> : <DeleteIcon />}
+            onClick={handleToggleUserStatus}
           >
-            Delete
+            {user.disabled ? "Enable" : "Disable"}
           </Button>
         </TableCell>
       </TableRow>
-
-      <DeleteUserModal
-        open={openDeleteUserModal}
-        handleClose={handleCloseDeleteUserModal}
-      />
     </>
   );
 };

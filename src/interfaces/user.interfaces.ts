@@ -127,4 +127,5 @@ export interface IGetUserByIdPayload {
 // Toggle User ------------------------
 export interface IToggleUserPayload {
   id: string;
+  disabled: boolean;
 }

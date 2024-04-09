@@ -18,7 +18,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import service from "@service/user";
 import { useFormikContext } from "formik";
-import styled from "styled-components";
+import { ImageStyled } from "./User.styled";
 
 const UserDetail = () => {
   const { userId } = useParams();
@@ -33,12 +33,6 @@ const UserDetail = () => {
   };
 
   const [bannerImage] = useState<File>();
-
-  const ImageStyled = styled.img`
-    width: 90%;
-    border-radius: 8px;
-    height: 400px;
-  `;
 
   useEffect(() => {
     if (!userId) return;

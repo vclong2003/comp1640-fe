@@ -50,7 +50,7 @@ export default function LeftDetailPage({
         </AuthorizedComponent>
         <S.Bottom>
           <S.DescriptionContribute>
-            Dream Weekends #2 on the edge world
+            {contribution.title}
           </S.DescriptionContribute>
           <S.Author>
             <UserInfo

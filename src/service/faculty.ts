@@ -52,6 +52,11 @@ const updateFaculty = async (
   return await axiosInstance.put(
     `/faculty/${_id}`,
     objectToFormData({ ...rest }),
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    },
   );
 };
 

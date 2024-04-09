@@ -6,19 +6,21 @@ import {
   IUpdateFacultyPayload,
   IFaculty,
 } from "@interfaces/faculty.interfaces";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@store/index";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
 
 import { notifySuccess } from "@utils/notification.utils";
 
 import { updateFaculty } from "@store/faculty";
-import { Typography } from "@mui/material";
+import { MenuItem, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import service from "@service/faculty";
 import { useFormikContext } from "formik";
 import Textarea from "@mui/joy/Textarea";
 import styled from "styled-components";
+import { findUsers } from "@store/user";
+import { ERole } from "@interfaces/user.interfaces";
 const ImageStyled = styled.img`
   width: 100%;
   border-radius: 8px;
@@ -28,6 +30,12 @@ const FacultyDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [faculty, setFaculty] = useState<IFaculty>();
   const [loading, setLoading] = useState(false);
+
+  const { users: mcs } = useSelector((state: RootState) => state.userState);
+
+  useEffect(() => {
+    dispatch(findUsers({ role: ERole.MarketingCoordinator }));
+  }, [dispatch]);
 
   const initialValues: Partial<IUpdateFacultyPayload> = {
     name: "",
@@ -116,7 +124,7 @@ const FacultyDetail = () => {
             onSubmit={onUpdateFacultyDetail}
           >
             <Form>
-              <FacultyDetailUpdater Faculty={faculty} />
+              <FacultyDetailUpdater faculty={faculty} />
               <Box
                 sx={{
                   display: "flex",
@@ -141,12 +149,19 @@ const FacultyDetail = () => {
                   variant="outlined"
                 />
                 <Field
-                  as={Textarea}
-                  id="mcName"
-                  name="mcName"
-                  placeholder="Decription"
+                  as={TextField}
+                  id="mcId"
+                  name="mcId"
                   variant="outlined"
-                />
+                  select
+                >
+                  {mcs?.map((mc) => (
+                    <MenuItem key={mc._id} value={mc._id}>
+                      {mc.name}
+                    </MenuItem>
+                  ))}
+                  <MenuItem value=""> No MC</MenuItem>
+                </Field>
               </Box>
 
               <Box
@@ -175,18 +190,19 @@ const FacultyDetail = () => {
   );
 };
 
-function FacultyDetailUpdater({ Faculty }: { Faculty?: IFaculty }) {
+function FacultyDetailUpdater({ faculty }: { faculty?: IFaculty }) {
   const { setValues } = useFormikContext();
 
   useEffect(() => {
-    if (!Faculty) return;
+    if (!faculty) return;
     setValues({
-      name: Faculty.name,
-      description: Faculty.description,
-      mcName: Faculty.mc?.name,
-      mcEmail: Faculty.mc?.email,
+      name: faculty.name,
+      description: faculty.description,
+      mcId: faculty.mc?._id,
+      mcName: faculty.mc?.name,
+      mcEmail: faculty.mc?.email,
     });
-  }, [Faculty, setValues]);
+  }, [faculty, setValues]);
 
   return "";
 }

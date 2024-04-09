@@ -21,3 +21,9 @@ export const AddAndSort = styled.div`
     width: 100%;
   }
 `;
+
+export const ImageStyled = styled.img`
+  width: 90%;
+  border-radius: 8px;
+  height: 400px;
+`;

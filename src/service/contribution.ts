@@ -11,6 +11,7 @@ import {
   IRemoveCommentPayload,
   IRemoveContributionFilePayload,
   IUpdateContriButionPayload,
+  IDeleteContributionPayload,
 } from "@interfaces/contribution.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -132,6 +133,14 @@ const removePrivateComment = async (
   );
 };
 
+// Delete Contribution ----------------------------------------------------------------
+const deleteContribution = async (
+  payload: IDeleteContributionPayload,
+): Promise<void> => {
+  const { _id } = payload;
+  return await axiosInstance.delete(`/contribution/${_id}`);
+};
+
 export default {
   addContribution,
   findContributionById,
@@ -144,4 +153,5 @@ export default {
   findAllPrivateComments,
   addPrivateComment,
   removePrivateComment,
+  deleteContribution,
 };

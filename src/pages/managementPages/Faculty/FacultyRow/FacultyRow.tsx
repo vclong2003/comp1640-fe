@@ -4,24 +4,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
 import { IFaculty } from "@interfaces/faculty.interfaces";
-import ViewDetailFacultyModal from "../FacultyModal/ViewDetailFacultyModal";
 import DeleteFacultyModal from "../FacultyModal/DeleteFacultyModal";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { deleteFaculty } from "@store/faculty";
+import { notifySuccess } from "@utils/notification.utils";
+import { useNavigate } from "react-router";
 export interface IFacultyRowProps {
   faculty: Omit<IFaculty, "description" | "banner_image_url">;
 }
 
 export default function FacultyRow({ faculty }: IFacultyRowProps) {
   const dispatch = useDispatch<AppDispatch>();
-  const [openViewDetailFacultyModal, setOpenViewDetailFacultyModal] =
-    React.useState(false);
-  const handleOpenViewDetailFacultyModal = () =>
-    setOpenViewDetailFacultyModal(true);
-  const handleCloseViewDetailFacultyModal = () =>
-    setOpenViewDetailFacultyModal(false);
 
   const [openDeleteFacultyModal, setOpenDeleteFacultyModal] =
     React.useState(false);
@@ -31,8 +26,10 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
   const handleDeleteFaculty = () => {
     dispatch(deleteFaculty({ _id: faculty._id }))
       .unwrap()
+      .then(() => notifySuccess("You deleted faculty successfully"))
       .then(() => handleCloseDeleteFacultyModal());
   };
+  const navigate = useNavigate();
 
   return (
     <>
@@ -50,7 +47,7 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
             color="warning"
             startIcon={<EditIcon />}
             sx={{ mr: 4 }}
-            onClick={handleOpenViewDetailFacultyModal}
+            onClick={() => navigate(`${faculty._id}`)}
           >
             Edit
           </Button>
@@ -65,10 +62,7 @@ export default function FacultyRow({ faculty }: IFacultyRowProps) {
           </Button>
         </TableCell>
       </TableRow>
-      <ViewDetailFacultyModal
-        open={openViewDetailFacultyModal}
-        handleClose={handleCloseViewDetailFacultyModal}
-      />
+
       <DeleteFacultyModal
         open={openDeleteFacultyModal}
         handleClose={handleCloseDeleteFacultyModal}

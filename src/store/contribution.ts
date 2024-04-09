@@ -5,6 +5,7 @@ import {
   IFindContributionsPayload,
   IRemoveCommentPayload,
   IUpdateContriButionPayload,
+  IDeleteContributionPayload,
 } from "@interfaces/contribution.interfaces";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import contributionService from "@service/contribution";
@@ -71,6 +72,15 @@ export const removePrivateComment = createAsyncThunk(
   },
 );
 
+// Delete Contribution ------------------------------------------
+export const deleteContribution = createAsyncThunk(
+  "eventState/deleteContribution",
+  async (payload: IDeleteContributionPayload) => {
+    await contributionService.deleteContribution(payload);
+    return payload;
+  },
+);
+
 const contributionState = createSlice({
   name,
   initialState,
@@ -107,6 +117,12 @@ const contributionState = createSlice({
     builder.addCase(removePrivateComment.fulfilled, (state, action) => {
       state.privateComments = state.privateComments.filter(
         (c) => c._id !== action.payload.commentId,
+      );
+    });
+    // Delete faculty ---------------------------------------------
+    builder.addCase(deleteContribution.fulfilled, (state, action) => {
+      state.contributions = state.contributions.filter(
+        (contribution) => contribution._id !== action.payload._id,
       );
     });
   },

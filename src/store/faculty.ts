@@ -1,6 +1,7 @@
 import {
   IDeleteFacultyPayload,
   IFacultyState,
+  IUpdateFacultyPayload,
 } from "@interfaces/faculty.interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 import facultyService from "@service/faculty";
@@ -32,15 +33,15 @@ export const createFaculty = createAsyncThunk(
   },
 );
 
-// Update faculty --------------------------------------
+// Update user --------------------------------------------------
 export const updateFaculty = createAsyncThunk(
-  "facultyState/updateFaculty",
-  async (payload: ICreateFacultyPayload) => {
-    return await facultyService.createFaculty(payload);
+  `${name}/updateFaculty`,
+  async (payload: IUpdateFacultyPayload) => {
+    return await facultyService.updateFaculty(payload);
   },
 );
 
-// Delete event ------------------------------------------
+// Delete faculty ------------------------------------------
 export const deleteFaculty = createAsyncThunk(
   "eventState/deleteFaculty",
   async (payload: IDeleteFacultyPayload) => {

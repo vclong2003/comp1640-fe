@@ -24,6 +24,7 @@ export interface IUser {
   };
   gender: EGender;
   role: ERole;
+  disabled: boolean;
 }
 export interface ILoginSession {
   _id: string;

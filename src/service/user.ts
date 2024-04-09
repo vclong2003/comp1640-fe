@@ -119,7 +119,8 @@ const verifyRegisterToken = async (
   return await axiosInstance.post("/auth/verify-register-token", payload);
 };
 
-const createuser = async (payload: ICreateUserPayload) => {
+// Send register email  -----------------------------------------
+const sendRegisterEmail = async (payload: ICreateUserPayload) => {
   return await axiosInstance.post("/auth/register-email", payload);
 };
 
@@ -138,6 +139,6 @@ export default {
   setupAccount,
   verifyRegisterToken,
   findUsers,
-  createuser,
+  sendRegisterEmail,
   getUserById,
 };

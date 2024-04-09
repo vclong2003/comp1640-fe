@@ -119,6 +119,12 @@ export interface IFindUsersPayload {
   limit?: number;
 }
 
+// Get User By Id ----------------------------
 export interface IGetUserByIdPayload {
+  id: string;
+}
+
+// Toggle User ------------------------
+export interface IToggleUserPayload {
   id: string;
 }

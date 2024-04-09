@@ -11,6 +11,7 @@ import {
   IResetPasswordPayload,
   ISendResetPasswordEmailPayload,
   ISetupAccountPayload,
+  IToggleUserPayload,
   IUpdateUserPayload,
   IUser,
   IVerifyRegisterTokenPayload,
@@ -124,6 +125,16 @@ const sendRegisterEmail = async (payload: ICreateUserPayload) => {
   return await axiosInstance.post("/auth/register-email", payload);
 };
 
+// Disable user --------------------------------------------------
+const disableUser = async (payload: IToggleUserPayload): Promise<void> => {
+  return await axiosInstance.post(`/user/${payload.id}/disable`);
+};
+
+// Enable user ---------------------------------------------------
+const enableUser = async (payload: IToggleUserPayload): Promise<void> => {
+  return await axiosInstance.post(`/user/${payload.id}/enable`);
+};
+
 export default {
   login,
   guestRegister,
@@ -141,4 +152,6 @@ export default {
   findUsers,
   sendRegisterEmail,
   getUserById,
+  disableUser,
+  enableUser,
 };

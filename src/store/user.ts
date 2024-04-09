@@ -4,6 +4,7 @@ import {
   IFindUsersPayload,
   ILoginPayload,
   IRemoveLoginSessionPayload,
+  IToggleUserPayload,
   IUpdateUserPayload,
   IUserState,
 } from "@interfaces/user.interfaces";
@@ -70,6 +71,24 @@ export const removeLoginSession = createAsyncThunk(
   },
 );
 
+// Disable user -------------------------------------------------
+export const disableUser = createAsyncThunk(
+  `${name}/disableUser`,
+  async (payload: IToggleUserPayload) => {
+    await userService.disableUser(payload);
+    return payload;
+  },
+);
+
+// Enable user --------------------------------------------------
+export const enableUser = createAsyncThunk(
+  `${name}/enableUser`,
+  async (payload: IToggleUserPayload) => {
+    await userService.enableUser(payload);
+    return payload;
+  },
+);
+
 const userState = createSlice({
   name,
   initialState,
@@ -111,6 +130,18 @@ const userState = createSlice({
     // Find users --------------------------------------------------
     builder.addCase(findUsers.fulfilled, (state, action) => {
       state.users = action.payload;
+    });
+    // Disable user -------------------------------------------------
+    builder.addCase(disableUser.fulfilled, (state, action) => {
+      state.users = state.users.map((user) =>
+        user._id === action.payload.id ? { ...user, disabled: true } : user,
+      );
+    });
+    // Enable user --------------------------------------------------
+    builder.addCase(enableUser.fulfilled, (state, action) => {
+      state.users = state.users.map((user) =>
+        user._id === action.payload.id ? { ...user, disabled: false } : user,
+      );
     });
   },
 });

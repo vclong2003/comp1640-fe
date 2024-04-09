@@ -57,12 +57,15 @@ export default function EditForm({ contribution }: IEditFormProps) {
   };
 
   const updateContribution = () => {
-    if (loading) return;
     setLoading(true);
     service
       .updateContribution(payload)
       .then(() => navigate(`/contribution/${contribution._id}`))
       .finally(() => setLoading(false));
+  };
+
+  const cancel = () => {
+    navigate(`/contribution/${contribution._id}`);
   };
 
   return (
@@ -118,7 +121,15 @@ export default function EditForm({ contribution }: IEditFormProps) {
           alt="Select an image"
         />
         <S.Input>
-          <input type="file" accept="image/*" onChange={onChageBannerImage} />
+          <label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={onChageBannerImage}
+              hidden
+            />
+            Select new banner image
+          </label>
         </S.Input>
       </S.ItemInput>
       {/* Image Files ----------------------------------------------------------- */}
@@ -165,6 +176,8 @@ export default function EditForm({ contribution }: IEditFormProps) {
           {loading ? "Saving..." : "Save"}
         </S.BtnSubmit>
       </S.Submit>
+      {/* Cancel btn ------------------------------------------------------------ */}
+      <button onClick={cancel}>Cancel</button>
     </S.Container>
   );
 }

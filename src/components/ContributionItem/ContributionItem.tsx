@@ -2,6 +2,8 @@ import * as S from "./ContributionItem.styled";
 import image from "../../assets/images/food.png";
 import { IContribution } from "@interfaces/contribution.interfaces";
 import { useNavigate } from "react-router";
+import { FaHeart } from "react-icons/fa";
+import { FaCommentSms } from "react-icons/fa6";
 
 interface IContributionProps extends JSX.IntrinsicAttributes {
   contribution: Partial<IContribution>;
@@ -22,11 +24,16 @@ export default function ContributionItem({
         alt="placeholder"
       />
       <S.Title>{contribution?.title}</S.Title>
-      <S.Description>{contribution?.description}</S.Description>
+      <S.Description
+        dangerouslySetInnerHTML={{ __html: contribution?.description || "" }}
+      />
       <S.InteractionContainer>
-        <S.Like>{contribution?.likes} Like</S.Like>
-        <S.Like>{contribution?.is_liked && "Liked"}</S.Like>
-        <S.Comment>{contribution?.comments} Comment</S.Comment>
+        <S.Like $isLiked={contribution?.is_liked}>
+          {contribution?.likes} <FaHeart />
+        </S.Like>
+        <S.Comment>
+          {contribution?.comments} <FaCommentSms />
+        </S.Comment>
       </S.InteractionContainer>
     </S.Container>
   );

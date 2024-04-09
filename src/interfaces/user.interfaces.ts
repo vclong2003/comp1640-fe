@@ -36,6 +36,7 @@ export interface IUserState {
   user: IUser | null;
   users: IUser[];
   loginSessions: ILoginSession[];
+  filter: IFindUsersPayload;
 }
 
 // Login ---------------------------------------
@@ -110,7 +111,7 @@ export interface IUpdateUserPayload {
 // Find users --------------------------------
 export interface IFindUsersPayload {
   name?: string;
-  role?: ERole;
+  role?: ERole | "";
   email?: string;
   facultyId?: string;
   skip?: number;

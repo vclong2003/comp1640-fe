@@ -14,6 +14,7 @@ const initialState: IUserState = {
   user: null,
   users: [],
   loginSessions: [],
+  filter: {},
 };
 
 // Find users --------------------------------------------------
@@ -72,7 +73,12 @@ export const removeLoginSession = createAsyncThunk(
 const userState = createSlice({
   name,
   initialState,
-  reducers: {},
+
+  reducers: {
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // Get current user ---------------------------------------------
     builder.addCase(getCurrentUser.fulfilled, (state, action) => {
@@ -110,3 +116,4 @@ const userState = createSlice({
 });
 
 export default userState;
+export const { setFilter } = userState.actions;

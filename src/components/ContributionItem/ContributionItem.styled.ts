@@ -53,6 +53,21 @@ export const InteractionContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const Like = styled.button``;
+interface ILikeProps {
+  $isLiked?: boolean;
+}
+export const Like = styled.div<ILikeProps>`
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: var(--fs-md);
+  color: ${({ $isLiked }) => ($isLiked ? "var(--red)" : "var(--gray)")};
+`;
 
-export const Comment = styled.button``;
+export const Comment = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: var(--fs-md);
+  color: var(--black);
+`;

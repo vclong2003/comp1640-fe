@@ -8,7 +8,9 @@ import service from "@service/event";
 import { updateEvent } from "@store/event";
 import { notifySuccess } from "@utils/notification.utils";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { Textarea } from "@mui/joy";
+import { toInputDateTime } from "@utils/date.utils";
 
 import { toInputDateTime } from "@utils/date.utils";
 
@@ -16,6 +18,7 @@ const EventDetailManage = () => {
   const { eventId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const [event, setEvent] = useState<IEvent>();
+  const { faculties } = useSelector((state: RootState) => state.facultyState);
 
   const intialValues: Partial<IUpdateEventPayload> = {
     name: "",

@@ -18,14 +18,26 @@ export default function ContributionDetail() {
       .then((res) => setContribtion(res));
   }, [contributionId]);
 
-  console.log(contribution);
+  const like = () => {
+    if (!contribution) return;
+    if (contribution.is_liked) return;
+    service.likeContribution({ contributionId: contribution._id }).then(() =>
+      setContribtion({
+        ...contribution,
+        is_liked: true,
+        likes: contribution.likes + 1,
+      }),
+    );
+  };
 
   return (
     <Container>
       <S.Container>
         <S.TopContainer>
           <S.Left>
-            {contribution && <LeftDetailPage contribution={contribution} />}
+            {contribution && (
+              <LeftDetailPage contribution={contribution} onLike={like} />
+            )}
           </S.Left>
           <S.Right>
             {contribution && <RightDetailPage contribution={contribution} />}

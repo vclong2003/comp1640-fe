@@ -8,12 +8,17 @@ import {
 import { useState } from "react";
 import FileList from "../FileList/FileList";
 import service from "@service/contribution";
+import FileSelector from "../FilesSelector/FileSelector";
+import { useNavigate } from "react-router";
 
 interface IEditFormProps {
   contribution: IContribution;
 }
 
 export default function EditForm({ contribution }: IEditFormProps) {
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
   const [currentFiles, setCurrentFiles] = useState({
     documents: contribution.documents,
     images: contribution.images,
@@ -25,6 +30,12 @@ export default function EditForm({ contribution }: IEditFormProps) {
     images: [],
     documents: [],
   });
+
+  const onChageBannerImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setPayload({ ...payload, bannerImage: e.target.files[0] });
+    }
+  };
 
   const removeFile = (file: IContributionFile) => {
     service
@@ -45,14 +56,33 @@ export default function EditForm({ contribution }: IEditFormProps) {
       );
   };
 
+  const updateContribution = () => {
+    setLoading(true);
+    service
+      .updateContribution(payload)
+      .then(() => navigate(`/contribution/${contribution._id}`))
+      .finally(() => setLoading(false));
+  };
+
+  const cancel = () => {
+    navigate(`/contribution/${contribution._id}`);
+  };
+
   return (
     <S.Container>
+      {/* Title ----------------------------------------------------------- */}
       <S.ItemInput>
         <S.Text>Title</S.Text>
         <S.InputTitle>
-          <input type="text" placeholder="Enter event title" />
+          <input
+            type="text"
+            placeholder="Enter event title"
+            value={payload.title}
+            onChange={(e) => setPayload({ ...payload, title: e.target.value })}
+          />
         </S.InputTitle>
       </S.ItemInput>
+      {/* Description ----------------------------------------------------------- */}
       <S.ItemInput>
         <S.Text>Description</S.Text>
         <S.Input>
@@ -67,47 +97,87 @@ export default function EditForm({ contribution }: IEditFormProps) {
                 ["clean"],
               ],
             }}
+            value={payload.description}
+            onChange={(value) => setPayload({ ...payload, description: value })}
           />
         </S.Input>
       </S.ItemInput>
+      {/* BannerImage ----------------------------------------------------------- */}
       <S.ItemInput>
         <S.Text>BannerImage</S.Text>
+        {/* preview */}
+        <img
+          style={{
+            width: "100%",
+            height: "auto",
+            aspectRatio: "21/9",
+            objectFit: "cover",
+          }}
+          src={
+            (payload.bannerImage && URL.createObjectURL(payload.bannerImage)) ||
+            contribution.banner_image_url ||
+            ""
+          }
+          alt="Select an image"
+        />
         <S.Input>
-          <input type="file" accept="image/*" />
+          <label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={onChageBannerImage}
+              hidden
+            />
+            Select new banner image
+          </label>
         </S.Input>
       </S.ItemInput>
+      {/* Image Files ----------------------------------------------------------- */}
       <S.ItemInput>
         <S.Text>Image Files</S.Text>
+        {/* current files ---------------------------- */}
         <S.Input>
+          <div>Current file</div>
           <FileList files={currentFiles.images} onRemove={removeFile} />
         </S.Input>
+        {/* upload new files ---------------------------- */}
         <S.Input>
-          {/* <FileSelector
+          <div>Upload new file</div>
+          <FileSelector
             type="images"
             onChange={(files) => setPayload({ ...payload, images: [...files] })}
-          /> */}
+          />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
+      {/* Word Files ----------------------------------------------------------- */}
       <S.ItemInput>
         <S.Text>Word Files</S.Text>
+        {/* current files ---------------------------- */}
         <S.Input>
+          <div>Current file</div>
           <FileList files={currentFiles.documents} onRemove={removeFile} />
         </S.Input>
+        {/* upload new files ---------------------------- */}
         <S.Input>
-          {/* <FileSelector
+          <div>Upload new file</div>
+          <FileSelector
             type="documents"
             onChange={(files) =>
               setPayload({ ...payload, documents: [...files] })
             }
-          /> */}
+          />
         </S.Input>
         <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
-
+      {/* Save btn -------------------------------------------------------------- */}
       <S.Submit>
-        <S.BtnSubmit>Save changes</S.BtnSubmit>
+        <S.BtnSubmit onClick={updateContribution} disabled={loading}>
+          {loading ? "Saving..." : "Save"}
+        </S.BtnSubmit>
       </S.Submit>
+      {/* Cancel btn ------------------------------------------------------------ */}
+      <button onClick={cancel}>Cancel</button>
     </S.Container>
   );
 }

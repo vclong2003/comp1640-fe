@@ -17,11 +17,16 @@ import { useNavigate } from "react-router";
 
 interface ILeftDetailPageProps {
   contribution: IContribution;
+  onLike: () => void;
 }
 
-const LeftDetailPage = ({ contribution }: ILeftDetailPageProps) => {
+export default function LeftDetailPage({
+  contribution,
+  onLike,
+}: ILeftDetailPageProps) {
   const { user } = useSelector((state: RootState) => state.userState);
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <S.Container>
       <S.TopContainer>
@@ -38,7 +43,7 @@ const navigate = useNavigate();
         >
           {(user?.role !== ERole.Student ||
             contribution.author._id === user?._id) && (
-            <S.Icon onClick={()=>navigate("edit")}>
+            <S.Icon onClick={() => navigate("edit")}>
               <MdEditSquare />
             </S.Icon>
           )}
@@ -61,7 +66,7 @@ const navigate = useNavigate();
           <S.Description
             dangerouslySetInnerHTML={{ __html: contribution.description }}
           />
-          <S.ContainerLike>
+          <S.ContainerLike onClick={onLike}>
             <FaHeart />
             <S.Like>{contribution.likes}</S.Like>
           </S.ContainerLike>
@@ -76,11 +81,9 @@ const navigate = useNavigate();
       </S.BottomContainer>
     </S.Container>
   );
-};
+}
 
-export default LeftDetailPage;
-
-// Comment
+// Comment ------------------------------------------------------------------------
 interface ICommentProps {
   contribution: IContribution;
 }
@@ -107,7 +110,6 @@ function Commnet({ contribution }: ICommentProps) {
   useEffect(() => {
     dispatch(findComments({ contributionId: contribution._id }));
   }, [contribution._id, dispatch]);
-  console.log(contribution);
   return (
     <S.Comment>
       <S.Title>

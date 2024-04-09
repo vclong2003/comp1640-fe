@@ -24,6 +24,7 @@ const ListEvent = ({ event }: IListEventProps) => {
     if (!event) return;
 
     const payload: IFindContributionsPayload = { eventId: event._id };
+
     if (isPublish) {
       payload.is_publication = true;
     } else {

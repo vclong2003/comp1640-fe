@@ -6,6 +6,7 @@ interface IFeaturedContributionProps {
   contribution: IContribution;
 }
 const FeaturedContribution = ({ contribution }: IFeaturedContributionProps) => {
+  console.log(contribution);
   return (
     <S.Container>
       <S.TextContainer>

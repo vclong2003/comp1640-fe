@@ -25,6 +25,7 @@ export default function ContributionItem({
       <S.Description>{contribution?.description}</S.Description>
       <S.InteractionContainer>
         <S.Like>{contribution?.likes} Like</S.Like>
+        <S.Like>{contribution?.is_liked && "Liked"}</S.Like>
         <S.Comment>{contribution?.comments} Comment</S.Comment>
       </S.InteractionContainer>
     </S.Container>

@@ -4,8 +4,18 @@ import SecondaryContribution from "./SecondaryContribution/SecondaryContribution
 import PopularContributions from "./PopularContributions/PopularContributions";
 import Container from "@components/Container/Container";
 import ContributionList from "./ContributionList/ContributionList";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/index";
+import { useEffect } from "react";
 
-const Home = () => {
+export default function Home() {
+  const { contributions } = useSelector(
+    (state: RootState) => state.contributionState,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {}, []);
+
   return (
     <Container>
       <S.Container>
@@ -22,6 +32,4 @@ const Home = () => {
       </S.Container>
     </Container>
   );
-};
-
-export default Home;
+}

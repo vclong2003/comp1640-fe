@@ -18,8 +18,6 @@ export default function ContributionDetail() {
       .then((res) => setContribtion(res));
   }, [contributionId]);
 
-  console.log(contribution);
-
   return (
     <Container>
       <S.Container>

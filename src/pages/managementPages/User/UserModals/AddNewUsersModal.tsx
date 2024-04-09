@@ -48,7 +48,7 @@ const AddNewUserModal = ({
   const handleSubmit = (values: ICreateUserPayload) => {
     console.log(values);
     services
-      .createuser(values)
+      .sendRegisterEmail(values)
       .then(() => notifySuccess("Create user successfully"))
       .then(() => handleClose());
   };

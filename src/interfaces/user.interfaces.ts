@@ -24,6 +24,7 @@ export interface IUser {
   };
   gender: EGender;
   role: ERole;
+  disabled: boolean;
 }
 export interface ILoginSession {
   _id: string;
@@ -118,6 +119,12 @@ export interface IFindUsersPayload {
   limit?: number;
 }
 
+// Get User By Id ----------------------------
 export interface IGetUserByIdPayload {
+  id: string;
+}
+
+// Toggle User ------------------------
+export interface IToggleUserPayload {
   id: string;
 }

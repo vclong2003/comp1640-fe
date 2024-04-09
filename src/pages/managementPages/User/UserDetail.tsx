@@ -1,12 +1,7 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { Formik } from "formik";
-import {
-  Form,
-  FormError,
-  FormInput,
-  FormLabel,
-} from "@components/formComponents";
+import { Field, Formik } from "formik";
+import { Form } from "@components/formComponents";
 import {
   EGender,
   IUpdateUserPayload,
@@ -18,11 +13,12 @@ import { toIsoDate } from "@utils/date.utils";
 import { notifySuccess } from "@utils/notification.utils";
 import { UpdateUservalidationSchema } from "@utils/user.utils";
 import { updateUser } from "@store/user";
-import { Typography } from "@mui/material";
+import { Select, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import service from "@service/user";
 import { useFormikContext } from "formik";
+import styled from "styled-components";
 
 const UserDetail = () => {
   const { userId } = useParams();
@@ -35,6 +31,14 @@ const UserDetail = () => {
     dob: "",
     gender: EGender.Female,
   };
+
+  const [bannerImage] = useState<File>();
+
+  const ImageStyled = styled.img`
+    width: 90%;
+    border-radius: 8px;
+    height: 400px;
+  `;
 
   useEffect(() => {
     if (!userId) return;
@@ -52,13 +56,35 @@ const UserDetail = () => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+
           width: "100%",
           mt: 5,
         }}
       >
-        <Box sx={{ width: "50%", border: "1px" }}>
+        <Box
+          sx={{
+            width: "50%",
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+            },
+          }}
+        >
+          <ImageStyled
+            src={
+              (bannerImage && URL.createObjectURL(bannerImage)) ||
+              user?.avatar_url ||
+              ""
+            }
+          />
+        </Box>
+        <Box
+          sx={{
+            width: "50%",
+            "@media only screen and (max-width: 600px)": {
+              width: "100%",
+            },
+          }}
+        >
           <Formik
             initialValues={initialValues}
             onSubmit={onUpdateProfile}
@@ -66,32 +92,53 @@ const UserDetail = () => {
           >
             <Form>
               <UserDetailUpdater user={user} />
-              <FormLabel>Email</FormLabel>
-              <FormInput
-                value={user?.email}
-                disabled={true}
-                type="text"
+              <Field
+                as={TextField}
+                id="email"
                 name="email"
+                variant="outlined"
+                sx={{ mb: 2 }}
               />
 
-              <FormLabel>Name</FormLabel>
-              <FormInput type="text" name="name" />
-              <FormError name="name" />
+              <Field
+                label="Name"
+                as={TextField}
+                id="name"
+                name="name"
+                variant="outlined"
+                sx={{ mb: 2 }}
+              />
 
-              <FormLabel>Phone</FormLabel>
-              <FormInput type="text" name="phone" />
+              <Field
+                label="Phone"
+                as={TextField}
+                variant="outlined"
+                type="text"
+                name="phone"
+                sx={{ mb: 2 }}
+              />
 
-              <FormLabel>DOB</FormLabel>
-              <FormInput type="date" name="dob" />
+              <Field
+                label="Date of Birth"
+                as={TextField}
+                variant="outlined"
+                type="date"
+                name="dob"
+                sx={{ mb: 2 }}
+              />
 
-              <FormLabel>Gender</FormLabel>
-              <FormInput component="select" name="gender">
+              <Field
+                as={Select}
+                variant="outlined"
+                name="gender"
+                sx={{ mb: 2 }}
+              >
                 {Object.values(EGender).map((item) => (
                   <option key={item} value={item}>
                     {item}
                   </option>
                 ))}
-              </FormInput>
+              </Field>
 
               <Box
                 sx={{
@@ -128,6 +175,7 @@ function UserDetailUpdater({ user }: { user?: IUser }) {
       phone: user.phone,
       dob: user.dob && toIsoDate(user.dob),
       gender: user.gender,
+      email: user.email,
     });
   }, [user, setValues]);
 

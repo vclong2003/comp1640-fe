@@ -12,16 +12,10 @@ export const HeadlineAndDelete = styled.div`
   }
 `;
 
-export const Form = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const AddAndSort = styled.div`
   width: 20%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   @media (max-width: 600px) {
     width: 100%;

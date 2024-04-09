@@ -36,6 +36,7 @@ export const Description = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
   @media ${DEVICES.DESKTOP} {
     font-size: var(--fs-xl);
     padding: var(--s-6) var(--s-5);

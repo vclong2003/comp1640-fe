@@ -1,17 +1,23 @@
 import * as S from "./FeaturedContribution.styled";
-import image from "../../../assets/images/detail.png";
+import PlaceholderImg from "@assets/images/detail.png";
+import { IContribution } from "@interfaces/contribution.interfaces";
 
-const FeaturedContribution = () => {
+interface IFeaturedContributionProps {
+  contribution: IContribution;
+}
+const FeaturedContribution = ({ contribution }: IFeaturedContributionProps) => {
   return (
     <S.Container>
       <S.TextContainer>
-        <S.Title>Featured Contribution</S.Title>
-        <S.Description>
-          This is a featured contribution. It could be a blog post, a video, a
-          podcast, or anything else that we want to highlight.
-        </S.Description>
+        <S.Title>{contribution.title}</S.Title>
+        <S.Description
+          dangerouslySetInnerHTML={{ __html: contribution.description }}
+        />
       </S.TextContainer>
-      <S.Image src={image} alt="placeholder" />
+      <S.Image
+        src={contribution.banner_image_url || PlaceholderImg}
+        alt="placeholder"
+      />
     </S.Container>
   );
 };

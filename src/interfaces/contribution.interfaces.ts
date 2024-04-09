@@ -89,6 +89,7 @@ export interface IFindContributionsPayload {
   skip?: number;
   limit?: number;
   has_private_comments?: boolean;
+  popular?: boolean;
 }
 
 // Remove Contribution file -----------------

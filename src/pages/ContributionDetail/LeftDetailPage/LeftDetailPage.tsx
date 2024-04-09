@@ -17,11 +17,16 @@ import { useNavigate } from "react-router";
 
 interface ILeftDetailPageProps {
   contribution: IContribution;
+  onLike: () => void;
 }
 
-export default function LeftDetailPage({ contribution }: ILeftDetailPageProps) {
+export default function LeftDetailPage({
+  contribution,
+  onLike,
+}: ILeftDetailPageProps) {
   const { user } = useSelector((state: RootState) => state.userState);
   const navigate = useNavigate();
+
   return (
     <S.Container>
       <S.TopContainer>
@@ -61,7 +66,7 @@ export default function LeftDetailPage({ contribution }: ILeftDetailPageProps) {
           <S.Description
             dangerouslySetInnerHTML={{ __html: contribution.description }}
           />
-          <S.ContainerLike>
+          <S.ContainerLike onClick={onLike}>
             <FaHeart />
             <S.Like>{contribution.likes}</S.Like>
           </S.ContainerLike>

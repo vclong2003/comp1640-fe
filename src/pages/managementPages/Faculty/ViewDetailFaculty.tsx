@@ -12,7 +12,7 @@ import { AppDispatch } from "@store/index";
 import { notifySuccess } from "@utils/notification.utils";
 
 import { updateFaculty } from "@store/faculty";
-import { TextField, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import service from "@service/faculty";
@@ -27,10 +27,10 @@ const FacultyDetail = () => {
   const { facultyId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const [faculty, setFaculty] = useState<IFaculty>();
+  const [loading, setLoading] = useState(false);
 
-  const initialValues: IUpdateFacultyPayload = {
+  const initialValues: Partial<IUpdateFacultyPayload> = {
     name: "",
-    _id: "",
     description: "",
     mcId: "",
   };
@@ -48,12 +48,18 @@ const FacultyDetail = () => {
     service
       .getFacultyById({ id: facultyId })
       .then((faculty) => setFaculty(faculty));
-  });
+  }, [facultyId]);
 
-  const onUpdateFacultyDetail = (values: IUpdateFacultyPayload) =>
-    dispatch(updateFaculty(values))
+  const onUpdateFacultyDetail = (values: Partial<IUpdateFacultyPayload>) => {
+    if (!faculty) return;
+    setLoading(true);
+    const payload = { ...values, _id: faculty._id };
+    if (bannerImage) payload.bannerImage = bannerImage;
+    dispatch(updateFaculty(payload))
       .unwrap()
-      .then(() => notifySuccess("Faculty updated successfully"));
+      .then(() => notifySuccess("Faculty updated successfully"))
+      .finally(() => setLoading(false));
+  };
 
   return (
     <>
@@ -117,15 +123,7 @@ const FacultyDetail = () => {
                   flexDirection: "column",
                   gap: "var(--s-3)",
                 }}
-              >
-                <Field
-                  as={TextField}
-                  variant="outlined"
-                  name="id"
-                  id="id"
-                  size="small"
-                />
-              </Box>
+              ></Box>
               <Box
                 sx={{
                   display: "flex",
@@ -164,8 +162,9 @@ const FacultyDetail = () => {
                   variant="contained"
                   color="warning"
                   type="submit"
+                  disabled={loading}
                 >
-                  Save
+                  {loading ? "Updating..." : "Update"}
                 </Button>
               </Box>
             </Form>
@@ -183,7 +182,6 @@ function FacultyDetailUpdater({ Faculty }: { Faculty?: IFaculty }) {
     if (!Faculty) return;
     setValues({
       name: Faculty.name,
-      id: Faculty._id,
       description: Faculty.description,
       mcName: Faculty.mc?.name,
       mcEmail: Faculty.mc?.email,

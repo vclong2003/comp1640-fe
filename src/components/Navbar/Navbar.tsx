@@ -27,7 +27,24 @@ const Navbar = () => {
         <OffCanvas show={isOffcanavsVisible} onClose={closeOffCanvas}>
           <S.VerticalNavList>
             <S.NavItem to="/home">Home</S.NavItem>
-            <S.NavItem to="/event">Events</S.NavItem>
+            <AuthorizedComponent
+              allowedRoles={[
+                ERole.Guest,
+                ERole.Student,
+                ERole.MarketingCoordinator,
+              ]}
+            >
+              <S.NavItem to="/event">Events</S.NavItem>
+            </AuthorizedComponent>
+            <AuthorizedComponent
+              allowedRoles={[
+                ERole.Admin,
+                ERole.MarketingManager,
+                ERole.MarketingCoordinator,
+              ]}
+            >
+              <S.NavItem to="/manage">Manage</S.NavItem>
+            </AuthorizedComponent>
             <S.NavItem to="/about-us">About Us</S.NavItem>
           </S.VerticalNavList>
         </OffCanvas>

@@ -38,7 +38,7 @@ export default function Filter() {
 
   const styled = {
     width: "160px",
-
+    height: "56px",
     m: "16px",
     ml: 0,
   };
@@ -88,7 +88,6 @@ export default function Filter() {
             label="Title"
             variant="outlined"
             sx={styled}
-            size="small"
           />
 
           <Field
@@ -96,7 +95,6 @@ export default function Filter() {
             name="authorName"
             label="Author Name"
             variant="outlined"
-            size="small"
             sx={styled}
           />
 
@@ -106,7 +104,6 @@ export default function Filter() {
             variant="outlined"
             sx={styled}
             label="Start Date"
-            size="small"
           />
 
           <Field
@@ -115,14 +112,13 @@ export default function Filter() {
             type="date"
             variant="outlined"
             sx={styled}
-            size="small"
           />
 
-          <Button variant="contained" type="submit" sx={styled} size="small">
+          <Button variant="contained" type="submit" sx={styled}>
             Apply
           </Button>
 
-          <Button variant="outlined" type="reset" sx={styled} size="small">
+          <Button variant="outlined" type="reset" sx={styled}>
             Reset
           </Button>
         </Form>

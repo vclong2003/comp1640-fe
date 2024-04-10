@@ -152,7 +152,7 @@ const getContributionsPerYear = async (
     `/contribution/yearly-analysis/${payload.year}`,
   );
 };
-const getTotalContributions = async (): Promise<
+const getTotalContributionsByFaculty = async (): Promise<
   ITotalContributionsByFaculty[]
 > => {
   return await axiosInstance.get(`/contribution/lifetime-analysis`);
@@ -172,5 +172,5 @@ export default {
   removePrivateComment,
   deleteContribution,
   getContributionsPerYear,
-  getTotalContributions,
+  getTotalContributionsByFaculty,
 };

@@ -10,10 +10,13 @@ export const FilesContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--s-3);
-  
 `;
 
-export const AddButton = styled.label``;
+export const AddButton = styled.label`
+  font-size: var(--fs-sm);
+  color: var(--blue);
+  text-decoration: underline;
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -25,6 +28,12 @@ export const Container = styled.div`
   border-radius: var(--br-md);
 `;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--fs-sm);
+`;
 
 export const RemoveButton = styled.div``;

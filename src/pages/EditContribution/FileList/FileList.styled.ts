@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const FileList = styled.div``;
@@ -22,6 +23,17 @@ export const Container = styled.div`
   border-radius: var(--br-md);
 `;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--fs-sm);
+`;
 
-export const RemoveButton = styled.div``;
+export const ContainerCiCirleRemove = styled.div`
+  width: 32px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;

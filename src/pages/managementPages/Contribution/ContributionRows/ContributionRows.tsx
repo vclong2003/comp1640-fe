@@ -38,6 +38,7 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
         </TableCell>
         <TableCell align="left">{contribution.title}</TableCell>
         <TableCell align="left">{contribution.author.name}</TableCell>
+        <TableCell align="left">{contribution.faculty.name}</TableCell>
         <TableCell align="left">{contribution.event.name}</TableCell>
         <TableCell align="left">
           <Button

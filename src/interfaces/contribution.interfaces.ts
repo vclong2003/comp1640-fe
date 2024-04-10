@@ -48,6 +48,7 @@ export interface IContributionState {
   comments: IComment[];
   privateComments: IComment[];
   total: number;
+  filter: IFindContributionsPayload;
 }
 
 // Add Contribution --------------------------

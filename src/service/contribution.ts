@@ -16,6 +16,7 @@ import {
   IContributionsByFacultyYear,
   ITotalContributionsByFaculty,
   IDownloadContributionFilesPayload,
+  IAvgContributionsPerStudent,
 } from "@interfaces/contribution.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -185,6 +186,11 @@ const getTotalContributionsByFaculty = async (): Promise<
 > => {
   return await axiosInstance.get(`/contribution/lifetime-analysis`);
 };
+const getAvgContributionsPerStudent = async (): Promise<
+  IAvgContributionsPerStudent[]
+> => {
+  return await axiosInstance.get(`/contribution/avg-contributions-per-student`);
+};
 
 export default {
   addContribution,
@@ -202,4 +208,5 @@ export default {
   getContributionsPerYear,
   getTotalContributionsByFaculty,
   downloadContributionFiles,
+  getAvgContributionsPerStudent,
 };

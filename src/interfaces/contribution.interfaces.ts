@@ -145,3 +145,7 @@ export interface ITotalContributionsByFaculty {
   published: number;
   not_published: number;
 }
+export interface IAvgContributionsPerStudent {
+  faculty: string;
+  avg: number;
+}

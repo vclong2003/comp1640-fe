@@ -1,6 +1,8 @@
 import { defaults } from "chart.js/auto";
-import BarChart from "./Charts/BarChart";
 import { Grid } from "@mui/material";
+import ContributionsPerFaculty from "./Charts/ContributionsPerFaculty";
+import ContributionsPerYear from "./Charts/ContributionsPerYear";
+import ContributionsPerStudent from "./Charts/ContributionsPerStudent";
 
 defaults.maintainAspectRatio = true;
 defaults.responsive = true;
@@ -10,10 +12,15 @@ defaults.plugins.title.color = "black";
 
 const Home = () => {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={3}></Grid>
+    <Grid container spacing={2} sx={{ minHeight: "100vh" }}>
+      <Grid item xs={12}>
+        <ContributionsPerYear />
+      </Grid>
       <Grid item xs={6}>
-        <BarChart />
+        <ContributionsPerFaculty />
+      </Grid>
+      <Grid item xs={6}>
+        <ContributionsPerStudent />
       </Grid>
     </Grid>
   );

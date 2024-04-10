@@ -1,9 +1,9 @@
 import { ITotalContributionsByFaculty } from "@interfaces/contribution.interfaces";
 import { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import contributionService from "@service/contribution";
 
-const DoughnutChart = () => {
+export default function ContributionsPerFaculty() {
   const [data, setData] = useState<ITotalContributionsByFaculty[]>([]);
 
   useEffect(() => {
@@ -13,15 +13,21 @@ const DoughnutChart = () => {
   }, []);
 
   return (
-    <Doughnut
+    <Bar
       data={{
         labels: data.map((data) => data.faculty),
         datasets: [
           {
-            label: "Contributins",
-            data: data.map((data) => data.contributions),
-            backgroundColor: ["#236192", "#F2BA1D", "#D9D9D9"],
-            borderColor: ["#236192", "#F2BA1D", "#D9D9D9"],
+            label: "Published",
+            data: data.map((data) => data.published),
+            backgroundColor: "#236192",
+            borderRadius: 2,
+          },
+          {
+            label: "Not Published",
+            data: data.map((data) => data.not_published),
+            backgroundColor: "#FFA500",
+            borderRadius: 2,
           },
         ],
       }}
@@ -31,9 +37,16 @@ const DoughnutChart = () => {
             text: "Contributions by Faculty",
           },
         },
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true,
+          },
+        },
+        aspectRatio: 1.2,
       }}
     />
   );
-};
-
-export default DoughnutChart;
+}

@@ -112,6 +112,8 @@ export default function EditForm({ contribution }: IEditFormProps) {
             height: "auto",
             aspectRatio: "21/9",
             objectFit: "cover",
+            borderRadius: "var(--br-md)",
+            marginBottom: "var(--s-1)",
           }}
           src={
             (payload.bannerImage && URL.createObjectURL(payload.bannerImage)) ||
@@ -120,7 +122,7 @@ export default function EditForm({ contribution }: IEditFormProps) {
           }
           alt="Select an image"
         />
-        <S.Input>
+        <S.InputFile>
           <label>
             <input
               type="file"
@@ -130,37 +132,36 @@ export default function EditForm({ contribution }: IEditFormProps) {
             />
             Select new banner image
           </label>
-        </S.Input>
+        </S.InputFile>
       </S.ItemInput>
       {/* Image Files ----------------------------------------------------------- */}
       <S.ItemInput>
         <S.Text>Image Files</S.Text>
         {/* current files ---------------------------- */}
         <S.Input>
-          <div>Current file</div>
+          <S.StatusFile>Current file</S.StatusFile>
           <FileList files={currentFiles.images} onRemove={removeFile} />
         </S.Input>
         {/* upload new files ---------------------------- */}
         <S.Input>
-          <div>Upload new file</div>
+          <S.StatusFile>Upload new file</S.StatusFile>
           <FileSelector
             type="images"
             onChange={(files) => setPayload({ ...payload, images: [...files] })}
           />
         </S.Input>
-        <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
       {/* Word Files ----------------------------------------------------------- */}
       <S.ItemInput>
         <S.Text>Word Files</S.Text>
         {/* current files ---------------------------- */}
         <S.Input>
-          <div>Current file</div>
+          <S.StatusFile>Current file</S.StatusFile>
           <FileList files={currentFiles.documents} onRemove={removeFile} />
         </S.Input>
         {/* upload new files ---------------------------- */}
         <S.Input>
-          <div>Upload new file</div>
+          <S.StatusFile>Upload new file</S.StatusFile>
           <FileSelector
             type="documents"
             onChange={(files) =>
@@ -168,16 +169,16 @@ export default function EditForm({ contribution }: IEditFormProps) {
             }
           />
         </S.Input>
-        <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
       {/* Save btn -------------------------------------------------------------- */}
       <S.Submit>
         <S.BtnSubmit onClick={updateContribution} disabled={loading}>
           {loading ? "Saving..." : "Save"}
         </S.BtnSubmit>
+        {/* Cancel btn ------------------------------------------------------------ */}
+      <S.BtnSubmit onClick={cancel}>Cancel</S.BtnSubmit>
       </S.Submit>
-      {/* Cancel btn ------------------------------------------------------------ */}
-      <button onClick={cancel}>Cancel</button>
+      
     </S.Container>
   );
 }

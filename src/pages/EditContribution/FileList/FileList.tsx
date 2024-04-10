@@ -26,7 +26,9 @@ function FileItem({ file, onRemove }: IFileItemProps) {
   return (
     <S.Container>
       <S.Title>{file.file_name}</S.Title>
+      <S.ContainerCiCirleRemove>
       <CiCircleRemove onClick={() => onRemove(file)} />
+      </S.ContainerCiCirleRemove>
     </S.Container>
   );
 }

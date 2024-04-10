@@ -142,5 +142,6 @@ export interface IContributionsByFacultyYear {
 }
 export interface ITotalContributionsByFaculty {
   faculty: string;
-  contributions: number;
+  published: number;
+  not_published: number;
 }

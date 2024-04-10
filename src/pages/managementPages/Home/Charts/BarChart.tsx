@@ -1,44 +1,44 @@
-import React from "react";
+import { ITotalContributionsByFaculty } from "@interfaces/contribution.interfaces";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import styled from "styled-components";
+import contributionService from "@service/contribution";
 
-interface BarChartProps {
-  sourceData: { label: string; value: number }[];
-}
+const BarChart = () => {
+  const [data, setData] = useState<ITotalContributionsByFaculty[]>([]);
 
-export const StyledBarChart = styled.div`
-  height: 100%;
-  width: 100%;
-`;
+  useEffect(() => {
+    contributionService.getTotalContributionsByFaculty().then((data) => {
+      setData(data);
+    });
+  }, []);
 
-interface BarChartProps {
-  sourceData: { label: string; value: number }[];
-}
-
-const BarChart: React.FC<BarChartProps> = ({ sourceData }) => {
   return (
-    <StyledBarChart>
-      <Bar
-        data={{
-          labels: sourceData.map((data) => data.label),
-          datasets: [
-            {
-              label: "Reports",
-              data: sourceData.map((data) => data.value),
-              backgroundColor: ["#236192"],
-              borderRadius: 5,
-            },
-          ],
-        }}
-        options={{
-          plugins: {
-            title: {
-              text: "Reports",
-            },
+    <Bar
+      data={{
+        labels: data.map((data) => data.faculty),
+        datasets: [
+          {
+            label: "Published",
+            data: data.map((data) => data.published),
+            backgroundColor: "#236192",
+            borderRadius: 2,
           },
-        }}
-      />
-    </StyledBarChart>
+          {
+            label: "Not Published",
+            data: data.map((data) => data.not_published),
+            backgroundColor: "#FFA500",
+            borderRadius: 2,
+          },
+        ],
+      }}
+      options={{
+        plugins: {
+          title: {
+            text: "Contributions by Faculty",
+          },
+        },
+      }}
+    />
   );
 };
 

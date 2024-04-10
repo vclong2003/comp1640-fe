@@ -1,20 +1,27 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import sourceData from "./Charts/SourceData.json";
 import { defaults } from "chart.js/auto";
 import BarChart from "./Charts/BarChart";
-import DoughnutChart from "./Charts/Doughnut";
-import Cards from "./Cards/Cards";
+import { Grid } from "@mui/material";
 
-defaults.maintainAspectRatio = false;
+defaults.maintainAspectRatio = true;
 defaults.responsive = true;
 defaults.plugins.title.display = true;
 defaults.plugins.title.align = "start";
 defaults.plugins.title.color = "black";
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
-    <>
+    <Grid container spacing={2}>
+      <Grid item xs={3}></Grid>
+      <Grid item xs={6}>
+        <BarChart />
+      </Grid>
+    </Grid>
+  );
+};
+
+export default Home;
+/*
+ <>
       <Box
         sx={{
           display: "flex",
@@ -24,7 +31,6 @@ const Home: React.FC = () => {
       >
         <h2>Dashboard</h2>
       </Box>
-      <Cards />
       <Box
         sx={{
           display: "flex",
@@ -46,7 +52,7 @@ const Home: React.FC = () => {
             },
           }}
         >
-          <DoughnutChart />
+         
         </Box>
         <Box
           sx={{
@@ -64,7 +70,4 @@ const Home: React.FC = () => {
         </Box>
       </Box>
     </>
-  );
-};
-
-export default Home;
+*/

@@ -24,8 +24,6 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
     useState(false);
   const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
 
-  // const handleOpenViewDetailEventModal = () =>
-  //   setOpenViewDetailEventModal(true);
   const handleCloseViewDetailEventModal = () =>
     setOpenViewDetailEventModal(false);
   const handleOpenDeleteEventModal = () => setOpenDeleteEventModal(true);

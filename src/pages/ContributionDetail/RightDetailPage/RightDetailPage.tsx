@@ -12,6 +12,7 @@ import { ERole } from "@interfaces/user.interfaces";
 import { useEffect, useState } from "react";
 import { addPrivateComment, findPrivateComments } from "@store/contribution";
 import { toIsoDate } from "@utils/date.utils";
+import Avatar from "@components/Avatar/Avatar";
 
 interface IRightDeatilPageProps {
   contribution: IContribution;
@@ -103,14 +104,20 @@ function PrivateComment({ contribution }: IPrivateCommentProps) {
         <S.TextTitle>1 Private Comments</S.TextTitle>
       </S.TitleComment>
       {/* Comment item: user info, content */}
-      {privateComments.map((comment, index) => (
+      {privateComments.map((comments, index) => (
         <S.ContainerComment key={index}>
-          <UserInfo
-            name={comment.author.name}
-            avatar_url={comment.author.avatar_url}
-            additionalInfo={toIsoDate(comment.posted_at)}
-          />
-          <S.CommentContent>{comment.content}</S.CommentContent>
+          <S.CmtItem>
+            <S.LeftItem>
+              <Avatar imageUrl={comments.author.avatar_url} />
+            </S.LeftItem>
+            <S.RightItem>
+              <S.User>
+                <S.NameUser>{comments.author.name}</S.NameUser>
+                <S.Date>{toIsoDate(comments.posted_at)}</S.Date>
+              </S.User>
+              <S.CommentContent>{comments.content}</S.CommentContent>
+            </S.RightItem>
+          </S.CmtItem>
         </S.ContainerComment>
       ))}
       <S.InputAddCmt>

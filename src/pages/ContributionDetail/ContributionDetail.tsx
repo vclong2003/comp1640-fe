@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { IContribution } from "@interfaces/contribution.interfaces";
 import { useParams } from "react-router-dom";
 import service from "@service/contribution";
+import BottomDetailPage from "./BottomDetailPage/BottomDetailPage";
 
 export default function ContributionDetail() {
   const { contributionId } = useParams();
@@ -43,6 +44,9 @@ export default function ContributionDetail() {
             {contribution && <RightDetailPage contribution={contribution} />}
           </S.Right>
         </S.TopContainer>
+        <S.BottomContainer>
+          <BottomDetailPage />
+        </S.BottomContainer>
       </S.Container>
     </Container>
   );

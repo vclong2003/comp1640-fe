@@ -163,7 +163,7 @@ const downloadContributionFiles = async (
     const url = window.URL.createObjectURL(new Blob([data]));
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", `${payload.fileName}.zip`);
+    link.setAttribute("download", `${payload.fileName.trim()}.zip`);
     document.body.appendChild(link);
     link.click();
     window.URL.revokeObjectURL(url);

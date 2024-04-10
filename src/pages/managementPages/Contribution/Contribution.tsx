@@ -42,8 +42,7 @@ const Contribution: React.FC = () => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>No</TableCell>
-              <TableCell align="left">Title</TableCell>
+              <TableCell>Title</TableCell>
               <TableCell align="left">Author&nbsp;</TableCell>
               <TableCell align="left">Faculty&nbsp;</TableCell>
               <TableCell align="left">Event&nbsp;</TableCell>

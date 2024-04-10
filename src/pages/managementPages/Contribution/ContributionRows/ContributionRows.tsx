@@ -33,10 +33,9 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
   return (
     <>
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-        <TableCell component="th" scope="row">
-          {contribution._id}
+        <TableCell component="th" align="left">
+          {contribution.title}
         </TableCell>
-        <TableCell align="left">{contribution.title}</TableCell>
         <TableCell align="left">{contribution.author.name}</TableCell>
         <TableCell align="left">{contribution.faculty.name}</TableCell>
         <TableCell align="left">{contribution.event.name}</TableCell>

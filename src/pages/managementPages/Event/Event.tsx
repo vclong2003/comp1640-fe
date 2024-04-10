@@ -53,6 +53,7 @@ export default function Event() {
               <TableCell align="left">First Closure Date</TableCell>
               <TableCell align="left">Final Closure Date</TableCell>
               <TableCell align="left">Faculty Name</TableCell>
+              <TableCell align="left">Number of Contributions</TableCell>
               <TableCell align="left">Action</TableCell>
             </TableRow>
           </TableHead>

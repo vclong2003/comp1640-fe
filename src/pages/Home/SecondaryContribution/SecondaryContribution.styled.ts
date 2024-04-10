@@ -22,6 +22,8 @@ export const Image = styled.img`
   border-radius: var(--br-lg);
   width: 100%;
   height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
   z-index: 0;
 `;
 

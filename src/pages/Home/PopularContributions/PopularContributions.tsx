@@ -1,16 +1,22 @@
+import { IContribution } from "@interfaces/contribution.interfaces";
 import * as S from "./PopularContributions.styled";
 
-const PopularContributions = () => {
+interface IPopularContributionsProps {
+  contributions: IContribution[];
+}
+
+const PopularContributions = ({
+  contributions,
+}: IPopularContributionsProps) => {
   return (
     <S.Container>
       <S.Header>
         <S.Title>Popular Contributions</S.Title>
       </S.Header>
       <S.PopularContributionItemsContainer>
-        {/* <S.Item />
-        <S.Item />
-        <S.Item />
-        <S.Item /> */}
+        {contributions.map((contribution) => (
+          <S.Item key={contribution._id} contribution={contribution} />
+        ))}
       </S.PopularContributionItemsContainer>
     </S.Container>
   );

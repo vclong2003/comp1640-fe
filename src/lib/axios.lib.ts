@@ -42,13 +42,14 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
       return axiosInstance(originalRequest);
     }
-    const message =
+    let message =
       error?.response?.data?.message ||
       error?.message ||
       "Something went wrong!";
-
+    if (error.response.status === 500) {
+      message = "Something went wrong on our end, please contact Long!";
+    }
     notifyError(message);
-    console.error(error);
     return Promise.reject(message);
   },
 );

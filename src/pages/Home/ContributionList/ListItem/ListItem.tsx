@@ -1,30 +1,36 @@
+import { IContribution } from "@interfaces/contribution.interfaces";
 import * as S from "./ListItem.styled";
 import { AiFillLike } from "react-icons/ai";
 import { FaCommentAlt } from "react-icons/fa";
+import Placeholder from "@assets/images/banner_placeholder.jpg";
+import { useNavigate } from "react-router";
 
-export default function ListItem() {
+interface IListItemProps {
+  contribution: IContribution;
+}
+
+export default function ListItem({ contribution }: IListItemProps) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/contribution/${contribution._id}`);
+  };
   return (
-    <S.Container>
+    <S.Container onClick={handleClick}>
       <S.ImageContainer>
-        <S.Image src="https://picsum.photos/600/400"></S.Image>
+        <S.Image src={contribution.banner_image_url || Placeholder} />
       </S.ImageContainer>
       <S.ContentContainer>
-        {/* <S.NameAuthor>Thao Huong</S.NameAuthor> */}
-        <S.EventName>Event Name</S.EventName>
-        <S.Title>Bui, new to the site! The hottest assets are out now</S.Title>
-        <S.Description>
-          Edgar Shaw, a famous sailor and photographer, sails in remote parts of
-          the world and makes his photo experience. Edgar Shaw, a famous sailor
-          and photographer, sails in remote parts of the world and
-        </S.Description>
+        <S.EventName>{contribution.event.name}</S.EventName>
+        <S.Title>{contribution.title}</S.Title>
+        <S.Description>{contribution.description}</S.Description>
         <S.InteractionContainer>
           <S.Like>
             <AiFillLike />
-            <p>100</p>
+            <p>{contribution.likes}</p>
           </S.Like>
           <S.Comment>
             <FaCommentAlt />
-            <p>100</p>
+            <p>{contribution.comments}</p>
           </S.Comment>
         </S.InteractionContainer>
       </S.ContentContainer>

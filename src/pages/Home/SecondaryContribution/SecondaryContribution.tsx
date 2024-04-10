@@ -1,18 +1,30 @@
+import { IContribution } from "@interfaces/contribution.interfaces";
 import * as S from "./SecondaryContribution.styled";
-import image from "../../../assets/images/Secondary.png";
+import Placeholder from "@assets/images/Secondary.png";
+import { useNavigate } from "react-router";
 
-const SecondaryContribution = () => {
+interface ISecondaryContributionProps {
+  contribution: IContribution;
+}
+
+const SecondaryContribution = ({
+  contribution,
+}: ISecondaryContributionProps) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/contribution/${contribution._id}`);
+  };
   return (
-    <S.Container>
-      <S.Image src={image} alt="placeholder" />
+    <S.Container onClick={handleClick}>
+      <S.Image
+        src={contribution.banner_image_url || Placeholder}
+        alt="placeholder"
+      />
       <S.Divider />
-      <S.Title>Secondary Contribution</S.Title>
-      <S.Description>
-        This is a secondary contribution. It could be a blog post, a video, a
-        podcast, or anything else that we want to highlight.
-      </S.Description>
+      <S.Title>{contribution.title}</S.Title>
+      <S.Description>{contribution.description}</S.Description>
       <S.Bottom>
-        <S.Text>EQUIPMENT | HOW TO </S.Text>
+        <S.Text>{contribution.faculty.name}</S.Text>
       </S.Bottom>
     </S.Container>
   );

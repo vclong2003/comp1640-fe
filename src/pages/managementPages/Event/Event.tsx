@@ -42,6 +42,7 @@ export default function Event() {
       >
         Add new
       </Button>
+
       <Filter />
 
       <TableContainer>

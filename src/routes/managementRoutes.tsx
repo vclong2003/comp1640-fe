@@ -9,6 +9,7 @@ import { ERole } from "@interfaces/user.interfaces";
 import UserDetail from "@pages/managementPages/User/UserDetail";
 import EventDetailManage from "@pages/managementPages/Event/EventDetailManage/EventDetailManage";
 import ViewDetailFaculty from "@pages/managementPages/Faculty/ViewDetailFaculty";
+import ContributionDetail from "@pages/ContributionDetail/ContributionDetail";
 export const managementRoutes: IRoute[] = [
   {
     path: "manage/",
@@ -96,6 +97,15 @@ export const managementRoutes: IRoute[] = [
     component: (
       <AuthorizedPage>
         <ViewDetailFaculty />
+      </AuthorizedPage>
+    ),
+  },
+
+  {
+    path: "manage/contribution/:contributionId",
+    component: (
+      <AuthorizedPage>
+        <ContributionDetail />
       </AuthorizedPage>
     ),
   },

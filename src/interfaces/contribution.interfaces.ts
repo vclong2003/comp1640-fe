@@ -125,3 +125,16 @@ export interface ILikeContributionPayload {
 export interface IDeleteContributionPayload {
   _id: string;
 }
+
+// Analysis ---------------------------------------
+export interface IGetContrubutionsPerYearPayload {
+  year: number;
+}
+export interface IContributionsByFacultyYear {
+  faculty: string;
+  data: { month: number; contributions: number }[];
+}
+export interface ITotalContributionsByFaculty {
+  faculty: string;
+  contributions: number;
+}

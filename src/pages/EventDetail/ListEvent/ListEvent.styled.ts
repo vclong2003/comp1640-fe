@@ -96,19 +96,17 @@ export const ListItem = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-2);
-  width: 100%;
-
+  justify-content: space-between;
+  row-gap: var(--s-3);
   @media ${DEVICES.DESKTOP} {
     display: flex;
-    flex-wrap: nowrap;
-    gap: var(--s-4);
   }
 `;
 
 export const Item = styled(BaseItem)`
   width: 48%;
   @media ${DEVICES.DESKTOP} {
-    width:24%;
+    width: 19%;
   }
 `;
 

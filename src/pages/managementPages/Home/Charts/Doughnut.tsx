@@ -1,30 +1,32 @@
-import React from "react";
+import { ITotalContributionsByFaculty } from "@interfaces/contribution.interfaces";
+import { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import styled from "styled-components";
-
-interface DoughnutChartProps {
-  sourceData: { label: string; value: number }[];
-}
+import contributionService from "@service/contribution";
 
 export const StyledDoughnutChart = styled.div`
-  height: 90%;
   width: 100%;
+  height: 100%;
 `;
 
-interface DoughnutChartProps {
-  sourceData: { label: string; value: number }[];
-}
+const DoughnutChart = () => {
+  const [data, setData] = useState<ITotalContributionsByFaculty[]>([]);
 
-const DoughnutChart: React.FC<DoughnutChartProps> = ({ sourceData }) => {
+  useEffect(() => {
+    contributionService.getTotalContributionsByFaculty().then((data) => {
+      setData(data);
+    });
+  }, []);
+
   return (
     <StyledDoughnutChart>
       <Doughnut
         data={{
-          labels: sourceData.map((data) => data.label),
+          labels: data.map((data) => data.faculty),
           datasets: [
             {
-              label: "Transactions",
-              data: sourceData.map((data) => data.value),
+              label: "Contributins",
+              data: data.map((data) => data.contributions),
               backgroundColor: ["#236192", "#F2BA1D", "#D9D9D9"],
               borderColor: ["#236192", "#F2BA1D", "#D9D9D9"],
             },
@@ -33,7 +35,7 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ sourceData }) => {
         options={{
           plugins: {
             title: {
-              text: "Analytics",
+              text: "Contributions by Faculty",
             },
           },
         }}

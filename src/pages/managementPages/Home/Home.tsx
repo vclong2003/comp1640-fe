@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import sourceData from "./Charts/SourceData.json";
 import { defaults } from "chart.js/auto";
 import BarChart from "./Charts/BarChart";
-import DoughnutData from "./Charts/DoughnutChart.json";
 import DoughnutChart from "./Charts/Doughnut";
 import Cards from "./Cards/Cards";
 
@@ -47,7 +46,7 @@ const Home: React.FC = () => {
             },
           }}
         >
-          <DoughnutChart sourceData={DoughnutData} />
+          <DoughnutChart />
         </Box>
         <Box
           sx={{

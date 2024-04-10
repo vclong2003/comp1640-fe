@@ -12,6 +12,9 @@ import {
   IRemoveContributionFilePayload,
   IUpdateContriButionPayload,
   IDeleteContributionPayload,
+  IGetContrubutionsPerYearPayload,
+  IContributionsByFacultyYear,
+  ITotalContributionsByFaculty,
 } from "@interfaces/contribution.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -141,6 +144,20 @@ const deleteContribution = async (
   return await axiosInstance.delete(`/contribution/${_id}`);
 };
 
+// Analysis ----------------------------------------------------------------
+const getContributionsPerYear = async (
+  payload: IGetContrubutionsPerYearPayload,
+): Promise<IContributionsByFacultyYear[]> => {
+  return await axiosInstance.get(
+    `/contribution/yearly-analysis/${payload.year}`,
+  );
+};
+const getTotalContributionsByFaculty = async (): Promise<
+  ITotalContributionsByFaculty[]
+> => {
+  return await axiosInstance.get(`/contribution/lifetime-analysis`);
+};
+
 export default {
   addContribution,
   findContributionById,
@@ -154,4 +171,6 @@ export default {
   addPrivateComment,
   removePrivateComment,
   deleteContribution,
+  getContributionsPerYear,
+  getTotalContributionsByFaculty,
 };

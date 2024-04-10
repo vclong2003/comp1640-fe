@@ -18,7 +18,8 @@ export default function EditContribution() {
 
   return (
     <S.EditContribution>
-      <div>Edit contribution {contribution?.title}</div>
+      <S.Title>Edit contribution </S.Title>
+      <S.Content>{contribution?.title}</S.Content>
       {contribution && <EditForm contribution={contribution} />}
     </S.EditContribution>
   );

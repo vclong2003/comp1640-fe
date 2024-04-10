@@ -27,3 +27,8 @@ export const ImageStyled = styled.img`
   border-radius: 8px;
   height: 400px;
 `;
+
+export const EmailInput = styled.div`
+  width: 100%;
+  height: 36px;
+`;

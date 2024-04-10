@@ -68,7 +68,7 @@ const User: React.FC = () => {
           </TableHead>
           <TableBody>
             {users.map((user) => (
-              <UserRow key={user.name} user={user} />
+              <UserRow key={user._id} user={user} />
             ))}
           </TableBody>
         </Table>

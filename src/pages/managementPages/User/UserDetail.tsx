@@ -13,7 +13,7 @@ import { toIsoDate } from "@utils/date.utils";
 import { notifySuccess } from "@utils/notification.utils";
 import { UpdateUservalidationSchema } from "@utils/user.utils";
 import { updateUser } from "@store/user";
-import { Select, TextField, Typography } from "@mui/material";
+import { MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import service from "@service/user";
@@ -127,11 +127,9 @@ const UserDetail = () => {
                 name="gender"
                 sx={{ mb: 2 }}
               >
-                {Object.values(EGender).map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
+                <MenuItem value={EGender.Male}>Male </MenuItem>
+                <MenuItem value={EGender.Female}>Female</MenuItem>
+                <MenuItem value={EGender.Other}>Other</MenuItem>
               </Field>
 
               <Box

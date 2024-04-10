@@ -15,7 +15,11 @@ export default function FileSelector({ type, onChange }: IFilesSelectorProps) {
   };
 
   const removeFile = (file: File) => {
-    setFiles(files.filter((item) => item.name !== file.name));
+    setFiles(
+      files.filter(
+        (item) => item.webkitRelativePath !== file.webkitRelativePath,
+      ),
+    );
   };
 
   useEffect(() => {

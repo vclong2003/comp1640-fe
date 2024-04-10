@@ -11,8 +11,9 @@ import { AppDispatch } from "@store/index";
 import { deleteEvent } from "@store/event";
 import { useNavigate } from "react-router";
 import { notifySuccess } from "@utils/notification.utils";
-import { API_BASE_URL } from "@config/api.config";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import contributionService from "@service/contribution";
+
 interface EventRowProps {
   event: IEvent;
 }
@@ -38,7 +39,10 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
   };
 
   const handleDownload = () => {
-    window.open(`${API_BASE_URL}/contribution/download?eventId=${event._id}`);
+    return contributionService.downloadContributionFiles({
+      fileName: event.name,
+      query: { eventId: event._id },
+    });
   };
 
   const navigate = useNavigate();

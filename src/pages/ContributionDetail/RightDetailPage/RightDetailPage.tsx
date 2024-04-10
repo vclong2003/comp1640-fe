@@ -3,7 +3,6 @@ import ItemImageFile from "./ItemImageFile/ItemImageFile";
 import * as S from "./RightDetailPage.styled";
 import { BsPersonFillLock } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
-import UserInfo from "../UserInfo/UserInfo";
 import { IContribution } from "@interfaces/contribution.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";

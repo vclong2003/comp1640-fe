@@ -15,9 +15,11 @@ import {
   IGetContrubutionsPerYearPayload,
   IContributionsByFacultyYear,
   ITotalContributionsByFaculty,
+  IDownloadContributionFilesPayload,
 } from "@interfaces/contribution.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
+import { notifyError } from "@utils/notification.utils";
 import { buildQueryString } from "@utils/string.utils";
 
 // Add contribution ---------------------------------
@@ -144,6 +146,32 @@ const deleteContribution = async (
   return await axiosInstance.delete(`/contribution/${_id}`);
 };
 
+// Download contribution files -------------------------------------------------------
+const downloadContributionFiles = async (
+  payload: IDownloadContributionFilesPayload,
+): Promise<void> => {
+  try {
+    // Get data
+    const query = buildQueryString(payload.query as { [key: string]: unknown });
+    const data = await axiosInstance.get<never, Blob>(
+      `/contribution/download${query}`,
+      {
+        responseType: "blob",
+      },
+    );
+    // Create a link element, click it and remove it
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `${payload.fileName}.zip`);
+    document.body.appendChild(link);
+    link.click();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    notifyError("Download failed, please contact Long!");
+  }
+};
+
 // Analysis ----------------------------------------------------------------
 const getContributionsPerYear = async (
   payload: IGetContrubutionsPerYearPayload,
@@ -173,4 +201,5 @@ export default {
   deleteContribution,
   getContributionsPerYear,
   getTotalContributionsByFaculty,
+  downloadContributionFiles,
 };

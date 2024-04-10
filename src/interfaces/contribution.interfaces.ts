@@ -126,6 +126,12 @@ export interface IDeleteContributionPayload {
   _id: string;
 }
 
+// Add Private Comment ---------------------------
+export interface IDownloadContributionFilesPayload {
+  fileName: string;
+  query: IFindContributionsPayload;
+}
+
 // Analysis ---------------------------------------
 export interface IGetContrubutionsPerYearPayload {
   year: number;

@@ -158,6 +158,8 @@ const FacultyDetail = () => {
                   {mcs?.map((mc) => (
                     <MenuItem key={mc._id} value={mc._id}>
                       {mc.name}
+                      <br />
+                      {mc.faculty && `Current faculty: ${mc.faculty.name}`}
                     </MenuItem>
                   ))}
                   <MenuItem value=""> No MC</MenuItem>

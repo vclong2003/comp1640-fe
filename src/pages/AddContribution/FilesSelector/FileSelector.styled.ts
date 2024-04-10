@@ -1,3 +1,4 @@
+import { DEVICES } from "@config/responsiveBreakpoints";
 import styled from "styled-components";
 
 export const FileSelector = styled.div``;
@@ -10,6 +11,9 @@ export const FilesContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--s-3);
+  @media ${DEVICES.DESKTOP}{
+    padding: var(--s-6);
+  }
   
 `;
 

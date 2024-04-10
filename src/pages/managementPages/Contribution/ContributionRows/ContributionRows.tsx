@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { notifySuccess } from "@utils/notification.utils";
 import { deleteContribution } from "@store/contribution";
+import { useNavigate } from "react-router";
 interface ContributionRowProps {
   contribution: IContribution;
 }
@@ -30,6 +31,8 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
       .then(() => handleCloseDeleteContributionModal());
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -46,6 +49,7 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
             color="info"
             startIcon={<ViewIcon />}
             sx={{ mr: 4 }}
+            onClick={() => navigate(`${contribution._id}`)}
           >
             View
           </Button>

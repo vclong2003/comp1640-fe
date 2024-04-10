@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { deleteEvent } from "@store/event";
 import { useNavigate } from "react-router";
+import { notifySuccess } from "@utils/notification.utils";
 interface EventRowProps {
   event: IEvent;
 }
@@ -30,6 +31,7 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
   const handleDeleteEvent = () => {
     dispatch(deleteEvent({ _id: event._id }))
       .unwrap()
+      .then(() => notifySuccess("You deleted event successfully"))
       .then(() => handleCloseDeleteEventModal());
   };
 

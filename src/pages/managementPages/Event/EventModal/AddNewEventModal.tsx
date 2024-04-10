@@ -16,6 +16,8 @@ import { MenuItem } from "@mui/material";
 import { IFaculty } from "@interfaces/faculty.interfaces";
 import { createEvent, findEvents } from "@store/event";
 import { findFaculties } from "@store/faculty";
+import { ERole } from "@interfaces/user.interfaces";
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
 
 const style = {
   position: "absolute" as const,
@@ -45,6 +47,8 @@ const AddNewEventModal = ({
   handleClose: () => void;
 }) => {
   const { faculties } = useSelector((state: RootState) => state.facultyState);
+  const { user } = useSelector((state: RootState) => state.userState);
+  intialValues.facultyId = user?.faculty?._id || "";
   const dispatch = useDispatch<AppDispatch>();
 
   const [bannerImage, setBannerImage] = useState<File | null>(null);
@@ -94,25 +98,27 @@ const AddNewEventModal = ({
                 gap: "var(--s-2)",
               }}
             >
-              <Field
-                as={TextField}
-                label="Select Faculty"
-                variant="outlined"
-                name="facultyId"
-                size="small"
-                id="fcId"
-                select
-                sx={{ minWidth: 200 }}
-              >
-                <MenuItem value="">Select Faculty</MenuItem>
-                {faculties.map((fc: IFaculty) => (
-                  <MenuItem key={fc._id} value={fc._id}>
-                    {fc.name}
-                    <br />
-                    {/* Current Faculty: {fc.?.name} */}
-                  </MenuItem>
-                ))}
-              </Field>
+              <AuthorizedComponent allowedRoles={[ERole.Admin]}>
+                <Field
+                  as={TextField}
+                  label="Select Faculty"
+                  variant="outlined"
+                  name="facultyId"
+                  size="small"
+                  id="fcId"
+                  select
+                  sx={{ minWidth: 200 }}
+                >
+                  <MenuItem value="">Select Faculty</MenuItem>
+
+                  {faculties.map((fc: IFaculty) => (
+                    <MenuItem key={fc._id} value={fc._id}>
+                      {fc.name}
+                      <br />
+                    </MenuItem>
+                  ))}
+                </Field>
+              </AuthorizedComponent>
               <Field
                 as={TextField}
                 label="Name"

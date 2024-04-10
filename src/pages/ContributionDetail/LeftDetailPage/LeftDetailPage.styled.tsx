@@ -149,6 +149,7 @@ export const Person = styled.div`
 
 export const TextCmt = styled.div`
   font-weight: bold;
+  margin-bottom: var(--s-3);
 `;
 
 export const CmtItem = styled.div`

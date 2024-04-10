@@ -22,7 +22,7 @@ const SecondaryContribution = ({
       />
       <S.Divider />
       <S.Title>{contribution.title}</S.Title>
-      <S.Description>{contribution.description}</S.Description>
+      <S.Description dangerouslySetInnerHTML={{ __html: contribution.description }} />
       <S.Bottom>
         <S.Text>{contribution.faculty.name}</S.Text>
       </S.Bottom>

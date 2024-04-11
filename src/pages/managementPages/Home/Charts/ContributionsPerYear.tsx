@@ -1,5 +1,5 @@
 import { IContributionsByFacultyYear } from "@interfaces/contribution.interfaces";
-import { Box, MenuItem, TextField } from "@mui/material";
+import { Box, Grid, MenuItem, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import contributionService from "@service/contribution";
 import { Line } from "react-chartjs-2";
@@ -27,25 +27,26 @@ export default function ContributionsPerYear() {
   return (
     <Box>
       {/* Year Selector ----------------------------------------- */}
-      <TextField
-        value={year}
-        onChange={(e) => setYear(Number(e.target.value))}
-        select
-      >
-        <MenuItem value={currentYear}>{currentYear}</MenuItem>
-        <MenuItem value={currentYear - 1}>{currentYear - 1}</MenuItem>
-        <MenuItem value={currentYear - 2}>{currentYear - 2}</MenuItem>
-      </TextField>
+      <Grid container spacing={2} sx={{ alignItems: "center" }}>
+        <Grid item>Contributions in</Grid>
+        <Grid item>
+          <TextField
+            value={year}
+            onChange={(e) => setYear(Number(e.target.value))}
+            select
+            
+          >
+            <MenuItem value={currentYear}>{currentYear}</MenuItem>
+            <MenuItem value={currentYear - 1}>{currentYear - 1}</MenuItem>
+            <MenuItem value={currentYear - 2}>{currentYear - 2}</MenuItem>
+          </TextField>
+        </Grid>
+      </Grid>
       {/* Chart -------------------------------------------------- */}
       <Box>
         <Line
           data={chartData}
           options={{
-            plugins: {
-              title: {
-                text: "Monthly contributions by Faculty",
-              },
-            },
             aspectRatio: 2.6,
           }}
         />

@@ -6,12 +6,6 @@ import contributionService from "@service/contribution";
 export default function ContributionsPerEvent() {
   const [data, setData] = useState<IAvgContributionPerEvent[]>([]);
 
-  const generateRandomColor = () => {
-    return `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${
-      Math.random() * 255
-    }, 0.8)`;
-  };
-
   useEffect(() => {
     contributionService.getAvgContributionsPerEvent().then((data) => {
       setData(data);
@@ -27,7 +21,7 @@ export default function ContributionsPerEvent() {
             label: "Contributions/Event",
             data: data.map((data) => data.avg),
             borderRadius: 2,
-            backgroundColor: data.map(() => generateRandomColor()),
+            backgroundColor: "#2f9ea1",
           },
         ],
       }}

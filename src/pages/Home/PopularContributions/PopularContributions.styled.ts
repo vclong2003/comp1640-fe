@@ -26,7 +26,8 @@ export const PopularContributionItemsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(---s-2);
+  gap: var(--s-2);
+  row-gap: var(--s-3);
   justify-content: space-between;
 `;
 

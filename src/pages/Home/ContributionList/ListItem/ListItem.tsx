@@ -22,7 +22,7 @@ export default function ListItem({ contribution }: IListItemProps) {
       <S.ContentContainer>
         <S.EventName>{contribution.event.name}</S.EventName>
         <S.Title>{contribution.title}</S.Title>
-        <S.Description>{contribution.description}</S.Description>
+        <S.Description dangerouslySetInnerHTML={{ __html: contribution.description }} />
         <S.InteractionContainer>
           <S.Like>
             <AiFillLike />

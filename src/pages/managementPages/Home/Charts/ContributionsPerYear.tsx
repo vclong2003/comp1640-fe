@@ -24,8 +24,6 @@ export default function ContributionsPerYear() {
     });
   }, [year]);
 
-  console.log(data);
-
   return (
     <Box>
       {/* Year Selector ----------------------------------------- */}
@@ -48,7 +46,7 @@ export default function ContributionsPerYear() {
                 text: "Monthly contributions by Faculty",
               },
             },
-            aspectRatio: 2.4,
+            aspectRatio: 2.6,
           }}
         />
       </Box>

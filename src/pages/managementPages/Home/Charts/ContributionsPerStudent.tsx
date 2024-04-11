@@ -36,7 +36,7 @@ export default function ContributionsPerStudent() {
             text: "Contributions per Student",
           },
         },
-        aspectRatio: 1.2,
+        aspectRatio: 1.5,
       }}
     />
   );

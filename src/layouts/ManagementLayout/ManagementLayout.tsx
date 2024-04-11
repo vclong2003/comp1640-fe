@@ -15,6 +15,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Menu,
   createTheme,
   // styled,
 } from "@mui/material";
@@ -25,11 +26,13 @@ import { FaUsers, FaFile, FaHome } from "react-icons/fa";
 import { LuSchool } from "react-icons/lu";
 import { MdOutlineEventAvailable } from "react-icons/md";
 // import Menu from "@mui/material/Menu";
-import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 // import MenuItem from "@mui/material/MenuItem";
 import AppBar from "./Header";
 import Drawer from "./Menu";
+import Avatar from "@components/Avatar/Avatar";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/index";
 
 // const pages = ["Dashboard", "Faculties", "Events", "Users", "Contributions"];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -83,6 +86,7 @@ const mainListItems = (
 const defaultTheme = createTheme();
 
 export default function ManagementLayout() {
+  const { user } = useSelector((state: RootState) => state.userState);
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -203,10 +207,14 @@ export default function ManagementLayout() {
                 <Tooltip title="Open settings">
                   {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
                   <IconButton sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
+                    <Box
+                      sx={{
+                        width: "48px",
+                        height: "48px",
+                      }}
+                    >
+                      <Avatar imageUrl={user?.avatar_url} />
+                    </Box>
                   </IconButton>
                 </Tooltip>
                 {/* <Menu

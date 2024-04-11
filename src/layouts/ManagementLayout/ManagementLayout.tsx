@@ -1,92 +1,96 @@
 import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-// import MuiDrawer from "@mui/material/Drawer";
+import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-// import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
+import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 
+import List from "@mui/material/List";
+// import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import {
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  createTheme,
-  // styled,
-} from "@mui/material";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 import { Outlet } from "react-router";
-import { ThemeProvider } from "styled-components";
 import Link from "@components/Link/Link";
 import { FaUsers, FaFile, FaHome } from "react-icons/fa";
 import { LuSchool } from "react-icons/lu";
 import { MdOutlineEventAvailable } from "react-icons/md";
-// import Menu from "@mui/material/Menu";
-import Tooltip from "@mui/material/Tooltip";
-// import MenuItem from "@mui/material/MenuItem";
-import AppBar from "./Header";
-import Drawer from "./Menu";
-import Avatar from "@components/Avatar/Avatar";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/index";
+import Avatar from "./Avatar/Avatar";
+const drawerWidth = 240;
 
-// const pages = ["Dashboard", "Faculties", "Events", "Users", "Contributions"];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+export default function ManagementLayout() {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
 
-const mainListItems = (
-  <React.Fragment>
-    <Link to="/manage">
-      <ListItemButton>
-        <ListItemIcon>
-          <FaHome />
-        </ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </ListItemButton>
-    </Link>
-    <Link to="/manage/faculty">
-      <ListItemButton>
-        <ListItemIcon>
-          <LuSchool />
-        </ListItemIcon>
-        <ListItemText primary="Faculties" />
-      </ListItemButton>
-    </Link>
-    <Link to="/manage/event">
-      <ListItemButton>
-        <ListItemIcon>
-          <MdOutlineEventAvailable />
-        </ListItemIcon>
-        <ListItemText primary="Events" />
-      </ListItemButton>
-    </Link>
-    <Link to="/manage/user">
-      <ListItemButton>
-        <ListItemIcon>
-          <FaUsers />
-        </ListItemIcon>
-        <ListItemText primary="Users" />
-      </ListItemButton>
-    </Link>
-    <Link to="/manage/contribution">
-      <ListItemButton>
-        <ListItemIcon>
-          <FaFile />
-        </ListItemIcon>
-        <ListItemText primary="Contributions" />
-      </ListItemButton>
-    </Link>
-  </React.Fragment>
-);
+  const handleDrawerClose = () => {
+    setIsClosing(true);
+    setMobileOpen(false);
+  };
+
+  const handleDrawerTransitionEnd = () => {
+    setIsClosing(false);
+  };
+
+  const handleDrawerToggle = () => {
+    if (!isClosing) {
+      setMobileOpen(!mobileOpen);
+    }
+  };
+
+  const mainListItems = (
+    <React.Fragment>
+      <Link to="/manage">
+        <ListItemButton>
+          <ListItemIcon>
+            <FaHome />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItemButton>
+      </Link>
+      <Link to="/manage/faculty">
+        <ListItemButton>
+          <ListItemIcon>
+            <LuSchool />
+          </ListItemIcon>
+          <ListItemText primary="Faculties" />
+        </ListItemButton>
+      </Link>
+      <Link to="/manage/event">
+        <ListItemButton>
+          <ListItemIcon>
+            <MdOutlineEventAvailable />
+          </ListItemIcon>
+          <ListItemText primary="Events" />
+        </ListItemButton>
+      </Link>
+      <Link to="/manage/user">
+        <ListItemButton>
+          <ListItemIcon>
+            <FaUsers />
+          </ListItemIcon>
+          <ListItemText primary="Users" />
+        </ListItemButton>
+      </Link>
+      <Link to="/manage/contribution">
+        <ListItemButton>
+          <ListItemIcon>
+            <FaFile />
+          </ListItemIcon>
+          <ListItemText primary="Contributions" />
+        </ListItemButton>
+      </Link>
+    </React.Fragment>
+  );
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function ManagementLayout() {
-  const { user } = useSelector((state: RootState) => state.userState);
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -207,14 +211,10 @@ export default function ManagementLayout() {
                 <Tooltip title="Open settings">
                   {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
                   <IconButton sx={{ p: 0 }}>
-                    <Box
-                      sx={{
-                        width: "48px",
-                        height: "48px",
-                      }}
-                    >
-                      <Avatar imageUrl={user?.avatar_url} />
-                    </Box>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
                   </IconButton>
                 </Tooltip>
                 {/* <Menu
@@ -250,47 +250,29 @@ export default function ManagementLayout() {
         </AppBar>
         <Drawer
           variant="permanent"
-          open={open}
           sx={{
-            "@media only screen and (max-width: 600px)": {
-              display: "none",
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
             },
           }}
+          open
         >
-          <Toolbar
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List component="nav">{mainListItems}</List>
+          {drawer}
         </Drawer>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: "100vh",
-            overflow: "auto",
-          }}
-        >
-          <Toolbar />
-          <Box sx={{ padding: 3 }}>
-            {/* Page goes here --- VCL */}
-            <Outlet />
-          </Box>
-        </Box>
       </Box>
-    </ThemeProvider>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
+        <Toolbar />
+        <Outlet />
+      </Box>
+    </Box>
   );
 }

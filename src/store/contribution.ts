@@ -16,6 +16,7 @@ const initialState: IContributionState = {
   comments: [],
   privateComments: [],
   total: 0,
+  filter: {},
 };
 
 // Find contributions --------------------------------
@@ -84,7 +85,11 @@ export const deleteContribution = createAsyncThunk(
 const contributionState = createSlice({
   name,
   initialState,
-  reducers: {},
+  reducers: {
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // Find contributions ------------------------------
     builder.addCase(findContributions.fulfilled, (state, action) => {
@@ -129,3 +134,4 @@ const contributionState = createSlice({
 });
 
 export default contributionState;
+export const { setFilter } = contributionState.actions;

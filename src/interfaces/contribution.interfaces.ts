@@ -48,6 +48,7 @@ export interface IContributionState {
   comments: IComment[];
   privateComments: IComment[];
   total: number;
+  filter: IFindContributionsPayload;
 }
 
 // Add Contribution --------------------------
@@ -123,4 +124,28 @@ export interface ILikeContributionPayload {
 // Delete Contribution ---------------------------
 export interface IDeleteContributionPayload {
   _id: string;
+}
+
+// Add Private Comment ---------------------------
+export interface IDownloadContributionFilesPayload {
+  fileName: string;
+  query: IFindContributionsPayload;
+}
+
+// Analysis ---------------------------------------
+export interface IGetContrubutionsPerYearPayload {
+  year: number;
+}
+export interface IContributionsByFacultyYear {
+  faculty: string;
+  data: { month: number; contributions: number }[];
+}
+export interface ITotalContributionsByFaculty {
+  faculty: string;
+  published: number;
+  not_published: number;
+}
+export interface IAvgContributionsPerStudent {
+  faculty: string;
+  avg: number;
 }

@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { notifySuccess } from "@utils/notification.utils";
 import { deleteContribution } from "@store/contribution";
+import { useNavigate } from "react-router";
 interface ContributionRowProps {
   contribution: IContribution;
 }
@@ -30,14 +31,16 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
       .then(() => handleCloseDeleteContributionModal());
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-        <TableCell component="th" scope="row">
-          {contribution._id}
+        <TableCell component="th" align="left">
+          {contribution.title}
         </TableCell>
-        <TableCell align="left">{contribution.title}</TableCell>
         <TableCell align="left">{contribution.author.name}</TableCell>
+        <TableCell align="left">{contribution.faculty.name}</TableCell>
         <TableCell align="left">{contribution.event.name}</TableCell>
         <TableCell align="left">
           <Button
@@ -46,8 +49,20 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
             color="info"
             startIcon={<ViewIcon />}
             sx={{ mr: 4 }}
+            onClick={() => navigate(`${contribution._id}`)}
           >
             View
+          </Button>
+
+          <Button
+            variant="outlined"
+            size="small"
+            color="info"
+            startIcon={<ViewIcon />}
+            sx={{ mr: 4 }}
+            onClick={() => navigate(`${contribution._id}`)}
+          >
+            Download
           </Button>
 
           <Button

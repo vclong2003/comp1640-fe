@@ -10,6 +10,10 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/index";
 import { deleteEvent } from "@store/event";
 import { useNavigate } from "react-router";
+import { notifySuccess } from "@utils/notification.utils";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import contributionService from "@service/contribution";
+
 interface EventRowProps {
   event: IEvent;
 }
@@ -20,8 +24,6 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
     useState(false);
   const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
 
-  // const handleOpenViewDetailEventModal = () =>
-  //   setOpenViewDetailEventModal(true);
   const handleCloseViewDetailEventModal = () =>
     setOpenViewDetailEventModal(false);
   const handleOpenDeleteEventModal = () => setOpenDeleteEventModal(true);
@@ -30,7 +32,15 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
   const handleDeleteEvent = () => {
     dispatch(deleteEvent({ _id: event._id }))
       .unwrap()
+      .then(() => notifySuccess("You deleted event successfully"))
       .then(() => handleCloseDeleteEventModal());
+  };
+
+  const handleDownload = () => {
+    return contributionService.downloadContributionFiles({
+      fileName: event.name,
+      query: { eventId: event._id },
+    });
   };
 
   const navigate = useNavigate();
@@ -49,6 +59,7 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
           {toIsoDate(event.final_closure_date)}
         </TableCell>
         <TableCell align="left">{event.faculty?.name}</TableCell>
+        <TableCell align="left">{event.number_of_contributions}</TableCell>
         <TableCell align="left">
           <Button
             variant="outlined"
@@ -59,6 +70,17 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
             onClick={() => navigate(`${event._id}`)}
           >
             View
+          </Button>
+
+          <Button
+            variant="outlined"
+            size="small"
+            color="success"
+            startIcon={<FileDownloadIcon />}
+            sx={{ mr: 4 }}
+            onClick={handleDownload}
+          >
+            Download
           </Button>
           <Button
             variant="outlined"

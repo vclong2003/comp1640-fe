@@ -1,21 +1,34 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import sourceData from "./Charts/SourceData.json";
 import { defaults } from "chart.js/auto";
-import BarChart from "./Charts/BarChart";
-import DoughnutData from "./Charts/DoughnutChart.json";
-import DoughnutChart from "./Charts/Doughnut";
-import Cards from "./Cards/Cards";
+import { Grid } from "@mui/material";
+import ContributionsPerFaculty from "./Charts/ContributionsPerFaculty";
+import ContributionsPerYear from "./Charts/ContributionsPerYear";
+import ContributionsPerStudent from "./Charts/ContributionsPerStudent";
 
-defaults.maintainAspectRatio = false;
+defaults.maintainAspectRatio = true;
 defaults.responsive = true;
 defaults.plugins.title.display = true;
 defaults.plugins.title.align = "start";
 defaults.plugins.title.color = "black";
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
-    <>
+    <Grid container spacing={2} sx={{ minHeight: "100vh" }}>
+      <Grid item xs={12}>
+        <ContributionsPerYear />
+      </Grid>
+      <Grid item xs={6}>
+        <ContributionsPerFaculty />
+      </Grid>
+      <Grid item xs={6}>
+        <ContributionsPerStudent />
+      </Grid>
+    </Grid>
+  );
+};
+
+export default Home;
+/*
+ <>
       <Box
         sx={{
           display: "flex",
@@ -25,7 +38,6 @@ const Home: React.FC = () => {
       >
         <h2>Dashboard</h2>
       </Box>
-      <Cards />
       <Box
         sx={{
           display: "flex",
@@ -47,7 +59,7 @@ const Home: React.FC = () => {
             },
           }}
         >
-          <DoughnutChart sourceData={DoughnutData} />
+         
         </Box>
         <Box
           sx={{
@@ -65,7 +77,4 @@ const Home: React.FC = () => {
         </Box>
       </Box>
     </>
-  );
-};
-
-export default Home;
+*/

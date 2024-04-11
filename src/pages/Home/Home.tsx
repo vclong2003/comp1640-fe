@@ -9,6 +9,7 @@ import { AppDispatch, RootState } from "@store/index";
 import { useEffect, useState } from "react";
 import { findContributions } from "@store/contribution";
 import { IContribution } from "@interfaces/contribution.interfaces";
+import { SIZES } from "@config/responsiveBreakpoints";
 
 interface IContributionsMap {
   onBanner: IContribution[];
@@ -44,13 +45,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (windowWidth < Number(SIZES.DESKTOP)) {
+      setContributionsMap({
+        onBanner: contributions.slice(0, 1),
+        onPopular: contributions.slice(1, 5),
+        onList: contributions.slice(5),
+      });
+      return;
+    }
     setContributionsMap({
-      onBanner: contributions.slice(0, windowWidth < 1200 ? 1 : 2),
-      onPopular: contributions.slice(
-        windowWidth < 1200 ? 1 : 2,
-        windowWidth < 1200 ? 5 : 6,
-      ),
-      onList: contributions.slice(windowWidth < 1200 ? 5 : 6),
+      onBanner: contributions.slice(0, 2),
+      onPopular: contributions.slice(2, 6),
+      onList: contributions.slice(6),
     });
   }, [contributions, windowWidth]);
 

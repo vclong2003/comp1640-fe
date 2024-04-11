@@ -12,9 +12,15 @@ import {
   IRemoveContributionFilePayload,
   IUpdateContriButionPayload,
   IDeleteContributionPayload,
+  IGetContrubutionsPerYearPayload,
+  IContributionsByFacultyYear,
+  ITotalContributionsByFaculty,
+  IDownloadContributionFilesPayload,
+  IAvgContributionsPerStudent,
 } from "@interfaces/contribution.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
+import { notifyError } from "@utils/notification.utils";
 import { buildQueryString } from "@utils/string.utils";
 
 // Add contribution ---------------------------------
@@ -141,6 +147,51 @@ const deleteContribution = async (
   return await axiosInstance.delete(`/contribution/${_id}`);
 };
 
+// Download contribution files -------------------------------------------------------
+const downloadContributionFiles = async (
+  payload: IDownloadContributionFilesPayload,
+): Promise<void> => {
+  try {
+    // Get data
+    const query = buildQueryString(payload.query as { [key: string]: unknown });
+    const data = await axiosInstance.get<never, Blob>(
+      `/contribution/download${query}`,
+      {
+        responseType: "blob",
+      },
+    );
+    // Create a link element, click it and remove it
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `${payload.fileName.trim()}.zip`);
+    document.body.appendChild(link);
+    link.click();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    notifyError("Download failed, please contact Long!");
+  }
+};
+
+// Analysis ----------------------------------------------------------------
+const getContributionsPerYear = async (
+  payload: IGetContrubutionsPerYearPayload,
+): Promise<IContributionsByFacultyYear[]> => {
+  return await axiosInstance.get(
+    `/contribution/yearly-analysis/${payload.year}`,
+  );
+};
+const getTotalContributionsByFaculty = async (): Promise<
+  ITotalContributionsByFaculty[]
+> => {
+  return await axiosInstance.get(`/contribution/lifetime-analysis`);
+};
+const getAvgContributionsPerStudent = async (): Promise<
+  IAvgContributionsPerStudent[]
+> => {
+  return await axiosInstance.get(`/contribution/avg-contributions-per-student`);
+};
+
 export default {
   addContribution,
   findContributionById,
@@ -154,4 +205,8 @@ export default {
   addPrivateComment,
   removePrivateComment,
   deleteContribution,
+  getContributionsPerYear,
+  getTotalContributionsByFaculty,
+  downloadContributionFiles,
+  getAvgContributionsPerStudent,
 };

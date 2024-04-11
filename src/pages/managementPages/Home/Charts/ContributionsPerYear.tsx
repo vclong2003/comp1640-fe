@@ -2,7 +2,7 @@ import { IContributionsByFacultyYear } from "@interfaces/contribution.interfaces
 import { Box, MenuItem, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import contributionService from "@service/contribution";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { monthName } from "@utils/date.utils";
 
 export default function ContributionsPerYear() {
@@ -10,18 +10,11 @@ export default function ContributionsPerYear() {
   const [year, setYear] = useState<number>(currentYear);
   const [data, setData] = useState<IContributionsByFacultyYear[]>([]);
 
-  const generateRandomColor = () => {
-    return `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${
-      Math.random() * 255
-    }, 0.8)`;
-  };
-
   const chartData = {
     labels: data[0]?.data.map((item) => monthName(item.month)),
     datasets: data.map((faculty) => ({
       label: faculty.faculty,
       data: faculty.data.map((item) => item.contributions),
-      backgroundColor: generateRandomColor(),
     })),
   };
 
@@ -30,8 +23,6 @@ export default function ContributionsPerYear() {
       setData(data);
     });
   }, [year]);
-
-  console.log(data);
 
   return (
     <Box>
@@ -47,7 +38,7 @@ export default function ContributionsPerYear() {
       </TextField>
       {/* Chart -------------------------------------------------- */}
       <Box>
-        <Bar
+        <Line
           data={chartData}
           options={{
             plugins: {
@@ -55,7 +46,7 @@ export default function ContributionsPerYear() {
                 text: "Monthly contributions by Faculty",
               },
             },
-            aspectRatio: 2,
+            aspectRatio: 2.6,
           }}
         />
       </Box>

@@ -149,3 +149,7 @@ export interface IAvgContributionsPerStudent {
   faculty: string;
   avg: number;
 }
+export interface IAvgContributionPerEvent {
+  faculty: string;
+  avg: number;
+}

@@ -17,6 +17,7 @@ import {
   ITotalContributionsByFaculty,
   IDownloadContributionFilesPayload,
   IAvgContributionsPerStudent,
+  IAvgContributionPerEvent,
 } from "@interfaces/contribution.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -191,6 +192,11 @@ const getAvgContributionsPerStudent = async (): Promise<
 > => {
   return await axiosInstance.get(`/contribution/avg-contributions-per-student`);
 };
+const getAvgContributionsPerEvent = async (): Promise<
+  IAvgContributionPerEvent[]
+> => {
+  return await axiosInstance.get(`/contribution/avg-contributions-per-event`);
+};
 
 export default {
   addContribution,
@@ -209,4 +215,5 @@ export default {
   getTotalContributionsByFaculty,
   downloadContributionFiles,
   getAvgContributionsPerStudent,
+  getAvgContributionsPerEvent,
 };

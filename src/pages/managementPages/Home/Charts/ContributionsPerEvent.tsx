@@ -1,10 +1,10 @@
-import { IAvgContributionsPerStudent } from "@interfaces/contribution.interfaces";
 import { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { IAvgContributionPerEvent } from "@interfaces/contribution.interfaces";
+import { Bar } from "react-chartjs-2";
 import contributionService from "@service/contribution";
 
-export default function ContributionsPerStudent() {
-  const [data, setData] = useState<IAvgContributionsPerStudent[]>([]);
+export default function ContributionsPerEvent() {
+  const [data, setData] = useState<IAvgContributionPerEvent[]>([]);
 
   const generateRandomColor = () => {
     return `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${
@@ -13,19 +13,20 @@ export default function ContributionsPerStudent() {
   };
 
   useEffect(() => {
-    contributionService.getAvgContributionsPerStudent().then((data) => {
+    contributionService.getAvgContributionsPerEvent().then((data) => {
       setData(data);
     });
   }, []);
 
   return (
-    <Doughnut
+    <Bar
       data={{
         labels: data.map((data) => data.faculty),
         datasets: [
           {
-            label: "Contributions/Student",
+            label: "Contributions/Event",
             data: data.map((data) => data.avg),
+            borderRadius: 2,
             backgroundColor: data.map(() => generateRandomColor()),
           },
         ],
@@ -33,7 +34,7 @@ export default function ContributionsPerStudent() {
       options={{
         plugins: {
           title: {
-            text: "Contributions per Student",
+            text: "Contributions per Event",
           },
         },
         aspectRatio: 1.5,

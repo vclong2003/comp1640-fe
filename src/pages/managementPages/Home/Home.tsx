@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import ContributionsPerFaculty from "./Charts/ContributionsPerFaculty";
 import ContributionsPerYear from "./Charts/ContributionsPerYear";
 import ContributionsPerStudent from "./Charts/ContributionsPerStudent";
+import ContributionsPerEvent from "./Charts/ContributionsPerEvent";
 
 defaults.maintainAspectRatio = true;
 defaults.responsive = true;
@@ -16,11 +17,14 @@ const Home = () => {
       <Grid item xs={12}>
         <ContributionsPerYear />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={4}>
         <ContributionsPerFaculty />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={4}>
         <ContributionsPerStudent />
+      </Grid>
+      <Grid item xs={4}>
+        <ContributionsPerEvent />
       </Grid>
     </Grid>
   );

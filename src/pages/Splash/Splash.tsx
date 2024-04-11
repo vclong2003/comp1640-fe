@@ -1,18 +1,10 @@
-import logo from "@assets/images/Splash/logo.png";
+import * as S from "./Splash.styled";
 
 const Splash = () => {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <img src={logo} alt="logo" />
-    </div>
+    <S.Splash>
+      <S.Logo>ALHKQ™</S.Logo>
+    </S.Splash>
   );
 };
 

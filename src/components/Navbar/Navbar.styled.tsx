@@ -35,7 +35,7 @@ export const Dash = styled.div`
 `;
 
 export const Logo = styled.div`
-  font-size: var(--fs-3xl);
+  font-size: var(--fs-2xl);
   color: var(--black);
   font-weight: var(--fw-bold);
   flex: 10;
@@ -43,7 +43,7 @@ export const Logo = styled.div`
   @media ${DEVICES.DESKTOP} {
     color: var(--black);
     font-weight: var(--fw-bold);
-    font-size: var(--fs-4xl);
+    font-size: var(--fs-3xl);
     flex: 2;
   }
 `;

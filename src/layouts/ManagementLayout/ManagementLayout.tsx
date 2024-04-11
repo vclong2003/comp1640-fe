@@ -13,34 +13,31 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import {
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  createTheme,
+  // styled,
+} from "@mui/material";
 import { Outlet } from "react-router";
 import Link from "@components/Link/Link";
 import { FaUsers, FaFile, FaHome } from "react-icons/fa";
 import { LuSchool } from "react-icons/lu";
 import { MdOutlineEventAvailable } from "react-icons/md";
-import Avatar from "./Avatar/Avatar";
-const drawerWidth = 240;
+// import Menu from "@mui/material/Menu";
+import Tooltip from "@mui/material/Tooltip";
+// import MenuItem from "@mui/material/MenuItem";
+import AppBar from "./Header";
+import Drawer from "./Menu";
+import Avatar from "@components/Avatar/Avatar";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/index";
 
-export default function ManagementLayout() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
-
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
-
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
-  };
+// const pages = ["Dashboard", "Faculties", "Events", "Users", "Contributions"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const mainListItems = (
     <React.Fragment>
@@ -91,6 +88,7 @@ export default function ManagementLayout() {
 const defaultTheme = createTheme();
 
 export default function ManagementLayout() {
+  const { user } = useSelector((state: RootState) => state.userState);
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);

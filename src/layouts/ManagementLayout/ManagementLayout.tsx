@@ -13,34 +13,31 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import {
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  createTheme,
+  // styled,
+} from "@mui/material";
 import { Outlet } from "react-router";
 import Link from "@components/Link/Link";
 import { FaUsers, FaFile, FaHome } from "react-icons/fa";
 import { LuSchool } from "react-icons/lu";
 import { MdOutlineEventAvailable } from "react-icons/md";
-import Avatar from "./Avatar/Avatar";
-const drawerWidth = 240;
+// import Menu from "@mui/material/Menu";
+import Tooltip from "@mui/material/Tooltip";
+// import MenuItem from "@mui/material/MenuItem";
+import AppBar from "./Header";
+import Drawer from "./Menu";
+import Avatar from "@components/Avatar/Avatar";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/index";
 
-export default function ManagementLayout() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
-
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
-
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
-  };
+// const pages = ["Dashboard", "Faculties", "Events", "Users", "Contributions"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const mainListItems = (
     <React.Fragment>
@@ -87,65 +84,172 @@ export default function ManagementLayout() {
     </React.Fragment>
   );
 
-  const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <List component="nav">{mainListItems}</List>
-    </div>
-  );
+// TODO remove, this demo shouldn't need to reset the theme.
+const defaultTheme = createTheme();
+
+export default function ManagementLayout() {
+  const { user } = useSelector((state: RootState) => state.userState);
+  const [open, setOpen] = React.useState(true);
+  const toggleDrawer = () => {
+    setOpen(!open);
+  };
+  // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+  //   null,
+  // );
+  // const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+  //   null,
+  // );
+
+  // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
+  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
+
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
+
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+    <ThemeProvider theme={defaultTheme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar position="absolute" open={open}>
+          <Toolbar
+            sx={{
+              pr: "24px", // keep right padding when drawer closed
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            ALHKQ
-          </Typography>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={toggleDrawer}
+              sx={{
+                marginRight: "36px",
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              component="a"
+              variant="h4"
+              color="inherit"
+              noWrap
+              href="/home"
+              sx={{
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              ALHQK
+            </Typography>
+            {/* <IconButton color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton> 
+             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                // onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box> */}
 
-          <Avatar />
-        </Toolbar>
-      </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
+            <Box
+              sx={{ width: "92%", display: "flex", justifyContent: "flex-end" }}
+            >
+              <Box
+                sx={{
+                  flexGrow: 0,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <Tooltip title="Open settings">
+                  {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
+                  <IconButton sx={{ p: 0 }}>
+                    <Box
+                      sx={{
+                        width: "48px",
+                        height: "48px",
+                      }}
+                    >
+                      <Avatar imageUrl={user?.avatar_url} />
+                    </Box>
+                  </IconButton>
+                </Tooltip>
+                {/* <Menu
+                  sx={{
+                    mt: "45px",
+                    "@media only screen and (max-width: 600px)": {
+                      display: "none",
+                    },
+                  }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{}}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu> */}
+              </Box>
+            </Box>
+          </Toolbar>
+        </AppBar>
         <Drawer
           variant="permanent"
           sx={{

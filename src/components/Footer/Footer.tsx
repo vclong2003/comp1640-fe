@@ -1,6 +1,6 @@
+import { GitHub, Instagram, X, YouTube } from "@mui/icons-material";
 import * as S from "./Footer.styled";
 import { FaRegCopyright } from "react-icons/fa6";
-import { GitHub, Instagram, X, YouTube } from "@mui/icons-material";
 
 const Footer = () => {
   return (

@@ -1,15 +1,6 @@
 import * as S from "./Footer.styled";
-import { FaQq, FaRegCopyright } from "react-icons/fa6";
-import {
-  GitHub,
-  Instagram,
-  Pinterest,
-  Reddit,
-  WhatsApp,
-  X,
-  YouTube,
-} from "@mui/icons-material";
-import { BsTiktok, BsWechat } from "react-icons/bs";
+import { FaRegCopyright } from "react-icons/fa6";
+import { GitHub, Instagram, X, YouTube } from "@mui/icons-material";
 
 const Footer = () => {
   return (
@@ -30,24 +21,6 @@ const Footer = () => {
             </S.IconUrl>
             <S.IconUrl href="https://github.com/vclong2003" target="_blank">
               <YouTube />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <Reddit />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <WhatsApp />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <BsTiktok />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <Pinterest />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <FaQq />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <BsWechat />
             </S.IconUrl>
           </S.ThirdLeft>
         </S.Left>

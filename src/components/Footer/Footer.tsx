@@ -10,18 +10,10 @@ const Footer = () => {
           <S.FirstLeft>ALHKQ™</S.FirstLeft>
           <S.SecondLeft>Your Hub for Creative Expression.</S.SecondLeft>
           <S.ThirdLeft>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <GitHub />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <X />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <Instagram />
-            </S.IconUrl>
-            <S.IconUrl href="https://github.com/vclong2003" target="_blank">
-              <YouTube />
-            </S.IconUrl>
+            <GitHub />
+            <X />
+            <Instagram />
+            <YouTube />
           </S.ThirdLeft>
         </S.Left>
       </S.ContainerTop>

@@ -23,7 +23,6 @@ const Home = () => {
       <Grid item xs={6}>
         <ContributionsPerFaculty />
       </Grid>
-
       <Grid item xs={6}>
         <ContributionsPerEvent />
       </Grid>

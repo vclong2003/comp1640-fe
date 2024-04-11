@@ -66,10 +66,6 @@ export const ThirdLeft = styled.div`
   width: 100%;
   gap: 10px;
 `;
-export const IconUrl = styled.a`
-  text-decoration: none;
-  color: var(--white);
-`;
 
 export const ContainerMiddle = styled.div`
   /* padding: var(--s-3) var(--s-12); */

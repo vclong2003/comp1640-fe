@@ -14,16 +14,17 @@ defaults.plugins.title.color = "black";
 const Home = () => {
   return (
     <Grid container spacing={2} sx={{ minHeight: "100vh" }}>
-      <Grid item xs={12}>
+      <Grid item xs={8}>
         <ContributionsPerYear />
-      </Grid>
-      <Grid item xs={4}>
-        <ContributionsPerFaculty />
       </Grid>
       <Grid item xs={4}>
         <ContributionsPerStudent />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6}>
+        <ContributionsPerFaculty />
+      </Grid>
+
+      <Grid item xs={6}>
         <ContributionsPerEvent />
       </Grid>
     </Grid>

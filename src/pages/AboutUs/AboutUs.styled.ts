@@ -5,8 +5,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--s-5);
-  padding: 0 var(--s-10);
+  padding: var(--s-6) var(--s-8);
+  margin-bottom: var(--s-6);
 `;
 
 export const Title = styled.div`
@@ -15,10 +15,10 @@ export const Title = styled.div`
   display: flex;
   font-size: var(--fs-2xl);
   font-weight: var(--fw-semibold);
-  margin-bottom: var(--s-5);
+  margin-bottom: var(--s-4);
   @media ${DEVICES.DESKTOP} {
     font-size: var(--fs-3xl);
-    margin-bottom: var(--s-10);
+    margin-bottom: var(--s-4);
   }
 `;
 
@@ -33,17 +33,19 @@ export const LeftContent = styled.div`
 `;
 
 export const Text = styled.div`
-  font-size: var(--fs-2xl);
-  margin-bottom: var(--s-8);
+  font-size: var(--fs-xl);
+  margin-bottom: var(--s-4);
+  font-weight: var(--fw-semibold);
   @media ${DEVICES.DESKTOP} {
-    font-size: var(--fs-3xl);
-    margin-bottom: var(--s-8);
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--s-4);
   }
 `;
 
 export const Description = styled.div`
   font-size: var(--fs-md);
   margin-bottom: var(--s-0);
+  line-height: 1.3;
   @media ${DEVICES.DESKTOP} {
     font-size: var(--fs-lg);
     margin-bottom: var(--s-10);
@@ -74,5 +76,5 @@ export const Image = styled.img`
   object-fit: cover;
   width: 100%;
   height: 100%;
-  border-radius: var(--br-xl);
+  border-radius: var(--br-lg);
 `;

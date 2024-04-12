@@ -9,7 +9,6 @@ import { AppDispatch } from "@store/index";
 import { notifySuccess } from "@utils/notification.utils";
 import { deleteContribution } from "@store/contribution";
 import { useNavigate } from "react-router";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
 interface ContributionRowProps {
   contribution: IContribution;
 }
@@ -53,17 +52,6 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
             onClick={() => navigate(`${contribution._id}`)}
           >
             View
-          </Button>
-
-          <Button
-            variant="outlined"
-            size="small"
-            color="success"
-            startIcon={<FileDownloadIcon />}
-            sx={{ mr: 4 }}
-            onClick={() => navigate(`${contribution._id}`)}
-          >
-            Download
           </Button>
 
           <Button

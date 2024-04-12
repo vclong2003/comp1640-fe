@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import * as S from "./EditContribution.styled";
 import EditForm from "./EditForm/EditForm";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import service from "@service/contribution";
 import { IContribution } from "@interfaces/contribution.interfaces";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/index";
+import { ERole } from "@interfaces/user.interfaces";
+import { notifyError } from "@utils/notification.utils";
 
 export default function EditContribution() {
   const { contributionId } = useParams();
   const [contribution, setContribution] = useState<IContribution>();
+  const { user } = useSelector((state: RootState) => state.userState);
+  const naviage = useNavigate();
 
   useEffect(() => {
     if (!contributionId) return;
@@ -16,6 +22,19 @@ export default function EditContribution() {
       .then((res) => setContribution(res));
   }, [contributionId]);
 
+  useEffect(() => {
+    if (user?.role === ERole.MarketingCoordinator) {
+      if (contribution?.faculty._id !== user?.faculty?._id) {
+        notifyError("You don't have permission to edit this contribution");
+        naviage("/");
+      }
+    } else {
+      if (contribution?.author._id !== user?._id) {
+        notifyError("You don't have permission to edit this contribution");
+        naviage("/");
+      }
+    }
+  }, [user, contribution]);
   return (
     <S.EditContribution>
       <S.Title>Edit contribution </S.Title>

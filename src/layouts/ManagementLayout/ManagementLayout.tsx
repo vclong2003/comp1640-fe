@@ -14,7 +14,6 @@ import ListItemText from "@mui/material/ListItemText";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import { Outlet } from "react-router";
 import Link from "@components/Link/Link";
 import { FaUsers, FaFile, FaHome } from "react-icons/fa";
@@ -115,9 +114,7 @@ export default function ManagementLayout() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            ALHKQ
-          </Typography>
+          <Link to="/home">ALHKQ</Link>
 
           <Avatar />
         </Toolbar>

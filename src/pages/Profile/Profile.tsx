@@ -11,7 +11,7 @@ import Popup from "@components/Popup/Popup";
 import ImageCropper from "@components/ImageCropper/ImageCropper";
 import { useState } from "react";
 import { notifySuccess } from "@utils/notification.utils";
-import { updateUser } from "@store/user";
+import { updateProfile } from "@store/user";
 
 export default function Profile() {
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ export default function Profile() {
 
   const updateAvatar = (file: File) => {
     setLoading(true);
-    dispatch(updateUser({ avatar: file }))
+    dispatch(updateProfile({ avatar: file }))
       .unwrap()
       .then(() => notifySuccess("Nice! Your avatar has been updated!"))
       .then(closeImageCropper)

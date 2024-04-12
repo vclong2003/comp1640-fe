@@ -100,14 +100,25 @@ export interface IRemoveLoginSessionPayload {
   sessionId: string;
 }
 
-// Update User ----------------------------------
-export interface IUpdateUserPayload {
+// Update Profile ----------------------------------
+export interface IUpdateProfilePayload {
   phone?: string;
   name?: string;
   dob?: string;
   gender?: EGender;
   avatar?: File;
   facultyId?: string;
+}
+
+// Update User by Id ----------------------------------
+export interface IUpdateUserByIdPayload {
+  phone?: string;
+  name?: string;
+  dob?: string;
+  gender?: EGender;
+  avatar?: File;
+  facultyId?: string;
+  _id: string;
 }
 // Find users --------------------------------
 export interface IFindUsersPayload {

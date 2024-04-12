@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { IEvent, IUpdateEventPayload } from "@interfaces/event.interfaces";
 import { AppDispatch } from "@store/index";
 import { Field, Form, Formik, useFormikContext } from "formik";
@@ -9,7 +10,7 @@ import { updateEvent } from "@store/event";
 import { notifySuccess } from "@utils/notification.utils";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { Textarea } from "@mui/joy";
-
+import styled from "styled-components";
 import { toInputDateTime } from "@utils/date.utils";
 
 const EventDetailManage = () => {
@@ -36,6 +37,11 @@ const EventDetailManage = () => {
     service.findEventById({ _id: eventId }).then((event) => setEvent(event));
   }, []);
 
+  const ImageStyled = styled.img`
+    width: 95%;
+    border-radius: var(--br-md);
+  `;
+
   const onUpdateEvent = (values: Partial<IUpdateEventPayload>) => {
     if (!event) return;
     const payload: IUpdateEventPayload = { _id: event?._id, ...values };
@@ -50,12 +56,29 @@ const EventDetailManage = () => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+
           width: "100%",
           mt: 5,
         }}
       >
+        <Box sx={{ width: "50%" }}>
+          <ImageStyled
+            src={
+              (bannerImage && URL.createObjectURL(bannerImage)) ||
+              event?.banner_image_url ||
+              ""
+            }
+          />
+          <Button variant="outlined" component="label">
+            <input
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={onSelectBannerImage}
+            />
+            {bannerImage ? bannerImage.name : "Select Banner Image"}
+          </Button>
+        </Box>
         <Box
           sx={{
             width: "50%",
@@ -120,22 +143,6 @@ const EventDetailManage = () => {
                   size="small"
                   type="datetime-local"
                 />
-                <img
-                  src={
-                    (bannerImage && URL.createObjectURL(bannerImage)) ||
-                    event?.banner_image_url ||
-                    ""
-                  }
-                />
-                <Button variant="outlined" component="label">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    hidden
-                    onChange={onSelectBannerImage}
-                  />
-                  {bannerImage ? bannerImage.name : "Select Banner Image"}
-                </Button>
               </Box>
               <Box
                 sx={{

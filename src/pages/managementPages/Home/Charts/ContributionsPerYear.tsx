@@ -34,7 +34,6 @@ export default function ContributionsPerYear() {
             value={year}
             onChange={(e) => setYear(Number(e.target.value))}
             select
-            
           >
             <MenuItem value={currentYear}>{currentYear}</MenuItem>
             <MenuItem value={currentYear - 1}>{currentYear - 1}</MenuItem>
@@ -47,7 +46,7 @@ export default function ContributionsPerYear() {
         <Line
           data={chartData}
           options={{
-            aspectRatio: 2.6,
+            aspectRatio: 2,
           }}
         />
       </Box>

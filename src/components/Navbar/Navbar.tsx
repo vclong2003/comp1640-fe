@@ -49,7 +49,7 @@ const Navbar = () => {
           </S.VerticalNavList>
         </OffCanvas>
         <S.Logo>
-          <Link to="/home">MagBook™</Link>
+          <Link to="/home">ALHKQ™</Link>
         </S.Logo>
         <S.NavList>
           <S.NavItem to="/home">Home</S.NavItem>

@@ -45,15 +45,16 @@ export const FirstLeft = styled.div`
   margin-bottom: var(--s-1);
   font-weight: var(--fw-semibold);
   border-bottom: 2px solid white;
+  font-style: italic;
   @media ${DEVICES.DESKTOP} {
-    font-size: var(--fs-4xl);
+    font-size: var(--fs-3xl);
   }
 `;
 
 export const SecondLeft = styled.div`
   font-size: var(--fs-sm);
   @media ${DEVICES.DESKTOP} {
-    font-size: 18px;
+    font-size: var(--fs-md);
   }
 `;
 
@@ -86,10 +87,7 @@ export const TextBottom = styled.div`
   justify-content: center;
   align-items: center;
   gap: var(--s-2);
-  font-size: var(--fs-sm);
-  @media ${DEVICES.DESKTOP} {
-    font-size: 20px;
-  }
+  font-size: var(--fs-xs);
 `;
 
 export const Text = styled.div``;

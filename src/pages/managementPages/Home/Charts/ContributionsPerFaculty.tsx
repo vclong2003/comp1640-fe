@@ -45,7 +45,7 @@ export default function ContributionsPerFaculty() {
             stacked: true,
           },
         },
-        aspectRatio: 1.5,
+        aspectRatio: 1.4,
       }}
     />
   );

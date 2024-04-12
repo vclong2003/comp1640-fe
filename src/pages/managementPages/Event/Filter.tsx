@@ -1,4 +1,6 @@
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
 import { IFindEventsPayload } from "@interfaces/event.interfaces";
+import { ERole } from "@interfaces/user.interfaces";
 import { Box, Button, MenuItem, TextField } from "@mui/material";
 import { setFilter } from "@store/event";
 import { findFaculties } from "@store/faculty";
@@ -45,21 +47,26 @@ export default function Filter() {
         onReset={onReset}
       >
         <Form>
-          <Field
-            as={TextField}
-            name="facultyId"
-            label="Faculty"
-            select
-            defaultValue=""
-            sx={styled}
+          {/* Faculty selector ---------------------------------- */}
+          <AuthorizedComponent
+            allowedRoles={[ERole.Admin, ERole.MarketingManager]}
           >
-            <MenuItem value="">All</MenuItem>
-            {faculties.map((faculty) => (
-              <MenuItem key={faculty._id} value={faculty._id}>
-                {faculty.name}
-              </MenuItem>
-            ))}
-          </Field>
+            <Field
+              as={TextField}
+              name="facultyId"
+              label="Faculty"
+              select
+              defaultValue=""
+              sx={styled}
+            >
+              <MenuItem value="">All</MenuItem>
+              {faculties.map((faculty) => (
+                <MenuItem key={faculty._id} value={faculty._id}>
+                  {faculty.name}
+                </MenuItem>
+              ))}
+            </Field>
+          </AuthorizedComponent>
 
           <Field
             as={TextField}

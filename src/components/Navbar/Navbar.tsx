@@ -50,9 +50,7 @@ function NavList() {
     <>
       <S.NavItem to="/home">Home</S.NavItem>
       {/* To event ----------------------------------  */}
-      <AuthorizedComponent
-        allowedRoles={[ERole.Guest, ERole.Student, ERole.MarketingCoordinator]}
-      >
+      <AuthorizedComponent allowedRoles={[ERole.Student]}>
         <S.NavItem to="/event">Events</S.NavItem>
       </AuthorizedComponent>
       {/* To manage admin/mm ------------------------ */}

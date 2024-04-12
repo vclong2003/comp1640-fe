@@ -44,6 +44,8 @@ export default function ContributionsPerYear() {
       {/* Chart -------------------------------------------------- */}
       <Box>
         <Line
+          // Update the key to force the chart to re-render
+          key={chartData.datasets.length}
           data={chartData}
           options={{
             aspectRatio: 2,

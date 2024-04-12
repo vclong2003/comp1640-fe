@@ -28,18 +28,19 @@ export default function ProfileDropdown() {
       }
     >
       <S.DropdownContent>
-        <S.DropdownItem>
-          <S.UserInfoContainer>
-            <S.UserName>{user?.name}</S.UserName>
-            <S.UserRole>{user?.role}</S.UserRole>
-          </S.UserInfoContainer>
-        </S.DropdownItem>
-        <S.DropdownItem>
-          <Link to="/profile">My Profile</Link>
-        </S.DropdownItem>
-        <S.DropdownItem>
-          <Link to="/home">Home</Link>
-        </S.DropdownItem>
+        <Link to="/profile">
+          <S.DropdownItem>
+            <S.UserInfoContainer>
+              <S.UserName>{user?.name}</S.UserName>
+              <S.UserRole>{user?.role}</S.UserRole>
+            </S.UserInfoContainer>
+          </S.DropdownItem>
+        </Link>
+        <Link to="/home">
+          <S.DropdownItem>
+            <Link to="/home">Home</Link>
+          </S.DropdownItem>
+        </Link>
         <S.DropdownItem onClick={onLogout}>Logout</S.DropdownItem>
       </S.DropdownContent>
     </Dropdown>

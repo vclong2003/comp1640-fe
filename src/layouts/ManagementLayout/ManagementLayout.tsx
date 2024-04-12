@@ -21,6 +21,8 @@ import { FaUsers, FaFile, FaHome } from "react-icons/fa";
 import { LuSchool } from "react-icons/lu";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import Avatar from "./Avatar/Avatar";
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
+import { ERole } from "@interfaces/user.interfaces";
 const drawerWidth = 240;
 
 export default function ManagementLayout() {
@@ -43,23 +45,29 @@ export default function ManagementLayout() {
   };
 
   const mainListItems = (
-    <React.Fragment>
-      <Link to="/manage">
-        <ListItemButton>
-          <ListItemIcon>
-            <FaHome />
-          </ListItemIcon>
-          <ListItemText primary="Dashboard" />
-        </ListItemButton>
-      </Link>
-      <Link to="/manage/faculty">
-        <ListItemButton>
-          <ListItemIcon>
-            <LuSchool />
-          </ListItemIcon>
-          <ListItemText primary="Faculties" />
-        </ListItemButton>
-      </Link>
+    <>
+      <AuthorizedComponent allowedRoles={[ERole.Admin, ERole.MarketingManager]}>
+        <Link to="/manage">
+          <ListItemButton>
+            <ListItemIcon>
+              <FaHome />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItemButton>
+        </Link>
+      </AuthorizedComponent>
+      {/* Manage/faculty------------------------------------- */}
+      <AuthorizedComponent allowedRoles={[ERole.Admin, ERole.MarketingManager]}>
+        <Link to="/manage/faculty">
+          <ListItemButton>
+            <ListItemIcon>
+              <LuSchool />
+            </ListItemIcon>
+            <ListItemText primary="Faculties" />
+          </ListItemButton>
+        </Link>
+      </AuthorizedComponent>
+      {/* Manage/event------------------------------------- */}
       <Link to="/manage/event">
         <ListItemButton>
           <ListItemIcon>
@@ -68,14 +76,18 @@ export default function ManagementLayout() {
           <ListItemText primary="Events" />
         </ListItemButton>
       </Link>
-      <Link to="/manage/user">
-        <ListItemButton>
-          <ListItemIcon>
-            <FaUsers />
-          </ListItemIcon>
-          <ListItemText primary="Users" />
-        </ListItemButton>
-      </Link>
+      {/* Manage/user------------------------------------- */}
+      <AuthorizedComponent allowedRoles={[ERole.Admin]}>
+        <Link to="/manage/user">
+          <ListItemButton>
+            <ListItemIcon>
+              <FaUsers />
+            </ListItemIcon>
+            <ListItemText primary="Users" />
+          </ListItemButton>
+        </Link>
+      </AuthorizedComponent>
+      {/* Manage/contribution------------------------------------- */}
       <Link to="/manage/contribution">
         <ListItemButton>
           <ListItemIcon>
@@ -84,7 +96,7 @@ export default function ManagementLayout() {
           <ListItemText primary="Contributions" />
         </ListItemButton>
       </Link>
-    </React.Fragment>
+    </>
   );
 
   const drawer = (

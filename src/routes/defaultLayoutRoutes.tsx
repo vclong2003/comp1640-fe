@@ -22,9 +22,7 @@ export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "/event",
     component: (
-      <AuthorizedPage
-        allowedRoles={[ERole.Guest, ERole.MarketingCoordinator, ERole.Student]}
-      >
+      <AuthorizedPage allowedRoles={[ERole.Student]}>
         <Event />
       </AuthorizedPage>
     ),
@@ -41,7 +39,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     // ?eventId=123
     path: "/contribution/new",
     component: (
-      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin]}>
+      <AuthorizedPage allowedRoles={[ERole.Student]}>
         <AddContribution />
       </AuthorizedPage>
     ),
@@ -58,13 +56,7 @@ export const defaultLayoutRoutes: IRoute[] = [
     path: "/contribution/:contributionId/edit",
     component: (
       <AuthorizedPage
-        allowedRoles={[
-          ERole.Student,
-          ERole.Admin,
-          ERole.Guest,
-          ERole.MarketingCoordinator,
-          ERole.MarketingManager,
-        ]}
+        allowedRoles={[ERole.Student, ERole.MarketingCoordinator]}
       >
         <EditContribution />
       </AuthorizedPage>
@@ -73,9 +65,7 @@ export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "/event/:eventId",
     component: (
-      <AuthorizedPage
-        allowedRoles={[ERole.Student, ERole.MarketingCoordinator, ERole.Guest]}
-      >
+      <AuthorizedPage allowedRoles={[ERole.Student]}>
         <EventDetail />
       </AuthorizedPage>
     ),
@@ -83,7 +73,7 @@ export const defaultLayoutRoutes: IRoute[] = [
   {
     path: "about-us",
     component: (
-      <AuthorizedPage allowedRoles={[ERole.Student, ERole.Admin, ERole.Guest]}>
+      <AuthorizedPage>
         <AboutUs />
       </AuthorizedPage>
     ),

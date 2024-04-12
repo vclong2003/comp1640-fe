@@ -14,13 +14,7 @@ export const managementRoutes: IRoute[] = [
   {
     path: "manage/",
     component: (
-      <AuthorizedPage
-        allowedRoles={[
-          ERole.Admin,
-          ERole.MarketingManager,
-          ERole.MarketingCoordinator,
-        ]}
-      >
+      <AuthorizedPage allowedRoles={[ERole.Admin, ERole.MarketingManager]}>
         <Home />
       </AuthorizedPage>
     ),
@@ -87,7 +81,7 @@ export const managementRoutes: IRoute[] = [
   {
     path: "manage/user/:userId",
     component: (
-      <AuthorizedPage>
+      <AuthorizedPage allowedRoles={[ERole.Admin]}>
         <UserDetail />
       </AuthorizedPage>
     ),
@@ -95,7 +89,7 @@ export const managementRoutes: IRoute[] = [
   {
     path: "manage/faculty/:facultyId",
     component: (
-      <AuthorizedPage>
+      <AuthorizedPage allowedRoles={[ERole.Admin]}>
         <ViewDetailFaculty />
       </AuthorizedPage>
     ),
@@ -104,7 +98,13 @@ export const managementRoutes: IRoute[] = [
   {
     path: "manage/contribution/:contributionId",
     component: (
-      <AuthorizedPage>
+      <AuthorizedPage
+        allowedRoles={[
+          ERole.Admin,
+          ERole.MarketingCoordinator,
+          ERole.MarketingManager,
+        ]}
+      >
         <ContributionDetail />
       </AuthorizedPage>
     ),

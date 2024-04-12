@@ -38,10 +38,11 @@ export default function LeftDetailPage({
             )}
           </S.Status>
         </S.Text>
+        {/* Edit Btn ----------------------------------------------------- */}
         <AuthorizedComponent
           allowedRoles={[ERole.MarketingCoordinator, ERole.Student]}
         >
-          {(user?.role !== ERole.Student ||
+          {(user?.role === ERole.MarketingCoordinator ||
             contribution.author._id === user?._id) && (
             <S.Icon onClick={() => navigate("edit")}>
               <MdEditSquare />

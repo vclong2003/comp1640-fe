@@ -26,49 +26,14 @@ const Navbar = () => {
         </S.ResponsiveNavButton>
         <OffCanvas show={isOffcanavsVisible} onClose={closeOffCanvas}>
           <S.VerticalNavList>
-            <S.NavItem to="/home">Home</S.NavItem>
-            {/* To event  */}
-            <AuthorizedComponent
-              allowedRoles={[
-                ERole.Guest,
-                ERole.Student,
-                ERole.MarketingCoordinator,
-              ]}
-            >
-              <S.NavItem to="/event">Events</S.NavItem>
-            </AuthorizedComponent>
-            <AuthorizedComponent
-              allowedRoles={[
-                ERole.Admin,
-                ERole.MarketingManager,
-                ERole.MarketingCoordinator,
-              ]}
-            >
-              <S.NavItem to="/manage">Manage</S.NavItem>
-            </AuthorizedComponent>
-            <S.NavItem to="/about-us">About Us</S.NavItem>
+            <NavList />
           </S.VerticalNavList>
         </OffCanvas>
         <S.Logo>
           <Link to="/home">ALHKQ™</Link>
         </S.Logo>
         <S.NavList>
-          <S.NavItem to="/home">Home</S.NavItem>
-          <AuthorizedComponent
-            allowedRoles={[
-              ERole.Guest,
-              ERole.Student,
-              ERole.MarketingCoordinator,
-            ]}
-          >
-            <S.NavItem to="/event">Events</S.NavItem>
-          </AuthorizedComponent>
-          <AuthorizedComponent
-            allowedRoles={[ERole.Admin, ERole.MarketingManager]}
-          >
-            <S.NavItem to="/manage">Manage</S.NavItem>
-          </AuthorizedComponent>
-          <S.NavItem to="/about-us">About Us</S.NavItem>
+          <NavList />
         </S.NavList>
         <S.Profile>
           <ProfileDropdown />
@@ -79,5 +44,26 @@ const Navbar = () => {
     </S.Container>
   );
 };
+
+function NavList() {
+  return (
+    <>
+      <S.NavItem to="/home">Home</S.NavItem>
+      {/* To event ----------------------------------  */}
+      <AuthorizedComponent allowedRoles={[ERole.Student]}>
+        <S.NavItem to="/event">Events</S.NavItem>
+      </AuthorizedComponent>
+      {/* To manage admin/mm ------------------------ */}
+      <AuthorizedComponent allowedRoles={[ERole.Admin, ERole.MarketingManager]}>
+        <S.NavItem to="/manage">Manage</S.NavItem>
+      </AuthorizedComponent>
+      {/* TO manage mc -------------------------- */}
+      <AuthorizedComponent allowedRoles={[ERole.MarketingCoordinator]}>
+        <S.NavItem to="/manage/event">Manage</S.NavItem>
+      </AuthorizedComponent>
+      <S.NavItem to="/about-us">About Us</S.NavItem>
+    </>
+  );
+}
 
 export default Navbar;

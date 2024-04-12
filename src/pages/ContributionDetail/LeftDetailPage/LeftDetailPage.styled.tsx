@@ -11,6 +11,11 @@ export const TopContainer = styled.div`
   display: flex;
 `;
 
+export const ContainerImage = styled.div`
+  width: 100%;
+  background-color: var(--black);
+`;
+
 export const Image = styled.img`
   border-radius: var(--br-md);
   z-index: 0;
@@ -18,6 +23,7 @@ export const Image = styled.img`
   height: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
+  opacity: 0.7;
 `;
 
 export const Text = styled.div`
@@ -172,7 +178,6 @@ export const RightItem = styled.div`
   gap: var(--s-2);
   flex-wrap: wrap;
   width: 100%;
-  
 `;
 
 export const User = styled.div`

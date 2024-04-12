@@ -26,11 +26,14 @@ export default function LeftDetailPage({
 }: ILeftDetailPageProps) {
   const { user } = useSelector((state: RootState) => state.userState);
   const navigate = useNavigate();
-
   return (
     <S.Container>
       <S.TopContainer>
-        <S.Image src={contribution.banner_image_url || Detail} />
+        <S.ContainerImage>
+          <S.Image src={contribution.banner_image_url || Detail} />
+          
+        </S.ContainerImage>
+
         <S.Text>
           <S.Status>
             {contribution.is_publication && (
@@ -53,6 +56,10 @@ export default function LeftDetailPage({
           <S.DescriptionContribute>
             {contribution.title}
           </S.DescriptionContribute>
+          <S.DescriptionContribute>
+            {contribution.event.name}
+          </S.DescriptionContribute>
+
           <S.Author>
             <UserInfo
               name={contribution.author.name}

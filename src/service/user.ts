@@ -12,10 +12,11 @@ import {
   ISendResetPasswordEmailPayload,
   ISetupAccountPayload,
   IToggleUserPayload,
-  IUpdateUserPayload,
+  IUpdateProfilePayload,
   IUser,
   IVerifyRegisterTokenPayload,
   IVerifyRegisterTokenResponse,
+  IUpdateUserByIdPayload,
 } from "@interfaces/user.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -75,10 +76,25 @@ const getUserById = async (payload: IGetUserByIdPayload): Promise<IUser> => {
   return await axiosInstance.get(`/user/${payload.id}`);
 };
 
-// Update user --------------------------------------------------
-const updateUser = async (payload: IUpdateUserPayload): Promise<IUser> => {
+// Update profile --------------------------------------------------
+const updateProfile = async (
+  payload: IUpdateProfilePayload,
+): Promise<IUser> => {
   return await axiosInstance.put(
     "/user/my-profile",
+    objectToFormData({ ...payload }),
+    {
+      headers: { "Content-Type": "multipart/form-data" },
+    },
+  );
+};
+
+// Update user by ID --------------------------------------------------
+const updateUserById = async (
+  payload: IUpdateUserByIdPayload,
+): Promise<IUser> => {
+  return await axiosInstance.put(
+    `/user/${payload._id}`,
     objectToFormData({ ...payload }),
     {
       headers: { "Content-Type": "multipart/form-data" },
@@ -140,7 +156,7 @@ export default {
   guestRegister,
   getCurrentUser,
   logout,
-  updateUser,
+  updateProfile,
   changePassword,
   findLoginSessions,
   removeLoginSession,
@@ -154,4 +170,5 @@ export default {
   getUserById,
   disableUser,
   enableUser,
+  updateUserById,
 };

@@ -4,7 +4,7 @@ import { Field, Formik } from "formik";
 import { Form } from "@components/formComponents";
 import {
   EGender,
-  IUpdateUserPayload,
+  IUpdateUserByIdPayload,
   IUser,
 } from "@interfaces/user.interfaces";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ import { AppDispatch } from "@store/index";
 import { toIsoDate } from "@utils/date.utils";
 import { notifySuccess } from "@utils/notification.utils";
 import { UpdateUservalidationSchema } from "@utils/user.utils";
-import { updateUser } from "@store/user";
+import { updateUserById } from "@store/user";
 import { MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
@@ -23,9 +23,10 @@ import { ImageStyled } from "./User.styled";
 const UserDetail = () => {
   const { userId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
+
   const [user, setUser] = useState<IUser>();
 
-  const initialValues: IUpdateUserPayload = {
+  const initialValues: Partial<IUpdateUserByIdPayload> = {
     name: "",
     phone: "",
     dob: "",
@@ -39,10 +40,12 @@ const UserDetail = () => {
     service.getUserById({ id: userId }).then((user) => setUser(user));
   }, [userId]);
 
-  const onUpdateProfile = (values: IUpdateUserPayload) =>
-    dispatch(updateUser(values))
+  const onUpdateProfile = (values: Partial<IUpdateUserByIdPayload>) => {
+    if (!user) return;
+    dispatch(updateUserById({ ...values, _id: user._id }))
       .unwrap()
       .then(() => notifySuccess("Profile updated successfully"));
+  };
 
   return (
     <>

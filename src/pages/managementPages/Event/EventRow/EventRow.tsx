@@ -24,6 +24,7 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
     useState(false);
   const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
 
+  const [zipping, setZipping] = useState(false);
   const handleCloseViewDetailEventModal = () =>
     setOpenViewDetailEventModal(false);
   const handleOpenDeleteEventModal = () => setOpenDeleteEventModal(true);
@@ -37,10 +38,13 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
   };
 
   const handleDownload = () => {
-    return contributionService.downloadContributionFiles({
-      fileName: event.name,
-      query: { eventId: event._id },
-    });
+    setZipping(true);
+    contributionService
+      .downloadContributionFiles({
+        fileName: event.name,
+        query: { eventId: event._id },
+      })
+      .finally(() => setZipping(false));
   };
 
   const navigate = useNavigate();
@@ -79,8 +83,9 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
             startIcon={<FileDownloadIcon />}
             sx={{ mr: 4 }}
             onClick={handleDownload}
+            disabled={zipping}
           >
-            Download
+            {zipping ? "Zipping..." : "Download"}
           </Button>
           <Button
             variant="outlined"

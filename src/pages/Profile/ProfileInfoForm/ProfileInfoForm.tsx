@@ -6,13 +6,13 @@ import {
   FormInput,
   FormLabel,
 } from "@components/formComponents";
-import { EGender, IUpdateUserPayload } from "@interfaces/user.interfaces";
+import { EGender, IUpdateProfilePayload } from "@interfaces/user.interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { toIsoDate } from "@utils/date.utils";
 import { notifySuccess } from "@utils/notification.utils";
 import { UpdateUservalidationSchema } from "@utils/user.utils";
-import { updateUser } from "@store/user";
+import { updateProfile } from "@store/user";
 import { useState } from "react";
 
 export default function ProfileInfoForm() {
@@ -20,16 +20,16 @@ export default function ProfileInfoForm() {
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState(false);
 
-  const initialValues: IUpdateUserPayload = {
+  const initialValues: IUpdateProfilePayload = {
     name: user?.name,
     phone: user?.phone,
     dob: user?.dob && toIsoDate(user.dob),
     gender: user?.gender,
   };
 
-  const onUpdateProfile = (values: IUpdateUserPayload) => {
+  const onUpdateProfile = (values: IUpdateProfilePayload) => {
     setLoading(true);
-    dispatch(updateUser(values))
+    dispatch(updateProfile(values))
       .unwrap()
       .then(() => notifySuccess("Profile updated successfully"))
       .finally(() => setLoading(false));

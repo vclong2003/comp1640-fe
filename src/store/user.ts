@@ -5,7 +5,8 @@ import {
   ILoginPayload,
   IRemoveLoginSessionPayload,
   IToggleUserPayload,
-  IUpdateUserPayload,
+  IUpdateProfilePayload,
+  IUpdateUserByIdPayload,
   IUserState,
 } from "@interfaces/user.interfaces";
 import userService from "@service/user";
@@ -47,11 +48,19 @@ export const logout = createAsyncThunk(`${name}/logout`, async () => {
   return await userService.logout();
 });
 
-// Update user --------------------------------------------------
-export const updateUser = createAsyncThunk(
+// Update profile --------------------------------------------------
+export const updateProfile = createAsyncThunk(
   `${name}/updateUser`,
-  async (payload: IUpdateUserPayload) => {
-    return await userService.updateUser(payload);
+  async (payload: IUpdateProfilePayload) => {
+    return await userService.updateProfile(payload);
+  },
+);
+
+// Update user by id --------------------------------------------------
+export const updateUserById = createAsyncThunk(
+  `${name}/updateUserById`,
+  async (payload: IUpdateUserByIdPayload) => {
+    return await userService.updateUserById(payload);
   },
 );
 
@@ -112,10 +121,17 @@ const userState = createSlice({
     builder.addCase(logout.fulfilled, (state) => {
       state.user = null;
     });
-    // Update user --------------------------------------------------
-    builder.addCase(updateUser.fulfilled, (state, action) => {
+    // Update profile --------------------------------------------------
+    builder.addCase(updateProfile.fulfilled, (state, action) => {
       console.log(action.payload);
       state.user = action.payload;
+    });
+    // Update user --------------------------------------------------
+    builder.addCase(updateUserById.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.users = state.users.map((user) =>
+        user._id === action.payload._id ? action.payload : user,
+      );
     });
     // Find login sessions ------------------------------------------
     builder.addCase(findLoginSessions.fulfilled, (state, action) => {

@@ -57,17 +57,6 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
           <Button
             variant="outlined"
             size="small"
-            color="info"
-            startIcon={<ViewIcon />}
-            sx={{ mr: 4 }}
-            onClick={() => navigate(`${contribution._id}`)}
-          >
-            Download
-          </Button>
-
-          <Button
-            variant="outlined"
-            size="small"
             color="error"
             startIcon={<DeleteIcon />}
             onClick={handleOpenDeleteContributionModal}

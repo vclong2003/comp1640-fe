@@ -31,7 +31,7 @@ export default function ContributionsPerEvent() {
             text: "Contributions per Event",
           },
         },
-        aspectRatio: 1.4,
+        aspectRatio: 1.5,
       }}
     />
   );

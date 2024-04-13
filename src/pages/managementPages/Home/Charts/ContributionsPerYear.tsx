@@ -48,7 +48,7 @@ export default function ContributionsPerYear() {
           key={chartData.datasets.length}
           data={chartData}
           options={{
-            aspectRatio: 2,
+            aspectRatio: 1.5,
           }}
         />
       </Box>

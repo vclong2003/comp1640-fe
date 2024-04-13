@@ -23,6 +23,7 @@ export default function EditContribution() {
   }, [contributionId]);
 
   useEffect(() => {
+    if (!contribution) return;
     if (user?.role === ERole.MarketingCoordinator) {
       if (contribution?.faculty._id !== user?.faculty?._id) {
         notifyError("You don't have permission to edit this contribution");

@@ -31,7 +31,6 @@ export default function LeftDetailPage({
       <S.TopContainer>
         <S.ContainerImage>
           <S.Image src={contribution.banner_image_url || Detail} />
-          
         </S.ContainerImage>
 
         <S.Text>
@@ -56,9 +55,9 @@ export default function LeftDetailPage({
           <S.DescriptionContribute>
             {contribution.title}
           </S.DescriptionContribute>
-          <S.DescriptionContribute>
+          {/* <S.DescriptionContribute>
             {contribution.event.name}
-          </S.DescriptionContribute>
+          </S.DescriptionContribute> */}
 
           <S.Author>
             <UserInfo

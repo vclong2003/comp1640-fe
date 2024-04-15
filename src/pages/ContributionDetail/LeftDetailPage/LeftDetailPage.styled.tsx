@@ -18,6 +18,7 @@ export const ContainerImage = styled.div`
 
 export const Image = styled.img`
   border-radius: var(--br-md);
+  overflow: hidden;
   z-index: 0;
   width: 100%;
   height: 100%;

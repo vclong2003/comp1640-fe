@@ -1,7 +1,6 @@
 ## Notes
 
 - This project use Yarn
-- Artifact registry: asia-east1-docker.pkg.dev/comp1640-vcl-gw/comp1640/react
 - GC run deploy: https://alhkq.live/
 
 ## Project structure

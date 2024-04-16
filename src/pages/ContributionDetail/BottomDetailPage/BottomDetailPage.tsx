@@ -7,20 +7,19 @@ import { IContribution } from "@interfaces/contribution.interfaces";
 
 interface IBottomDetailPageProps {
   contribution: IContribution;
+  onPublish: () => void;
 }
 export default function BottomDetailPage({
   contribution,
+  onPublish,
 }: IBottomDetailPageProps) {
   const { user } = useSelector((state: RootState) => state.userState);
-  // const handlePublish = () => {
-  //   notifySuccess("You published successfully");
-  // };
 
   return (
     user?.role === ERole.MarketingCoordinator &&
     !contribution.is_publication && (
       <S.Container>
-        <S.BtnPublish>Publish</S.BtnPublish>
+        <S.BtnPublish onClick={onPublish}>Publish</S.BtnPublish>
       </S.Container>
     )
   );

@@ -31,6 +31,13 @@ export default function ContributionDetail() {
     );
   };
 
+  const publish = () => {
+    if (!contribution) return;
+    service
+      .publishContribution({ contributionId: contribution._id })
+      .then(() => setContribtion({ ...contribution, is_publication: true }));
+  };
+
   return (
     <Container>
       <S.Container>
@@ -45,7 +52,9 @@ export default function ContributionDetail() {
           </S.Right>
         </S.TopContainer>
         <S.BottomContainer>
-          {contribution && <BottomDetailPage contribution={contribution} />}
+          {contribution && (
+            <BottomDetailPage onPublish={publish} contribution={contribution} />
+          )}
         </S.BottomContainer>
       </S.Container>
     </Container>

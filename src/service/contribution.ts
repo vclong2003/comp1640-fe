@@ -18,6 +18,7 @@ import {
   IDownloadContributionFilesPayload,
   IAvgContributionsPerStudent,
   IAvgContributionPerEvent,
+  IPublishContributionPayload,
 } from "@interfaces/contribution.interfaces";
 import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
@@ -64,6 +65,15 @@ const removeContributionFile = async (
     {
       file_url: payload.file_url,
     },
+  );
+};
+
+// Publish contribution -----------------------------
+const publishContribution = async (
+  payload: IPublishContributionPayload,
+): Promise<void> => {
+  return await axiosInstance.post(
+    `/contribution/${payload.contributionId}/publish`,
   );
 };
 
@@ -216,4 +226,5 @@ export default {
   downloadContributionFiles,
   getAvgContributionsPerStudent,
   getAvgContributionsPerEvent,
+  publishContribution,
 };

@@ -74,6 +74,17 @@ export interface IUpdateContriButionPayload {
   bannerImage?: File;
 }
 
+// Remove Contribution file -----------------
+export interface IRemoveContributionFilePayload {
+  contributionId: string;
+  file_url: string;
+}
+
+// Publish Contribution ---------------------
+export interface IPublishContributionPayload {
+  contributionId: string;
+}
+
 // Find Contribution by id -----------------
 export interface IFindContributionByIdPayload {
   contributionId: string;
@@ -91,12 +102,6 @@ export interface IFindContributionsPayload {
   limit?: number;
   has_private_comments?: boolean;
   popular?: boolean;
-}
-
-// Remove Contribution file -----------------
-export interface IRemoveContributionFilePayload {
-  contributionId: string;
-  file_url: string;
 }
 
 // Find Comments ------------------------------

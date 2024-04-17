@@ -86,13 +86,13 @@ const contributionState = createSlice({
   initialState,
   reducers: {
     setFilter: (state, action) => {
-      state.filter = action.payload ;
+      state.filter = action.payload;
     },
   },
   extraReducers: (builder) => {
     // Find contributions ------------------------------
     builder.addCase(findContributions.fulfilled, (state, action) => {
-      state.contributions = [...state.contributions, ...action.payload];
+      state.contributions = action.payload;
     });
     // Update contribution ------------------------------
     builder.addCase(updateContribution.fulfilled, (state, action) => {

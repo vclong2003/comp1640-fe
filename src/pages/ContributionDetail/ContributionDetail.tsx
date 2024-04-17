@@ -4,11 +4,12 @@ import LeftDetailPage from "./LeftDetailPage/LeftDetailPage";
 import RightDetailPage from "./RightDetailPage/RightDetailPage";
 import { useEffect, useState } from "react";
 import { IContribution } from "@interfaces/contribution.interfaces";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import service from "@service/contribution";
 import BottomDetailPage from "./BottomDetailPage/BottomDetailPage";
 
 export default function ContributionDetail() {
+  const navigate = useNavigate();
   const { contributionId } = useParams();
   const [contribution, setContribtion] = useState<IContribution>();
 
@@ -38,6 +39,13 @@ export default function ContributionDetail() {
       .then(() => setContribtion({ ...contribution, is_publication: true }));
   };
 
+  const deleteContribution = () => {
+    if (!contribution) return;
+    service
+      .deleteContribution({ _id: contribution._id })
+      .then(() => navigate(-1));
+  };
+
   return (
     <Container>
       <S.Container>
@@ -53,7 +61,11 @@ export default function ContributionDetail() {
         </S.TopContainer>
         <S.BottomContainer>
           {contribution && (
-            <BottomDetailPage onPublish={publish} contribution={contribution} />
+            <BottomDetailPage
+              onPublish={publish}
+              onDelete={deleteContribution}
+              contribution={contribution}
+            />
           )}
         </S.BottomContainer>
       </S.Container>

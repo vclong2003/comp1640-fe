@@ -47,7 +47,6 @@ export interface IContributionState {
   contributions: IContribution[];
   comments: IComment[];
   privateComments: IComment[];
-  total: number;
   filter: IFindContributionsPayload;
 }
 

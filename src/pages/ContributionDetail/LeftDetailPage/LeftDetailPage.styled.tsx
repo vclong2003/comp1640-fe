@@ -13,7 +13,6 @@ export const TopContainer = styled.div`
 
 export const ContainerImage = styled.div`
   width: 100%;
-  background-color: var(--black);
 `;
 
 export const Image = styled.img`
@@ -24,7 +23,7 @@ export const Image = styled.img`
   height: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
-  opacity: 0.7;
+  filter: brightness(0.8);
 `;
 
 export const Text = styled.div`
@@ -59,6 +58,9 @@ export const Icon = styled.label`
   margin: var(--s-2) var(--s-1);
   top: 0;
   font-size: var(--fs-xl);
+  cursor: pointer;
+  mix-blend-mode: difference;
+  color: var(--white);
   @media ${DEVICES.DESKTOP} {
     margin: var(--s-3) var(--s-3);
     font-size: var(--fs-2xl);

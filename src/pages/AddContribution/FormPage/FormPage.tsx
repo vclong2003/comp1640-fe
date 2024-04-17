@@ -86,7 +86,6 @@ const FormPage = () => {
             onChange={(files) => setPayload({ ...payload, images: [...files] })}
           />
         </S.Input>
-        <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
       <S.ItemInput>
         <S.Text>Word Files</S.Text>
@@ -98,7 +97,6 @@ const FormPage = () => {
             }
           />
         </S.Input>
-        <S.Description>Specify where to submit image files</S.Description>
       </S.ItemInput>
       <S.ItemInput>
         <input

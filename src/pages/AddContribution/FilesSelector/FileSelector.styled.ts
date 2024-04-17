@@ -17,7 +17,10 @@ export const FilesContainer = styled.div`
   
 `;
 
-export const AddButton = styled.label``;
+export const AddButton = styled.label`
+color: var(--blue);
+text-decoration: underline;
+`;
 
 export const Container = styled.div`
   display: flex;

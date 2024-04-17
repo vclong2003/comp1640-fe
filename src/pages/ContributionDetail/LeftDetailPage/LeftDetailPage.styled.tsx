@@ -228,5 +228,5 @@ export const IconSent = styled.div`
 export const Comment = styled.div``;
 
 export const CommentContent = styled.div`
-  word-break: break-all;
+  line-break: auto;
 `;

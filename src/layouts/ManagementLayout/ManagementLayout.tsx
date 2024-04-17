@@ -107,12 +107,12 @@ export default function ManagementLayout() {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", maxWidth: "100vw" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: "100%",
           ml: { sm: `${drawerWidth}px` },
         }}
       >
@@ -173,8 +173,8 @@ export default function ManagementLayout() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          padding: 2,
+          overflow: "auto",
         }}
       >
         <Toolbar />

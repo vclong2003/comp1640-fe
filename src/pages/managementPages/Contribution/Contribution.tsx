@@ -44,8 +44,10 @@ const Contribution: React.FC = () => {
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell align="left">Author&nbsp;</TableCell>
+              <TableCell align="left">Sumbited&nbsp;</TableCell>
               <TableCell align="left">Faculty&nbsp;</TableCell>
               <TableCell align="left">Event&nbsp;</TableCell>
+              <TableCell align="left">Status&nbsp;</TableCell>
               <TableCell align="left">Action&nbsp;</TableCell>
               <TableCell align="left"></TableCell>
             </TableRow>

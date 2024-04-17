@@ -9,6 +9,7 @@ import { AppDispatch } from "@store/index";
 import { notifySuccess } from "@utils/notification.utils";
 import { deleteContribution } from "@store/contribution";
 import { useNavigate } from "react-router";
+import { toLocaleDateTime } from "@utils/date.utils";
 interface ContributionRowProps {
   contribution: IContribution;
 }
@@ -40,8 +41,12 @@ const ContributionRow: React.FC<ContributionRowProps> = ({
           {contribution.title}
         </TableCell>
         <TableCell align="left">{contribution.author.name}</TableCell>
+        <TableCell align="left">{toLocaleDateTime(contribution.submitted_at)}</TableCell>
         <TableCell align="left">{contribution.faculty.name}</TableCell>
         <TableCell align="left">{contribution.event.name}</TableCell>
+        <TableCell align="left">
+          {contribution.is_publication ? "published" : "not published"}
+        </TableCell>
         <TableCell align="left">
           <Button
             variant="outlined"

@@ -15,7 +15,6 @@ const initialState: IContributionState = {
   contributions: [],
   comments: [],
   privateComments: [],
-  total: 0,
   filter: {},
 };
 
@@ -87,14 +86,13 @@ const contributionState = createSlice({
   initialState,
   reducers: {
     setFilter: (state, action) => {
-      state.filter = action.payload;
+      state.filter = action.payload ;
     },
   },
   extraReducers: (builder) => {
     // Find contributions ------------------------------
     builder.addCase(findContributions.fulfilled, (state, action) => {
-      state.contributions = action.payload;
-      state.total = action.payload.length;
+      state.contributions = [...state.contributions, ...action.payload];
     });
     // Update contribution ------------------------------
     builder.addCase(updateContribution.fulfilled, (state, action) => {

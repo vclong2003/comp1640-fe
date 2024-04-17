@@ -15,6 +15,7 @@ export const FilesContainer = styled.div`
 
 export const Container = styled.div`
   display: flex;
+  cursor: pointer;
   align-items: center;
   flex-direction: row;
   gap: var(--s-5);

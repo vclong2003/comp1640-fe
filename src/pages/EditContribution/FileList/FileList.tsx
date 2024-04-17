@@ -23,11 +23,14 @@ interface IFileItemProps {
   onRemove(file: IContributionFile): void;
 }
 function FileItem({ file, onRemove }: IFileItemProps) {
+  const onClick = () => {
+    window.open(file.file_access_url);
+  };
   return (
-    <S.Container>
+    <S.Container onClick={onClick}>
       <S.Title>{file.file_name}</S.Title>
       <S.ContainerCiCirleRemove>
-      <CiCircleRemove onClick={() => onRemove(file)} />
+        <CiCircleRemove onClick={() => onRemove(file)} />
       </S.ContainerCiCirleRemove>
     </S.Container>
   );

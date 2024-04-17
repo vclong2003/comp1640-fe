@@ -68,7 +68,7 @@ export const DocumentImg = styled.div`
   row-gap: var(--s-4);
   &::after {
     content: "";
-    
+
     width: 29%;
   }
 `;
@@ -140,7 +140,7 @@ export const ContainerComment = styled.div`
 `;
 
 export const CommentContent = styled.div`
- word-break: break-all;
+  line-break: auto;
 `;
 
 export const CmtItem = styled.div`
@@ -163,7 +163,6 @@ export const RightItem = styled.div`
   gap: var(--s-2);
   flex-wrap: wrap;
   width: 100%;
-  
 `;
 
 export const User = styled.div`

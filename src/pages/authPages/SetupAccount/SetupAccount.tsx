@@ -43,7 +43,7 @@ const SetupAccount = () => {
         notifySuccess("Account setup successfully, you can login now!"),
       )
       .then(() => navigate("/login"))
-      .finally(() => setLoading(false));
+      .finally(() => setLoading(false)); 
   };
 
   return (

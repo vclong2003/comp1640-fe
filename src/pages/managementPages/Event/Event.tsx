@@ -12,7 +12,8 @@ import AddNewEventModal from "./EventModal/AddNewEventModal";
 import { Headline } from "./Event.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
-
+import { TextList } from "./Event.styled";
+import { MiddleContainer } from "./Event.styled";
 import EventRow from "./EventRow/EventRow";
 import { findEvents } from "@store/event";
 import Filter from "./Filter";
@@ -34,16 +35,18 @@ export default function Event() {
     <>
       <Headline>Events</Headline>
 
-      <Button
-        variant="contained"
-        size="large"
-        color="success"
-        onClick={handleOpenAddNewEventModal}
-      >
-        Add new
-      </Button>
-
       <Filter />
+      <MiddleContainer>
+        <TextList>List Of Event</TextList>
+        <Button
+          variant="contained"
+          size="large"
+          color="success"
+          onClick={handleOpenAddNewEventModal}
+        >
+          Add new
+        </Button>
+      </MiddleContainer>
 
       <TableContainer>
         <Table aria-label="simple table">

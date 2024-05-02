@@ -64,7 +64,14 @@ const EventRow: React.FC<EventRowProps> = ({ event }: EventRowProps) => {
         </TableCell>
         <TableCell align="left">{event.faculty?.name}</TableCell>
         <TableCell align="left">{event.number_of_contributions}</TableCell>
-        <TableCell align="left">
+        <TableCell
+          align="left"
+          sx={{
+            justifyContent: "space-between",
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
           <Button
             variant="outlined"
             size="small"

@@ -34,7 +34,7 @@ export default function Filter() {
   };
 
   const styled = {
-    width: "160px",
+    width: "150px",
     height: "56px",
     m: "16px",
     ml: 0,

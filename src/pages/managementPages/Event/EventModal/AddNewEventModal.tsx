@@ -18,7 +18,6 @@ import { createEvent, findEvents } from "@store/event";
 import { findFaculties } from "@store/faculty";
 import { ERole } from "@interfaces/user.interfaces";
 import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
-import { Label } from "@components/formComponents/FormLabel/FormLabel.styled";
 
 const style = {
   position: "absolute" as const,

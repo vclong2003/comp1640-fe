@@ -7,6 +7,8 @@ import { Field, Form, Formik } from "formik";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findEvents } from "@store/event";
+import AuthorizedComponent from "@components/AuthorizedComponent/AuthorizedComponent";
+import { ERole } from "@interfaces/user.interfaces";
 
 const initialValues: IFindContributionsPayload = {
   title: "",
@@ -50,21 +52,25 @@ export default function Filter() {
         onReset={onReset}
       >
         <Form>
-          <Field
-            as={TextField}
-            name="facultyId"
-            label="Faculty"
-            select
-            defaultValue=""
-            sx={styled}
+          <AuthorizedComponent
+            allowedRoles={[ERole.Admin, ERole.MarketingManager]}
           >
-            <MenuItem value="">All</MenuItem>
-            {faculties.map((faculty) => (
-              <MenuItem key={faculty._id} value={faculty._id}>
-                {faculty.name}
-              </MenuItem>
-            ))}
-          </Field>
+            <Field
+              as={TextField}
+              name="facultyId"
+              label="Faculty"
+              select
+              defaultValue=""
+              sx={styled}
+            >
+              <MenuItem value="">All</MenuItem>
+              {faculties.map((faculty) => (
+                <MenuItem key={faculty._id} value={faculty._id}>
+                  {faculty.name}
+                </MenuItem>
+              ))}
+            </Field>
+          </AuthorizedComponent>
 
           <Field
             as={TextField}

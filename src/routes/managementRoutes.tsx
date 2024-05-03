@@ -10,6 +10,7 @@ import UserDetail from "@pages/managementPages/User/UserDetail";
 import EventDetailManage from "@pages/managementPages/Event/EventDetailManage/EventDetailManage";
 import ViewDetailFaculty from "@pages/managementPages/Faculty/ViewDetailFaculty";
 import ContributionDetail from "@pages/ContributionDetail/ContributionDetail";
+import EditContribution from "@pages/EditContribution/EditContribution";
 export const managementRoutes: IRoute[] = [
   {
     path: "manage/",
@@ -106,6 +107,14 @@ export const managementRoutes: IRoute[] = [
         ]}
       >
         <ContributionDetail />
+      </AuthorizedPage>
+    ),
+  },
+  {
+    path: "manage/contribution/:contributionId/edit",
+    component: (
+      <AuthorizedPage allowedRoles={[ERole.MarketingCoordinator]}>
+        <EditContribution />
       </AuthorizedPage>
     ),
   },

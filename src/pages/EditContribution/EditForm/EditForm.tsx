@@ -58,14 +58,15 @@ export default function EditForm({ contribution }: IEditFormProps) {
 
   const updateContribution = () => {
     setLoading(true);
+
     service
       .updateContribution(payload)
-      .then(() => navigate(`/contribution/${contribution._id}`))
+      .then(() => navigate(-1))
       .finally(() => setLoading(false));
   };
 
   const cancel = () => {
-    navigate(`/contribution/${contribution._id}`);
+    navigate(-1);
   };
 
   return (
@@ -176,9 +177,8 @@ export default function EditForm({ contribution }: IEditFormProps) {
           {loading ? "Saving..." : "Save"}
         </S.BtnSubmit>
         {/* Cancel btn ------------------------------------------------------------ */}
-      <S.BtnCancel onClick={cancel}>Cancel</S.BtnCancel>
+        <S.BtnCancel onClick={cancel}>Cancel</S.BtnCancel>
       </S.Submit>
-      
     </S.Container>
   );
 }

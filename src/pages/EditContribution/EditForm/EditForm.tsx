@@ -176,7 +176,7 @@ export default function EditForm({ contribution }: IEditFormProps) {
           {loading ? "Saving..." : "Save"}
         </S.BtnSubmit>
         {/* Cancel btn ------------------------------------------------------------ */}
-      <S.BtnSubmit onClick={cancel}>Cancel</S.BtnSubmit>
+      <S.BtnCancel onClick={cancel}>Cancel</S.BtnCancel>
       </S.Submit>
       
     </S.Container>

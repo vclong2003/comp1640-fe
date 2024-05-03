@@ -75,6 +75,19 @@ export const BtnSubmit = styled.button`
     font-size: var(--fs-lg);
   }
 `;
+export const BtnCancel = styled.button`
+  border: none;
+  padding: var(--s-2) var(--s-7);
+  border-radius: var(--br-md);
+  color: var(--white);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  background-color: var(--blue-gray);
+  @media ${DEVICES.DESKTOP} {
+    padding: var(--s-3) var(--s-9);
+    font-size: var(--fs-lg);
+  }
+`;
 
 export const StatusFile = styled.div`
   font-size: var(--fs-sm);

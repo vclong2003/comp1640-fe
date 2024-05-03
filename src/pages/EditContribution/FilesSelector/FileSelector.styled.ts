@@ -16,6 +16,7 @@ export const AddButton = styled.label`
   font-size: var(--fs-sm);
   color: var(--blue);
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 export const Container = styled.div`

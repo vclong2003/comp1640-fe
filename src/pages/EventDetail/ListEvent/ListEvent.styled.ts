@@ -96,10 +96,12 @@ export const ListItem = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-2);
-  justify-content: space-between;
+  /* justify-content: space-between; */
   row-gap: var(--s-3);
   @media ${DEVICES.DESKTOP} {
     display: flex;
+    gap: var(--s-4);
+    
   }
 `;
 

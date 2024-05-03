@@ -3,6 +3,11 @@
 - This project use Yarn
 - GC run deploy: https://alhkq.live/
 
+<!--
+Artifact Registry:
+asia-east1-docker.pkg.dev/comp1640-vcl-gw/alhkq/react
+-->
+
 ## Project structure
 
 ```
@@ -32,8 +37,3 @@ src
 |
 +-- utils             # shared utility functions
 ```
-
-<!--
-Artifact Registry:
-asia-east1-docker.pkg.dev/comp1640-vcl-gw/alhkq/react
--->

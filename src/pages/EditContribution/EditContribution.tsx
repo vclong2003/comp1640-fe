@@ -13,7 +13,7 @@ export default function EditContribution() {
   const { contributionId } = useParams();
   const [contribution, setContribution] = useState<IContribution>();
   const { user } = useSelector((state: RootState) => state.userState);
-  const naviage = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!contributionId) return;
@@ -27,15 +27,15 @@ export default function EditContribution() {
     if (user?.role === ERole.MarketingCoordinator) {
       if (contribution?.faculty._id !== user?.faculty?._id) {
         notifyError("You don't have permission to edit this contribution");
-        naviage("/");
+        navigate("/");
       }
     } else {
       if (contribution?.author._id !== user?._id) {
         notifyError("You don't have permission to edit this contribution");
-        naviage("/");
+        navigate("/");
       }
     }
-  }, [user, contribution]);
+  }, [user, contribution, navigate]);
   return (
     <S.EditContribution>
       <S.Title>Edit contribution </S.Title>

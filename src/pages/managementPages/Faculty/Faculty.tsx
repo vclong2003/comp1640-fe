@@ -1,7 +1,4 @@
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { CiSearch } from "react-icons/ci";
-import InputAdornment from "@mui/material/InputAdornment";
 import { Headline } from "./Faculty.styled";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -43,27 +40,6 @@ const Faculty = () => {
           },
         }}
       >
-        <Box component="form" noValidate autoComplete="off">
-          <TextField
-            id="outlined-basic"
-            label="Search"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <CiSearch />
-                </InputAdornment>
-              ),
-            }}
-            variant="outlined"
-            size="small"
-            sx={{
-              "@media only screen and (max-width: 600px)": {
-                width: "100%",
-              },
-            }}
-          />
-        </Box>
-
         <Button
           variant="contained"
           size="medium"

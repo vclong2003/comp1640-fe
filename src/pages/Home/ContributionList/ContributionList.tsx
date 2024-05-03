@@ -17,9 +17,7 @@ const ContributionList = ({ contributions }: IContributionListProps) => {
           <ListItem key={contribution._id} contribution={contribution} />
         ))}
       </S.Content>
-      <S.Bottom>
-        <S.Button>Load more</S.Button>
-      </S.Bottom>
+      <S.Bottom>{/* <S.Button>Load more</S.Button> */}</S.Bottom>
     </S.Container>
   );
 };

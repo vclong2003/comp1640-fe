@@ -13,7 +13,7 @@ import { axiosInstance } from "@lib/axios.lib";
 import { objectToFormData } from "@utils/data.utils";
 import { buildQueryString } from "@utils/string.utils";
 
-// Find faculties -------------------------------------------
+// Find faculties -----------------------------------------------------------
 const findFaculties = async (
   payload: IFindFacultiesPayload,
 ): Promise<IFaculty[]> => {
@@ -21,7 +21,7 @@ const findFaculties = async (
   return await axiosInstance.get(`/faculty${queryString}`);
 };
 
-// Find faculty by id ----------------------------------------
+// Find faculty by id --------------------------------------------------------
 const findFacultyById = async (
   payload: IFindEventByIdPayload,
 ): Promise<IFaculty> => {
@@ -29,7 +29,7 @@ const findFacultyById = async (
   return await axiosInstance.get(`/faculty/${_id}`);
 };
 
-// Create faculty ------------------------------------------
+// Create faculty -------------------------------------------------------------
 const createFaculty = async (
   payload: ICreateFacultyPayload,
 ): Promise<IFaculty> => {
@@ -44,7 +44,7 @@ const createFaculty = async (
   );
 };
 
-// Update faculty ------------------------------------------
+// Update faculty -------------------------------------------------------------`
 const updateFaculty = async (
   payload: IUpdateFacultyPayload,
 ): Promise<IFaculty> => {
@@ -60,7 +60,7 @@ const updateFaculty = async (
   );
 };
 
-// Get Faculty By Id --------------------------------------------------
+// Get Faculty By Id ------------------------------------------------------------
 const getFacultyById = async (
   payload: IGetFacultyByIdPayload,
 ): Promise<IFaculty> => {

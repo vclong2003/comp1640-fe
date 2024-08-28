@@ -68,7 +68,7 @@ const ListEvent = ({ event }: IListEventProps) => {
           <S.Item key={contribution._id} contribution={contribution} />
         ))}
       </S.ListItem>
-      <S.BtnLoadMore>Load More</S.BtnLoadMore>
+      {/* <S.BtnLoadMore>Load More</S.BtnLoadMore> */}
     </S.Container>
   );
 };

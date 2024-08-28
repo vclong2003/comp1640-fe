@@ -30,7 +30,8 @@ export const Image = styled.img`
 export const Bottom = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   margin: var(--s-4) 0;
 `;
 

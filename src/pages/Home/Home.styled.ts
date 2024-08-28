@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--s-5);
+  margin-bottom: var(--s-4);
   @media ${DEVICES.DESKTOP} {
     gap: var(--s-5);
   }

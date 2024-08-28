@@ -20,6 +20,7 @@
     "@types/chart.js": "^2.9.41",
     "@types/react-big-calendar": "^1.8.9",
     "axios": "^1.6.8",
+    "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.2",
     "formik": "^2.4.5",
     "moment": "^2.30.1",

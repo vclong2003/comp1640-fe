@@ -1,26 +1,26 @@
 ## Product Images
-<img width="435" alt="image" src="https://github.com/user-attachments/assets/f0d07ea3-9ecb-449d-a00a-c1b8bc2bc20a" />
-Home Page
 
-<img width="468" alt="image" src="https://github.com/user-attachments/assets/205b9fcd-24b3-45b9-8034-495ca958f44e" />
-Magazine Idea Page
+#### Home Page
+![image003](https://github.com/user-attachments/assets/75ad3579-d869-4f17-bfd7-6e407192d600)
 
-<img width="468" alt="image" src="https://github.com/user-attachments/assets/da98b614-38a8-4961-874d-3218a8d3137e" />
-Magazine Event Page
+#### Magazine Idea Page
+![image005](https://github.com/user-attachments/assets/dd6e9067-1ddb-42aa-ba8b-599f0431a23c)
 
-<img width="468" alt="image" src="https://github.com/user-attachments/assets/1554eca2-c16e-403e-a0ca-a72a001bab2b" />
-Add New Magazine Idea Page
+#### Magazine Event Page
+![image007](https://github.com/user-attachments/assets/ab996379-3ba8-403d-bd05-93302e9ecc55)
 
-<img width="468" alt="image" src="https://github.com/user-attachments/assets/e131ea95-ae01-4390-b8b9-9ce8aaf28682" />
-Profile Page
+#### Add New Magazine Idea Page
+![image011](https://github.com/user-attachments/assets/4aa8be44-080f-4953-9562-43b14e824aeb)
 
-<img width="468" alt="image" src="https://github.com/user-attachments/assets/61f35f90-46b7-4e8b-bf4e-bff33794eef3" />
-Admin Dashboard Page
+#### Profile Page
+![image015](https://github.com/user-attachments/assets/e40affdd-1927-4ea4-ac95-ff298b879127)
+
+#### Admin Dashboard Page
+![image019](https://github.com/user-attachments/assets/17efd8f9-5829-4963-a002-946a38a41056)
 
 ## Notes
 
 - This project use Yarn
-- GC run deploy: https://alhkq.live/
 
 <!--
 Artifact Registry:
